@@ -1,7 +1,9 @@
-#include <iostream>
+#include <Controller.h>
+#include "Game.h"
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Game &game = Game::Instance();
+  //Game game;
+  game.start();
 }
