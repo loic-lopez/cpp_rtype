@@ -3,4 +3,6 @@ project(cpp_rtype)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cpp_rtype main.cpp)
+set(SOURCES sources/main.cpp)
+
+add_executable(cpp_rtype ${SOURCES})
