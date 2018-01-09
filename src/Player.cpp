@@ -17,6 +17,7 @@ Player::Player() : Entity() {
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
     weapon.setWeapon(WeaponType::SPREAD, 10);
+    setHp(3);
 }
 
 Player::~Player() {

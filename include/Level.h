@@ -8,11 +8,13 @@
 #include <SFML/Audio.hpp>
 #include "Enum.h"
 #include "Bg.h"
+#include "HUD.h"
 
 class Level {
 private:
     Orientation orientation;
     Bg back;
+    Hud hud;
     sf::Music music;
 
 public:
