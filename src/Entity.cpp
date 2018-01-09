@@ -2,6 +2,7 @@
 // Created by Eric on 29/11/2017.
 //
 
+#include <WindowProperties.h>
 #include "Entity.h"
 
 Entity::Entity() {
@@ -45,35 +46,35 @@ void Entity::move(sf::Vector2f mov) {
     pos.x += ((int)mov.x * speed);
     if (pos.x < 0)
         pos.x = 0;
-    else if (pos.x > WIN_WIDTH)
-        pos.x = WIN_WIDTH;
+    else if (pos.x > WindowProperties::WIN_WIDTH)
+        pos.x = WindowProperties::WIN_WIDTH;
     pos.y += ((int)mov.y * speed);
     if (pos.y < 0)
         pos.y = 0;
-    else if (pos.y > WIN_HEIGHT)
-        pos.y = WIN_HEIGHT;
+    else if (pos.y > WindowProperties::WIN_HEIGHT)
+        pos.y = WindowProperties::WIN_HEIGHT;
 }
 
 void Entity::changeOrientation(Orientation newOrientation) {
     if (orientation != newOrientation) {
-        float percentx = pos.x / (float)WIN_WIDTH;
-        float percenty = pos.y / (float)WIN_HEIGHT;
+        float percentx = pos.x / (float)WindowProperties::WIN_WIDTH;
+        float percenty = pos.y / (float)WindowProperties::WIN_HEIGHT;
         float previousx = trajectory.x;
         float previousy = trajectory.y;
         if (newOrientation == Orientation::HORIZONTAL) {
-            pos.x = (1.f - percenty) * (float) WIN_WIDTH;
+            pos.x = (1.f - percenty) * (float) WindowProperties::WIN_WIDTH;
             trajectory.x =  - previousy;
         }
         else if (newOrientation == Orientation::VERTICAL) {
-            pos.x = (percenty) * (float) WIN_WIDTH;
+            pos.x = (percenty) * (float) WindowProperties::WIN_WIDTH;
             trajectory.x =  previousy;
         }
         if (newOrientation == Orientation::HORIZONTAL) {
-            pos.y = percentx * (float) WIN_HEIGHT;
+            pos.y = percentx * (float) WindowProperties::WIN_HEIGHT;
             trajectory.y =  previousx;
         }
         else if (newOrientation == Orientation::VERTICAL) {
-            pos.y = (1.f - percentx) * (float) WIN_HEIGHT;
+            pos.y = (1.f - percentx) * (float) WindowProperties::WIN_HEIGHT;
             trajectory.y =  - previousx;
         }
         orientation = newOrientation;
@@ -81,7 +82,7 @@ void Entity::changeOrientation(Orientation newOrientation) {
 }
 
 bool Entity::outOfBounds() {
-    return !(pos.x < 0 || pos.y < 0 || pos.x > WIN_WIDTH || pos.y > WIN_HEIGHT);
+    return !(pos.x < 0 || pos.y < 0 || pos.x > WindowProperties::WIN_WIDTH || pos.y > WindowProperties::WIN_HEIGHT);
 }
 
 void Entity::setTrajectory(const sf::Vector2f &newTrajectory) {

@@ -153,7 +153,7 @@ void Game::start() {
     entities.push_back(new Enemy(EnemyType::BASIC_A));
     play = Player();
     bulletsEnemy.reserve(100000);
-    sf::RenderWindow App(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
+    sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
     App.setVerticalSyncEnabled(true);
     while (App.isOpen() && gameState != GameState ::CLOSE) {
         sf::Time elapsed = clock.getElapsedTime();

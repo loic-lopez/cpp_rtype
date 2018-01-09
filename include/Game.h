@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Level.h"
 #include "Enemy.h"
+#include "WindowProperties.h"
 
 class Game {
 private:

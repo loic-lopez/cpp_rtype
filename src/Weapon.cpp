@@ -29,24 +29,24 @@ void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, Bull
    while (i < lvlWeapon) {
        if (orientation == Orientation::HORIZONTAL) {
            addBullet(orientation,
-                     sf::Vector2f(pos.x + ((float)WIN_WIDTH  * 2.f / 100.f) * (lvlWeapon - i),
-                                  pos.y - ((float)WIN_HEIGHT  * 1.5f / 100.f) - i * ((float)WIN_HEIGHT  * 3.f / 100.f)),
+                     sf::Vector2f(pos.x + ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) * (lvlWeapon - i),
+                                  pos.y - ((float)WindowProperties::WIN_HEIGHT  * 1.5f / 100.f) - i * ((float)WindowProperties::WIN_HEIGHT  * 3.f / 100.f)),
                      side, bulletType,
                      sf::Vector2f(1.f, 0.f));
            addBullet(orientation,
-                     sf::Vector2f(pos.x + ((float)WIN_WIDTH  * 2.f / 100.f) * (lvlWeapon - i),
-                                  pos.y + ((float)WIN_HEIGHT  * 1.5f / 100.f) + i * ((float)WIN_HEIGHT  * 3.f / 100.f)),
+                     sf::Vector2f(pos.x + ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) * (lvlWeapon - i),
+                                  pos.y + ((float)WindowProperties::WIN_HEIGHT  * 1.5f / 100.f) + i * ((float)WindowProperties::WIN_HEIGHT  * 3.f / 100.f)),
                      side, bulletType,
                      sf::Vector2f(1.f, 0.f));
        } else {
            addBullet(orientation,
-                     sf::Vector2f(pos.x - ((float)WIN_WIDTH  * 1.f / 100.f) - i * ((float)WIN_WIDTH  * 2.f / 100.f) ,
-                                  pos.y - ((float)WIN_HEIGHT  * 2.f / 100.f) * (lvlWeapon - i)),
+                     sf::Vector2f(pos.x - ((float)WindowProperties::WIN_WIDTH  * 1.f / 100.f) - i * ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) ,
+                                  pos.y - ((float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f) * (lvlWeapon - i)),
                      side, bulletType,
                      sf::Vector2f(0.f, -1.f));
            addBullet(orientation,
-                     sf::Vector2f(pos.x + ((float)WIN_WIDTH  * 1.f / 100.f) + i * ((float)WIN_WIDTH  * 2.f / 100.f) ,
-                                  pos.y - ((float)WIN_HEIGHT  * 2.f / 100.f) * (lvlWeapon - i)),
+                     sf::Vector2f(pos.x + ((float)WindowProperties::WIN_WIDTH  * 1.f / 100.f) + i * ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) ,
+                                  pos.y - ((float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f) * (lvlWeapon - i)),
                      side, bulletType,
                      sf::Vector2f(0.f, -1.f));
        }
@@ -61,24 +61,24 @@ void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, Bullet
     while (i < lvlWeapon) {
         if (orientation == Orientation::HORIZONTAL) {
             addBullet(orientation,
-                      sf::Vector2f(pos.x + (float)WIN_WIDTH  * 2.f / 100.f,
+                      sf::Vector2f(pos.x + (float)WindowProperties::WIN_WIDTH  * 2.f / 100.f,
                                    pos.y),
                       side, bulletType,
                       sf::Vector2f(1.f - (i * 0.05f), 0.f - (i ) * 0.1f - 0.05f));
             addBullet(orientation,
-                      sf::Vector2f(pos.x + (float)WIN_WIDTH  * 2.f / 100.f,
+                      sf::Vector2f(pos.x + (float)WindowProperties::WIN_WIDTH  * 2.f / 100.f,
                                    pos.y),
                       side, bulletType,
                       sf::Vector2f(1.f - (i * 0.05f), 0.f + (i ) * 0.1f + 0.05f));
         } else {
             addBullet(orientation,
                       sf::Vector2f(pos.x,
-                                   pos.y - (float)WIN_HEIGHT  * 2.f / 100.f),
+                                   pos.y - (float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f),
                       side, bulletType,
                       sf::Vector2f(0.f - (i ) * 0.1f - 0.05f, -1.f + (i * 0.05f)));
             addBullet(orientation,
                       sf::Vector2f(pos.x,
-                                   pos.y - (float)WIN_HEIGHT  * 2.f / 100.f),
+                                   pos.y - (float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f),
                       side, bulletType,
                       sf::Vector2f(0.f + (i ) * 0.1f + 0.05f, -1.f + (i * 0.05f)));
         }

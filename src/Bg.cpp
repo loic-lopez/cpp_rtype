@@ -4,6 +4,7 @@
 
 #include "Bg.h"
 #include <iostream>
+#include <WindowProperties.h>
 
 Bg::Bg()
 {
@@ -24,13 +25,13 @@ void Bg::addLayer(const std::string &path, int speed)
     nLayer->speed = speed;
     nLayer->img.setPosition(0, 0);
     if (orientation == Orientation::VERTICAL) {
-        float scale = (float) WIN_WIDTH / nLayer->img.getGlobalBounds().width;
+        float scale = (float) WindowProperties::WIN_WIDTH / nLayer->img.getGlobalBounds().width;
         nLayer->img.scale(scale, scale);
-        nLayer->position1 = (float) WIN_HEIGHT - nLayer->img.getGlobalBounds().height;
-        nLayer->position2 = (float) WIN_HEIGHT - 2 * nLayer->img.getGlobalBounds().height;
+        nLayer->position1 = (float) WindowProperties::WIN_HEIGHT - nLayer->img.getGlobalBounds().height;
+        nLayer->position2 = (float) WindowProperties::WIN_HEIGHT - 2 * nLayer->img.getGlobalBounds().height;
     }
     else if (orientation == Orientation::HORIZONTAL) {
-        float scale = (float) WIN_HEIGHT / nLayer->img.getGlobalBounds().width;
+        float scale = (float) WindowProperties::WIN_HEIGHT / nLayer->img.getGlobalBounds().width;
         nLayer->img.scale(scale, scale);
         nLayer->img.setRotation(90);
         nLayer->position1 = nLayer->img.getGlobalBounds().width;
@@ -50,10 +51,10 @@ void Bg::drawBackground(sf::RenderWindow &App)
             App.draw(layers[i]->img);
             layers[i]->position1 = layers[i]->position1 + layers[i]->speed;
             layers[i]->position2 = layers[i]->position2 + layers[i]->speed;
-            if (layers[i]->position1 > WIN_HEIGHT) {
+            if (layers[i]->position1 > WindowProperties::WIN_HEIGHT) {
                 layers[i]->position1 = layers[i]->position2 - layers[i]->img.getGlobalBounds().height;
             }
-            if (layers[i]->position2 > WIN_HEIGHT) {
+            if (layers[i]->position2 > WindowProperties::WIN_HEIGHT) {
                 layers[i]->position2 = layers[i]->position1 - layers[i]->img.getGlobalBounds().height;
             }
         }
@@ -78,7 +79,7 @@ void Bg::changeOrientation(Orientation orientation1)
 {
     if (orientation == Orientation::VERTICAL && orientation1 != Orientation::VERTICAL) {
         for (size_t i = 0; i < layers.size() ; i++) {
-            float scale = (float) WIN_HEIGHT / layers[i]->img.getGlobalBounds().width;
+            float scale = (float) WindowProperties::WIN_HEIGHT / layers[i]->img.getGlobalBounds().width;
             layers[i]->img.scale(scale, scale);
             layers[i]->img.setRotation(90);
         }
@@ -86,7 +87,7 @@ void Bg::changeOrientation(Orientation orientation1)
     else if (orientation == Orientation::HORIZONTAL && orientation1 != Orientation::HORIZONTAL) {
         for (size_t i = 0; i < layers.size() ; i++) {
             layers[i]->img.setRotation(0);
-            float scale = (float) WIN_WIDTH / layers[i]->img.getGlobalBounds().width;
+            float scale = (float) WindowProperties::WIN_WIDTH / layers[i]->img.getGlobalBounds().width;
             layers[i]->img.scale(scale, scale);
 
         }

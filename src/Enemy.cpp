@@ -13,8 +13,8 @@ Enemy::Enemy(EnemyType type) : Entity()
         enemyType = type;
         orientation = Orientation::VERTICAL;
         sprites[(int)Stance::IDLE] = ptr1.getSprite(Textures::ENEMY1);
-        pos.x = WIN_WIDTH / 2;
-        pos.y = WIN_HEIGHT * 40 / 100;
+        pos.x = WindowProperties::WIN_WIDTH / 2;
+        pos.y = WindowProperties::WIN_HEIGHT * 40 / 100;
         trajectory.x = 0;
         trajectory.y = 0;
         speed = 10;
@@ -59,7 +59,7 @@ void Enemy::updatePos() {
             move(sf::Vector2f(1, 0));
         else
             move(sf::Vector2f(-1, 0));
-        if (pos.x == WIN_WIDTH && back == true) {
+        if (pos.x == WindowProperties::WIN_WIDTH && back == true) {
             back = false;
         }
         if (pos.x == 0 && back == false) {
@@ -71,7 +71,7 @@ void Enemy::updatePos() {
             move(sf::Vector2f(0, 1));
         else
             move(sf::Vector2f(0, -1));
-        if (pos.y == WIN_HEIGHT && back == true) {
+        if (pos.y == WindowProperties::WIN_HEIGHT && back == true) {
             back = false;
         }
         if (pos.y == 0 && back == false) {
