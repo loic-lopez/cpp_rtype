@@ -151,7 +151,6 @@ void Game::start() {
     gameState = GameState::GAME;
     level.initLvl("lvl1");
     hud.initHud("hud");
-    std::cout << "Pute -3" << std::endl;
     entities.push_back(new Enemy(EnemyType::BASIC_A));
     play = Player();
     bulletsEnemy.reserve(100000);
@@ -185,7 +184,6 @@ void Game::start() {
 /************************************************* DRAW *************************************************/
 void Game::drawAll(sf::RenderWindow &App) {
     level.drawLvl(App);
-    std::cout << "Pute 0" << std::endl;
     hud.drawHud(App);
     for (size_t i = 0 ; i < bulletsEnemy.size(); i++) {
         bulletsEnemy[i]->drawSprite(App);
