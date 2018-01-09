@@ -27,8 +27,10 @@ void Hud::addLayer(const std::string &path)
 
 void Hud::initHud(const std::string &path)
 {
-    Parsing::loadCSV(path, [this] (std::string const &path, int const &i) {
+    Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
         (void)i;
+        std::cout << "hello" << std::endl;
+        std::cout << this->basisHP << std::endl;
         this->addLayer(path);
 
     });
