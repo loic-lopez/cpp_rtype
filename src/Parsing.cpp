@@ -8,13 +8,15 @@ void    Parsing::loadCSV(const std::string path, std::function<void (std::string
 {
     std::ifstream infile("./ressources/" + path + "/" + path + ".csv");
     std::string line;
-    if (std::getline(infile, line)) {
         while (std::getline(infile, line)) {
             std::string pathSprite = "./ressources/" + path + "/" + line.substr(0, line.find(','));
             line = line.substr(line.find(',') + 1);
             //back.addLayer(pathSprite, std::stoi(line.substr(0, line.find(','))));
+            std::cout << "path: " << path << std::endl;
             layer(pathSprite, std::stoi(line.substr(0, line.find(','))));
+            std::cout << "pathpute: " << path << std::endl;
+
         }
-    }
+
 
 }

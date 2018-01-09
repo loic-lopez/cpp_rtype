@@ -30,5 +30,6 @@ void Level::initLvl(const std::string &path)
 
 void Level::drawLvl(sf::RenderWindow &App)
 {
+    std::cout << "Pute -1" << std::endl;
     back.drawBackground(App);
 }
