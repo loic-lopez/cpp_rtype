@@ -8,7 +8,7 @@ Animation::Animation()
 {
 }
 
-Animation::Animation(const Animation& animation) : speed(animation.speed),
+Animation::Animation(const Animation &animation) : speed(animation.speed),
                                                    scale(animation.scale)
 {
     data = animation.data;
@@ -25,15 +25,18 @@ Animation::Animation(const std::string &path, Stance stance)
     currentSpeed = 0;
     std::ifstream infile(findCsv(path, stance));
     std::string line;
-    if (std::getline(infile, line)) {
+    if (std::getline(infile, line))
+    {
         texture = new sf::Texture;
         texture->loadFromFile("./ressources/" + path + "/" + line.substr(0, line.find(',')));
         line = line.substr(line.find(',') + 1);
         scale = std::stoi(line.substr(0, line.find(',')));
         line = line.substr(line.find(',') + 1);
-        speed =  std::stoi(line.substr(0, line.find(',')));
-        while (std::getline(infile, line)) {
-            for (size_t i = 0; i < 4; i++) {
+        speed = std::stoi(line.substr(0, line.find(',')));
+        while (std::getline(infile, line))
+        {
+            for (size_t i = 0; i < 4; i++)
+            {
                 data->push_back(std::stoi(line.substr(0, line.find(','))));
                 line = line.substr(line.find(',') + 1);
             }
@@ -61,15 +64,18 @@ void Animation::updateFrame()
 {
     width = (*data)[frame * 4 + 2] * scale / 100;
     height = (*data)[frame * 4 + 3] * scale / 100;
-    sprite.setTextureRect(sf::IntRect((*data)[frame * 4 + 0], (*data)[frame * 4 + 1], (*data)[frame * 4 + 2], (*data)[frame * 4 + 3]));
+    sprite.setTextureRect(sf::IntRect((*data)[frame * 4 + 0], (*data)[frame * 4 + 1], (*data)[frame * 4 + 2],
+                                      (*data)[frame * 4 + 3]));
 }
 
 void Animation::rotateSprite(Orientation orientation)
 {
-    if (orientation == Orientation::HORIZONTAL) {
+    if (orientation == Orientation::HORIZONTAL)
+    {
         sprite.setRotation(90);
     }
-    else if (orientation == Orientation::VERTICAL) {
+    else if (orientation == Orientation::VERTICAL)
+    {
         sprite.setRotation(0);
     }
 }
@@ -77,20 +83,23 @@ void Animation::rotateSprite(Orientation orientation)
 void Animation::drawFrame(sf::RenderWindow &App, sf::Vector2f pos, Orientation orientation)
 {
 
-    if (orientation == Orientation::VERTICAL) {
+    if (orientation == Orientation::VERTICAL)
+    {
         float compensation = width / 2.f;
         sprite.setPosition(sf::Vector2f(pos.x - compensation, pos.y - height / 2.f));
     }
-    else {
+    else
+    {
         float compensation = width / 2.f;
         sprite.setPosition(sf::Vector2f(pos.x + height / 2.f, pos.y - compensation));
     }
 
-    sprite.setScale((float)scale / 100.0f , (float)scale / 100.0f);
+    sprite.setScale((float) scale / 100.0f, (float) scale / 100.0f);
     rotateSprite(orientation);
     App.draw(sprite);
     currentSpeed++;
-    if (currentSpeed == speed) {
+    if (currentSpeed == speed)
+    {
         currentSpeed = 0;
         frame = (frame + 1) % ((*data).size() / 4);
         updateFrame();

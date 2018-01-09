@@ -5,15 +5,19 @@
 #include "Weapon.h"
 #include "Game.h"
 
-Weapon::Weapon() {
+Weapon::Weapon()
+{
     lvlWeapon = 3;
 }
 
-Weapon::~Weapon() {
+Weapon::~Weapon()
+{
 
 }
 
-void Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType, sf::Vector2f trajectory) {
+void
+Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType, sf::Vector2f trajectory)
+{
     Game &game = Game::Instance();
     Bullet *bullet = new Bullet(bulletType);
     bullet->setTrajectory(trajectory);
@@ -23,64 +27,78 @@ void Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, Bul
     game.addBullet(bullet);
 }
 
-void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType) {
+void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)
+{
     int i = 0;
     Game &game = Game::Instance();
-   while (i < lvlWeapon) {
-       if (orientation == Orientation::HORIZONTAL) {
-           addBullet(orientation,
-                     sf::Vector2f(pos.x + ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) * (lvlWeapon - i),
-                                  pos.y - ((float)WindowProperties::WIN_HEIGHT  * 1.5f / 100.f) - i * ((float)WindowProperties::WIN_HEIGHT  * 3.f / 100.f)),
-                     side, bulletType,
-                     sf::Vector2f(1.f, 0.f));
-           addBullet(orientation,
-                     sf::Vector2f(pos.x + ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) * (lvlWeapon - i),
-                                  pos.y + ((float)WindowProperties::WIN_HEIGHT  * 1.5f / 100.f) + i * ((float)WindowProperties::WIN_HEIGHT  * 3.f / 100.f)),
-                     side, bulletType,
-                     sf::Vector2f(1.f, 0.f));
-       } else {
-           addBullet(orientation,
-                     sf::Vector2f(pos.x - ((float)WindowProperties::WIN_WIDTH  * 1.f / 100.f) - i * ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) ,
-                                  pos.y - ((float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f) * (lvlWeapon - i)),
-                     side, bulletType,
-                     sf::Vector2f(0.f, -1.f));
-           addBullet(orientation,
-                     sf::Vector2f(pos.x + ((float)WindowProperties::WIN_WIDTH  * 1.f / 100.f) + i * ((float)WindowProperties::WIN_WIDTH  * 2.f / 100.f) ,
-                                  pos.y - ((float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f) * (lvlWeapon - i)),
-                     side, bulletType,
-                     sf::Vector2f(0.f, -1.f));
-       }
-       i++;
-  }
+    while (i < lvlWeapon)
+    {
+        if (orientation == Orientation::HORIZONTAL)
+        {
+            addBullet(orientation,
+                      sf::Vector2f(pos.x + ((float) WindowProperties::WIN_WIDTH * 2.f / 100.f) * (lvlWeapon - i),
+                                   pos.y - ((float) WindowProperties::WIN_HEIGHT * 1.5f / 100.f) -
+                                   i * ((float) WindowProperties::WIN_HEIGHT * 3.f / 100.f)),
+                      side, bulletType,
+                      sf::Vector2f(1.f, 0.f));
+            addBullet(orientation,
+                      sf::Vector2f(pos.x + ((float) WindowProperties::WIN_WIDTH * 2.f / 100.f) * (lvlWeapon - i),
+                                   pos.y + ((float) WindowProperties::WIN_HEIGHT * 1.5f / 100.f) +
+                                   i * ((float) WindowProperties::WIN_HEIGHT * 3.f / 100.f)),
+                      side, bulletType,
+                      sf::Vector2f(1.f, 0.f));
+        }
+        else
+        {
+            addBullet(orientation,
+                      sf::Vector2f(pos.x - ((float) WindowProperties::WIN_WIDTH * 1.f / 100.f) -
+                                   i * ((float) WindowProperties::WIN_WIDTH * 2.f / 100.f),
+                                   pos.y - ((float) WindowProperties::WIN_HEIGHT * 2.f / 100.f) * (lvlWeapon - i)),
+                      side, bulletType,
+                      sf::Vector2f(0.f, -1.f));
+            addBullet(orientation,
+                      sf::Vector2f(pos.x + ((float) WindowProperties::WIN_WIDTH * 1.f / 100.f) +
+                                   i * ((float) WindowProperties::WIN_WIDTH * 2.f / 100.f),
+                                   pos.y - ((float) WindowProperties::WIN_HEIGHT * 2.f / 100.f) * (lvlWeapon - i)),
+                      side, bulletType,
+                      sf::Vector2f(0.f, -1.f));
+        }
+        i++;
+    }
 }
 
-void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType) {
+void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)
+{
     Game &game = Game::Instance();
 
     int i = 0;
-    while (i < lvlWeapon) {
-        if (orientation == Orientation::HORIZONTAL) {
+    while (i < lvlWeapon)
+    {
+        if (orientation == Orientation::HORIZONTAL)
+        {
             addBullet(orientation,
-                      sf::Vector2f(pos.x + (float)WindowProperties::WIN_WIDTH  * 2.f / 100.f,
+                      sf::Vector2f(pos.x + (float) WindowProperties::WIN_WIDTH * 2.f / 100.f,
                                    pos.y),
                       side, bulletType,
-                      sf::Vector2f(1.f - (i * 0.05f), 0.f - (i ) * 0.1f - 0.05f));
+                      sf::Vector2f(1.f - (i * 0.05f), 0.f - (i) * 0.1f - 0.05f));
             addBullet(orientation,
-                      sf::Vector2f(pos.x + (float)WindowProperties::WIN_WIDTH  * 2.f / 100.f,
+                      sf::Vector2f(pos.x + (float) WindowProperties::WIN_WIDTH * 2.f / 100.f,
                                    pos.y),
                       side, bulletType,
-                      sf::Vector2f(1.f - (i * 0.05f), 0.f + (i ) * 0.1f + 0.05f));
-        } else {
+                      sf::Vector2f(1.f - (i * 0.05f), 0.f + (i) * 0.1f + 0.05f));
+        }
+        else
+        {
             addBullet(orientation,
                       sf::Vector2f(pos.x,
-                                   pos.y - (float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f),
+                                   pos.y - (float) WindowProperties::WIN_HEIGHT * 2.f / 100.f),
                       side, bulletType,
-                      sf::Vector2f(0.f - (i ) * 0.1f - 0.05f, -1.f + (i * 0.05f)));
+                      sf::Vector2f(0.f - (i) * 0.1f - 0.05f, -1.f + (i * 0.05f)));
             addBullet(orientation,
                       sf::Vector2f(pos.x,
-                                   pos.y - (float)WindowProperties::WIN_HEIGHT  * 2.f / 100.f),
+                                   pos.y - (float) WindowProperties::WIN_HEIGHT * 2.f / 100.f),
                       side, bulletType,
-                      sf::Vector2f(0.f + (i ) * 0.1f + 0.05f, -1.f + (i * 0.05f)));
+                      sf::Vector2f(0.f + (i) * 0.1f + 0.05f, -1.f + (i * 0.05f)));
         }
         i++;
     }
@@ -138,45 +156,56 @@ void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, Bullet
     }*/
 }
 
-void Weapon::shoot(Orientation orientation, sf::Vector2f pos, Side side, BulletType bullettype){
-    switch (weaponType) {
-        case WeaponType::STRAIGHT : {
+void Weapon::shoot(Orientation orientation, sf::Vector2f pos, Side side, BulletType bullettype)
+{
+    switch (weaponType)
+    {
+        case WeaponType::STRAIGHT :
+        {
             straight(orientation, pos, side, bullettype);
             break;
         }
-        case WeaponType::SPREAD : {
+        case WeaponType::SPREAD :
+        {
             spread(orientation, pos, side, bullettype);
             break;
         }
-        case WeaponType::HOMING : {
+        case WeaponType::HOMING :
+        {
             break;
         }
-        case WeaponType::ROTATE : {
+        case WeaponType::ROTATE :
+        {
             break;
         }
     }
 }
 
-void Weapon::lvlUp() {
+void Weapon::lvlUp()
+{
     if (lvlWeapon < 3)
         lvlWeapon++;
 }
 
-void Weapon::setWeapon(WeaponType weapon, int cd) {
+void Weapon::setWeapon(WeaponType weapon, int cd)
+{
     coolDown = cd;
     weaponType = weapon;
 }
 
-void Weapon::setWeapon(WeaponType weapon, int cd, int level) {
+void Weapon::setWeapon(WeaponType weapon, int cd, int level)
+{
     coolDown = cd;
     weaponType = weapon;
-    lvlWeapon =level;
+    lvlWeapon = level;
 }
 
-int Weapon::getCoolDown() const {
+int Weapon::getCoolDown() const
+{
     return coolDown;
 }
 
-void Weapon::setCoolDown(int coolDown) {
+void Weapon::setCoolDown(int coolDown)
+{
     Weapon::coolDown = coolDown;
 }

@@ -14,13 +14,23 @@
 #include "Enemy.h"
 #include "WindowProperties.h"
 
-class Game {
+class Game
+{
 private:
     static Game m_instance;
+
     Game();
+
     ~Game();
-    Game& operator= (const Game&){}
-    Game (const Game&){}
+
+    Game &operator=(const Game &)
+    {
+        return *this;
+    }
+
+    Game(const Game &)
+    {}
+
     //Orientation orientation;
     GameState gameState;
     sf::Clock clock;
@@ -33,16 +43,26 @@ private:
 
     sf::Mutex mutex;
 public:
-    static Game& Instance();
+    static Game &Instance();
+
     void start();
+
     void controller();
+
     void XboxController();
+
     void changeOrientation(Orientation orientation);
+
     void drawAll(sf::RenderWindow &App);
+
     void updateAlliedBullet();
+
     void updateEntities();
+
     void lock();
+
     void unlock();
+
     void addBullet(IEntity *);
 };
 

@@ -4,18 +4,22 @@
 
 #include "Menu.h"
 
-Menu::Menu() {
+Menu::Menu()
+{
 
 }
 
-Menu::~Menu() {
+Menu::~Menu()
+{
 
 }
 
-void Menu::initMenu(const std::string &path) {
+void Menu::initMenu(const std::string &path)
+{
 
 }
 
-void Menu::drawMenu(sf::RenderWindow &App) {
+void Menu::drawMenu(sf::RenderWindow &App)
+{
 
 }

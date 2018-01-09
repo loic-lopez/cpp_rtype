@@ -4,14 +4,17 @@
 
 #include "Controller.h"
 
-Controller::~Controller() {
+Controller::~Controller()
+{
 
 }
 
-Controller::Controller() {
+Controller::Controller()
+{
     connected = sf::Joystick::isConnected(0);
 }
 
-bool Controller::isConnected() const {
+bool Controller::isConnected() const
+{
     return connected;
 }
