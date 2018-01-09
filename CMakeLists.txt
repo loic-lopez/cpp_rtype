@@ -24,7 +24,7 @@ set(SOURCE_FILES src/Entity.cpp
         src/Game.cpp
         src/Level.cpp
         src/Bullet.cpp
-        src/Enemy.cpp)
+        src/Enemy.cpp Menu.cpp Menu.h)
 
 set(HEADER_FILES include/IEntity.h
         include/Entity.h
@@ -34,6 +34,7 @@ set(HEADER_FILES include/IEntity.h
         include/Bg.h
         include/Enum.h
         include/Level.h
+        include/Bullet.h include/Enemy.h src/TextureManager.cpp include/TextureManager.h src/Weapon.cpp include/Weapon.h Menu.cpp Menu.h)
         include/Bullet.h include/Enemy.h src/TextureManager.cpp include/TextureManager.h src/Weapon.cpp include/Weapon.h
         include/WindowProperties.h)
 
