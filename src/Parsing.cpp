@@ -12,10 +12,7 @@ void Parsing::loadCSV(const std::string path, std::function<void(std::string con
     {
         std::string pathSprite = "./ressources/" + path + "/" + line.substr(0, line.find(','));
         std::string tmp = line.substr(line.find(',') + 1);
-        std::cout << tmp.substr(0, tmp.find(',')) << std::endl;
-        std::cout << line << std::endl;
         layer(pathSprite, std::stoi(tmp));
-
     }
 
 
