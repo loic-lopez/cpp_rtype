@@ -16,7 +16,8 @@ set(CMAKE_BUILD_TYPE Release)
 find_package(SFML 2 COMPONENTS system window graphics audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR})
 
-set(SOURCE_FILES src/Entity.cpp
+set(SOURCE_FILES
+        src/Entity.cpp
         src/Player.cpp
         src/main.cpp
         src/Animation.cpp
@@ -24,9 +25,14 @@ set(SOURCE_FILES src/Entity.cpp
         src/Game.cpp
         src/Level.cpp
         src/Bullet.cpp
-        src/Enemy.cpp Menu.cpp Menu.h)
+        src/Enemy.cpp
+        src/Menu.cpp
+        src/Weapon.cpp
+        src/TextureManager.cpp
+        )
 
-set(HEADER_FILES include/IEntity.h
+set(HEADER_FILES
+        include/IEntity.h
         include/Entity.h
         include/Player.h
         include/Animation.h
@@ -34,9 +40,13 @@ set(HEADER_FILES include/IEntity.h
         include/Bg.h
         include/Enum.h
         include/Level.h
-        include/Bullet.h include/Enemy.h src/TextureManager.cpp include/TextureManager.h src/Weapon.cpp include/Weapon.h Menu.cpp Menu.h)
-        include/Bullet.h include/Enemy.h src/TextureManager.cpp include/TextureManager.h src/Weapon.cpp include/Weapon.h
-        include/WindowProperties.h)
+        include/Bullet.h
+        include/Enemy.h
+        include/TextureManager.h
+        include/Weapon.h
+        include/Menu.h
+        include/WindowProperties.h
+        )
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(r-type ${SFML_LIBRARIES})
