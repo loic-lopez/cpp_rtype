@@ -57,16 +57,23 @@ void Hud::drawHud(sf::RenderWindow &App)
 }
 
 void Hud::drawHudMenu(sf::RenderWindow &App) {
-//  float     firstXPos = (float)WindowProperties::WIN_WIDTH / 2;
-//  float     firstYPos = (float)WindowProperties::WIN_HEIGHT / 10;
-    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)WindowProperties::WIN_WIDTH / 15;
-    float firstYPos = (float)WindowProperties::WIN_WIDTH / 15;
+    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)(layers[0]->texture.getSize().x * 1.25);
+    float firstXPosPlayButton = firstXPos;
+    float firstYPos = (float)WindowProperties::WIN_HEIGHT / 8;
+    float firstYPosPlayButton = firstYPos;
     std::cout << this->layers.size() << std::endl;
     for (unsigned int x = 0; x < this->layers.size(); x++)
     {
-        firstXPos -= (float)layers[x]->texture.getSize().x;
-        firstYPos += (float)WindowProperties::WIN_HEIGHT / 10;
-        layers[x]->img.setPosition(firstXPos, firstYPos);
+        if (x != 0) {
+            firstXPos += layers[0]->texture.getSize().x / 10;
+            firstXPosPlayButton -= layers[0]->texture.getSize().x / 5;
+            firstYPos += layers[0]->texture.getSize().y * 1.35;
+            firstYPosPlayButton += layers[0]->texture.getSize().y * 1.35;
+        }
+        if (x == 3)
+            layers[x]->img.setPosition(firstXPosPlayButton, firstYPosPlayButton);
+        else
+            layers[x]->img.setPosition(firstXPos, firstYPos);
         App.draw(layers[x]->img);
     }
 }
