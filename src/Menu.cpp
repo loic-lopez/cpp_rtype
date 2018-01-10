@@ -34,6 +34,7 @@ void Menu::initMenu(const std::string &path) {
                 scaleX = (float) WindowProperties::WIN_WIDTH / this->menuBackgroundSprite.getGlobalBounds().width;
                 scaleY = (float) WindowProperties::WIN_HEIGHT / this->menuBackgroundSprite.getGlobalBounds().height;
                 this->menuBackgroundSprite.scale(scaleX, scaleY);
+                this->menuBackgroundSprite.setPosition(0, 0);
                 cpt = true;
             }
             else {
