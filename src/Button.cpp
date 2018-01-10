@@ -188,19 +188,20 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
     {
         case gui::style::none:
         {
-            m_size = sf::Vector2f(m_text.getGlobalBounds().width * 1.5f, m_text.getGlobalBounds().height * 1.75f);
+            m_size = sf::Vector2f(sprite.getGlobalBounds().width, sprite.getGlobalBounds().height);
+
             m_button = thor::Shapes::roundedRect(m_size, m_borderRadius, m_bgNormal, m_borderThickness, m_border);
             m_button.setOrigin(m_button.getGlobalBounds().width/2, m_button.getGlobalBounds().height/2);
             m_button.setPosition(m_position);
-            m_text.setOrigin(m_text.getGlobalBounds().width/2, m_text.getGlobalBounds().height/2);
+
+            sprite.setOrigin(sprite.getGlobalBounds().width/2, sprite.getGlobalBounds().height/2);
             sf::Vector2f textPosition = sf::Vector2f(m_button.getPosition().x, m_button.getPosition().y - m_button.getGlobalBounds().height/4);
-            m_text.setPosition(textPosition);
-            m_text.setFillColor(m_textNormal);
+            sprite.setPosition(textPosition);
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
             m_shadow.setFillColor(sf::Color(0,0,0));
-        }
             break;
+        }
 
         case gui::style::save:
         {
@@ -215,8 +216,8 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
             m_shadow.setFillColor(sf::Color(0,0,0));
-        }
             break;
+        }
 
         case gui::style::cancel:
         {
@@ -231,8 +232,8 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
             m_shadow.setFillColor(sf::Color(0,0,0));
-        }
             break;
+        }
 
         case gui::style::clean:
         {
@@ -247,8 +248,8 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
             m_shadow.setFillColor(sf::Color(0,0,0));
-        }
             break;
+        }
 
         default:
             break;
@@ -320,22 +321,22 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
         {
             m_button.setFillColor(m_bgNormal);
             m_text.setFillColor(m_textNormal);
-        }
             break;
+        }
 
         case gui::state::hovered:
         {
             m_button.setFillColor(m_bgHover);
             m_text.setFillColor(m_textHover);
-        }
             break;
+        }
 
         case gui::state::clicked:
         {
             m_button.setFillColor(m_bgClicked);
             m_text.setFillColor(m_textClicked);
-        }
             break;
+        }
     }
 }
 
@@ -347,35 +348,41 @@ void gui::button::draw(sf::RenderTarget& target,sf::RenderStates states) const
         {
             target.draw(m_button, states);
             target.draw(m_shadow, states);
-            target.draw(m_text, states);
-        }
+            target.draw(sprite, states);
             break;
+        }
 
         case gui::style::save:
         {
             target.draw(m_button, states);
             target.draw(m_shadow, states);
             target.draw(m_text, states);
-        }
             break;
+        }
 
         case gui::style::cancel:
         {
             target.draw(m_button, states);
             target.draw(m_shadow, states);
             target.draw(m_text, states);
-        }
             break;
+        }
 
         case gui::style::clean:
         {
             target.draw(m_button, states);
             target.draw(m_shadow, states);
             target.draw(m_text, states);
-        }
             break;
+        }
 
         default:
             break;
     }
+}
+
+void gui::button::setBackgroundText(sf::Texture texture)
+{
+    this->texture = texture;
+    this->sprite.setTexture(this->texture);
 }

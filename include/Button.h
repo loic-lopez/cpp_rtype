@@ -61,6 +61,7 @@ namespace gui
         };
         void setStyle(sf::Uint32 style);
         void setFont(sf::Font& font);
+        void setBackgroundText(sf::Texture texture);
 
         sf::Vector2f getPosition(){return m_position;};
         sf::Vector2f getDimensions(){return sf::Vector2f(m_button.getGlobalBounds().width, m_button.getGlobalBounds().height);};
@@ -94,6 +95,9 @@ namespace gui
         unsigned int m_fontSize;
         sf::Text m_text;
         sf::Text m_shadow;
+
+        sf::Texture texture;
+        sf::Sprite sprite;
     };
 };
 #endif //R_TYPE_BUTTON_H
