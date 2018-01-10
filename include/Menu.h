@@ -15,13 +15,15 @@ class Menu {
 private:
     Orientation orientation;
     Bg background;
-    Hud hud;
     sf::Music music;
+
+public:
+    Hud hud;
 
 public:
     Menu();
     ~Menu();
-    void initMenu(const std::string &path_dir);
+    void initMenu(const std::string &path);
     void drawMenu(sf::RenderWindow &App);
 };
 

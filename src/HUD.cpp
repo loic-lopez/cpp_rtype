@@ -53,32 +53,20 @@ void Hud::drawHud(sf::RenderWindow &App)
         layers[1]->img.setPosition(firstXPos, firstYPos);
         firstXPos += (float)layers[1]->texture.getSize().x;
         App.draw(layers[1]->img);
-
-    }
-
-}
-
-void Hud::addLayerAlignedForMenu(const std::string &path, int speed, int cpt) {
-    (void) speed;
-    t_layer *nLayer = new t_layer;
-
-    nLayer->texture.loadFromFile(path);
-    nLayer->img.setTexture(nLayer->texture);
-    nLayer->img.setPosition(WindowProperties::WIN_WIDTH / 2 - ((nLayer->img.getGlobalBounds().width / 2)),
-                            (float)50 + WindowProperties::WIN_HEIGHT / 5 * cpt);
-    layers.push_back(nLayer);
-}
-
-void Hud::drawHUD(sf::RenderWindow &App) {
-    for (size_t i = 0; i < layers.size(); i++) {
-            App.draw(layers[i]->img);
     }
 }
 
-void Hud::flushLayers() {
-    while (layers.empty() != true)
+void Hud::drawHudMenu(sf::RenderWindow &App) {
+//  float     firstXPos = (float)WindowProperties::WIN_WIDTH / 2;
+//  float     firstYPos = (float)WindowProperties::WIN_HEIGHT / 10;
+    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)WindowProperties::WIN_WIDTH / 15;
+    float firstYPos = (float)WindowProperties::WIN_WIDTH / 15;
+    std::cout << this->layers.size() << std::endl;
+    for (unsigned int x = 0; x < this->layers.size(); x++)
     {
-        delete layers[0];
-        layers.erase(layers.begin());
+        firstXPos -= (float)layers[x]->texture.getSize().x;
+        firstYPos += (float)WindowProperties::WIN_HEIGHT / 10;
+        layers[x]->img.setPosition(firstXPos, firstYPos);
+        App.draw(layers[x]->img);
     }
 }

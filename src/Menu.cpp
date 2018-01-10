@@ -14,35 +14,33 @@ Menu::~Menu()
 
 }
 
-void Menu::initMenu(const std::string &path_dir) {
+void Menu::initMenu(const std::string &path) {
     this->music.stop();
     this->background.flushLayers();
-    this->hud.flushLayers()
     orientation = Orientation::VERTICAL;
-    std::ifstream infile("./ressources/" + path_dir + "/" + path_dir + ".csv");
-    std::string line;
-    if (std::getline(infile, line)) {
-        music.openFromFile("./ressources/" + path_dir + "/" + line.substr(0, line.find(',')));
-        music.setLoop(true);
-        music.play();
-        if (std::getline(infile, line)) {
-            std::string pathSprite = "./ressources/" + path_dir + "/" + line.substr(0, line.find(','));
-            line = line.substr(line.find(',') + 1);
-            this->background.addLayer(pathSprite, 0);
-            int cpt = 0;
-            while (std::getline(infile, line)) {
-                std::string pathSprite = "./ressources/" + path_dir + "/" + line.substr(0, line.find(','));
-                line = line.substr(line.find(',') + 1);
-                this->hud.addLayerAlignedForMenu(pathSprite, 0, cpt);
-                cpt++;
+    bool cpt = false;
+    Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
+        if (path.substr(path.find_last_of('.') + 1) == "ogg") {
+            this->music.openFromFile(path);
+            this->music.setLoop(true);
+            this->music.play();
+        }
+        else if (path.substr(path.find_last_of('.') + 1) == "png" ||
+                path.substr(path.find_last_of('.') + 1) == "jpg") {
+            if (!cpt) {
+                this->background.addLayer(path, i);
+                cpt = true;
+            }
+            else {
+                std::cout << path << std::endl;
+                this->hud.addLayer(path);
             }
         }
-    }
+    });
 }
 
 
 void Menu::drawMenu(sf::RenderWindow &App)
 {
     this->background.drawBackground(App);
-    this->hud.drawHUD(App);
 }

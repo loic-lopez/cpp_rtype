@@ -14,6 +14,7 @@
 #include "Enemy.h"
 #include "WindowProperties.h"
 #include "HUD.h"
+#include "Menu.h"
 
 class Game
 {
@@ -36,6 +37,7 @@ private:
 
     Hud hud;
     Level level;
+    Menu menu;
     Player play;
     std::vector<IEntity *> bulletsEnemy;
     std::vector<IEntity *> bulletsAllied;

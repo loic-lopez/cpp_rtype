@@ -8,6 +8,7 @@ elseif (APPLE)
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-osx-clang")
 endif (WIN32)
 
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 include_directories("${PROJECT_BINARY_DIR}" "include")
 link_directories("${CMAKE_SOURCE_DIR}/SFML/bin")
