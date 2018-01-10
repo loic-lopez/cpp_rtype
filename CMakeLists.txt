@@ -53,10 +53,12 @@ set(HEADER_FILES
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(r-type ${SFML_LIBRARIES})
 
+add_custom_command(TARGET r-type PRE_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/ressources $<TARGET_FILE_DIR:r-type>/ressources)
+
 if (WIN32)
     add_custom_command(TARGET r-type PRE_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_SOURCE_DIR}/ressources $<TARGET_FILE_DIR:r-type>/ressources
             COMMAND ${CMAKE_COMMAND} -E copy_directory
             ${CMAKE_SOURCE_DIR}/SFML/bin $<TARGET_FILE_DIR:r-type>)
 endif ()

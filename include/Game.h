@@ -13,7 +13,7 @@
 #include "Level.h"
 #include "Enemy.h"
 #include "WindowProperties.h"
-#include "Menu.h"
+#include "HUD.h"
 
 class Game
 {
@@ -25,9 +25,7 @@ private:
     ~Game();
 
     Game &operator=(const Game &)
-    {
-        return *this;
-    }
+    {}
 
     Game(const Game &)
     {}
@@ -36,8 +34,8 @@ private:
     GameState gameState;
     sf::Clock clock;
 
+    Hud hud;
     Level level;
-    Menu menu;
     Player play;
     std::vector<IEntity *> bulletsEnemy;
     std::vector<IEntity *> bulletsAllied;

@@ -23,12 +23,8 @@ void Level::initLvl(const std::string &path)
 {
     back.flushLayers();
     orientation = Orientation::VERTICAL;
-
-    Parsing::loadCSV(path, [&] (std::string const &path, int const &i) {
+    Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
         this->back.addLayer(path, i);
-    });
-    Parsing::loadCSV(path, [&] (std::string const &path, int const &i) {
-        this->hud.addLayer(path, i);
     });
 }
 

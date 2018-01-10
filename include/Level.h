@@ -14,7 +14,6 @@ class Level {
 private:
     Orientation orientation;
     Bg back;
-    Hud hud;
     sf::Music music;
 
 public:

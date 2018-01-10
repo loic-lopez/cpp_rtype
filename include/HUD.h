@@ -7,23 +7,28 @@
 
 #include <WindowProperties.h>
 #include <SFML/Graphics.hpp>
+#include "Parsing.h"
 
 class Hud
 {
     struct t_layer {
         sf::Texture texture;
         sf::Sprite img;
+        int     id;
     };
 
-    unsigned int HP;
+    unsigned int basisHP;
+    unsigned int currentPlayerHP;
     std::vector<t_layer *> layers;
+
+
 public:
     Hud();
     ~Hud();
-    void addLayer(const std::string &path, int speed);
-    void addLayerAlignedForMenu(const std::string &path, int speed, int cpt);
-    void drawHUD(sf::RenderWindow &App);
-    void flushLayers();
+    void addLayer(const std::string &path);
+    void initHud(const std::string &path);
+    void drawHud(sf::RenderWindow &App);
+
 };
 
 #endif //R_TYPE_HUD_H
