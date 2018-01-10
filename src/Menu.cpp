@@ -26,11 +26,11 @@ void Menu::initMenu(const std::string &path) {
         else if (path.substr(path.find_last_of('.') + 1) == "png" ||
                 path.substr(path.find_last_of('.') + 1) == "jpg") {
             if (!cpt) {
-                sf::Texture texture;
                 float scaleX;
                 float scaleY;
-                texture.loadFromFile(path);
-                this->menuBackgroundSprite.setTexture(texture);
+                backgroundTexture.loadFromFile(path);
+                std::cout << path << std::endl;
+                this->menuBackgroundSprite.setTexture(backgroundTexture);
                 scaleX = (float) WindowProperties::WIN_WIDTH / this->menuBackgroundSprite.getGlobalBounds().width;
                 scaleY = (float) WindowProperties::WIN_HEIGHT / this->menuBackgroundSprite.getGlobalBounds().height;
                 this->menuBackgroundSprite.scale(scaleX, scaleY);

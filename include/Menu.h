@@ -14,6 +14,7 @@
 class Menu {
 private:
     sf::Sprite menuBackgroundSprite;
+    sf::Texture backgroundTexture;
     sf::Music music;
     Hud hud;
 
