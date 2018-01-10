@@ -154,8 +154,19 @@ void Game::start() {
 //    entities.push_back(new Enemy(EnemyType::BASIC_A));
 //    play = Player();
 //    bulletsEnemy.reserve(100000);
+
+    sf::Font myfont;
+    if(!myfont.loadFromFile("./ressources/menu/ELRIOTT2.ttf"))
+    {
+        std::cerr<<"Could not find contb.ttf font."<<std::endl;
+    }
+
+    gui::button yeah("Yeah!", myfont, sf::Vector2f(100.f,100.f), gui::style::save);
+
+
     gameState = GameState::MENU;
     this->menu.initMenu("menu");
+    sf::Event Event;
     sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
     App.setVerticalSyncEnabled(true);
     while (App.isOpen() && gameState != GameState ::CLOSE) {
@@ -173,11 +184,12 @@ void Game::start() {
 //            drawAll(App);
             this->menu.drawMenu(App);
             this->menu.hud.drawHudMenu(App);
-            sf::Event Event;
             while (App.pollEvent(Event)) {
                 if (Event.type == sf::Event::Closed)
                     gameState = GameState::CLOSE;
             }
+            yeah.update(Event,App);
+            App.draw(yeah);
             App.display();
         }
     }

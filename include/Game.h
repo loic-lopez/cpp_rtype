@@ -15,6 +15,7 @@
 #include "WindowProperties.h"
 #include "HUD.h"
 #include "Menu.h"
+#include "Button.h"
 
 class Game
 {
