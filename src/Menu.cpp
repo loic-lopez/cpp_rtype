@@ -32,7 +32,7 @@ void Menu::initMenu(const std::string &path) {
                 texture.loadFromFile(path);
                 this->menuBackgroundSprite.setTexture(texture);
                 scaleX = (float) WindowProperties::WIN_WIDTH / this->menuBackgroundSprite.getGlobalBounds().width;
-                scaleY = (float) WindowProperties::WIN_WIDTH / this->menuBackgroundSprite.getGlobalBounds().width;
+                scaleY = (float) WindowProperties::WIN_HEIGHT / this->menuBackgroundSprite.getGlobalBounds().height;
                 this->menuBackgroundSprite.scale(scaleX, scaleY);
                 cpt = true;
             }
