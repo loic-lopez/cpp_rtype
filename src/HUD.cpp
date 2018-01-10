@@ -66,7 +66,7 @@ void Hud::drawHudMenu(sf::RenderWindow &App) {
     {
         if (x != 0) {
             firstXPos += layers[0]->texture.getSize().x / 10;
-            firstXPosPlayButton -= layers[0]->texture.getSize().x / 5;
+            firstXPosPlayButton -= layers[0]->texture.getSize().x / 8;
             firstYPos += layers[0]->texture.getSize().y * 1.35;
             firstYPosPlayButton += layers[0]->texture.getSize().y * 1.35;
         }
