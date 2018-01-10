@@ -163,11 +163,12 @@ void Game::updateAlliedBullet()
 /************************************************* MAINLOOP *************************************************/
 void Game::start()
 {
-    gameState = GameState::GAME;
-    level.initLvl("lvl1");
-    entities.push_back(new Enemy(EnemyType::BASIC_A));
-    play = Player();
-    bulletsEnemy.reserve(100000);
+    menu.initMenu("menu");
+//    gameState = GameState::GAME;
+//    level.initLvl("lvl1");
+//    entities.push_back(new Enemy(EnemyType::BASIC_A));
+//    play = Player();
+//    bulletsEnemy.reserve(100000);
     sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE",
                          sf::Style::Fullscreen);
     App.setVerticalSyncEnabled(true);
@@ -178,14 +179,15 @@ void Game::start()
         {
             clock.restart();
 
-            if (play.getGameMovementMode() == ControlType::KEYBOARD)
-                controller();
-            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
-                XboxController();
-
-            updateEntities();
-            updateAlliedBullet();
-            drawAll(App);
+//            if (play.getGameMovementMode() == ControlType::KEYBOARD)
+//                controller();
+//            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
+//                XboxController();
+//
+//            updateEntities();
+//            updateAlliedBullet();
+//            drawAll(App);
+            this->menu.drawMenu(App);
             sf::Event Event;
             while (App.pollEvent(Event))
             {

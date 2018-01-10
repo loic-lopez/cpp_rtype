@@ -21,6 +21,9 @@ public:
     Hud();
     ~Hud();
     void addLayer(const std::string &path, int speed);
+    void addLayerAlignedForMenu(const std::string &path, int speed, int cpt);
+    void drawHUD(sf::RenderWindow &App);
+    void flushLayers();
 };
 
 #endif //R_TYPE_HUD_H

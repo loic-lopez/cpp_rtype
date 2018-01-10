@@ -13,6 +13,7 @@
 #include "Level.h"
 #include "Enemy.h"
 #include "WindowProperties.h"
+#include "Menu.h"
 
 class Game
 {
@@ -36,6 +37,7 @@ private:
     sf::Clock clock;
 
     Level level;
+    Menu menu;
     Player play;
     std::vector<IEntity *> bulletsEnemy;
     std::vector<IEntity *> bulletsAllied;
