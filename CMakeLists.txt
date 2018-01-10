@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 3.8)
 project(r-type)
 set(CMAKE_CXX_STANDARD 17)
 
+
+
 if (WIN32)
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML")
 elseif (APPLE)
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-osx-clang")
+    set(CMAKE_MACOSX_RPATH 1)
 endif (WIN32)
 
 
@@ -15,7 +18,9 @@ link_directories("${CMAKE_SOURCE_DIR}/SFML/bin")
 
 set(CMAKE_BUILD_TYPE Release)
 find_package(SFML 2 COMPONENTS system window graphics audio REQUIRED)
-include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR})
+include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}
+        ${CMAKE_SOURCE_DIR}/thor-v2.0-sdk/thor-v2.0-sdk/include
+        ${CMAKE_SOURCE_DIR}/thor-v2.0-sdk/thor-v2.0-sdk/extlibs/aurora/include)
 
 set(SOURCE_FILES
         src/Entity.cpp
@@ -53,6 +58,10 @@ set(HEADER_FILES
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(r-type ${SFML_LIBRARIES})
+
+add_subdirectory(thor-v2.0-sdk/thor-v2.0-sdk)
+
+target_link_libraries(r-type thor)
 
 add_custom_command(TARGET r-type PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
