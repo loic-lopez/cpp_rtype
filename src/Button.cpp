@@ -78,7 +78,7 @@ gui::button::button(std::string s, sf::Font& font, sf::Vector2f position, sf::Ui
     m_text.setString(s);
     m_text.setFont(font);
     m_text.setOrigin(m_text.getGlobalBounds().width/2, m_text.getGlobalBounds().height/2);
-    m_text.setColor(m_textNormal);
+    m_text.setFillColor(m_textNormal);
 
     //set some defauts
     m_borderRadius = 5.f;
@@ -195,10 +195,10 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_text.setOrigin(m_text.getGlobalBounds().width/2, m_text.getGlobalBounds().height/2);
             sf::Vector2f textPosition = sf::Vector2f(m_button.getPosition().x, m_button.getPosition().y - m_button.getGlobalBounds().height/4);
             m_text.setPosition(textPosition);
-            m_text.setColor(m_textNormal);
+            m_text.setFillColor(m_textNormal);
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
-            m_shadow.setColor(sf::Color(0,0,0));
+            m_shadow.setFillColor(sf::Color(0,0,0));
         }
             break;
 
@@ -211,10 +211,10 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_text.setOrigin(m_text.getGlobalBounds().width/2, m_text.getGlobalBounds().height/2);
             sf::Vector2f textPosition = sf::Vector2f(m_button.getPosition().x, m_button.getPosition().y - m_button.getGlobalBounds().height/4);
             m_text.setPosition(textPosition);
-            m_text.setColor(m_textNormal);
+            m_text.setFillColor(m_textNormal);
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
-            m_shadow.setColor(sf::Color(0,0,0));
+            m_shadow.setFillColor(sf::Color(0,0,0));
         }
             break;
 
@@ -227,10 +227,10 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_text.setOrigin(m_text.getGlobalBounds().width/2, m_text.getGlobalBounds().height/2);
             sf::Vector2f textPosition = sf::Vector2f(m_button.getPosition().x, m_button.getPosition().y - m_button.getGlobalBounds().height/4);
             m_text.setPosition(textPosition);
-            m_text.setColor(m_textNormal);
+            m_text.setFillColor(m_textNormal);
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
-            m_shadow.setColor(sf::Color(0,0,0));
+            m_shadow.setFillColor(sf::Color(0,0,0));
         }
             break;
 
@@ -243,10 +243,10 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
             m_text.setOrigin(m_text.getGlobalBounds().width/2, m_text.getGlobalBounds().height/2);
             sf::Vector2f textPosition = sf::Vector2f(m_button.getPosition().x, m_button.getPosition().y - m_button.getGlobalBounds().height/4);
             m_text.setPosition(textPosition);
-            m_text.setColor(m_textNormal);
+            m_text.setFillColor(m_textNormal);
             m_shadow.setOrigin(m_shadow.getGlobalBounds().width/2, m_shadow.getGlobalBounds().height/2);
             m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
-            m_shadow.setColor(sf::Color(0,0,0));
+            m_shadow.setFillColor(sf::Color(0,0,0));
         }
             break;
 
@@ -319,21 +319,21 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
         case gui::state::normal:
         {
             m_button.setFillColor(m_bgNormal);
-            m_text.setColor(m_textNormal);
+            m_text.setFillColor(m_textNormal);
         }
             break;
 
         case gui::state::hovered:
         {
             m_button.setFillColor(m_bgHover);
-            m_text.setColor(m_textHover);
+            m_text.setFillColor(m_textHover);
         }
             break;
 
         case gui::state::clicked:
         {
             m_button.setFillColor(m_bgClicked);
-            m_text.setColor(m_textClicked);
+            m_text.setFillColor(m_textClicked);
         }
             break;
     }
