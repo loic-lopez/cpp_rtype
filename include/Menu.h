@@ -13,11 +13,8 @@
 
 class Menu {
 private:
-    Orientation orientation;
-    Bg background;
+    sf::Sprite menuBackgroundSprite;
     sf::Music music;
-
-public:
     Hud hud;
 
 public:

@@ -16,8 +16,6 @@ Menu::~Menu()
 
 void Menu::initMenu(const std::string &path) {
     this->music.stop();
-    this->background.flushLayers();
-    orientation = Orientation::VERTICAL;
     bool cpt = false;
     Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
         if (path.substr(path.find_last_of('.') + 1) == "ogg") {
@@ -28,7 +26,14 @@ void Menu::initMenu(const std::string &path) {
         else if (path.substr(path.find_last_of('.') + 1) == "png" ||
                 path.substr(path.find_last_of('.') + 1) == "jpg") {
             if (!cpt) {
-                this->background.addLayer(path, i);
+                sf::Texture texture;
+                float scaleX;
+                float scaleY;
+                texture.loadFromFile(path);
+                this->menuBackgroundSprite.setTexture(texture);
+                scaleX = (float) WindowProperties::WIN_WIDTH / this->menuBackgroundSprite.getGlobalBounds().width;
+                scaleY = (float) WindowProperties::WIN_WIDTH / this->menuBackgroundSprite.getGlobalBounds().width;
+                this->menuBackgroundSprite.scale(scaleX, scaleY);
                 cpt = true;
             }
             else {
@@ -42,5 +47,6 @@ void Menu::initMenu(const std::string &path) {
 
 void Menu::drawMenu(sf::RenderWindow &App)
 {
-    this->background.drawBackground(App);
+    App.draw(this->menuBackgroundSprite);
+    this->hud.drawHudMenu(App);
 }

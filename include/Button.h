@@ -9,8 +9,8 @@
 #include <iostream>
 
 #include <SFML/Graphics.hpp>
-#include <THOR/Shapes.hpp>
-#include <THOR/Graphics.hpp>
+#include <Thor/Shapes.hpp>
+#include <Thor/Graphics.hpp>
 
 namespace gui
 {

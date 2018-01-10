@@ -183,7 +183,6 @@ void Game::start() {
 //            updateAlliedBullet();
 //            drawAll(App);
             this->menu.drawMenu(App);
-            this->menu.hud.drawHudMenu(App);
             while (App.pollEvent(Event)) {
                 if (Event.type == sf::Event::Closed)
                     gameState = GameState::CLOSE;
