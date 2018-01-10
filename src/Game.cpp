@@ -55,7 +55,7 @@ void Game::controller() {
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
         gameState = GameState::CLOSE;
     if (keyboard.isKeyPressed(sf::Keyboard::A))
-       changeOrientation(Orientation::HORIZONTAL);
+        changeOrientation(Orientation::HORIZONTAL);
     if (keyboard.isKeyPressed(sf::Keyboard::Z))
         changeOrientation(Orientation::VERTICAL);
 }
@@ -72,7 +72,7 @@ void Game::XboxController() {
     play.move(speed);
     if (sf::Joystick::isButtonPressed(0, 0))
     {
-       play.shoot();
+        play.shoot();
     }
     if (sf::Joystick::isButtonPressed(0, 1))
     {
@@ -148,14 +148,14 @@ void Game::updateAlliedBullet() {
 
 /************************************************* MAINLOOP *************************************************/
 void Game::start() {
-//    gameState = GameState::GAME;
-//    level.initLvl("lvl1");
-//    hud.initHud("hud");
-//    entities.push_back(new Enemy(EnemyType::BASIC_A));
-//    play = Player();
-//    bulletsEnemy.reserve(100000);
+    gameState = GameState::GAME;
+    level.initLvl("lvl1");
+    hud.initHud("hud");
+    entities.push_back(new Enemy(EnemyType::BASIC_A));
+    play = Player();
+    bulletsEnemy.reserve(100000);
     gameState = GameState::MENU;
-    this->menu.initMenu("menu");
+    //this->menu.initMenu("menu");
     sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
     App.setVerticalSyncEnabled(true);
     while (App.isOpen() && gameState != GameState ::CLOSE) {
@@ -163,17 +163,17 @@ void Game::start() {
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
 
-//            if (play.getGameMovementMode() == ControlType::KEYBOARD)
-//                controller();
-//            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
-//                XboxController();
-//
-//            updateEntities();
-//            updateAlliedBullet();
-//            drawAll(App);
-            this->menu.drawMenu(App);
-            this->menu.hud.drawHudMenu(App);
-           sf::Event Event;
+            if (play.getGameMovementMode() == ControlType::KEYBOARD)
+                controller();
+            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
+                XboxController();
+
+            updateEntities();
+            updateAlliedBullet();
+            drawAll(App);
+//            this->menu.drawMenu(App);
+//            this->menu.hud.drawHudMenu(App);
+            sf::Event Event;
             while (App.pollEvent(Event)) {
                 if (Event.type == sf::Event::Closed)
                     gameState = GameState::CLOSE;
