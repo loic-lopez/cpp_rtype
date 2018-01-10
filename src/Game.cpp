@@ -2,39 +2,33 @@
 // Created by Eric on 30/11/2017.
 //
 
-
 #include "Game.h"
 
-Game Game::m_instance = Game();
+Game Game::m_instance=Game();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-Game::Game()
-{
+Game::Game() {
 
 }
 
-Game::~Game()
-{
-    while (bulletsEnemy.size() != 0)
-    {
+Game::~Game() {
+    while (bulletsEnemy.size() != 0) {
         delete (bulletsEnemy[0]);
         bulletsEnemy.erase(bulletsEnemy.begin());
     }
-    while (entities.size() != 0)
-    {
+    while (entities.size() != 0) {
         delete (entities[0]);
         entities.erase(entities.begin());
     }
 }
 
-Game &Game::Instance()
+Game& Game::Instance()
 {
     return m_instance;
 }
 
 /************************************************* PLAYER CONTROLLER *************************************************/
-void Game::changeOrientation(Orientation orientation)
-{
+void Game::changeOrientation(Orientation orientation) {
     level.changeOrientation(orientation);
     play.changeOrientation(orientation);
     for (size_t i = 0; i < bulletsEnemy.size(); i++)
@@ -45,8 +39,7 @@ void Game::changeOrientation(Orientation orientation)
         entities[i]->changeOrientation(orientation);
 }
 
-void Game::controller()
-{
+void Game::controller() {
     sf::Keyboard keyboard;
 
     if (keyboard.isKeyPressed(sf::Keyboard::Up))
@@ -67,8 +60,7 @@ void Game::controller()
         changeOrientation(Orientation::VERTICAL);
 }
 
-void Game::XboxController()
-{
+void Game::XboxController() {
     float posX;
     float posY;
     sf::Vector2f speed;
@@ -125,22 +117,17 @@ void Game::XboxController()
 
 /************************************************* ENTITIES *************************************************/
 
-void Game::updateEntities()
-{
+void Game::updateEntities() {
     play.updatePos();
-    for (size_t i = 0; i < entities.size(); i++)
-    {
+    for (size_t i = 0 ; i < entities.size(); i++) {
         this->entities[i]->updatePos();
         this->entities[i]->shoot();
     }
 }
 
-void Game::updateAlliedBullet()
-{
-    for (size_t i = 0; i < this->bulletsAllied.size(); i++)
-    {
-        if (!bulletsAllied[i]->outOfBounds())
-        {
+void Game::updateAlliedBullet() {
+    for (size_t i = 0; i < this->bulletsAllied.size(); i++) {
+        if (!bulletsAllied[i]->outOfBounds()) {
             delete (this->bulletsAllied[i]);
             this->bulletsAllied.erase(this->bulletsAllied.begin() + i);
             i--;
@@ -148,10 +135,8 @@ void Game::updateAlliedBullet()
         else
             this->bulletsAllied[i]->updatePos();
     }
-    for (size_t i = 0; i < this->bulletsEnemy.size(); i++)
-    {
-        if (!bulletsEnemy[i]->outOfBounds())
-        {
+    for (size_t i = 0; i < this->bulletsEnemy.size(); i++) {
+        if (!bulletsEnemy[i]->outOfBounds()) {
             delete (this->bulletsEnemy[i]);
             this->bulletsEnemy.erase(this->bulletsEnemy.begin() + i);
             i--;
@@ -162,39 +147,34 @@ void Game::updateAlliedBullet()
 }
 
 /************************************************* MAINLOOP *************************************************/
-void Game::start()
-{
-//    gameState = GameState::GAME;
-//    level.initLvl("lvl1");
-//    hud.initHud("hud");
-//    entities.push_back(new Enemy(EnemyType::BASIC_A));
-//    play = Player();
-//    bulletsEnemy.reserve(100000);
+void Game::start() {
+    gameState = GameState::GAME;
+    level.initLvl("lvl1");
+    hud.initHud("hud");
+    entities.push_back(new Enemy(EnemyType::BASIC_A));
+    play = Player();
+    bulletsEnemy.reserve(100000);
     gameState = GameState::MENU;
-    this->menu.initMenu("menu");
-    sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE",
-                         sf::Style::Fullscreen);
+    //this->menu.initMenu("menu");
+    sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
     App.setVerticalSyncEnabled(true);
-    while (App.isOpen() && gameState != GameState::CLOSE)
-    {
+    while (App.isOpen() && gameState != GameState ::CLOSE) {
         sf::Time elapsed = clock.getElapsedTime();
-        if (elapsed.asMilliseconds() > 17)
-        {
+        if (elapsed.asMilliseconds() > 17) {
             clock.restart();
 
-//            if (play.getGameMovementMode() == ControlType::KEYBOARD)
-//                controller();
-//            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
-//                XboxController();
-//
-//            updateEntities();
-//            updateAlliedBullet();
-//            drawAll(App);
-            this->menu.drawMenu(App);
-            this->menu.hud.drawHudMenu(App);
+            if (play.getGameMovementMode() == ControlType::KEYBOARD)
+                controller();
+            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
+                XboxController();
+
+            updateEntities();
+            updateAlliedBullet();
+            drawAll(App);
+//            this->menu.drawMenu(App);
+//            this->menu.hud.drawHudMenu(App);
             sf::Event Event;
-            while (App.pollEvent(Event))
-            {
+            while (App.pollEvent(Event)) {
                 if (Event.type == sf::Event::Closed)
                     gameState = GameState::CLOSE;
             }
@@ -206,38 +186,30 @@ void Game::start()
 }
 
 /************************************************* DRAW *************************************************/
-void Game::drawAll(sf::RenderWindow &App)
-{
+void Game::drawAll(sf::RenderWindow &App) {
     level.drawLvl(App);
     hud.drawHud(App);
-    for (size_t i = 0; i < bulletsEnemy.size(); i++)
-    {
+    for (size_t i = 0 ; i < bulletsEnemy.size(); i++) {
         bulletsEnemy[i]->drawSprite(App);
     }
-    for (size_t i = 0; i < bulletsAllied.size(); i++)
-    {
+    for (size_t i = 0 ; i < bulletsAllied.size(); i++) {
         bulletsAllied[i]->drawSprite(App);
     }
-    for (size_t i = 0; i < entities.size(); i++)
-    {
+    for (size_t i = 0 ; i < entities.size(); i++) {
         entities[i]->drawSprite(App);
     }
     play.drawSprite(App);
 }
 
-void Game::lock()
-{
+void Game::lock() {
     mutex.lock();
 }
-
-void Game::unlock()
-{
+void Game::unlock() {
     mutex.unlock();
 }
 
-void Game::addBullet(IEntity *newBullet)
-{
-    if (((Bullet *) newBullet)->getSide() == Side::ENEMY)
+void Game::addBullet(IEntity *newBullet) {
+    if (((Bullet *)newBullet)->getSide() == Side::ENEMY)
         bulletsEnemy.push_back(newBullet);
     else
         bulletsAllied.push_back(newBullet);
