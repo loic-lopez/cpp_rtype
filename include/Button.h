@@ -84,7 +84,7 @@ namespace gui
         sf::Color m_textHover;
         sf::Color m_textClicked;
 
-        // TODO : REMPLACEMENT PAR CA ?
+        // TODO : REMPLACEMENT PAR CES VARIABLES :
 
         sf::Sprite currentSprite;
         sf::Texture textureNormal;
