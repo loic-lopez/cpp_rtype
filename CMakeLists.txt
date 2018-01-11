@@ -39,7 +39,7 @@ set(SOURCE_FILES
         src/Weapon.cpp
         src/TextureManager.cpp
         src/Parsing.cpp
-        src/HUD.cpp)
+        src/HUD.cpp include/GameEngine.cpp include/GameEngine.h)
 
 set(HEADER_FILES
         include/IEntity.h
@@ -57,10 +57,11 @@ set(HEADER_FILES
         include/Menu.h
         include/WindowProperties.h
         include/HUD.h
-        include/Parsing.h)
+        include/Parsing.h include/GameEngine.cpp include/GameEngine.h)
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(r-type ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
+
 
 add_subdirectory(thor-v2.0-sdk/thor-v2.0-sdk)
 
