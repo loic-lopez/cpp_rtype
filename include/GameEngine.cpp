@@ -43,7 +43,8 @@ GameEngine::Thing::Thing()
 void GameEngine::start()
 {
     //thread(&GameEngine::run);
-  std::thread([] () {
 
-  });
+  std::function<void ()> func = std::bind([] () {});
+  std::thread thread(func);
+
 }
