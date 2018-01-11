@@ -61,3 +61,9 @@ void Menu::drawMenu(sf::RenderWindow &App)
         App.draw(this->menuButtons[x]);
     }
 }
+
+void Menu::updateMenuButtons(sf::Event &e, sf::RenderWindow &window) {
+    for (int i = 0; i < this->menuButtons; ++i) {
+        this->menuButtons[i].update(e, window);
+    }
+}

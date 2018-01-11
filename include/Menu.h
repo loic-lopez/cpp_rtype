@@ -35,6 +35,7 @@ public:
     ~Menu();
     void initMenu(const std::string &path);
     void drawMenu(sf::RenderWindow &App);
+    void updateMenuButtons(sf::Event& e, sf::RenderWindow& window);
 };
 
 
