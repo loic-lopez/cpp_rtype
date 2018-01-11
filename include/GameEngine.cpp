@@ -42,9 +42,14 @@ GameEngine::Thing::Thing()
 
 void GameEngine::start()
 {
-    //thread(&GameEngine::run);
 
-  std::function<void ()> func = std::bind([] () {});
-  std::thread thread(func);
+  sf::Thread([] () {
+      std::cerr << "coucou" << std::endl;
+  }).launch();
 
+}
+
+GameEngine &GameEngine::Instance()
+{
+  return m_Instance;
 }
