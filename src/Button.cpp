@@ -4,12 +4,12 @@
 
 #include <Button.h>
 
-gui::button::button()
+gui::Button::Button()
 {
 
 }
 
-gui::button::button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 style)
+gui::Button::Button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 style)
 {
     //set position
     m_position = position;
@@ -17,7 +17,7 @@ gui::button::button(std::string s, sf::Font& font, sf::Vector2f position, sf::Ui
     //set initial state
     m_btnstate = gui::state::normal;
 
-    //set button style
+    //set Button style
     m_style = style;
 
     switch(m_style)
@@ -99,12 +99,12 @@ gui::button::button(std::string s, sf::Font& font, sf::Vector2f position, sf::Ui
     m_shadow.setPosition(m_text.getPosition().x + 3.f, m_text.getPosition().y + 3.f);
 }
 
-gui::button::~button()
+gui::Button::~Button()
 {
 
 }
 
-void gui::button::setSize(unsigned int size)
+void gui::Button::setSize(unsigned int size)
 {
     m_fontSize = size;
     m_text.setCharacterSize(m_fontSize);
@@ -115,9 +115,9 @@ void gui::button::setSize(unsigned int size)
     m_button = thor::Shapes::roundedRect(m_size, m_borderRadius, m_bgNormal, m_borderThickness, m_border);
 }
 
-void gui::button::setStyle(sf::Uint32 style)
+void gui::Button::setStyle(sf::Uint32 style)
 {
-    //set button style
+    //set Button style
     m_style = style;
 
     switch(m_style)
@@ -175,13 +175,13 @@ void gui::button::setStyle(sf::Uint32 style)
     }
 }
 
-void gui::button::setFont(sf::Font& font)
+void gui::Button::setFont(sf::Font& font)
 {
     m_text.setFont(font);
     m_shadow.setFont(font);
 }
 
-void gui::button::update(sf::Event& e, sf::RenderWindow& window)
+void gui::Button::update(sf::Event& e, sf::RenderWindow& window)
 {
     //perform updates for settings from user
     switch(m_style)
@@ -340,7 +340,7 @@ void gui::button::update(sf::Event& e, sf::RenderWindow& window)
     }
 }
 
-void gui::button::draw(sf::RenderTarget& target,sf::RenderStates states) const
+void gui::Button::draw(sf::RenderTarget& target,sf::RenderStates states) const
 {
     switch(m_style)
     {
@@ -381,7 +381,7 @@ void gui::button::draw(sf::RenderTarget& target,sf::RenderStates states) const
     }
 }
 
-void gui::button::setBackgroundText(sf::Texture texture)
+void gui::Button::setBackgroundText(sf::Texture texture)
 {
     this->texture = texture;
     this->sprite.setTexture(this->texture);

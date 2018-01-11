@@ -155,13 +155,13 @@ void Game::start() {
 //    play = Player();
 //    bulletsEnemy.reserve(100000);
 
-    sf::Font myfont;
-    if(!myfont.loadFromFile("./ressources/menu/ELRIOTT2.ttf"))
-    {
-        std::cerr<<"Could not find contb.ttf font."<<std::endl;
-    }
-
-    gui::button yeah("Yeah!", myfont, sf::Vector2f(100.f,100.f), gui::style::save);
+//    sf::Font myfont;
+//    if(!myfont.loadFromFile("./ressources/menu/ELRIOTT2.ttf"))
+//    {
+//        std::cerr<<"Could not find contb.ttf font."<<std::endl;
+//    }
+//
+//    gui::Button yeah("Yeah!", myfont, sf::Vector2f(100.f,100.f), gui::style::save);
 
 
     gameState = GameState::MENU;
@@ -187,8 +187,8 @@ void Game::start() {
                 if (Event.type == sf::Event::Closed)
                     gameState = GameState::CLOSE;
             }
-            yeah.update(Event,App);
-            App.draw(yeah);
+//            yeah.update(Event,App);
+//            App.draw(yeah);
             App.display();
         }
     }

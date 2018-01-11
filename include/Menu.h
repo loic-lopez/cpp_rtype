@@ -10,13 +10,25 @@
 #include "Enum.h"
 #include "Bg.h"
 #include "HUD.h"
+#include "Button.h"
 
 class Menu {
 private:
     sf::Sprite menuBackgroundSprite;
     sf::Texture backgroundTexture;
     sf::Music music;
-    Hud hud;
+    Hud hud; // TODO : LE HUD VIRE ?
+
+    //TODO : RAJOUTER UN VECTEUR DE STRING QUI SERVIRA A CREER DES BOUTONS (REMPLIR LE VECTEUR DANS LA LAMBDA POUR LES BOUTONS)
+
+    std::vector<std::string> button_effects_paths;
+
+    // TODO : COMMENT CA MARCHE ? METTRE TROIS BOUTONS IDENTIQUES MAIS AVEC TROIS EFFETS DIFFERENTS
+    // TODO (SUITE) : PARSER 3 PAR 3 DANS LA LAMBDA (CHANGER LE COMPTEUR), ET REMPLIR LE VECTEUR DE STRING
+    // TODO (SUITE) : ET CREER UN BOUTON UNE FOIS QUE LE VECTEUR CONTIENT 3 SPRITES
+
+    std::vector<gui::Button> menu_buttons;
+
 
 public:
     Menu();

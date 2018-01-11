@@ -35,13 +35,13 @@ namespace gui
         };
     };
 
-    class button : public sf::Drawable
+    class Button : public sf::Drawable
     {
     public:
-        button();
-        button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 style);
+        Button();
+        Button(std::string s, sf::Font& font, sf::Vector2f position, sf::Uint32 style);
 
-        ~button();
+        ~Button();
 
         void setColorTextNormal(sf::Color text){m_textNormal = text;};
         void setColorTextHover(sf::Color text){m_textHover = text;};
@@ -75,29 +75,41 @@ namespace gui
 
     private:
 
+
+        // TODO : REMPLACER TOUS LES SF::COLOR PAR LES SF::TEXTURE ET SF::SPRITE ?
         sf::Color m_bgNormal;
         sf::Color m_bgHover;
         sf::Color m_bgClicked;
         sf::Color m_textNormal;
         sf::Color m_textHover;
         sf::Color m_textClicked;
+
+        // TODO : REMPLACEMENT PAR CA ?
+
+        sf::Sprite currentSprite;
+        sf::Texture textureNormal;
+        sf::Texture textureHover;
+        sf::Texture textureClicked;
+
+
+        //TODO : VOIR SI ON ENLEVE LE BORDER
         sf::Color m_border;
 
-        float m_borderThickness;
-        float m_borderRadius;
+
+
+        float m_borderThickness; // TODO : A VIRER SI LE BORDER VIRE
+        float m_borderRadius; // TODO : A VIRER SI LE BORDER VIRE
         sf::Vector2f m_size;
         sf::Vector2f m_position;
         sf::Uint32 m_style;
         sf::Uint32 m_btnstate;
 
         sf::ConvexShape m_button;
-        sf::Font m_font;
-        unsigned int m_fontSize;
-        sf::Text m_text;
-        sf::Text m_shadow;
+        sf::Font m_font; // TODO : VIRER LA FONT
+        unsigned int m_fontSize; // TODO : VIRER LA FONT
+        sf::Text m_text; //TODO : VIRER LE TEXTE
+        sf::Text m_shadow; // TODO : VIRER LE SHADOW ?
 
-        sf::Texture texture;
-        sf::Sprite sprite;
     };
 };
 #endif //R_TYPE_BUTTON_H
