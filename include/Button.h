@@ -44,10 +44,9 @@ private:
 
     // TODO : REMPLACEMENT PAR CES VARIABLES :
 
-    sf::Sprite currentSprite;
-    sf::Texture textureNormal;
-    sf::Texture textureHover;
-    sf::Texture textureClicked;
+    sf::Texture *textureNormal;
+    sf::Texture *textureHovered;
+    sf::Texture *textureClicked;
 
     sf::Vector2f buttonSize;
     sf::Vector2f buttonPosition;
