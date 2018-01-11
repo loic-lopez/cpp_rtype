@@ -54,7 +54,7 @@ set(HEADER_FILES
         include/Menu.h
         include/WindowProperties.h
         include/HUD.h
-        include/Parsing.h include/Button.h src/Button.cpp)
+        include/Parsing.h include/Button_ex.h src/Button_ex.cpp include/Button.h src/Button.cpp)
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
 target_link_libraries(r-type ${SFML_LIBRARIES})

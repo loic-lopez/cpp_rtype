@@ -161,7 +161,7 @@ void Game::start() {
 //        std::cerr<<"Could not find contb.ttf font."<<std::endl;
 //    }
 //
-//    gui::Button yeah("Yeah!", myfont, sf::Vector2f(100.f,100.f), gui::style::save);
+//    gui::Button_ex yeah("Yeah!", myfont, sf::Vector2f(100.f,100.f), gui::style::save);
 
 
     gameState = GameState::MENU;

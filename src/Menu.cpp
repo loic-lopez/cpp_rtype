@@ -40,12 +40,12 @@ void Menu::initMenu(const std::string &path) {
             }
             else {
                 if (vector_size == 2) {
-                    this->button_effects_paths.clear();
+                    this->buttonEffectsPaths.clear();
                     vector_size = 0;
                 }
                 else {
                     std::cout << path << std::endl;
-                    this->button_effects_paths.push_back(path);
+                    this->buttonEffectsPaths.push_back(path);
                     vector_size++;
                 }
             }
@@ -57,7 +57,7 @@ void Menu::initMenu(const std::string &path) {
 void Menu::drawMenu(sf::RenderWindow &App)
 {
     App.draw(this->menuBackgroundSprite);
-    for (int x = 0; x < this->menu_buttons; ++x) {
-        App.draw(this->menu_buttons[x]);
+    for (int x = 0; x < this->menuButtons; ++x) {
+        App.draw(this->menuButtons[x]);
     }
 }
