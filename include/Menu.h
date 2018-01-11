@@ -35,7 +35,7 @@ public:
     ~Menu();
     void initMenu(const std::string &path);
     void drawMenu(sf::RenderWindow &App);
-    void updateMenuButtons(sf::Event& e, sf::RenderWindow& window);
+    void updateMenuButtons(sf::Event& e, sf::RenderWindow& window); // TODO : A APPELLER DANS LA BOUCLE DE JEU AVANT LE DRAW
 };
 
 
