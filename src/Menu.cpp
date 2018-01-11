@@ -39,8 +39,9 @@ void Menu::initMenu(const std::string &path) {
             }
             else {
                 if (this->buttonEffectsPaths.size() == 3) {
+                    std::cout << "Button number " << this->menuButtons.size() << " is beeing created." << std::endl;
                     Button *newButton = new Button(this->buttonEffectsPaths);
-                    std::cout << "Button correctly created." << std::endl;
+                    std::cout << "Button number " << this->menuButtons.size() << " correctly created." << std::endl;
                     this->menuButtons.push_back(newButton);
                     this->buttonEffectsPaths.clear();
                 }
