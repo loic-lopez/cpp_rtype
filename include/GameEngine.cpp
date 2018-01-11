@@ -6,7 +6,7 @@
 
 GameEngine GameEngine::m_Instance = GameEngine::GameEngine();
 
-GameEngine::GameEngine() : gameEngineThread([] () { GameEngine::Instance().run(); })
+GameEngine::GameEngine() : gameEngineThread([] () { GameEngine::Instance().ThreadRun(); })
 {
 
 }
@@ -18,7 +18,7 @@ GameEngine::~GameEngine()
 }
 
 
-void GameEngine::run()
+void GameEngine::ThreadRun()
 {
   std::cerr << "coucou" << std::endl;
 }

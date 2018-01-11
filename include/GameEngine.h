@@ -32,7 +32,7 @@ public:
     GameEngine();
     ~GameEngine();
 
-    static void run();
+    static void ThreadRun();
 
     void addThing();
     void checkHitBoxes();
