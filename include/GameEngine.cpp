@@ -6,43 +6,40 @@
 
 GameEngine GameEngine::m_Instance = GameEngine::GameEngine();
 
-template<class T>
-GameEngine<T>::GameEngine()
+GameEngine::GameEngine()
 {
 
 }
 
-template<class T>
-GameEngine<T>::~GameEngine()
+
+GameEngine::~GameEngine()
 {
 
 }
+
 
 void GameEngine::run()
 {
 
 }
 
-template<class T>
-void GameEngine<T>::addThing(T *object)
+
+void GameEngine::addThing()
 {
 
 }
 
-template<class T>
-void GameEngine<T>::checkHitBoxes()
+void GameEngine::checkHitBoxes()
 {
 
 }
 
 
-template<class T>
-GameEngine<T>::Thing::Thing()
+GameEngine::Thing::Thing()
 {
 
 }
 
-template <class T>
 void GameEngine::start()
 {
     //thread(&GameEngine::run);

@@ -14,12 +14,9 @@
 #include "Entity.h"
 #include "Enum.h"
 
-template <class T>
 class GameEngine
 {
-
-    struct Thing{
-        T   *entity;
+    struct Thing {
         sf::FloatRect   hitBox;
         Side            side;
         Textures        type;
@@ -37,7 +34,7 @@ public:
 
     static void run();
 
-    void addThing(T *object);
+    void addThing();
     void checkHitBoxes();
     void start();
 };
