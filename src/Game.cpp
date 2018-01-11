@@ -173,6 +173,7 @@ void Game::start() {
 //            updateEntities();
 //            updateAlliedBullet();
 //            drawAll(App);
+            this->menu.updateMenuButtons(Event, App);
             this->menu.drawMenu(App);
             while (App.pollEvent(Event)) {
                 if (Event.type == sf::Event::Closed)

@@ -112,6 +112,7 @@ void Button::update(sf::Event &e, sf::RenderWindow &window) {
         }
 
         case buttonState::CLICKED: {
+            std::cout << "Button Clicked." << std::endl;
             this->buttonShape.setTexture(this->textureClicked);
             break;
         }

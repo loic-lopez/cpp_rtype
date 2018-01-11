@@ -70,7 +70,7 @@ void Menu::updateMenuButtons(sf::Event &e, sf::RenderWindow &window) {
 }
 
 void Menu::determineButtonsPosition() {
-    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)(this->menuButtons[0]->getTextureSize().x * 1.25);
+    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)(this->menuButtons[0]->buttonShape.getSize().x * 1.25);
     float firstXPosPlayButton = firstXPos;
     float firstYPos = (float)WindowProperties::WIN_HEIGHT / 8;
     float firstYPosPlayButton = firstYPos;
@@ -78,15 +78,15 @@ void Menu::determineButtonsPosition() {
     for (unsigned int x = 0; x < this->menuButtons.size(); x++)
     {
         if (x != 0) {
-            firstXPos += this->menuButtons[0]->getTextureSize().x / 10;
-            firstXPosPlayButton -= this->menuButtons[0]->getTextureSize().x / 8;
-            firstYPos += this->menuButtons[0]->getTextureSize().y * 1.35;
-            firstYPosPlayButton += this->menuButtons[0]->getTextureSize().y * 1.35;
+            firstXPos += this->menuButtons[0]->buttonShape.getSize().x / 10;
+            firstXPosPlayButton -= this->menuButtons[0]->buttonShape.getSize().x / 8;
+            firstYPos += this->menuButtons[0]->buttonShape.getSize().y * 1.35;
+            firstYPosPlayButton += this->menuButtons[0]->buttonShape.getSize().y * 1.35;
         }
         if (x == 3)
-            this->menuButtons[x]->setPosition((sf::Vector2f(firstXPosPlayButton, firstYPosPlayButton)));
+            this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPosPlayButton, firstYPosPlayButton)));
         else
-            this->menuButtons[x]->setPosition((sf::Vector2f(firstXPos, firstYPos)));
+            this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPos, firstYPos)));
     }
 }
 
