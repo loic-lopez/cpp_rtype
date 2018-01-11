@@ -17,7 +17,6 @@ private:
     sf::Sprite menuBackgroundSprite;
     sf::Texture backgroundTexture;
     sf::Music music;
-    Hud hud; // TODO : LE HUD VIRE ?
 
     //TODO : RAJOUTER UN VECTEUR DE STRING QUI SERVIRA A CREER DES BOUTONS (REMPLIR LE VECTEUR DANS LA LAMBDA POUR LES BOUTONS)
 

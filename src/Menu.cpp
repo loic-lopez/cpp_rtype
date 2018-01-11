@@ -17,6 +17,7 @@ Menu::~Menu()
 void Menu::initMenu(const std::string &path) {
     this->music.stop();
     bool cpt = false;
+    int vector_size = 0;
     Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
         if (path.substr(path.find_last_of('.') + 1) == "ogg") {
             this->music.openFromFile(path);
@@ -38,8 +39,15 @@ void Menu::initMenu(const std::string &path) {
                 cpt = true;
             }
             else {
-                std::cout << path << std::endl;
-                this->hud.addLayer(path);
+                if (vector_size == 2) {
+                    this->button_effects_paths.clear();
+                    vector_size = 0;
+                }
+                else {
+                    std::cout << path << std::endl;
+                    this->button_effects_paths.push_back(path);
+                    vector_size++;
+                }
             }
         }
     });
@@ -49,5 +57,7 @@ void Menu::initMenu(const std::string &path) {
 void Menu::drawMenu(sf::RenderWindow &App)
 {
     App.draw(this->menuBackgroundSprite);
-    this->hud.drawHudMenu(App);
+    for (int x = 0; x < this->menu_buttons; ++x) {
+        App.draw(this->menu_buttons[x]);
+    }
 }

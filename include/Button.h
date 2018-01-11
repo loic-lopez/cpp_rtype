@@ -104,7 +104,11 @@ namespace gui
         sf::Uint32 m_style;
         sf::Uint32 m_btnstate;
 
-        sf::ConvexShape m_button;
+        sf::ConvexShape m_button; //TODO : UTILISER UN SF::RECTANGLESHAPE
+        // TODO (SUITE) : REMPLACER TOUTES LES FONCTIONS DU M_BUTTON PAR DES FONCTIONS DU RECTANGLE (VOIR DOC)
+
+        sf::RectangleShape button_shape;
+
         sf::Font m_font; // TODO : VIRER LA FONT
         unsigned int m_fontSize; // TODO : VIRER LA FONT
         sf::Text m_text; //TODO : VIRER LE TEXTE
