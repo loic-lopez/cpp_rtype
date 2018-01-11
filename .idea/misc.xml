@@ -4,6 +4,8 @@
   <component name="CidrRootsConfiguration">
     <libraryRoots>
       <file path="$PROJECT_DIR$/SFML" />
+      <file path="$PROJECT_DIR$/SFML-Linux" />
+      <file path="$PROJECT_DIR$/SFML-osx-clang" />
       <file path="$PROJECT_DIR$/thor-v2.0-sdk" />
       <file path="$PROJECT_DIR$/thor-v2.0-sdk/thor-v2.0-sdk" />
     </libraryRoots>

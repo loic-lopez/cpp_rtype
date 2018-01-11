@@ -1,20 +1,23 @@
 cmake_minimum_required(VERSION 3.8)
 project(r-type)
 set(CMAKE_CXX_STANDARD 17)
-
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 
 if (WIN32)
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML")
+    link_directories("${CMAKE_SOURCE_DIR}/SFML/bin")
 elseif (APPLE)
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-osx-clang")
     set(CMAKE_MACOSX_RPATH 1)
+else()
+    set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-Linux")
+    link_directories("${CMAKE_SOURCE_DIR}/SFML-Linux/lib")
+    message("Linux")
 endif (WIN32)
 
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 include_directories("${PROJECT_BINARY_DIR}" "include")
-link_directories("${CMAKE_SOURCE_DIR}/SFML/bin")
 
 set(CMAKE_BUILD_TYPE Release)
 find_package(SFML 2 COMPONENTS system window graphics audio REQUIRED)
@@ -57,7 +60,7 @@ set(HEADER_FILES
         include/Parsing.h)
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
-target_link_libraries(r-type ${SFML_LIBRARIES})
+target_link_libraries(r-type ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 
 add_subdirectory(thor-v2.0-sdk/thor-v2.0-sdk)
 
