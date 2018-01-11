@@ -173,11 +173,21 @@ void Game::start() {
 //            updateEntities();
 //            updateAlliedBullet();
 //            drawAll(App);
-            this->menu.updateMenuButtons(Event, App);
+            this->menu.updateMenu(Event, App);
             this->menu.drawMenu(App);
             while (App.pollEvent(Event)) {
-                if (Event.type == sf::Event::Closed)
-                    gameState = GameState::CLOSE;
+                switch (Event.type) {
+                    case sf::Event::Closed:
+                        gameState = GameState::CLOSE;
+
+                    case sf::Event::KeyPressed:
+                        if (Event.key.code == sf::Keyboard::Escape)
+                            gameState = GameState::CLOSE;
+
+                    case sf::Event::MouseWheelMoved:
+                        this->menu.modifyParticleVelocity(Event.mouseWheel.delta);
+                        break;
+                }
             }
             App.display();
         }

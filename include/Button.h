@@ -6,10 +6,10 @@
 #define R_TYPE_BUTTON_H
 
 #include <iostream>
-
 #include <SFML/Graphics.hpp>
 #include <Thor/Shapes.hpp>
 #include <Thor/Graphics.hpp>
+
 
 namespace buttonState
 {
