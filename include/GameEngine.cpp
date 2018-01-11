@@ -6,7 +6,7 @@
 
 GameEngine GameEngine::m_Instance = GameEngine::GameEngine();
 
-GameEngine::GameEngine()
+GameEngine::GameEngine() : gameEngineThread([] () { GameEngine::Instance().run(); })
 {
 
 }
@@ -20,7 +20,7 @@ GameEngine::~GameEngine()
 
 void GameEngine::run()
 {
-
+  std::cerr << "coucou" << std::endl;
 }
 
 
@@ -42,11 +42,7 @@ GameEngine::Thing::Thing()
 
 void GameEngine::start()
 {
-
-  sf::Thread([] () {
-      std::cerr << "coucou" << std::endl;
-  }).launch();
-
+  m_Instance.gameEngineThread.launch();
 }
 
 GameEngine &GameEngine::Instance()

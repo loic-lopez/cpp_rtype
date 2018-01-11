@@ -25,7 +25,7 @@ class GameEngine
 
     std::vector<Thing>  Entities;
     static GameEngine   m_Instance;
-    std::thread         GameEngineThread;
+    sf::Thread          gameEngineThread;
 
 public:
     static GameEngine   &Instance();
