@@ -8,8 +8,8 @@
 Player::Player() : Entity()
 {
     TextureManager &ptr1 = TextureManager::Instance();
-    pos.x = WindowProperties::WIN_WIDTH / 2;
-    pos.y = WindowProperties::WIN_HEIGHT * 90 / 100;
+    pos.x = WindowProperties::WIN_WIDTH * 10 / 100;
+    pos.y = WindowProperties::WIN_HEIGHT / 2;
     trajectory.x = 0;
     trajectory.y = 0;
     speed = 10;

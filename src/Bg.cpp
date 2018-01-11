@@ -2,13 +2,13 @@
 // Created by Eric on 02/12/2017.
 //
 
-#include "Bg.h"
 #include <iostream>
-#include <WindowProperties.h>
+#include "WindowProperties.h"
+#include "Bg.h"
 
 Bg::Bg()
 {
-    orientation = Orientation::VERTICAL;
+    orientation = WindowProperties::orientation;
 }
 
 Bg::~Bg()

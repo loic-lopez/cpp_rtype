@@ -3,6 +3,7 @@
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;
+Orientation WindowProperties::orientation;
 
 int main()
 {

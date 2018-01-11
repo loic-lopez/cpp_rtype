@@ -53,11 +53,11 @@ void Game::controller() {
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
         play.shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
-        gameState = GameState::CLOSE;
+        gameState = GameState::CLOSE;/*
     if (keyboard.isKeyPressed(sf::Keyboard::A))
         changeOrientation(Orientation::HORIZONTAL);
     if (keyboard.isKeyPressed(sf::Keyboard::Z))
-        changeOrientation(Orientation::VERTICAL);
+        changeOrientation(Orientation::VERTICAL);*/
 }
 
 void Game::XboxController() {

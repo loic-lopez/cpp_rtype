@@ -6,6 +6,7 @@
 #define R_TYPE_WINDOW_H
 
 #include <SFML/Graphics.hpp>
+#include "Enum.h"
 
 template<void(*ctor)()>
 struct static_constructor
@@ -22,6 +23,7 @@ class WindowProperties
 public:
     static unsigned int WIN_HEIGHT;
     static unsigned int WIN_WIDTH;
+    static Orientation orientation;
 
     static void StaticWindow()
     {
@@ -31,6 +33,7 @@ public:
 
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
+        orientation = Orientation::HORIZONTAL;
     }
 };
 

@@ -12,10 +12,10 @@ Enemy::Enemy(EnemyType type) : Entity()
     if (type == EnemyType::BASIC_A)
     {
         enemyType = type;
-        orientation = Orientation::VERTICAL;
+        orientation = WindowProperties::orientation;
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::ENEMY1);
-        pos.x = WindowProperties::WIN_WIDTH / 2;
-        pos.y = WindowProperties::WIN_HEIGHT * 40 / 100;
+        pos.x = WindowProperties::WIN_WIDTH * 60 / 100;
+        pos.y = WindowProperties::WIN_HEIGHT / 2;
         trajectory.x = 0;
         trajectory.y = 0;
         speed = 10;
