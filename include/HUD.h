@@ -28,7 +28,6 @@ public:
     void addLayer(const std::string &path);
     void initHud(const std::string &path);
     void drawHud(sf::RenderWindow &App);
-    void drawHudMenu(sf::RenderWindow &App);
 
 };
 

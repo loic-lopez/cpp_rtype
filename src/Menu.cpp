@@ -17,7 +17,6 @@ Menu::~Menu()
 void Menu::initMenu(const std::string &path) {
     this->music.stop();
     bool cpt = false;
-    int vector_size = 0;
     Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
         if (path.substr(path.find_last_of('.') + 1) == "ogg") {
             this->music.openFromFile(path);
@@ -39,31 +38,55 @@ void Menu::initMenu(const std::string &path) {
                 cpt = true;
             }
             else {
-                if (vector_size == 2) {
+                if (this->buttonEffectsPaths.size() == 3) {
+                    Button *newButton = new Button(this->buttonEffectsPaths);
+                    std::cout << "Button correctly created." << std::endl;
+                    this->menuButtons.push_back(newButton);
                     this->buttonEffectsPaths.clear();
-                    vector_size = 0;
                 }
-                else {
+                if (this->buttonEffectsPaths.size() < 3) {
                     std::cout << path << std::endl;
                     this->buttonEffectsPaths.push_back(path);
-                    vector_size++;
                 }
             }
         }
     });
+    this->determineButtonsPosition();
 }
 
 
 void Menu::drawMenu(sf::RenderWindow &App)
 {
     App.draw(this->menuBackgroundSprite);
-    for (int x = 0; x < this->menuButtons; ++x) {
-        App.draw(this->menuButtons[x]);
+    for (int x = 0; x < this->menuButtons.size(); ++x) {
+        App.draw(this->menuButtons[x]->buttonShape);
     }
 }
 
 void Menu::updateMenuButtons(sf::Event &e, sf::RenderWindow &window) {
-    for (int i = 0; i < this->menuButtons; ++i) {
-        this->menuButtons[i].update(e, window);
+    for (int i = 0; i < this->menuButtons.size(); ++i) {
+        this->menuButtons[i]->update(e, window);
     }
 }
+
+void Menu::determineButtonsPosition() {
+    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)(this->menuButtons[0]->getTextureSize().x * 1.25);
+    float firstXPosPlayButton = firstXPos;
+    float firstYPos = (float)WindowProperties::WIN_HEIGHT / 8;
+    float firstYPosPlayButton = firstYPos;
+    std::cout << this->menuButtons.size() << std::endl;
+    for (unsigned int x = 0; x < this->menuButtons.size(); x++)
+    {
+        if (x != 0) {
+            firstXPos += this->menuButtons[0]->getTextureSize().x / 10;
+            firstXPosPlayButton -= this->menuButtons[0]->getTextureSize().x / 8;
+            firstYPos += this->menuButtons[0]->getTextureSize().y * 1.35;
+            firstYPosPlayButton += this->menuButtons[0]->getTextureSize().y * 1.35;
+        }
+        if (x == 3)
+            this->menuButtons[x]->setPosition((sf::Vector2f(firstXPosPlayButton, firstYPosPlayButton)));
+        else
+            this->menuButtons[x]->setPosition((sf::Vector2f(firstXPos, firstYPos)));
+    }
+}
+

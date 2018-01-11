@@ -21,11 +21,11 @@ namespace buttonState
     };
 };
 
-class Button : public sf::Drawable
+class Button
 {
 public:
     Button();
-    Button(std::vector<std::string> buttonEffectsPaths, sf::Vector2f position);
+    Button(std::vector<std::string> buttonEffectsPaths);
 
     ~Button();
 
@@ -36,7 +36,10 @@ public:
 
     sf::Vector2f getPosition();
     sf::Vector2f getDimensions();
+    sf::Vector2f getTextureSize();
     sf::Uint32 getState();
+
+    sf::RectangleShape buttonShape;
 
     void update(sf::Event& e, sf::RenderWindow& window);
 
@@ -52,7 +55,6 @@ private:
     sf::Vector2f buttonPosition;
     sf::Uint32 actualButtonState;
 
-    sf::RectangleShape buttonShape;
 };
 
 #endif //R_TYPE_BUTTON_H

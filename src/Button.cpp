@@ -9,13 +9,17 @@ Button::Button() {
 
 }
 
-Button::Button(std::vector<std::string> buttonEffectsPaths, sf::Vector2f position) {
+Button::Button(std::vector<std::string> buttonEffectsPaths) {
+    this->textureNormal = new sf::Texture;
+    this->textureHovered = new sf::Texture;
+    this->textureClicked = new sf::Texture;
     this->textureNormal->loadFromFile(buttonEffectsPaths[0]);
     this->textureHovered->loadFromFile(buttonEffectsPaths[1]);
     this->textureClicked->loadFromFile(buttonEffectsPaths[2]);
-    this->buttonPosition.x = position.x;
-    this->buttonPosition.y = position.y;
+    std::cout << "Textures well applied" << std::endl;
     this->actualButtonState = buttonState::NORMAL;
+    this->buttonShape.setTexture(this->textureNormal);
+    this->buttonShape.setSize(this->getTextureSize());
 }
 
 Button::~Button() {
@@ -24,11 +28,11 @@ Button::~Button() {
 
 void Button::setPosition(sf::Vector2f position) {
     this->buttonPosition = position;
+    this->buttonShape.setOrigin(this->buttonPosition);
 }
 
 void Button::setSize(sf::Vector2f size) {
-    this->buttonSize.x = size.x;
-    this->buttonSize.y = size.y;
+
 }
 
 void Button::setBackground() {
@@ -41,6 +45,10 @@ sf::Vector2f Button::getPosition() {
 
 sf::Vector2f Button::getDimensions() {
     return sf::Vector2f(this->buttonShape.getGlobalBounds().width, this->buttonShape.getGlobalBounds().height);
+}
+
+sf::Vector2f Button::getTextureSize() {
+    return sf::Vector2f(this->buttonShape.getTexture()->getSize().x, this->buttonShape.getTexture()->getSize().y);
 }
 
 sf::Uint32 Button::getState() {
@@ -111,4 +119,5 @@ void Button::update(sf::Event &e, sf::RenderWindow &window) {
             break;
     }
 }
+
 

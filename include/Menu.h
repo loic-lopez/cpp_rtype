@@ -26,9 +26,7 @@ private:
     // TODO (SUITE) : PARSER 3 PAR 3 DANS LA LAMBDA (CHANGER LE SYSTEME DU COMPTEUR), ET REMPLIR LE VECTEUR DE STRING
     // TODO (SUITE) : ET CREER UN BOUTON UNE FOIS QUE LE VECTEUR CONTIENT 3 SPRITES
 
-    std::vector<Button> menuButtons;
-
-    // TODO : DANS LA FONCTION DRAWMENU, BOUCLER SUR LE VECTEUR DE BOUTONS ET DRAW.
+    std::vector<Button *> menuButtons;
 
 public:
     Menu();
@@ -36,6 +34,7 @@ public:
     void initMenu(const std::string &path);
     void drawMenu(sf::RenderWindow &App);
     void updateMenuButtons(sf::Event& e, sf::RenderWindow& window); // TODO : A APPELLER DANS LA BOUCLE DE JEU AVANT LE DRAW
+    void determineButtonsPosition();
 };
 
 
