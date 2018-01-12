@@ -14,6 +14,7 @@ class Enemy : public Entity{
 private:
     bool back = true;
     EnemyType enemyType;
+
 public:
     Enemy(EnemyType type);
     ~Enemy();
