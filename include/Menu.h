@@ -8,8 +8,9 @@
 #include <SFML/Audio.hpp>
 #include <Thor/Particles.hpp>
 #include <Thor/Animations.hpp>
-#include <Thor/Vectors/PolarVector2.hpp>
-#include <Thor/Math/Distributions.hpp>
+#include <Thor/Graphics.hpp>
+#include <Thor/Vectors.hpp>
+#include <Thor/Math.hpp>
 #include "Parsing.h"
 #include "Enum.h"
 #include "Bg.h"

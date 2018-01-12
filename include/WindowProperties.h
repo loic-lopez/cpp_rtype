@@ -35,10 +35,10 @@ public:
 
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
-        std::cout << "test" << std::endl;
-        std::cout << "test" << std::endl;
-
-        std::cout << "test" << std::endl;
+        particleColorGradientMenu = thor::ColorGradient();
+        particleColorGradientMenu[0.f] = sf::Color(0, 150, 0);
+        particleColorGradientMenu[0.5f] = sf::Color(0, 150, 100);
+        particleColorGradientMenu[1.f] = sf::Color(0, 0, 150);
     }
 };
 
