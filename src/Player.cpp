@@ -1,5 +1,5 @@
 //
-// Created by Eric on 29/11/2017.
+// Created by Zakelis on 29/11/2017.
 //
 
 #include <WindowProperties.h>

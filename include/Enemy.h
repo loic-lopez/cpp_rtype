@@ -1,5 +1,5 @@
 //
-// Created by Eric on 06/12/2017.
+// Created by Zàkelis on 06/12/2017.
 //
 
 #ifndef RTYPE_ENNEMY_H

@@ -1,5 +1,5 @@
 //
-// Created by Eric on 04/12/2017.
+// Created by Pierre on 04/12/2017.
 //
 
 #include "Bullet.h"

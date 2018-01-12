@@ -1,5 +1,5 @@
 //
-// Created by Eric on 29/11/2017.
+// Created by Loic on 29/11/2017.
 //
 
 #ifndef RTYPE_ENTITY_H

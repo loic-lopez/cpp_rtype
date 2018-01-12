@@ -1,5 +1,5 @@
 //
-// Created by Eric on 04/12/2017.
+// Created by Zàkelis on 04/12/2017.
 //
 
 #ifndef RTYPE_BULLET_H

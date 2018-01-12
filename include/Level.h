@@ -1,5 +1,5 @@
 //
-// Created by Eric on 03/12/2017.
+// Created by Zàkelis on 03/12/2017.
 //
 
 #ifndef RTYPE_LEVEL_H

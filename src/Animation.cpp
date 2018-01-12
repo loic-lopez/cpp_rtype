@@ -1,5 +1,5 @@
 //
-// Created by Eric on 30/11/2017.
+// Created by Zàkelis on 30/11/2017.
 //
 
 #include "Animation.h"

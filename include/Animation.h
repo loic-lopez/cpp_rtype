@@ -1,5 +1,5 @@
 //
-// Created by Eric on 30/11/2017.
+// Created by Pierre on 30/11/2017.
 //
 
 #ifndef RTYPE_ANIMATION_H

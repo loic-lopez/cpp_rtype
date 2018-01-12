@@ -1,5 +1,5 @@
 //
-// Created by Loic Dupil on 09/01/2018.
+// Created by loic on 09/01/2018.
 //
 
 #include <string>

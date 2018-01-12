@@ -1,5 +1,5 @@
 //
-// Created by Eric on 02/12/2017.
+// Created by Pierre on 02/12/2017.
 //
 
 #ifndef RTYPE_BACKGROUND_H

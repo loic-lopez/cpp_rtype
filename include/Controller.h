@@ -1,5 +1,5 @@
 //
-// Created by Renaud on 04/12/2017.
+// Created by Loic on 04/12/2017.
 //
 
 #ifndef RTYPE_CONTROLLER_H

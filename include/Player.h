@@ -1,5 +1,5 @@
 //
-// Created by Eric on 29/11/2017.
+// Created by Zàkelis on 29/11/2017.
 //
 
 #ifndef RTYPE_PLAYER_H

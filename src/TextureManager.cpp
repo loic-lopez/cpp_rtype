@@ -1,5 +1,5 @@
 //
-// Created by Eric on 08/12/2017.
+// Created by Zàkelis on 08/12/2017.
 //
 
 #include "TextureManager.h"

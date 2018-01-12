@@ -1,5 +1,5 @@
 //
-// Created by Eric on 09/12/2017.
+// Created by Pierre on 09/12/2017.
 //
 
 #ifndef RTYPE_WEAPON_H
