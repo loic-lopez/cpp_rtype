@@ -25,7 +25,7 @@ namespace buttonState
 class Button
 {
 public:
-    Button(std::vector<std::string> buttonEffectsPaths, std::function<void()> lambda);
+    Button(std::vector<std::string> buttonEffectsPaths, std::function<void()> onClick);
     Button(std::vector<std::string> buttonEffectsPaths);
 
     ~Button();
@@ -41,6 +41,8 @@ public:
     sf::Uint32 getState();
 
     sf::RectangleShape buttonShape;
+
+    std::function<void()> onClick;
 
     void update(sf::Event& e, sf::RenderWindow& window);
 

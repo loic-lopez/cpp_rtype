@@ -24,6 +24,7 @@ class WindowProperties
 public:
     static unsigned int WIN_HEIGHT;
     static unsigned int WIN_WIDTH;
+    static GameState    gameState;
 
 
     static void StaticWindow()
@@ -34,6 +35,7 @@ public:
 
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
+        gameState = GameState::MENU;
     }
 };
 
