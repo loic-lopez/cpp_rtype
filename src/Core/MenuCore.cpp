@@ -41,12 +41,19 @@ void MenuCore::eventHandler(sf::Event &event) {
     while (WindowProperties::App->pollEvent(event)) {
         switch (event.type) {
             case sf::Event::Closed:
+            {
                 WindowProperties::gameState = GameState::CLOSE;
+                this->menu.stopMusic();
                 break;
+            }
 
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Escape)
+                {
                     WindowProperties::gameState = GameState::CLOSE;
+                    this->menu.stopMusic();
+                }
+
                 break;
         }
     }
