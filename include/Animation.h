@@ -34,6 +34,9 @@ public:
     std::string findCsv(const std::string &path, Stance stance);
     void setColor(sf::Color);
     void freeDatas();
+    sf::FloatRect getSize();
+    void setScale(int);
+    int totalFrame();
 };
 
 

@@ -116,3 +116,8 @@ void Entity::setOrientation(Orientation orientation)
 {
     Entity::orientation = orientation;
 }
+
+sf::FloatRect   Entity::getBounds()
+{
+    return this->sprites[0].getSize();
+}

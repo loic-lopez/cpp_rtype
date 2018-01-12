@@ -20,6 +20,7 @@ public:
     virtual void setHp(int hp) = 0;
     virtual const sf::Vector2f &getPos() const = 0;
     virtual void setPos(const sf::Vector2f &pos) = 0;
+    virtual sf::FloatRect getBounds() = 0;
 
     virtual Stance getStance() const = 0;
     virtual void setStance(Stance stance) = 0;

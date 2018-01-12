@@ -31,6 +31,7 @@ public:
     virtual void setPos(const sf::Vector2f &pos);
     virtual Stance getStance() const;
     virtual void setStance(Stance stance);
+    virtual sf::FloatRect getBounds();
     virtual void drawSprite(sf::RenderWindow &App);
     virtual void move(sf::Vector2f);
     virtual void changeOrientation(Orientation);

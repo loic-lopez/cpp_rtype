@@ -17,13 +17,14 @@
 class GameEngine
 {
     struct Thing {
+        Entity          *obj;
         sf::FloatRect   hitBox;
         Side            side;
         Textures        type;
         Thing();
     };
 
-    std::vector<Thing>  Entities;
+    std::vector<Thing *>  Entities;
     static GameEngine   m_Instance;
     sf::Thread          gameEngineThread;
 
@@ -33,10 +34,15 @@ public:
     ~GameEngine();
 
     static void ThreadRun();
+    std::vector<Thing *>      getEntities();
+    void                    fillEntities(Entity *, Side, Textures);
+
+    static void run();
 
     void addThing();
     void checkHitBoxes();
     void start();
+    int  checkPlayerBoxe(GameEngine::Thing *player, GameEngine::Thing *obstacles);
 };
 
 
