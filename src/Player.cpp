@@ -17,8 +17,10 @@ Player::Player() : Entity()
     sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::REIMU);
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
-    weapon.setWeapon(WeaponType::STRAIGHT, 10);
+    weapon.setWeapon(WeaponType::STRAIGHT, 27);
     setHp(3);
+    shotSound.openFromFile("./ressources/bullet/shot.ogg");
+    shotSound.setLoop(false);
 }
 
 Player::~Player()
@@ -32,6 +34,7 @@ void Player::shoot()
     {
         shootCooldown = weapon.getCoolDown();
         weapon.shoot(orientation, pos, Side::ALLIED, BulletType::REIMU_A);
+        shotSound.play();
     }
 }
 

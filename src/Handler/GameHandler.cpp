@@ -152,7 +152,7 @@ void GameHandler::updateAlliedBullet() {
 void GameHandler::start() {
 
     entities.push_back(new Enemy(EnemyType::BASIC_A));
-    play = Player();
+    //play = Player();
     bulletsEnemy.reserve(100000);
 
     sf::Event Event;

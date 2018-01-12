@@ -5,6 +5,7 @@
 #ifndef RTYPE_PLAYER_H
 #define RTYPE_PLAYER_H
 
+#include <SFML/Audio/Music.hpp>
 #include "Entity.h"
 #include "Bullet.h"
 
@@ -20,6 +21,7 @@ public:
 
 private:
     ControlType GameMovementMode;
+    sf::Music   shotSound;
 };
 
 
