@@ -34,6 +34,7 @@ enum class Side
 enum class GameState
 {
     GAME,
+    SPLASHSCREEN,
     MENU,
     CLOSE
 };

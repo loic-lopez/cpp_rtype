@@ -8,6 +8,7 @@
 #include <Handler/GameHandler.h>
 #include "WindowProperties.h"
 #include "MenuCore.hpp"
+#include "SplashScreen.h"
 
 class GameCore
 {
@@ -15,6 +16,7 @@ private:
     static GameCore m_instance;
     MenuCore    &menuCore;
     GameHandler &gameHandler;
+    SplashScreen &splashScreen;
 
 public:
     GameCore();

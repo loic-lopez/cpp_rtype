@@ -38,6 +38,7 @@ set(SOURCE_FILES
         src/Parsing.cpp
         src/HUD.cpp
         src/Button.cpp
+        src/SplashScreen.cpp
         src/Core/GameCore.cpp
         src/Handler/GameHandler.cpp)
 
@@ -63,6 +64,7 @@ set(HEADER_FILES
         include/Parsing.h
         include/Button.h
         include/SelbaWard.hpp
+        include/SplashScreen.h
         include/Core/GameCore.h
         include/Handler/GameHandler.h)
 

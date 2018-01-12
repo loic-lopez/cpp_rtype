@@ -6,7 +6,7 @@
 
 GameCore GameCore::m_instance = GameCore();
 
-GameCore::GameCore() : menuCore(MenuCore::Instance()), gameHandler(GameHandler::Instance())
+GameCore::GameCore() : menuCore(MenuCore::Instance()), gameHandler(GameHandler::Instance()), splashScreen(SplashScreen::Instance())
 {
 
 }
@@ -19,6 +19,7 @@ GameCore::~GameCore()
 void GameCore::start()
 {
     // TODO: ADD SPLASHSCREEN
+    this->splashScreen.start();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState != GameState::CLOSE)
     {
         this->menuCore.start();
