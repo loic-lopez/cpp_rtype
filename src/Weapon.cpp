@@ -3,7 +3,7 @@
 //
 
 #include "Weapon.h"
-#include "Game.h"
+#include "GameCore.hpp"
 
 Weapon::Weapon()
 {
@@ -18,7 +18,7 @@ Weapon::~Weapon()
 void
 Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType, sf::Vector2f trajectory)
 {
-    Game &game = Game::Instance();
+    GameCore &game = GameCore::Instance();
     Bullet *bullet = new Bullet(bulletType);
     bullet->setTrajectory(trajectory);
     bullet->setOrientation(orientation);
@@ -30,7 +30,7 @@ Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletTy
 void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)
 {
     int i = 0;
-    Game &game = Game::Instance();
+    GameCore &game = GameCore::Instance();
     while (i < lvlWeapon)
     {
         if (orientation == Orientation::HORIZONTAL)
@@ -69,7 +69,7 @@ void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, Bull
 
 void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)
 {
-    Game &game = Game::Instance();
+    GameCore &game = GameCore::Instance();
 
     int i = 0;
     while (i < lvlWeapon)

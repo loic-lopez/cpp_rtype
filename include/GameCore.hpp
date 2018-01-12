@@ -2,8 +2,8 @@
 // Created by Eric on 30/11/2017.
 //
 
-#ifndef RTYPE_GAME_H
-#define RTYPE_GAME_H
+#ifndef RTYPE_GameCore_H
+#define RTYPE_GameCore_H
 
 #include <iostream>
 #include <thread>
@@ -17,23 +17,23 @@
 #include "Menu.h"
 #include "Button.h"
 
-class Game
+class GameCore
 {
 private:
-    static Game m_instance;
+    static GameCore m_instance;
 
-    Game();
+    GameCore();
 
-    ~Game();
+    ~GameCore();
 
-    Game &operator=(const Game &)
+    GameCore &operator=(const GameCore &)
     {}
 
-    Game(const Game &)
+    GameCore(const GameCore &)
     {}
 
     //Orientation orientation;
-    GameState gameState;
+    GameState GameState;
     sf::Clock clock;
 
     Hud hud;
@@ -46,7 +46,7 @@ private:
 
     sf::Mutex mutex;
 public:
-    static Game &Instance();
+    static GameCore &Instance();
 
     void start();
 
@@ -70,4 +70,4 @@ public:
 };
 
 
-#endif //RTYPE_GAME_H
+#endif //RTYPE_GameCore_H

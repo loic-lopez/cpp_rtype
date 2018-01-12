@@ -2,16 +2,16 @@
 // Created by Eric on 30/11/2017.
 //
 
-#include "Game.h"
+#include "GameCore.hpp"
 
-Game Game::m_instance=Game();
+GameCore GameCore::m_instance=GameCore();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-Game::Game() {
+GameCore::GameCore() {
 
 }
 
-Game::~Game() {
+GameCore::~GameCore() {
     while (bulletsEnemy.size() != 0) {
         delete (bulletsEnemy[0]);
         bulletsEnemy.erase(bulletsEnemy.begin());
@@ -22,13 +22,13 @@ Game::~Game() {
     }
 }
 
-Game& Game::Instance()
+GameCore& GameCore::Instance()
 {
     return m_instance;
 }
 
 /************************************************* PLAYER CONTROLLER *************************************************/
-void Game::changeOrientation(Orientation orientation) {
+void GameCore::changeOrientation(Orientation orientation) {
     level.changeOrientation(orientation);
     play.changeOrientation(orientation);
     for (size_t i = 0; i < bulletsEnemy.size(); i++)
@@ -39,7 +39,7 @@ void Game::changeOrientation(Orientation orientation) {
         entities[i]->changeOrientation(orientation);
 }
 
-void Game::controller() {
+void GameCore::controller() {
     sf::Keyboard keyboard;
 
     if (keyboard.isKeyPressed(sf::Keyboard::Up))
@@ -53,14 +53,14 @@ void Game::controller() {
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
         play.shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
-        gameState = GameState::CLOSE;
+        GameState = GameState::CLOSE;
     if (keyboard.isKeyPressed(sf::Keyboard::A))
         changeOrientation(Orientation::HORIZONTAL);
     if (keyboard.isKeyPressed(sf::Keyboard::Z))
         changeOrientation(Orientation::VERTICAL);
 }
 
-void Game::XboxController() {
+void GameCore::XboxController() {
     float posX;
     float posY;
     sf::Vector2f speed;
@@ -117,7 +117,7 @@ void Game::XboxController() {
 
 /************************************************* ENTITIES *************************************************/
 
-void Game::updateEntities() {
+void GameCore::updateEntities() {
     play.updatePos();
     for (size_t i = 0 ; i < entities.size(); i++) {
         this->entities[i]->updatePos();
@@ -125,7 +125,7 @@ void Game::updateEntities() {
     }
 }
 
-void Game::updateAlliedBullet() {
+void GameCore::updateAlliedBullet() {
     for (size_t i = 0; i < this->bulletsAllied.size(); i++) {
         if (!bulletsAllied[i]->outOfBounds()) {
             delete (this->bulletsAllied[i]);
@@ -147,27 +147,27 @@ void Game::updateAlliedBullet() {
 }
 
 /************************************************* MAINLOOP *************************************************/
-void Game::start() {
-//    gameState = GameState::GAME;
+void GameCore::start() {
+//    GameState = GameState::GameCore;
 //    level.initLvl("lvl1");
 //    hud.initHud("hud");
 //    entities.push_back(new Enemy(EnemyType::BASIC_A));
 //    play = Player();
 //    bulletsEnemy.reserve(100000);
 
-    gameState = GameState::MENU;
+    GameState = GameState::MENU;
     this->menu.initMenu("menu");
     sf::Event Event;
     sf::RenderWindow App(sf::VideoMode(WindowProperties::WIN_WIDTH, WindowProperties::WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
     App.setVerticalSyncEnabled(true);
-    while (App.isOpen() && gameState != GameState ::CLOSE) {
+    while (App.isOpen() && GameState != GameState ::CLOSE) {
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
 //
-//            if (play.getGameMovementMode() == ControlType::KEYBOARD)
+//            if (play.getGameCoreMovementMode() == ControlType::KEYBOARD)
 //                controller();
-//            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
+//            else if (play.getGameCoreMovementMode() == ControlType::XBOXCONTROLLER)
 //                XboxController();
 //
 //            updateEntities();
@@ -178,24 +178,24 @@ void Game::start() {
             while (App.pollEvent(Event)) {
                 switch (Event.type) {
                     case sf::Event::Closed:
-                        gameState = GameState::CLOSE;
+                        GameState = GameState::CLOSE;
                         break;
 
                     case sf::Event::KeyPressed:
                         if (Event.key.code == sf::Keyboard::Escape)
-                            gameState = GameState::CLOSE;
+                            GameState = GameState::CLOSE;
                         break;
                 }
             }
             App.display();
         }
     }
-    gameState = GameState::CLOSE;
+    GameState = GameState::CLOSE;
     App.close();
 }
 
 /************************************************* DRAW *************************************************/
-void Game::drawAll(sf::RenderWindow &App) {
+void GameCore::drawAll(sf::RenderWindow &App) {
     level.drawLvl(App);
     hud.drawHud(App);
     for (size_t i = 0 ; i < bulletsEnemy.size(); i++) {
@@ -210,14 +210,14 @@ void Game::drawAll(sf::RenderWindow &App) {
     play.drawSprite(App);
 }
 
-void Game::lock() {
+void GameCore::lock() {
     mutex.lock();
 }
-void Game::unlock() {
+void GameCore::unlock() {
     mutex.unlock();
 }
 
-void Game::addBullet(IEntity *newBullet) {
+void GameCore::addBullet(IEntity *newBullet) {
     if (((Bullet *)newBullet)->getSide() == Side::ENEMY)
         bulletsEnemy.push_back(newBullet);
     else

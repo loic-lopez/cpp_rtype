@@ -11,7 +11,7 @@ Menu::Menu()
 
 Menu::~Menu()
 {
-
+    this->music.stop();
 }
 
 void Menu::initMenu(const std::string &path) {

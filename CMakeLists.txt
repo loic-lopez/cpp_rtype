@@ -28,7 +28,7 @@ set(SOURCE_FILES
         src/main.cpp
         src/Animation.cpp
         src/Bg.cpp
-        src/Game.cpp
+        src/GameCore.cpp
         src/Level.cpp
         src/Bullet.cpp
         src/Enemy.cpp
@@ -43,7 +43,7 @@ set(HEADER_FILES
         include/Entity.h
         include/Player.h
         include/Animation.h
-        include/Game.h
+        include/GameCore.hpp
         include/Bg.h
         include/Enum.h
         include/Level.h
