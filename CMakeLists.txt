@@ -36,7 +36,11 @@ set(SOURCE_FILES
         src/Weapon.cpp
         src/TextureManager.cpp
         src/Parsing.cpp
-        src/HUD.cpp)
+        src/HUD.cpp
+        src/Button.cpp)
+
+file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
+file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
 
 set(HEADER_FILES
         include/IEntity.h
@@ -54,9 +58,12 @@ set(HEADER_FILES
         include/Menu.h
         include/WindowProperties.h
         include/HUD.h
-        include/Parsing.h include/Button.h src/Button.cpp)
+        include/Parsing.h
+        include/Button.h
+        include/SelbaWard.hpp)
 
-add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES})
+
+add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})
 target_link_libraries(r-type ${SFML_LIBRARIES})
 
 add_subdirectory(thor-v2.0-sdk/thor-v2.0-sdk)

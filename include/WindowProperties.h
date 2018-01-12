@@ -8,6 +8,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <Thor/Graphics.hpp>
+#include "Enum.h"
 
 template<void(*ctor)()>
 struct static_constructor
