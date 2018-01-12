@@ -64,11 +64,10 @@ void MenuHandler::initMenu(const std::string &path) {
             }
         }
 
-        for (int j = 0; j < menuButtons.size(); ++j)
-            this->menuButtons.at(j)->onClick = this->functionsHandler.at(j);
     });
     this->determineButtonsPosition();
-
+    for (int j = 0; j < menuButtons.size(); j++)
+        this->menuButtons.at(j)->onClick = this->functionsHandler.at(j);
 }
 
 

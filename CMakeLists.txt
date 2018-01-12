@@ -37,7 +37,7 @@ set(SOURCE_FILES
         src/TextureManager.cpp
         src/Parsing.cpp
         src/HUD.cpp
-        src/Button.cpp)
+        src/Button.cpp src/GameCore.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -60,7 +60,7 @@ set(HEADER_FILES
         include/HUD.h
         include/Parsing.h
         include/Button.h
-        include/SelbaWard.hpp)
+        include/SelbaWard.hpp include/GameCore.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

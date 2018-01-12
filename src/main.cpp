@@ -1,5 +1,4 @@
-#include <Controller.h>
-#include "MenuCore.hpp"
+#include <GameCore.h>
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;
@@ -8,8 +7,7 @@ sf::RenderWindow *WindowProperties::App;
 
 int main()
 {
-    MenuCore &game = MenuCore::Instance();
-    //Game game;
+    GameCore &game = GameCore::Instance();
 
     game.start();
     delete WindowProperties::App;

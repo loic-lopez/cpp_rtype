@@ -7,8 +7,9 @@
 MenuCore MenuCore::m_instance=MenuCore();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-MenuCore::MenuCore() {
-
+MenuCore::MenuCore()
+{
+    this->menu.initMenu("menu");
 }
 
 MenuCore::~MenuCore() {
@@ -21,7 +22,6 @@ MenuCore& MenuCore::Instance()
 
 /************************************************* MAINLOOP *************************************************/
 void MenuCore::start() {
-    this->menu.initMenu("menu");
     sf::Event Event;
 
     WindowProperties::App->setVerticalSyncEnabled(true);
