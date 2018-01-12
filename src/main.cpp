@@ -1,4 +1,4 @@
-#include <GameCore.h>
+#include <Core/GameCore.h>
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;

@@ -2,8 +2,9 @@
 // Created by Eric on 09/12/2017.
 //
 
+#include <Core/MenuCore.hpp>
+#include <Handler/GameHandler.h>
 #include "Weapon.h"
-#include "MenuCore.hpp"
 
 Weapon::Weapon()
 {
@@ -18,13 +19,13 @@ Weapon::~Weapon()
 void
 Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType, sf::Vector2f trajectory)
 {
-    MenuCore &game = MenuCore::Instance();
+    GameHandler &game = GameHandler::Instance();
     Bullet *bullet = new Bullet(bulletType);
     bullet->setTrajectory(trajectory);
     bullet->setOrientation(orientation);
     bullet->setPos(pos);
     bullet->setSide(side);
-//    game.addBullet(bullet);
+    game.addBullet(bullet);
 }
 
 void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)

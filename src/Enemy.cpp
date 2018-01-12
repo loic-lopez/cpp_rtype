@@ -3,7 +3,6 @@
 //
 
 #include "Enemy.h"
-#include "MenuCore.hpp"
 
 Enemy::Enemy(EnemyType type) : Entity()
 {

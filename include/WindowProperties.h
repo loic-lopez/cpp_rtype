@@ -38,6 +38,7 @@ public:
         WIN_WIDTH = videoMode.width;
         gameState = GameState::MENU;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
+        App->setVerticalSyncEnabled(true);
     }
 };
 

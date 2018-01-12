@@ -2,7 +2,8 @@
 // Created by Zakelis on 09/01/2018.
 //
 
-#include "MenuHandler.h"
+
+#include <Handler/MenuHandler.h>
 
 MenuHandler::MenuHandler()
 {
@@ -16,9 +17,10 @@ MenuHandler::MenuHandler()
     this->functionsHandler.emplace_back([] () {
     // BOUTON CREDITS
     });
-    this->functionsHandler.emplace_back([] () {
+    this->functionsHandler.emplace_back([this] () {
         //BOUTON JOUER
         WindowProperties::gameState = GameState::GAME;
+        this->music.stop();
     });
 }
 

@@ -28,16 +28,18 @@ set(SOURCE_FILES
         src/main.cpp
         src/Animation.cpp
         src/Bg.cpp
-        src/MenuCore.cpp
+        src/Core/MenuCore.cpp
         src/Level.cpp
         src/Bullet.cpp
         src/Enemy.cpp
-        src/MenuHandler.cpp
+        src/Handler/MenuHandler.cpp
         src/Weapon.cpp
         src/TextureManager.cpp
         src/Parsing.cpp
         src/HUD.cpp
-        src/Button.cpp src/GameCore.cpp)
+        src/Button.cpp
+        src/Core/GameCore.cpp
+        src/Handler/GameHandler.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -47,7 +49,7 @@ set(HEADER_FILES
         include/Entity.h
         include/Player.h
         include/Animation.h
-        include/MenuCore.hpp
+        include/Core/MenuCore.hpp
         include/Bg.h
         include/Enum.h
         include/Level.h
@@ -55,12 +57,14 @@ set(HEADER_FILES
         include/Enemy.h
         include/TextureManager.h
         include/Weapon.h
-        include/MenuHandler.h
+        include/Handler/MenuHandler.h
         include/WindowProperties.h
         include/HUD.h
         include/Parsing.h
         include/Button.h
-        include/SelbaWard.hpp include/GameCore.h)
+        include/SelbaWard.hpp
+        include/Core/GameCore.h
+        include/Handler/GameHandler.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

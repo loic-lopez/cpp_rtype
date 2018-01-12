@@ -2,7 +2,7 @@
 // Created by Eric on 30/11/2017.
 //
 
-#include "MenuCore.hpp"
+#include <Core/MenuCore.hpp>
 
 MenuCore MenuCore::m_instance=MenuCore();
 
@@ -24,7 +24,6 @@ MenuCore& MenuCore::Instance()
 void MenuCore::start() {
     sf::Event Event;
 
-    WindowProperties::App->setVerticalSyncEnabled(true);
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::MENU) {
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
