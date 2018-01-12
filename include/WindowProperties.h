@@ -5,7 +5,9 @@
 #ifndef R_TYPE_WINDOW_H
 #define R_TYPE_WINDOW_H
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
+#include <Thor/Graphics.hpp>
 
 template<void(*ctor)()>
 struct static_constructor
@@ -22,6 +24,8 @@ class WindowProperties
 public:
     static unsigned int WIN_HEIGHT;
     static unsigned int WIN_WIDTH;
+    static thor::ColorGradient particleColorGradientMenu;
+
 
     static void StaticWindow()
     {
@@ -31,6 +35,10 @@ public:
 
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
+        std::cout << "test" << std::endl;
+        std::cout << "test" << std::endl;
+
+        std::cout << "test" << std::endl;
     }
 };
 

@@ -4,13 +4,9 @@
 
 #include "Menu.h"
 
-Menu::Menu() : fader(0.1f, 0.1f),
-               particleVelocity(200.0f, -90.0f)
+Menu::Menu() : colorizer(WindowProperties::particleColorGradientMenu), fader(0.1f, 0.1f), particleVelocity(200.0f, -90.0f)
 {
-    this->particleColorGradient[0.f] = sf::Color(0, 150, 0);
-    this->particleColorGradient[0.5f] = sf::Color(0, 150, 100);
-    this->particleColorGradient[1.f] = sf::Color(0, 0, 150);
-    this->colorizer.
+    std::cout << "Menu constructor" << std::endl;
 }
 
 Menu::~Menu()
@@ -69,7 +65,6 @@ void Menu::initMenu(const std::string &path) {
     this->particleSystem.addAffector(thor::AnimationAffector(this->fader));
     this->particleSystem.addAffector(thor::TorqueAffector(100.0f));
     this->particleSystem.addAffector(thor::ForceAffector(sf::Vector2f(0.0f, 100.0f)));
-
 }
 
 

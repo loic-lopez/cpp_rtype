@@ -32,7 +32,6 @@ private:
     sf::Texture mouseParticleTexture;
     thor::UniversalEmitter particleEmitter;
     thor::ParticleSystem particleSystem;
-    thor::ColorGradient particleColorGradient;
 
     thor::ColorAnimation colorizer;
     thor::FadeAnimation fader;
