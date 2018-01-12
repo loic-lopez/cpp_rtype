@@ -6,12 +6,18 @@
 #define R_TYPE_SPLASHSCREEN_H
 
 #include <SelbaWard.hpp>
+#include <SFML/Audio/Music.hpp>
 #include "WindowProperties.h"
 
 class SplashScreen : selbaward::ProgressBar
 {
 private:
     static SplashScreen m_instance;
+    sf::Texture         backgroundTexture;
+    sf::Sprite         backgroundSprite;
+    sw::ProgressBar     progressBar;
+    sf::Music           music;
+
     void EventHandler(sf::Event &event);
     SplashScreen();
     ~SplashScreen();
@@ -24,8 +30,6 @@ private:
 public:
     static SplashScreen &Instance();
     void start();
-
-    sw::ProgressBar progressBar;
 };
 
 #endif //R_TYPE_SPLASHSCREEN_H
