@@ -108,3 +108,8 @@ void MenuHandler::determineButtonsPosition() {
     }
 }
 
+void MenuHandler::stopMusic()
+{
+    this->music.stop();
+}
+
