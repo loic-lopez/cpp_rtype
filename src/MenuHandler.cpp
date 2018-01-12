@@ -6,7 +6,20 @@
 
 MenuHandler::MenuHandler()
 {
-    std::cout << "MenuHandler constructor" << std::endl;
+    this->functionsHandler.emplace_back([] () {
+    // BOUTON TITRE, AUCUNE ACTION LORSQUE CLIC
+    });
+
+    this->functionsHandler.emplace_back([] () {
+    // BOUTON OPTION
+    });
+    this->functionsHandler.emplace_back([] () {
+    // BOUTON CREDITS
+    });
+    this->functionsHandler.emplace_back([] () {
+        //BOUTON JOUER
+        WindowProperties::gameState = GameState::GAME;
+    });
 }
 
 MenuHandler::~MenuHandler()
@@ -51,8 +64,8 @@ void MenuHandler::initMenu(const std::string &path) {
             }
         }
 
-        for (auto &func : this->menuButtons)
-            func->onClick = [] () {};
+        for (int j = 0; j < menuButtons.size(); ++j)
+            this->menuButtons.at(j)->onClick = this->functionsHandler.at(j);
     });
     this->determineButtonsPosition();
 

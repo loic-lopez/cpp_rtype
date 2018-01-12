@@ -25,7 +25,7 @@ void MenuCore::start() {
     sf::Event Event;
 
     WindowProperties::App->setVerticalSyncEnabled(true);
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState != GameState ::CLOSE) {
+    while (WindowProperties::App->isOpen() && WindowProperties::gameState != GameState::MENU) {
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
@@ -35,7 +35,7 @@ void MenuCore::start() {
             WindowProperties::App->display();
         }
     }
-    WindowProperties::App->close();
+    //WindowProperties::App->close();
 }
 
 void MenuCore::eventHandler(sf::Event &event) {
