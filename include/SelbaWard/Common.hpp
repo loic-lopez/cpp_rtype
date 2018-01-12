@@ -32,6 +32,7 @@
 
 #include <exception>
 #include <string>
+#include <cmath>
 
 #if defined(_MSC_VER) && (_MSC_VER < 1900)
 #define SELBAWARD_NOEXCEPT
