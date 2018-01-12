@@ -1,14 +1,16 @@
 #include <Controller.h>
-#include "GameCore.hpp"
+#include "MenuCore.hpp"
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;
 GameState WindowProperties::gameState;
+sf::RenderWindow *WindowProperties::App;
 
 int main()
 {
-    GameCore &game = GameCore::Instance();
+    MenuCore &game = MenuCore::Instance();
     //Game game;
 
     game.start();
+    delete WindowProperties::App;
 }

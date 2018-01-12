@@ -3,7 +3,7 @@
 //
 
 #include "Enemy.h"
-#include "GameCore.hpp"
+#include "MenuCore.hpp"
 
 Enemy::Enemy(EnemyType type) : Entity()
 {

@@ -25,8 +25,7 @@ namespace buttonState
 class Button
 {
 public:
-    Button(std::vector<std::string> buttonEffectsPaths, std::function<void()> onClick);
-    Button(std::vector<std::string> buttonEffectsPaths);
+    explicit Button(std::vector<std::string> buttonEffectsPaths);
 
     ~Button();
 

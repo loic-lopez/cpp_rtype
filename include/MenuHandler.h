@@ -17,7 +17,7 @@
 #include "HUD.h"
 #include "Button.h"
 
-class Menu {
+class MenuHandler {
 private:
 
     //BACKGROUND AND MUSIC
@@ -30,8 +30,8 @@ private:
     std::vector<Button *> menuButtons;
 
 public:
-    Menu();
-    ~Menu();
+    MenuHandler();
+    ~MenuHandler();
     void initMenu(const std::string &path);
     void drawMenu(sf::RenderWindow &App);
     void updateMenu(sf::Event &e, sf::RenderWindow &window); // TODO : A APPELLER DANS LA BOUCLE DE JEU AVANT LE DRAW

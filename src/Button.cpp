@@ -5,20 +5,6 @@
 #include "Button.h"
 
 
-Button::Button(std::vector<std::string> buttonEffectsPaths, std::function<void()> onClick) {
-    this->textureNormal = new sf::Texture;
-    this->textureHovered = new sf::Texture;
-    this->textureClicked = new sf::Texture;
-    this->textureNormal->loadFromFile(buttonEffectsPaths[0]);
-    this->textureHovered->loadFromFile(buttonEffectsPaths[1]);
-    this->textureClicked->loadFromFile(buttonEffectsPaths[2]);
-    std::cout << "Textures well applied" << std::endl;
-    this->actualButtonState = buttonState::NORMAL;
-    this->buttonShape.setTexture(this->textureNormal);
-    this->buttonShape.setSize(this->getTextureSize());
-    this->onClick = onClick;
-}
-
 Button::Button(std::vector<std::string> buttonEffectsPaths) {
     this->textureNormal = new sf::Texture;
     this->textureHovered = new sf::Texture;

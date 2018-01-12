@@ -26,7 +26,7 @@ public:
     static unsigned int WIN_HEIGHT;
     static unsigned int WIN_WIDTH;
     static GameState    gameState;
-
+    static sf::RenderWindow *App;
 
     static void StaticWindow()
     {
@@ -37,6 +37,7 @@ public:
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
         gameState = GameState::MENU;
+        App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
     }
 };
 

@@ -28,11 +28,11 @@ set(SOURCE_FILES
         src/main.cpp
         src/Animation.cpp
         src/Bg.cpp
-        src/GameCore.cpp
+        src/MenuCore.cpp
         src/Level.cpp
         src/Bullet.cpp
         src/Enemy.cpp
-        src/Menu.cpp
+        src/MenuHandler.cpp
         src/Weapon.cpp
         src/TextureManager.cpp
         src/Parsing.cpp
@@ -47,7 +47,7 @@ set(HEADER_FILES
         include/Entity.h
         include/Player.h
         include/Animation.h
-        include/GameCore.hpp
+        include/MenuCore.hpp
         include/Bg.h
         include/Enum.h
         include/Level.h
@@ -55,7 +55,7 @@ set(HEADER_FILES
         include/Enemy.h
         include/TextureManager.h
         include/Weapon.h
-        include/Menu.h
+        include/MenuHandler.h
         include/WindowProperties.h
         include/HUD.h
         include/Parsing.h

@@ -2,19 +2,19 @@
 // Created by Zakelis on 09/01/2018.
 //
 
-#include "Menu.h"
+#include "MenuHandler.h"
 
-Menu::Menu()
+MenuHandler::MenuHandler()
 {
-    std::cout << "Menu constructor" << std::endl;
+    std::cout << "MenuHandler constructor" << std::endl;
 }
 
-Menu::~Menu()
+MenuHandler::~MenuHandler()
 {
     this->music.stop();
 }
 
-void Menu::initMenu(const std::string &path) {
+void MenuHandler::initMenu(const std::string &path) {
     this->music.stop();
     bool parsedBackgroundTexture = false;
     Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
@@ -50,13 +50,16 @@ void Menu::initMenu(const std::string &path) {
                 }
             }
         }
+
+        for (auto &func : this->menuButtons)
+            func->onClick = [] () {};
     });
     this->determineButtonsPosition();
 
 }
 
 
-void Menu::drawMenu(sf::RenderWindow &App)
+void MenuHandler::drawMenu(sf::RenderWindow &App)
 {
     App.draw(this->menuBackgroundSprite);
     for (auto &menuButton : this->menuButtons) {
@@ -64,13 +67,13 @@ void Menu::drawMenu(sf::RenderWindow &App)
     }
 }
 
-void Menu::updateMenu(sf::Event &e, sf::RenderWindow &window) {
+void MenuHandler::updateMenu(sf::Event &e, sf::RenderWindow &window) {
     for (auto &menuButton : this->menuButtons) {
         menuButton->update(e, window);
     }
 }
 
-void Menu::determineButtonsPosition() {
+void MenuHandler::determineButtonsPosition() {
     float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)(this->menuButtons[0]->buttonShape.getSize().x * 1.25);
     float firstXPosPlayButton = firstXPos;
     float firstYPos = (float)WindowProperties::WIN_HEIGHT / 8;
