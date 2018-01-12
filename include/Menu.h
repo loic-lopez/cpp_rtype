@@ -29,15 +29,6 @@ private:
     std::vector<std::string> buttonEffectsPaths;
     std::vector<Button *> menuButtons;
 
-    //MOUSE PARTICLES SYSTEM
-    sf::Texture mouseParticleTexture;
-    thor::UniversalEmitter particleEmitter;
-    thor::ParticleSystem particleSystem;
-
-    thor::ColorAnimation colorizer;
-    thor::FadeAnimation fader;
-    thor::PolarVector2f particleVelocity;
-
 public:
     Menu();
     ~Menu();
@@ -45,7 +36,6 @@ public:
     void drawMenu(sf::RenderWindow &App);
     void updateMenu(sf::Event &e, sf::RenderWindow &window); // TODO : A APPELLER DANS LA BOUCLE DE JEU AVANT LE DRAW
     void determineButtonsPosition();
-    void modifyParticleVelocity(int delta);
 };
 
 

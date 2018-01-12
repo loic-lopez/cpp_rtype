@@ -3,7 +3,6 @@
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;
-thor::ColorGradient WindowProperties::particleColorGradientMenu;
 
 int main()
 {

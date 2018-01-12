@@ -4,7 +4,7 @@
 
 #include "Menu.h"
 
-Menu::Menu() : colorizer(WindowProperties::particleColorGradientMenu), fader(0.1f, 0.1f), particleVelocity(200.0f, -90.0f)
+Menu::Menu()
 {
     std::cout << "Menu constructor" << std::endl;
 }
@@ -17,7 +17,6 @@ Menu::~Menu()
 void Menu::initMenu(const std::string &path) {
     this->music.stop();
     bool parsedBackgroundTexture = false;
-    bool parsedMouseParticleTexture = false;
     Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
         if (path.substr(path.find_last_of('.') + 1) == "ogg") {
             this->music.openFromFile(path);
@@ -37,52 +36,38 @@ void Menu::initMenu(const std::string &path) {
                 this->menuBackgroundSprite.setPosition(0, 0);
                 parsedBackgroundTexture = true;
             }
-            else if (!parsedMouseParticleTexture){
-                this->mouseParticleTexture.loadFromFile(path);
-                parsedMouseParticleTexture = true;
-            }
             else {
-                if (this->buttonEffectsPaths.size() == 3) {
-                    std::cout << "Button number " << this->menuButtons.size() << " is beeing created." << std::endl;
-                    Button *newButton = new Button(this->buttonEffectsPaths);
-                    std::cout << "Button number " << this->menuButtons.size() << " correctly created." << std::endl;
-                    this->menuButtons.push_back(newButton);
-                    this->buttonEffectsPaths.clear();
-                }
                 if (this->buttonEffectsPaths.size() < 3) {
                     std::cout << path << std::endl;
                     this->buttonEffectsPaths.push_back(path);
+                    if (this->buttonEffectsPaths.size() == 3) {
+                        std::cout << "Button number " << this->menuButtons.size() << " is beeing created." << std::endl;
+                        Button *newButton = new Button(this->buttonEffectsPaths);
+                        std::cout << "Button number " << this->menuButtons.size() << " correctly created." << std::endl;
+                        this->menuButtons.push_back(newButton);
+                        this->buttonEffectsPaths.clear();
+                    }
                 }
             }
         }
     });
     this->determineButtonsPosition();
-    this->particleEmitter.setEmissionRate(30.0f);
-    this->particleEmitter.setParticleLifetime(sf::seconds(5.0f));
-    this->particleSystem.setTexture(this->mouseParticleTexture);
-    this->particleSystem.addEmitter(this->particleEmitter);
-    this->particleSystem.addAffector(thor::AnimationAffector(this->colorizer));
-    this->particleSystem.addAffector(thor::AnimationAffector(this->fader));
-    this->particleSystem.addAffector(thor::TorqueAffector(100.0f));
-    this->particleSystem.addAffector(thor::ForceAffector(sf::Vector2f(0.0f, 100.0f)));
+
 }
 
 
 void Menu::drawMenu(sf::RenderWindow &App)
 {
     App.draw(this->menuBackgroundSprite);
-    for (int x = 0; x < this->menuButtons.size(); ++x) {
-        App.draw(this->menuButtons[x]->buttonShape);
+    for (auto &menuButton : this->menuButtons) {
+        App.draw(menuButton->buttonShape);
     }
-    App.draw(this->particleSystem);
 }
 
 void Menu::updateMenu(sf::Event &e, sf::RenderWindow &window) {
-    for (int i = 0; i < this->menuButtons.size(); ++i) {
-        this->menuButtons[i]->update(e, window);
+    for (auto &menuButton : this->menuButtons) {
+        menuButton->update(e, window);
     }
-    this->particleEmitter.setParticlePosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
-    this->particleEmitter.setParticleVelocity(thor::Distributions::deflect(this->particleVelocity, 10.0f));
 }
 
 void Menu::determineButtonsPosition() {
@@ -94,19 +79,15 @@ void Menu::determineButtonsPosition() {
     for (unsigned int x = 0; x < this->menuButtons.size(); x++)
     {
         if (x != 0) {
-            firstXPos += this->menuButtons[0]->buttonShape.getSize().x / 10;
-            firstXPosPlayButton -= this->menuButtons[0]->buttonShape.getSize().x / 8;
-            firstYPos += this->menuButtons[0]->buttonShape.getSize().y * 1.35;
-            firstYPosPlayButton += this->menuButtons[0]->buttonShape.getSize().y * 1.35;
+            firstXPos += this->menuButtons[x-1]->buttonShape.getSize().x / 10;
+            firstXPosPlayButton -= this->menuButtons[x-1]->buttonShape.getSize().x / 8;
+            firstYPos += this->menuButtons[x-1]->buttonShape.getSize().y * 1.25;
+            firstYPosPlayButton += this->menuButtons[x-1]->buttonShape.getSize().y * 1.35;
         }
         if (x == 3)
             this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPosPlayButton, firstYPosPlayButton)));
         else
             this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPos, firstYPos)));
     }
-}
-
-void Menu::modifyParticleVelocity(int delta) {
-    this->particleVelocity.phi += 12.5f * delta;
 }
 

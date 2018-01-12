@@ -179,13 +179,11 @@ void Game::start() {
                 switch (Event.type) {
                     case sf::Event::Closed:
                         gameState = GameState::CLOSE;
+                        break;
 
                     case sf::Event::KeyPressed:
                         if (Event.key.code == sf::Keyboard::Escape)
                             gameState = GameState::CLOSE;
-
-                    case sf::Event::MouseWheelMoved:
-                        this->menu.modifyParticleVelocity(Event.mouseWheel.delta);
                         break;
                 }
             }

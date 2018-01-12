@@ -24,7 +24,6 @@ class WindowProperties
 public:
     static unsigned int WIN_HEIGHT;
     static unsigned int WIN_WIDTH;
-    static thor::ColorGradient particleColorGradientMenu;
 
 
     static void StaticWindow()
@@ -35,10 +34,6 @@ public:
 
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
-        particleColorGradientMenu = thor::ColorGradient();
-        particleColorGradientMenu[0.f] = sf::Color(0, 150, 0);
-        particleColorGradientMenu[0.5f] = sf::Color(0, 150, 100);
-        particleColorGradientMenu[1.f] = sf::Color(0, 0, 150);
     }
 };
 
