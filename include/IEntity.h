@@ -10,7 +10,6 @@
 #include "Enum.h"
 #include "Animation.h"
 #include "TextureManager.h"
-//#include "Game.h"
 
 class IEntity
 {

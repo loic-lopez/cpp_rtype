@@ -55,18 +55,3 @@ void Hud::drawHud(sf::RenderWindow &App)
         App.draw(layers[1]->img);
     }
 }
-
-void Hud::drawHudMenu(sf::RenderWindow &App) {
-//  float     firstXPos = (float)WindowProperties::WIN_WIDTH / 2;
-//  float     firstYPos = (float)WindowProperties::WIN_HEIGHT / 10;
-    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)WindowProperties::WIN_WIDTH / 15;
-    float firstYPos = (float)WindowProperties::WIN_WIDTH / 15;
-    std::cout << this->layers.size() << std::endl;
-    for (unsigned int x = 0; x < this->layers.size(); x++)
-    {
-        firstXPos -= (float)layers[x]->texture.getSize().x;
-        firstYPos += (float)WindowProperties::WIN_HEIGHT / 10;
-        layers[x]->img.setPosition(firstXPos, firstYPos);
-        App.draw(layers[x]->img);
-    }
-}

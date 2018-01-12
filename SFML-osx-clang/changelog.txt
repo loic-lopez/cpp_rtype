@@ -143,7 +143,7 @@ Bugfixes
 * [Linux] Fixed modifiers causing sf::Keyboard::Unknown being returned (#1022, #1012)
 * [OS X] Improved memory management on OS X (#962, #790)
 * [OS X] Fixed crash when resizing a window to a zero-height/width size (#986, #984)
-* [OS X] Use the mouse button constant instead of 0 to avoid a compiler error on OSX (#1035)
+* [OS X] Use the mouse Button constant instead of 0 to avoid a compiler error on OSX (#1035)
 * [OS X] OS X improvement: warnings + bugfix + refactoring, the lot! (#1042)
 
 
@@ -545,7 +545,7 @@ Features
 
 Bugfixes
 --------
-* Fixed MouseMove event sometimes not generated when holding left button on Windows (#225)
+* Fixed MouseMove event sometimes not generated when holding left Button on Windows (#225)
 * Fixed ContextSettings ignored when creating a 3.x/4.x OpenGL context on Linux (#258)
 * Fixed ContextSettings ignored on Linux when creating a window (#35)
 * Fixed windows bigger than the desktop not appearing on Windows (#215)

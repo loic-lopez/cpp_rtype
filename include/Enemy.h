@@ -5,6 +5,7 @@
 #ifndef RTYPE_ENNEMY_H
 #define RTYPE_ENNEMY_H
 
+#include "WindowProperties.h"
 #include "Entity.h"
 #include "Bullet.h"
 

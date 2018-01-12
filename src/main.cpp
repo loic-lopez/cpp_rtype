@@ -1,16 +1,15 @@
-#include <Controller.h>
-#include <GameEngine.h>
-#include "Game.h"
+#include <Core/GameCore.h>
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;
+GameState WindowProperties::gameState;
+sf::RenderWindow *WindowProperties::App;
+Orientation WindowProperties::orientation;
 
 int main()
 {
-    GameEngine &gameEngine = GameEngine::Instance();
-    Game &game = Game::Instance();
-    //Game game;
+    GameCore &game = GameCore::Instance();
 
-    gameEngine.start();
     game.start();
+    delete WindowProperties::App;
 }
