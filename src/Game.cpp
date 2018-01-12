@@ -151,7 +151,7 @@ void Game::start() {
     gameState = GameState::GAME;
     level.initLvl("lvl1");
     hud.initHud("hud");
-    entities.push_back(new Enemy(EnemyType::BASIC_A));
+    //entities.push_back(new Enemy(EnemyType::BASIC_A));
     play = Player();
     bulletsEnemy.reserve(100000);
     gameState = GameState::MENU;

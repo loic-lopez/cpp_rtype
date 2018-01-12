@@ -7,7 +7,7 @@
 
 Weapon::Weapon()
 {
-    lvlWeapon = 3;
+    lvlWeapon = 1;
 }
 
 Weapon::~Weapon()
