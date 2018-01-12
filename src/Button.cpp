@@ -5,7 +5,7 @@
 #include "Button.h"
 
 
-Button::Button() {
+Button::Button(std::vector<std::string> buttonEffectsPaths, std::function<void()> lambda) {
 
 }
 
@@ -59,10 +59,10 @@ void Button::update(sf::Event &e, sf::RenderWindow &window) {
     //perform updates for user mouse interactions
     sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
 
-    bool mouseInButton = mousePosition.x >= buttonShape.getPosition().x - buttonShape.getGlobalBounds().width / 2
-                         && mousePosition.x <= buttonShape.getPosition().x + buttonShape.getGlobalBounds().width / 2
-                         && mousePosition.y >= buttonShape.getPosition().y - buttonShape.getGlobalBounds().height / 2
-                         && mousePosition.y <= buttonShape.getPosition().y + buttonShape.getGlobalBounds().height / 2;
+    bool mouseInButton = mousePosition.x >= buttonShape.getPosition().x
+                         && mousePosition.x <= buttonShape.getPosition().x + buttonShape.getGlobalBounds().width
+                         && mousePosition.y >= buttonShape.getPosition().y
+                         && mousePosition.y <= buttonShape.getPosition().y + buttonShape.getGlobalBounds().height;
 
     if (e.type == sf::Event::MouseMoved) {
         if (mouseInButton) {
@@ -120,5 +120,6 @@ void Button::update(sf::Event &e, sf::RenderWindow &window) {
             break;
     }
 }
+
 
 

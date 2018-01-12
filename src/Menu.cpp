@@ -9,10 +9,6 @@ Menu::Menu()
     std::cout << "Menu constructor" << std::endl;
 }
 
-Menu::Menu(std::function<void()> lambda) {
-    
-}
-
 Menu::~Menu()
 {
 

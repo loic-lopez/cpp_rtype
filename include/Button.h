@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp>
 #include <Thor/Shapes.hpp>
 #include <Thor/Graphics.hpp>
+#include <functional>
 
 
 namespace buttonState
@@ -24,7 +25,7 @@ namespace buttonState
 class Button
 {
 public:
-    Button();
+    Button(std::vector<std::string> buttonEffectsPaths, std::function<void()> lambda);
     Button(std::vector<std::string> buttonEffectsPaths);
 
     ~Button();

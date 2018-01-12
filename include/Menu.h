@@ -31,7 +31,6 @@ private:
 
 public:
     Menu();
-    Menu(std::function<void()> lambda);
     ~Menu();
     void initMenu(const std::string &path);
     void drawMenu(sf::RenderWindow &App);
