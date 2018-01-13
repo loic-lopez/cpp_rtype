@@ -22,6 +22,11 @@ MenuHandler::MenuHandler()
         WindowProperties::gameState = GameState::GAME;
         this->music.stop();
     });
+    this->functionsHandler.emplace_back([this] (){
+       //BOUTON EXIT
+        WindowProperties::gameState = GameState::CLOSE;
+        this->music.stop();
+    });
 }
 
 MenuHandler::~MenuHandler()
@@ -99,10 +104,15 @@ void MenuHandler::determineButtonsPosition() {
             firstXPos += this->menuButtons[x-1]->buttonShape.getSize().x / 10;
             firstXPosPlayButton -= this->menuButtons[x-1]->buttonShape.getSize().x / 8;
             firstYPos += this->menuButtons[x-1]->buttonShape.getSize().y * 1.25;
-            firstYPosPlayButton += this->menuButtons[x-1]->buttonShape.getSize().y * 1.35;
+            firstYPosPlayButton += this->menuButtons[x-1]->buttonShape.getSize().y * 1.25;
         }
         if (x == 3)
-            this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPosPlayButton, firstYPosPlayButton)));
+            this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f
+                    ((float)WindowProperties::WIN_WIDTH - this->menuButtons[x]->buttonShape.getSize().x,
+                     (float)WindowProperties::WIN_HEIGHT - this->menuButtons[x]->buttonShape.getSize().y)));
+        else if (x == 4)
+            this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f
+                    (0, (float)WindowProperties::WIN_HEIGHT - this->menuButtons[x]->buttonShape.getSize().y)));
         else
             this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPos, firstYPos)));
     }
