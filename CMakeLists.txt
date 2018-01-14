@@ -13,7 +13,6 @@ elseif (APPLE)
 else()
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-Linux")
     link_directories("${CMAKE_SOURCE_DIR}/SFML-Linux/lib")
-    message("Linux")
 endif (WIN32)
 
 
@@ -41,7 +40,6 @@ set(SOURCE_FILES
         src/TextureManager.cpp
         src/Parsing.cpp
         src/HUD.cpp
-        src/GameEngine.cpp
         src/Button.cpp
         src/SplashScreen.cpp
         src/Core/GameCore.cpp
@@ -51,7 +49,6 @@ file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SO
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
 
 set(HEADER_FILES
-        include/GameEngine.h
         include/IEntity.h
         include/Entity.h
         include/Player.h

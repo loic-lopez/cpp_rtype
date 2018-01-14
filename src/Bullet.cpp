@@ -27,13 +27,13 @@ Bullet::Bullet(BulletType type)
             setType(Textures::BULLET_ENEMY_A);
             break;
         }
-        case BulletType::REIMU_A :
+        case BulletType::PLAYER_A :
         {
             speed = 20;
             stance = Stance::IDLE;
-            sprites[(int) Stance::IDLE] = Animation(ptr1.getSprite(Textures::REIMU_BULLETS_A));
+            sprites[(int) Stance::IDLE] = Animation(ptr1.getSprite(Textures::PLAYER_BULLETS_A));
             setSide(Side::ALLIED);
-            setType(Textures::REIMU_BULLETS_A);
+            setType(Textures::PLAYER_BULLETS_A);
             break;
         }
     }

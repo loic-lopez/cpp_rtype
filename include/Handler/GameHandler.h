@@ -14,12 +14,11 @@
 #include "Enemy.h"
 #include "WindowProperties.h"
 #include "HUD.h"
-#include "GameEngine.h"
+
+#pragma once
 
 class GameHandler
 {
-    GameEngine  &gameEngine;
-
 private:
     static GameHandler m_instance;
 
@@ -28,23 +27,24 @@ private:
     ~GameHandler();
 
     GameHandler &operator=(const GameHandler &)
+    {
+        return *this;
+    }
+
+    GameHandler(const GameHandler &)
     {}
 
-    GameHandler(const GameHandler &) : gameEngine(GameEngine::Instance())
-    {}
-
-    //Orientation orientation;
-    GameState gameState;
     sf::Clock clock;
 
     Hud hud;
     Level level;
-    Player play;
+    Player player;
     std::vector<IEntity *> bulletsEnemy;
     std::vector<IEntity *> bulletsAllied;
     std::vector<IEntity *> entities;
 
     sf::Mutex mutex;
+
 public:
     static GameHandler &Instance();
 
@@ -67,6 +67,7 @@ public:
     void unlock();
 
     void addBullet(IEntity *);
+    void checkEntitiesBoxes();
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

@@ -38,6 +38,7 @@ public:
     virtual void setTrajectory(const sf::Vector2f &) = 0;
     virtual Orientation getOrientation() const = 0;
     virtual void setOrientation(Orientation orientation) = 0;
+    virtual sf::FloatRect getHitBox() = 0;
 };
 
 #endif //RTYPE_IENTITY_H

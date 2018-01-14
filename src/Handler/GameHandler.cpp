@@ -7,7 +7,7 @@
 GameHandler GameHandler::m_instance = GameHandler();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-GameHandler::GameHandler() : gameEngine(GameEngine::Instance())
+GameHandler::GameHandler()
 {
     level.initLvl("lvl1");
     hud.initHud("hud");
@@ -36,7 +36,7 @@ GameHandler &GameHandler::Instance()
 void GameHandler::changeOrientation(Orientation orientation)
 {
     level.changeOrientation(orientation);
-    play.changeOrientation(orientation);
+    player.changeOrientation(orientation);
     for (size_t i = 0; i < bulletsEnemy.size(); i++)
         bulletsEnemy[i]->changeOrientation(orientation);
     for (size_t i = 0; i < bulletsAllied.size(); i++)
@@ -50,15 +50,15 @@ void GameHandler::controller()
     sf::Keyboard keyboard;
 
     if (keyboard.isKeyPressed(sf::Keyboard::Up))
-        play.move(sf::Vector2f(0, -1));
+        player.move(sf::Vector2f(0, -1));
     if (keyboard.isKeyPressed(sf::Keyboard::Down))
-        play.move(sf::Vector2f(0, 1));
+        player.move(sf::Vector2f(0, 1));
     if (keyboard.isKeyPressed(sf::Keyboard::Left))
-        play.move(sf::Vector2f(-1, 0));
+        player.move(sf::Vector2f(-1, 0));
     if (keyboard.isKeyPressed(sf::Keyboard::Right))
-        play.move(sf::Vector2f(1, 0));
+        player.move(sf::Vector2f(1, 0));
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
-        play.shoot();
+        player.shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
        WindowProperties::gameState = GameState::CLOSE;/*
     if (keyboard.isKeyPressed(sf::Keyboard::A))
@@ -77,10 +77,10 @@ void GameHandler::XboxController()
     posX = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
     posY = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
     speed = sf::Vector2f((posX / 100), (posY / 100));
-    play.move(speed);
+    player.move(speed);
     if (sf::Joystick::isButtonPressed(0, 0))
     {
-        play.shoot();
+        player.shoot();
     }
     if (sf::Joystick::isButtonPressed(0, 1))
     {
@@ -127,7 +127,7 @@ void GameHandler::XboxController()
 
 void GameHandler::updateEntities()
 {
-    play.updatePos();
+    player.updatePos();
     for (size_t i = 0; i < entities.size(); i++)
     {
         this->entities[i]->updatePos();
@@ -164,32 +164,26 @@ void GameHandler::updateAlliedBullet()
 /************************************************* MAINLOOP *************************************************/
 void GameHandler::start()
 {
+    player = Player();
     entities.push_back(new Enemy(EnemyType::BASIC_A));
-    play = Player();
-    this->gameEngine.fillEntities(&play, play.getSide(), play.getType());
-    for (size_t i = 0; i < entities.size(); i++)
-    {
-        auto *entity = static_cast<Entity *>(entities[i]);
-        this->gameEngine.fillEntities(entity, entity->getSide(), entity->getType());
-    }
-    this->gameEngine.start();
-    bulletsEnemy.reserve(100000);
 
     sf::Event Event;
+    sf::Time elapsed;
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAME)
     {
-        sf::Time elapsed = clock.getElapsedTime();
+        elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
 
-            if (play.getGameMovementMode() == ControlType::KEYBOARD)
+            if (player.getGameMovementMode() == ControlType::KEYBOARD)
                 controller();
-            else if (play.getGameMovementMode() == ControlType::XBOXCONTROLLER)
+            else if (player.getGameMovementMode() == ControlType::XBOXCONTROLLER)
                 XboxController();
 
             updateEntities();
             updateAlliedBullet();
+            checkEntitiesBoxes();
             drawAll(*WindowProperties::App);
             while (WindowProperties::App->pollEvent(Event))
             {
@@ -205,12 +199,33 @@ void GameHandler::start()
                             WindowProperties::gameState = GameState::CLOSE;
                         break;
                     }
+                    case sf::Event::Resized:break;
+                    case sf::Event::LostFocus:break;
+                    case sf::Event::GainedFocus:break;
+                    case sf::Event::TextEntered:break;
+                    case sf::Event::KeyReleased:break;
+                    case sf::Event::MouseWheelMoved:break;
+                    case sf::Event::MouseWheelScrolled:break;
+                    case sf::Event::MouseButtonPressed:break;
+                    case sf::Event::MouseButtonReleased:break;
+                    case sf::Event::MouseMoved:break;
+                    case sf::Event::MouseEntered:break;
+                    case sf::Event::MouseLeft:break;
+                    case sf::Event::JoystickButtonPressed:break;
+                    case sf::Event::JoystickButtonReleased:break;
+                    case sf::Event::JoystickMoved:break;
+                    case sf::Event::JoystickConnected:break;
+                    case sf::Event::JoystickDisconnected:break;
+                    case sf::Event::TouchBegan:break;
+                    case sf::Event::TouchMoved:break;
+                    case sf::Event::TouchEnded:break;
+                    case sf::Event::SensorChanged:break;
+                    case sf::Event::Count:break;
                 }
             }
             WindowProperties::App->display();
         }
     }
-    this->gameEngine.stopThread();
 }
 
 /************************************************* DRAW *************************************************/
@@ -230,7 +245,7 @@ void GameHandler::drawAll(sf::RenderWindow &App)
     {
         entities[i]->drawSprite(App);
     }
-    play.drawSprite(App);
+    player.drawSprite(App);
 }
 
 void GameHandler::lock()
@@ -249,4 +264,17 @@ void GameHandler::addBullet(IEntity *newBullet)
         bulletsEnemy.push_back(newBullet);
     else
         bulletsAllied.push_back(newBullet);
+}
+
+void GameHandler::checkEntitiesBoxes()
+{
+    for (auto &bulletAllied : bulletsAllied)
+        for (auto &entity : entities)
+            if (bulletAllied->getHitBox().intersects(entity->getHitBox()))
+                std::cout << "enemy hit !!" << std::endl;
+
+    for (auto &bulletEnemy : bulletsEnemy)
+        if (bulletEnemy->getHitBox().intersects(player.getHitBox()))
+            std::cout << "PLAYER hit !!" << std::endl;
+
 }

@@ -140,3 +140,8 @@ Textures Entity::getType()
 {
     return this->type;
 }
+
+sf::FloatRect Entity::getHitBox()
+{
+    return this->sprites[static_cast<int>(this->stance)].getSize();
+}

@@ -29,7 +29,9 @@ private:
     ~MenuCore();
 
     MenuCore &operator=(const MenuCore &)
-    {}
+    {
+        return *this;
+    }
 
     MenuCore(const MenuCore &)
     {}

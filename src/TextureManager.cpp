@@ -10,8 +10,8 @@ TextureManager::TextureManager()
 {
     sprites[(int) Textures::BULLET_BASIC_A] = Animation("bullet", Stance::IDLE);
     sprites[(int) Textures::BULLET_ENEMY_A] = Animation("enemyBulletA", Stance::IDLE);
-    sprites[(int) Textures::REIMU] = Animation("player", Stance::IDLE);
-    sprites[(int) Textures::REIMU_BULLETS_A] = Animation("reimuBullets", Stance::IDLE);
+    sprites[(int) Textures::PLAYER] = Animation("player", Stance::IDLE);
+    sprites[(int) Textures::PLAYER_BULLETS_A] = Animation("reimuBullets", Stance::IDLE);
     sprites[(int) Textures::ENEMY1] = Animation("enemy1", Stance::IDLE);
 }
 

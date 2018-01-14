@@ -45,6 +45,7 @@ public:
     virtual Side getSide();
     virtual void setType(Textures textures);
     virtual Textures getType();
+    virtual sf::FloatRect getHitBox();
 
     virtual void shoot() = 0;
     virtual void updatePos() = 0;

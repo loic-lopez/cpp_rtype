@@ -20,13 +20,11 @@ GameCore::~GameCore()
 
 void GameCore::start()
 {
-    // TODO: ADD SPLASHSCREEN
     this->splashScreen.start();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState != GameState::CLOSE)
     {
         this->menuCore.start();
         this->gameHandler.start();
-        // TODO: ADD GAME
     }
     WindowProperties::App->close();
 }

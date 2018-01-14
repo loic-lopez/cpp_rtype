@@ -14,14 +14,13 @@ Player::Player() : Entity()
     trajectory.y = 0;
     speed = 10;
     stance = Stance::IDLE;
-    sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::REIMU);
+    sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::PLAYER);
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
     weapon.setWeapon(WeaponType::STRAIGHT, 10);
     setHp(3);
     setSide(Side::ALLIED);
-    this->setType(Textures::REIMU);
-
+    this->setType(Textures::PLAYER);
 }
 
 Player::~Player()
@@ -34,7 +33,7 @@ void Player::shoot()
     if (shootCooldown == 0)
     {
         shootCooldown = weapon.getCoolDown();
-        weapon.shoot(orientation, pos, Side::ALLIED, BulletType::REIMU_A);
+        weapon.shoot(orientation, pos, Side::ALLIED, BulletType::PLAYER_A);
     }
 }
 
