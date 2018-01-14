@@ -20,6 +20,8 @@ Enemy::Enemy(EnemyType type) : Entity()
         speed = 10;
         weapon.setWeapon(WeaponType::SPREAD, 6, 10);
     }
+    this->setSide(Side::ENEMY);
+    this->setType(Textures::ENEMY1);
 }
 
 Enemy::~Enemy()

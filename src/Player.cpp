@@ -19,6 +19,9 @@ Player::Player() : Entity()
     GameMovementMode = ControlType::KEYBOARD;
     weapon.setWeapon(WeaponType::STRAIGHT, 10);
     setHp(3);
+    setSide(Side::ALLIED);
+    this->setType(Textures::REIMU);
+
 }
 
 Player::~Player()

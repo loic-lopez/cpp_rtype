@@ -6,7 +6,9 @@
 
 GameCore GameCore::m_instance = GameCore();
 
-GameCore::GameCore() : menuCore(MenuCore::Instance()), gameHandler(GameHandler::Instance()), splashScreen(SplashScreen::Instance())
+GameCore::GameCore() : menuCore(MenuCore::Instance()),
+                       gameHandler(GameHandler::Instance()),
+                       splashScreen(SplashScreen::Instance())
 {
 
 }

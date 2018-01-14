@@ -14,9 +14,12 @@
 #include "Enemy.h"
 #include "WindowProperties.h"
 #include "HUD.h"
+#include "GameEngine.h"
 
 class GameHandler
 {
+    GameEngine  &gameEngine;
+
 private:
     static GameHandler m_instance;
 
@@ -27,7 +30,7 @@ private:
     GameHandler &operator=(const GameHandler &)
     {}
 
-    GameHandler(const GameHandler &)
+    GameHandler(const GameHandler &) : gameEngine(GameEngine::Instance())
     {}
 
     //Orientation orientation;

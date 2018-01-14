@@ -7,7 +7,7 @@
 GameHandler GameHandler::m_instance = GameHandler();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-GameHandler::GameHandler()
+GameHandler::GameHandler() : gameEngine(GameEngine::Instance())
 {
     level.initLvl("lvl1");
     hud.initHud("hud");
@@ -60,7 +60,7 @@ void GameHandler::controller()
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
         play.shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
-        gameState = GameState::CLOSE;/*
+       WindowProperties::gameState = GameState::CLOSE;/*
     if (keyboard.isKeyPressed(sf::Keyboard::A))
         changeOrientation(Orientation::HORIZONTAL);
     if (keyboard.isKeyPressed(sf::Keyboard::Z))
@@ -164,9 +164,15 @@ void GameHandler::updateAlliedBullet()
 /************************************************* MAINLOOP *************************************************/
 void GameHandler::start()
 {
-
-    //entities.push_back(new Enemy(EnemyType::BASIC_A));
+    entities.push_back(new Enemy(EnemyType::BASIC_A));
     play = Player();
+    this->gameEngine.fillEntities(&play, play.getSide(), play.getType());
+    for (size_t i = 0; i < entities.size(); i++)
+    {
+        auto *entity = static_cast<Entity *>(entities[i]);
+        this->gameEngine.fillEntities(entity, entity->getSide(), entity->getType());
+    }
+    this->gameEngine.start();
     bulletsEnemy.reserve(100000);
 
     sf::Event Event;
@@ -204,6 +210,7 @@ void GameHandler::start()
             WindowProperties::App->display();
         }
     }
+    this->gameEngine.stopThread();
 }
 
 /************************************************* DRAW *************************************************/

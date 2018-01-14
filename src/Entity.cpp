@@ -121,3 +121,22 @@ sf::FloatRect   Entity::getBounds()
 {
     return this->sprites[0].getSize();
 }
+
+void Entity::setSide(Side side)
+{
+    this->side = side;
+}
+Side Entity::getSide()
+{
+    return this->side;
+}
+
+void Entity::setType(Textures textures)
+{
+    this->type = textures;
+}
+
+Textures Entity::getType()
+{
+    return this->type;
+}

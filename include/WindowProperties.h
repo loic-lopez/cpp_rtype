@@ -37,7 +37,7 @@ public:
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
         orientation = Orientation::HORIZONTAL;
-        gameState = GameState::SPLASHSCREEN;
+        gameState = GameState::GAME;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
         App->setVerticalSyncEnabled(true);
     }

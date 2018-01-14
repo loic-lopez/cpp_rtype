@@ -20,6 +20,10 @@ public:
     virtual const sf::Vector2f &getPos() const = 0;
     virtual void setPos(const sf::Vector2f &pos) = 0;
     virtual sf::FloatRect getBounds() = 0;
+    virtual void setSide(Side) = 0;
+    virtual Side getSide() = 0;
+    virtual void setType(Textures) = 0;
+    virtual Textures getType() = 0;
 
     virtual Stance getStance() const = 0;
     virtual void setStance(Stance stance) = 0;

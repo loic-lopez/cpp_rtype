@@ -10,7 +10,6 @@
 #include <string>
 #include <fstream>
 #include <thread>
-#include "Game.h"
 #include "Entity.h"
 #include "Enum.h"
 
@@ -26,7 +25,8 @@ class GameEngine
 
     std::vector<Thing *>  Entities;
     static GameEngine   m_Instance;
-    sf::Thread          gameEngineThread;
+    sf::Thread          *gameEngineThread;
+    bool                active;
 
 public:
     static GameEngine   &Instance();
@@ -37,12 +37,11 @@ public:
     std::vector<Thing *>      getEntities();
     void                    fillEntities(Entity *, Side, Textures);
 
-    static void run();
-
     void addThing();
     void checkHitBoxes();
     void start();
     int  checkPlayerBoxe(GameEngine::Thing *player, GameEngine::Thing *obstacles);
+    void stopThread();
 };
 
 

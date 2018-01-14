@@ -14,6 +14,8 @@ Bullet::Bullet(BulletType type)
             speed = 40;
             stance = Stance::IDLE;
             sprites[(int) Stance::IDLE] = Animation(ptr1.getSprite(Textures::BULLET_BASIC_A));
+            setSide(Side::ALLIED);
+            setType(Textures::BULLET_BASIC_A);
             break;
         }
         case BulletType::ENEMY_A :
@@ -21,6 +23,8 @@ Bullet::Bullet(BulletType type)
             speed = 10;
             stance = Stance::IDLE;
             sprites[(int) Stance::IDLE] = Animation(ptr1.getSprite(Textures::BULLET_ENEMY_A));
+            setSide(Side::ENEMY);
+            setType(Textures::BULLET_ENEMY_A);
             break;
         }
         case BulletType::REIMU_A :
@@ -28,6 +32,8 @@ Bullet::Bullet(BulletType type)
             speed = 20;
             stance = Stance::IDLE;
             sprites[(int) Stance::IDLE] = Animation(ptr1.getSprite(Textures::REIMU_BULLETS_A));
+            setSide(Side::ALLIED);
+            setType(Textures::REIMU_BULLETS_A);
             break;
         }
     }
