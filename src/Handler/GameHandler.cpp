@@ -266,13 +266,17 @@ void GameHandler::addBullet(IEntity *newBullet)
 void GameHandler::checkEntitiesBoxes()
 {
     for (auto it = bulletsAllied.begin(); it < bulletsAllied.end(); ++it)
-        for (auto &entity : entities)
-            if ((*it)->getHitBox().intersects(entity->getHitBox()))
-            {
-                bulletsAllied.erase(it);
-            }
+        if (!entities.empty())
+            for (auto enemy = entities.begin(); enemy < entities.end(); ++enemy)
+                if ((*it)->getHitBox().intersects((*enemy)->getHitBox()))
+                {
+                    if ((*enemy)->getType() == Textures::ENEMY1)
+                        entities.erase(enemy);
+                    bulletsAllied.erase(it);
+                }
 
-    for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it) {
+    for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it)
+    {
         if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
             if (this->player.getHp() > 0 && cloque.asMilliseconds() > 1500)
@@ -288,7 +292,7 @@ void GameHandler::checkEntitiesBoxes()
     }
 }
 
-Player  &GameHandler::getPlayer()
+Player &GameHandler::getPlayer()
 {
     return this->player;
 }
