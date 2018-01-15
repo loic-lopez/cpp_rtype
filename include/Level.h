@@ -22,6 +22,8 @@ public:
     void initLvl(const std::string &path);
     void changeOrientation(Orientation orientation);
     void drawLvl(sf::RenderWindow &App);
+    void changeMusicStatus(const std::string &status);
+    const sf::SoundSource::Status getMusicStatus(void);
 };
 
 

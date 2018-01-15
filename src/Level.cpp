@@ -28,7 +28,6 @@ void Level::initLvl(const std::string &path)
         {
             music.openFromFile(path);
             music.setLoop(true);
-            music.play();
         }
         else if (path.substr(path.find_last_of('.') + 1) == "png" ||
                 (path.substr(path.find_last_of('.') + 1) == "jpg"))
@@ -39,4 +38,26 @@ void Level::initLvl(const std::string &path)
 void Level::drawLvl(sf::RenderWindow &App)
 {
     back.drawBackground(App);
+}
+
+void Level::changeMusicStatus(const std::string &status)
+{
+    if (status == "stop")
+        music.stop();
+    else if (status == "play")
+        music.play();
+    else if (status == "pause")
+        music.pause();
+}
+
+const sf::SoundSource::Status Level::getMusicStatus() {
+    return (music.getStatus());
+/*
+    if (music.getStatus() == sf::SoundSource::Stopped)
+        return (sf::SoundSource::Stopped);
+    else if (music.getStatus() == sf::SoundSource::Paused)
+        return (sf::SoundSource::Paused);
+    else if (music.getStatus() == sf::SoundSource::Playing)
+        return (sf::SoundSource::Playing);
+*/
 }

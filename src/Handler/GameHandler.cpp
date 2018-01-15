@@ -43,23 +43,23 @@ void GameHandler::controller() {
     sf::Keyboard keyboard;
 
     if (keyboard.isKeyPressed(sf::Keyboard::LShift)) {
-        if (keyboard.isKeyPressed(sf::Keyboard::Up))
+        if (keyboard.isKeyPressed(sf::Keyboard::Z))
             play.move(sf::Vector2f(0, -2));
-        if (keyboard.isKeyPressed(sf::Keyboard::Down))
+        if (keyboard.isKeyPressed(sf::Keyboard::S))
             play.move(sf::Vector2f(0, 2));
-        if (keyboard.isKeyPressed(sf::Keyboard::Left))
+        if (keyboard.isKeyPressed(sf::Keyboard::Q))
             play.move(sf::Vector2f(-2, 0));
-        if (keyboard.isKeyPressed(sf::Keyboard::Right))
+        if (keyboard.isKeyPressed(sf::Keyboard::D))
             play.move(sf::Vector2f(2, 0));
     }
     else {
-        if (keyboard.isKeyPressed(sf::Keyboard::Up))
+        if (keyboard.isKeyPressed(sf::Keyboard::Z))
             play.move(sf::Vector2f(0, -1));
-        if (keyboard.isKeyPressed(sf::Keyboard::Down))
+        if (keyboard.isKeyPressed(sf::Keyboard::S))
             play.move(sf::Vector2f(0, 1));
-        if (keyboard.isKeyPressed(sf::Keyboard::Left))
+        if (keyboard.isKeyPressed(sf::Keyboard::Q))
             play.move(sf::Vector2f(-1, 0));
-        if (keyboard.isKeyPressed(sf::Keyboard::Right))
+        if (keyboard.isKeyPressed(sf::Keyboard::D))
             play.move(sf::Vector2f(1, 0));
     }
 
@@ -157,6 +157,9 @@ void GameHandler::start() {
 
     sf::Event Event;
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAME) {
+        if (level.getMusicStatus() == sf::SoundSource::Paused
+            || level.getMusicStatus() == sf::SoundSource::Stopped)
+            level.changeMusicStatus("play");
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();

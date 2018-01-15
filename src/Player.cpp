@@ -17,10 +17,16 @@ Player::Player() : Entity()
     sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::REIMU);
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
-    weapon.setWeapon(WeaponType::STRAIGHT, 27);
+    weapon.setWeapon(WeaponType::STRAIGHT, 12);
     setHp(3);
     shotSound.openFromFile("./ressources/bullet/shot.ogg");
+    shotSound2.openFromFile("./ressources/bullet/shot.ogg");
+    shotSound3.openFromFile("./ressources/bullet/shot.ogg");
+    shotSound4.openFromFile("./ressources/bullet/shot.ogg");
     shotSound.setLoop(false);
+    shotSound2.setLoop(false);
+    shotSound3.setLoop(false);
+    shotSound4.setLoop(false);
 }
 
 Player::~Player()
@@ -34,7 +40,14 @@ void Player::shoot()
     {
         shootCooldown = weapon.getCoolDown();
         weapon.shoot(orientation, pos, Side::ALLIED, BulletType::REIMU_A);
-        shotSound.play();
+        if (shotSound.getStatus() != sf::SoundStream::Playing)
+            shotSound.play();
+        else if (shotSound2.getStatus() != sf::SoundStream::Playing)
+            shotSound2.play();
+        else if (shotSound3.getStatus() != sf::SoundStream::Playing)
+            shotSound3.play();
+        else
+            shotSound4.play();
     }
 }
 
