@@ -18,8 +18,8 @@ Enemy::Enemy(EnemyType type) : Entity()
         pos.y = rand() % WindowProperties::WIN_HEIGHT;
         trajectory.x = 1;
         trajectory.y = 0;
-        speed = 4;
-        weapon.setWeapon(WeaponType::SPREAD, 22, 1);
+        speed = 3;
+        weapon.setWeapon(WeaponType::SPREAD, 40, 1);
     }
     this->setSide(Side::ENEMY);
     this->setType(Textures::ENEMY1);
@@ -67,14 +67,17 @@ void Enemy::shoot()
 
 void Enemy::updatePos()
 {
-    if (shootCooldown > 0)
+    if (shootCooldown > 0) {
         shootCooldown--;
+    }
     if (orientation == Orientation::VERTICAL)
     {
-        if (back)
+        if (back) {
             move(sf::Vector2f(1, 0));
-        else
+        }
+        else {
             move(sf::Vector2f(-1, 0));
+        }
         if (pos.x == WindowProperties::WIN_WIDTH && back)
         {
             back = false;
@@ -86,7 +89,7 @@ void Enemy::updatePos()
     }
     else if (orientation == Orientation::HORIZONTAL)
     {
-        move(sf::Vector2f(-trajectory.x, 0));
+        //move(sf::Vector2f(-trajectory.x, 0));
         if (back)
             move(sf::Vector2f(0, 1));
         else
@@ -99,6 +102,14 @@ void Enemy::updatePos()
         {
             back = true;
         }
+        if (back2)
+            move(sf::Vector2f(trajectory.x, 0));
+        else
+            move(sf::Vector2f(-trajectory.x, 0));
+        if (pos.x == WindowProperties::WIN_WIDTH && back2)
+            back2 = false;
+        if (pos.x == 0 && !back2)
+            back2 = true;
     }
 
 }

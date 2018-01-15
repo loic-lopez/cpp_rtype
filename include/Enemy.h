@@ -13,6 +13,7 @@
 class Enemy : public Entity{
 private:
     bool back = true;
+    bool back2 = false;
     EnemyType enemyType;
 
 public:
