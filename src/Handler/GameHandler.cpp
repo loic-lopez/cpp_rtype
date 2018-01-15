@@ -15,12 +15,12 @@ GameHandler::GameHandler()
 
 GameHandler::~GameHandler()
 {
-    while (bulletsEnemy.size() != 0)
+    while (!bulletsEnemy.empty())
     {
         delete (bulletsEnemy[0]);
         bulletsEnemy.erase(bulletsEnemy.begin());
     }
-    while (entities.size() != 0)
+    while (!entities.empty())
     {
         delete (entities[0]);
         entities.erase(entities.begin());
@@ -37,12 +37,12 @@ void GameHandler::changeOrientation(Orientation orientation)
 {
     level.changeOrientation(orientation);
     player.changeOrientation(orientation);
-    for (size_t i = 0; i < bulletsEnemy.size(); i++)
-        bulletsEnemy[i]->changeOrientation(orientation);
-    for (size_t i = 0; i < bulletsAllied.size(); i++)
-        bulletsAllied[i]->changeOrientation(orientation);
-    for (size_t i = 0; i < entities.size(); i++)
-        entities[i]->changeOrientation(orientation);
+    for (auto &bullet : bulletsEnemy)
+        bullet->changeOrientation(orientation);
+    for (auto &bullet : bulletsAllied)
+        bullet->changeOrientation(orientation);
+    for (auto &entity : entities)
+        entity->changeOrientation(orientation);
 }
 
 void GameHandler::controller()
@@ -180,13 +180,15 @@ void GameHandler::start()
     entities.push_back(new Enemy(EnemyType::BASIC_A));
     bulletsEnemy.reserve(100000);
 
+    if (level.getMusicStatus() == sf::SoundSource::Paused
+        || level.getMusicStatus() == sf::SoundSource::Stopped)
+        level.changeMusicStatus("play");
+
     sf::Event Event;
     sf::Time elapsed;
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAME)
     {
-        if (level.getMusicStatus() == sf::SoundSource::Paused
-            || level.getMusicStatus() == sf::SoundSource::Stopped)
-            level.changeMusicStatus("play");
+
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
@@ -221,6 +223,9 @@ void GameHandler::start()
             WindowProperties::App->display();
         }
     }
+    /*level1.start();
+    level2.start();*/
+    level.changeMusicStatus("stop");
 }
 
 /************************************************* DRAW *************************************************/
@@ -228,18 +233,12 @@ void GameHandler::drawAll(sf::RenderWindow &App)
 {
     level.drawLvl(App);
     hud.drawHud(App);
-    for (size_t i = 0; i < bulletsEnemy.size(); i++)
-    {
-        bulletsEnemy[i]->drawSprite(App);
-    }
-    for (size_t i = 0; i < bulletsAllied.size(); i++)
-    {
-        bulletsAllied[i]->drawSprite(App);
-    }
-    for (size_t i = 0; i < entities.size(); i++)
-    {
-        entities[i]->drawSprite(App);
-    }
+    for (auto &bullet : bulletsEnemy)
+        bullet->drawSprite(App);
+    for (auto &bullet : bulletsAllied)
+        bullet->drawSprite(App);
+    for (auto &entity : entities)
+        entity->drawSprite(App);
     player.drawSprite(App);
 }
 
