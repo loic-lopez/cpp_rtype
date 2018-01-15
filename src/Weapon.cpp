@@ -2,9 +2,7 @@
 // Created by Zàkelis on 09/12/2017.
 //
 
-#include <Core/MenuCore.hpp>
 #include <Handler/GameHandler.h>
-#include "Weapon.h"
 
 Weapon::Weapon()
 {
@@ -31,7 +29,7 @@ Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletTy
 void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)
 {
     int i = 0;
-    MenuCore &game = MenuCore::Instance();
+
     while (i < lvlWeapon)
     {
         if (orientation == Orientation::HORIZONTAL)
@@ -70,7 +68,6 @@ void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, Bull
 
 void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)
 {
-    MenuCore &game = MenuCore::Instance();
 
     int i = 0;
     while (i < lvlWeapon)

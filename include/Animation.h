@@ -36,6 +36,8 @@ public:
     void freeDatas();
     sf::FloatRect getSize();
     void setScale(int);
+    void setScale(const sf::Vector2f);
+    sf::FloatRect getGlobalBounds() const;
     int totalFrame();
 };
 

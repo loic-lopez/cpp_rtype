@@ -7,26 +7,31 @@
 
 MenuHandler::MenuHandler()
 {
-    this->functionsHandler.emplace_back([] () {
-    // BOUTON TITRE, AUCUNE ACTION LORSQUE CLIC
-    });
+    this->functionsHandler.emplace_back([]()
+                                        {
+                                            // BOUTON TITRE, AUCUNE ACTION LORSQUE CLIC
+                                        });
 
-    this->functionsHandler.emplace_back([] () {
-    // BOUTON OPTION
-    });
-    this->functionsHandler.emplace_back([] () {
-    // BOUTON CREDITS
-    });
-    this->functionsHandler.emplace_back([this] () {
-        //BOUTON JOUER
-        WindowProperties::gameState = GameState::GAME;
-        this->music.stop();
-    });
-    this->functionsHandler.emplace_back([this] (){
-       //BOUTON EXIT
-        WindowProperties::gameState = GameState::CLOSE;
-        this->music.stop();
-    });
+    this->functionsHandler.emplace_back([]()
+                                        {
+                                            // BOUTON OPTION
+                                        });
+    this->functionsHandler.emplace_back([]()
+                                        {
+                                            // BOUTON CREDITS
+                                        });
+    this->functionsHandler.emplace_back([this]()
+                                        {
+                                            //BOUTON JOUER
+                                            WindowProperties::gameState = GameState::GAME;
+                                            this->music.stop();
+                                        });
+    this->functionsHandler.emplace_back([this]()
+                                        {
+                                            //BOUTON EXIT
+                                            WindowProperties::gameState = GameState::CLOSE;
+                                            this->music.stop();
+                                        });
 }
 
 MenuHandler::~MenuHandler()
@@ -34,18 +39,23 @@ MenuHandler::~MenuHandler()
     this->music.stop();
 }
 
-void MenuHandler::initMenu(const std::string &path) {
+void MenuHandler::initMenu(const std::string &path)
+{
     this->music.stop();
     bool parsedBackgroundTexture = false;
-    Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
-        if (path.substr(path.find_last_of('.') + 1) == "ogg") {
+    Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
+    {
+        if (path.substr(path.find_last_of('.') + 1) == "ogg")
+        {
             this->music.openFromFile(path);
             this->music.setLoop(true);
             this->music.play();
         }
         else if (path.substr(path.find_last_of('.') + 1) == "png" ||
-                path.substr(path.find_last_of('.') + 1) == "jpg") {
-            if (!parsedBackgroundTexture) {
+                 path.substr(path.find_last_of('.') + 1) == "jpg")
+        {
+            if (!parsedBackgroundTexture)
+            {
                 float scaleX;
                 float scaleY;
                 this->backgroundTexture.loadFromFile(path);
@@ -56,14 +66,14 @@ void MenuHandler::initMenu(const std::string &path) {
                 this->menuBackgroundSprite.setPosition(0, 0);
                 parsedBackgroundTexture = true;
             }
-            else {
-                if (this->buttonEffectsPaths.size() < 3) {
-                    std::cout << path << std::endl;
+            else
+            {
+                if (this->buttonEffectsPaths.size() < 3)
+                {
                     this->buttonEffectsPaths.push_back(path);
-                    if (this->buttonEffectsPaths.size() == 3) {
-                        std::cout << "Button number " << this->menuButtons.size() << " is beeing created." << std::endl;
+                    if (this->buttonEffectsPaths.size() == 3)
+                    {
                         Button *newButton = new Button(this->buttonEffectsPaths);
-                        std::cout << "Button number " << this->menuButtons.size() << " correctly created." << std::endl;
                         this->menuButtons.push_back(newButton);
                         this->buttonEffectsPaths.clear();
                     }
@@ -81,38 +91,43 @@ void MenuHandler::initMenu(const std::string &path) {
 void MenuHandler::drawMenu(sf::RenderWindow &App)
 {
     App.draw(this->menuBackgroundSprite);
-    for (auto &menuButton : this->menuButtons) {
+    for (auto &menuButton : this->menuButtons)
+    {
         App.draw(menuButton->buttonShape);
     }
 }
 
-void MenuHandler::updateMenu(sf::Event &e, sf::RenderWindow &window) {
-    for (auto &menuButton : this->menuButtons) {
+void MenuHandler::updateMenu(sf::Event &e, sf::RenderWindow &window)
+{
+    for (auto &menuButton : this->menuButtons)
+    {
         menuButton->update(e, window);
     }
 }
 
-void MenuHandler::determineButtonsPosition() {
-    float firstXPos = (float)WindowProperties::WIN_WIDTH - (float)(this->menuButtons[0]->buttonShape.getSize().x * 1.25);
+void MenuHandler::determineButtonsPosition()
+{
+    float firstXPos =
+            (float) WindowProperties::WIN_WIDTH - (float) (this->menuButtons[0]->buttonShape.getSize().x * 1.25);
     float firstXPosPlayButton = firstXPos;
-    float firstYPos = (float)WindowProperties::WIN_HEIGHT / 8;
+    float firstYPos = (float) WindowProperties::WIN_HEIGHT / 8;
     float firstYPosPlayButton = firstYPos;
-    std::cout << this->menuButtons.size() << std::endl;
     for (unsigned int x = 0; x < this->menuButtons.size(); x++)
     {
-        if (x != 0) {
-            firstXPos += this->menuButtons[x-1]->buttonShape.getSize().x / 10;
-            firstXPosPlayButton -= this->menuButtons[x-1]->buttonShape.getSize().x / 8;
-            firstYPos += this->menuButtons[x-1]->buttonShape.getSize().y * 1.25;
-            firstYPosPlayButton += this->menuButtons[x-1]->buttonShape.getSize().y * 1.25;
+        if (x != 0)
+        {
+            firstXPos += this->menuButtons[x - 1]->buttonShape.getSize().x / 10;
+            firstXPosPlayButton -= this->menuButtons[x - 1]->buttonShape.getSize().x / 8;
+            firstYPos += this->menuButtons[x - 1]->buttonShape.getSize().y * 1.25;
+            firstYPosPlayButton += this->menuButtons[x - 1]->buttonShape.getSize().y * 1.25;
         }
         if (x == 3)
             this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f
-                    ((float)WindowProperties::WIN_WIDTH - this->menuButtons[x]->buttonShape.getSize().x,
-                     (float)WindowProperties::WIN_HEIGHT - this->menuButtons[x]->buttonShape.getSize().y)));
+                    ((float) WindowProperties::WIN_WIDTH - this->menuButtons[x]->buttonShape.getSize().x,
+                     (float) WindowProperties::WIN_HEIGHT - this->menuButtons[x]->buttonShape.getSize().y)));
         else if (x == 4)
             this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f
-                    (0, (float)WindowProperties::WIN_HEIGHT - this->menuButtons[x]->buttonShape.getSize().y)));
+                    (0, (float) WindowProperties::WIN_HEIGHT - this->menuButtons[x]->buttonShape.getSize().y)));
         else
             this->menuButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPos, firstYPos)));
     }

@@ -2,6 +2,7 @@
 // Created by Pierre on 04/12/2017.
 //
 
+#include <WindowProperties.h>
 #include "Bullet.h"
 
 Bullet::Bullet(BulletType type)
@@ -27,7 +28,7 @@ Bullet::Bullet(BulletType type)
             setType(Textures::BULLET_ENEMY_A);
             break;
         }
-        case BulletType::PLAYER_A :
+        case BulletType::PLAYER_A:
         {
             speed = 20;
             stance = Stance::IDLE;

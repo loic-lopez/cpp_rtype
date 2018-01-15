@@ -18,7 +18,7 @@ SplashScreen::SplashScreen()
 
     this->progressBar.setColor(sf::Color(25, 25, 112));
     this->progressBar.setBackgroundColor(sf::Color(220, 220, 220));
-    this->progressBar.setFrameColor(sf::Color(255,215,0));
+    this->progressBar.setFrameColor(sf::Color(255, 215, 0));
     this->progressBar.setPercentage(0.f);
 
     this->backgroundTexture.loadFromFile("./ressources/menu/menu_background.jpg");

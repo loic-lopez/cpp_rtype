@@ -49,7 +49,8 @@ void GameHandler::controller()
 {
     sf::Keyboard keyboard;
 
-    if (keyboard.isKeyPressed(sf::Keyboard::LShift)) {
+    if (keyboard.isKeyPressed(sf::Keyboard::LShift))
+    {
         if (keyboard.isKeyPressed(sf::Keyboard::Z))
             player.move(sf::Vector2f(0, -2));
         if (keyboard.isKeyPressed(sf::Keyboard::S))
@@ -59,7 +60,8 @@ void GameHandler::controller()
         if (keyboard.isKeyPressed(sf::Keyboard::D))
             player.move(sf::Vector2f(2, 0));
     }
-    else {
+    else
+    {
         if (keyboard.isKeyPressed(sf::Keyboard::Z))
             player.move(sf::Vector2f(0, -1));
         if (keyboard.isKeyPressed(sf::Keyboard::S))
@@ -73,7 +75,7 @@ void GameHandler::controller()
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
         player.shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
-       WindowProperties::gameState = GameState::CLOSE;/*
+        WindowProperties::gameState = GameState::CLOSE;/*
     if (keyboard.isKeyPressed(sf::Keyboard::A))
         changeOrientation(Orientation::HORIZONTAL);
     if (keyboard.isKeyPressed(sf::Keyboard::Z))
@@ -203,7 +205,8 @@ void GameHandler::start()
             drawAll(*WindowProperties::App);
             while (WindowProperties::App->pollEvent(Event))
             {
-                switch (Event.type) {
+                switch (Event.type)
+                {
                     case sf::Event::Closed:
                     {
                         WindowProperties::gameState = GameState::CLOSE;
@@ -266,7 +269,8 @@ void GameHandler::checkEntitiesBoxes()
             if (bulletAllied->getHitBox().intersects(entity->getHitBox()))
                 std::cout << "enemy hit !!" << std::endl;
 
-    for (auto &bulletEnemy : bulletsEnemy) {
+    for (auto &bulletEnemy : bulletsEnemy)
+    {
         if (bulletEnemy->getHitBox().intersects(player.getHitBox()))
         {
             std::cout << "PLAYER hit !!" << std::endl;

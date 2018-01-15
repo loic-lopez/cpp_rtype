@@ -117,7 +117,7 @@ void Entity::setOrientation(Orientation orientation)
     Entity::orientation = orientation;
 }
 
-sf::FloatRect   Entity::getBounds()
+sf::FloatRect Entity::getBounds()
 {
     return this->sprites[0].getSize();
 }
@@ -126,6 +126,7 @@ void Entity::setSide(Side side)
 {
     this->side = side;
 }
+
 Side Entity::getSide()
 {
     return this->side;
@@ -143,6 +144,6 @@ Textures Entity::getType()
 
 sf::FloatRect Entity::getHitBox()
 {
-    sf::FloatRect hitbox = sprites[(int)stance].getSize();
+    sf::FloatRect hitbox = sprites[(int) stance].getSize();
     return (sf::FloatRect(pos.x - hitbox.width / 2.f, pos.y - hitbox.height / 2.f, hitbox.width, hitbox.height));
 }

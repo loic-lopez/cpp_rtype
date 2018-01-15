@@ -4,7 +4,7 @@
 
 #include <Core/MenuCore.hpp>
 
-MenuCore MenuCore::m_instance=MenuCore();
+MenuCore MenuCore::m_instance = MenuCore();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
 MenuCore::MenuCore()
@@ -12,22 +12,26 @@ MenuCore::MenuCore()
     this->menu.initMenu("menu");
 }
 
-MenuCore::~MenuCore() {
+MenuCore::~MenuCore()
+{
 }
 
-MenuCore& MenuCore::Instance()
+MenuCore &MenuCore::Instance()
 {
     return m_instance;
 }
 
 /************************************************* MAINLOOP *************************************************/
-void MenuCore::start() {
+void MenuCore::start()
+{
     sf::Event Event{};
 
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::MENU) {
-        std::cout << (int)WindowProperties::gameState << std::endl;
+    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::MENU)
+    {
+        std::cout << (int) WindowProperties::gameState << std::endl;
         sf::Time elapsed = clock.getElapsedTime();
-        if (elapsed.asMilliseconds() > 17) {
+        if (elapsed.asMilliseconds() > 17)
+        {
             clock.restart();
             this->menu.updateMenu(Event, *WindowProperties::App);
             this->menu.drawMenu(*WindowProperties::App);
@@ -37,9 +41,12 @@ void MenuCore::start() {
     }
 }
 
-void MenuCore::eventHandler(sf::Event &event) {
-    while (WindowProperties::App->pollEvent(event)) {
-        switch (event.type) {
+void MenuCore::eventHandler(sf::Event &event)
+{
+    while (WindowProperties::App->pollEvent(event))
+    {
+        switch (event.type)
+        {
             case sf::Event::Closed:
             {
                 WindowProperties::gameState = GameState::CLOSE;
@@ -55,28 +62,50 @@ void MenuCore::eventHandler(sf::Event &event) {
                 }
 
                 break;
-            case sf::Event::Resized:break;
-            case sf::Event::LostFocus:break;
-            case sf::Event::GainedFocus:break;
-            case sf::Event::TextEntered:break;
-            case sf::Event::KeyReleased:break;
-            case sf::Event::MouseWheelMoved:break;
-            case sf::Event::MouseWheelScrolled:break;
-            case sf::Event::MouseButtonPressed:break;
-            case sf::Event::MouseButtonReleased:break;
-            case sf::Event::MouseMoved:break;
-            case sf::Event::MouseEntered:break;
-            case sf::Event::MouseLeft:break;
-            case sf::Event::JoystickButtonPressed:break;
-            case sf::Event::JoystickButtonReleased:break;
-            case sf::Event::JoystickMoved:break;
-            case sf::Event::JoystickConnected:break;
-            case sf::Event::JoystickDisconnected:break;
-            case sf::Event::TouchBegan:break;
-            case sf::Event::TouchMoved:break;
-            case sf::Event::TouchEnded:break;
-            case sf::Event::SensorChanged:break;
-            case sf::Event::Count:break;
+            case sf::Event::Resized:
+                break;
+            case sf::Event::LostFocus:
+                break;
+            case sf::Event::GainedFocus:
+                break;
+            case sf::Event::TextEntered:
+                break;
+            case sf::Event::KeyReleased:
+                break;
+            case sf::Event::MouseWheelMoved:
+                break;
+            case sf::Event::MouseWheelScrolled:
+                break;
+            case sf::Event::MouseButtonPressed:
+                break;
+            case sf::Event::MouseButtonReleased:
+                break;
+            case sf::Event::MouseMoved:
+                break;
+            case sf::Event::MouseEntered:
+                break;
+            case sf::Event::MouseLeft:
+                break;
+            case sf::Event::JoystickButtonPressed:
+                break;
+            case sf::Event::JoystickButtonReleased:
+                break;
+            case sf::Event::JoystickMoved:
+                break;
+            case sf::Event::JoystickConnected:
+                break;
+            case sf::Event::JoystickDisconnected:
+                break;
+            case sf::Event::TouchBegan:
+                break;
+            case sf::Event::TouchMoved:
+                break;
+            case sf::Event::TouchEnded:
+                break;
+            case sf::Event::SensorChanged:
+                break;
+            case sf::Event::Count:
+                break;
         }
     }
 }

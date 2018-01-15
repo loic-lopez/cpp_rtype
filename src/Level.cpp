@@ -5,11 +5,13 @@
 #include <Parsing.h>
 #include "Level.h"
 
-Level::Level() {
+Level::Level()
+{
 
 }
 
-Level::~Level() {
+Level::~Level()
+{
     music.stop();
     back.flushLayers();
 }
@@ -23,14 +25,15 @@ void Level::initLvl(const std::string &path)
 {
     back.flushLayers();
     orientation = Orientation::VERTICAL;
-    Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i) {
+    Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
+    {
         if (path.substr(path.find_last_of('.') + 1) == "ogg")
         {
             music.openFromFile(path);
             music.setLoop(true);
         }
         else if (path.substr(path.find_last_of('.') + 1) == "png" ||
-                (path.substr(path.find_last_of('.') + 1) == "jpg"))
+                 (path.substr(path.find_last_of('.') + 1) == "jpg"))
             this->back.addLayer(path, i);
     });
 }
@@ -50,7 +53,8 @@ void Level::setMusicStatus(const std::string &status)
         music.pause();
 }
 
-const sf::SoundSource::Status Level::getMusicStatus() const {
+const sf::SoundSource::Status Level::getMusicStatus() const
+{
     return (music.getStatus());
 /*
     if (music.getStatus() == sf::SoundSource::Stopped)
