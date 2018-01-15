@@ -18,7 +18,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         trajectory.x = 0;
         trajectory.y = 0;
         speed = 10;
-        weapon.setWeapon(WeaponType::SPREAD, 6, 10);
+        weapon.setWeapon(WeaponType::SPREAD, 6, 1);
     }
     this->setSide(Side::ENEMY);
     this->setType(Textures::ENEMY1);

@@ -253,10 +253,13 @@ void GameHandler::checkEntitiesBoxes()
             if (bulletAllied->getHitBox().intersects(entity->getHitBox()))
                 std::cout << "enemy hit !!" << std::endl;
 
-    for (auto &bulletEnemy : bulletsEnemy)
+    for (auto &bulletEnemy : bulletsEnemy) {
         if (bulletEnemy->getHitBox().intersects(player.getHitBox()))
         {
-            //std::cout << "PLAYER hit !!" << std::endl;
+            std::cout << "PLAYER hit !!" << std::endl;
+
+
         }
 
+    }
 }
