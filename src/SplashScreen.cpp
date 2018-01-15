@@ -56,7 +56,10 @@ void SplashScreen::start()
         const float frame{clock.restart().asSeconds() * 0.5f};
         const float target{isIncreasing ? progressBar.getRatio() + frame : progressBar.getRatio() - frame};
         if (target > 1.f)
+        {
+            WindowProperties::gameState = GameState::MENU;
             break;
+        }
         progressBar.setRatio(target);
 
         WindowProperties::App->draw(this->backgroundSprite);
@@ -65,7 +68,6 @@ void SplashScreen::start()
 
     }
     this->music.stop();
-    WindowProperties::gameState = GameState::MENU;
 }
 
 void SplashScreen::EventHandler(sf::Event &event)

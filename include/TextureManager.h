@@ -14,7 +14,9 @@ public:
     Animation &getSprite(Textures);
 private:
     Animation sprites[5];
-    TextureManager& operator= (const TextureManager&){}
+    TextureManager& operator= (const TextureManager&){
+        return *this;
+    }
     TextureManager (const TextureManager&){}
 
     static TextureManager m_instance;

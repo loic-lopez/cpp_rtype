@@ -22,7 +22,9 @@ private:
     SplashScreen();
     ~SplashScreen();
     SplashScreen &operator=(const SplashScreen &)
-    {}
+    {
+        return *this;
+    }
 
     SplashScreen(const SplashScreen &)
     {}

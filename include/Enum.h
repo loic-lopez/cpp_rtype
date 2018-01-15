@@ -19,10 +19,10 @@ enum class Orientation
     HORIZONTAL
 };
 
-enum class Stance
+enum class Stance : int
 {
-    IDLE,
-    DEATH
+    IDLE = 0,
+    DEATH = 1
 };
 
 enum class Side
@@ -31,12 +31,12 @@ enum class Side
     ENEMY
 };
 
-enum class GameState
+enum class GameState : int
 {
-    GAME,
-    SPLASHSCREEN,
-    MENU,
-    CLOSE
+    GAME = 0,
+    SPLASHSCREEN = 1,
+    MENU = 2,
+    CLOSE = 3
 };
 
 enum class EnemyType
@@ -47,7 +47,7 @@ enum class EnemyType
 
 enum class BulletType
 {
-    REIMU_A,
+    PLAYER_A,
     BASIC_A,
     ENEMY_A
 };
@@ -62,8 +62,8 @@ enum class WeaponType
 
 enum class Textures
 {
-    REIMU,
-    REIMU_BULLETS_A,
+    PLAYER,
+    PLAYER_BULLETS_A,
     ENEMY1,
     BULLET_BASIC_A,
     BULLET_ENEMY_A

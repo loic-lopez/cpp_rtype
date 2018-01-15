@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(r-type)
 set(CMAKE_CXX_STANDARD 17)
-
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 
 if (WIN32)
@@ -13,13 +13,11 @@ elseif (APPLE)
 else()
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-Linux")
     link_directories("${CMAKE_SOURCE_DIR}/SFML-Linux/lib")
-    message("Linux")
 endif (WIN32)
 
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 include_directories("${PROJECT_BINARY_DIR}" "include")
-link_directories("${CMAKE_SOURCE_DIR}/SFML/bin")
 
 set(CMAKE_BUILD_TYPE Release)
 find_package(SFML 2 COMPONENTS system window graphics audio REQUIRED)

@@ -21,6 +21,8 @@ protected:
     Animation sprites[2];
     int speed;
     Orientation orientation;
+    Side side;
+    Textures type;
 
 public:
     Entity();
@@ -31,6 +33,7 @@ public:
     virtual void setPos(const sf::Vector2f &pos);
     virtual Stance getStance() const;
     virtual void setStance(Stance stance);
+    virtual sf::FloatRect getBounds();
     virtual void drawSprite(sf::RenderWindow &App);
     virtual void move(sf::Vector2f);
     virtual void changeOrientation(Orientation);
@@ -38,6 +41,11 @@ public:
     virtual void setTrajectory(const sf::Vector2f &newTrajectory);
     virtual Orientation getOrientation() const;
     virtual void setOrientation(Orientation orientation);
+    virtual void setSide(Side side);
+    virtual Side getSide();
+    virtual void setType(Textures textures);
+    virtual Textures getType();
+    virtual sf::FloatRect getHitBox();
 
     virtual void shoot() = 0;
     virtual void updatePos() = 0;

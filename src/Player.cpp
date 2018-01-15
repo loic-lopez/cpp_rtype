@@ -14,7 +14,7 @@ Player::Player() : Entity()
     trajectory.y = 0;
     speed = 10;
     stance = Stance::IDLE;
-    sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::REIMU);
+    sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::PLAYER);
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
     weapon.setWeapon(WeaponType::STRAIGHT, 12);
@@ -27,6 +27,8 @@ Player::Player() : Entity()
     shotSound2.setLoop(false);
     shotSound3.setLoop(false);
     shotSound4.setLoop(false);
+    setSide(Side::ALLIED);
+    this->setType(Textures::PLAYER);
 }
 
 Player::~Player()
@@ -39,7 +41,7 @@ void Player::shoot()
     if (shootCooldown == 0)
     {
         shootCooldown = weapon.getCoolDown();
-        weapon.shoot(orientation, pos, Side::ALLIED, BulletType::REIMU_A);
+        weapon.shoot(orientation, pos, Side::ALLIED, BulletType::PLAYER_A);
         if (shotSound.getStatus() != sf::SoundStream::Playing)
             shotSound.play();
         else if (shotSound2.getStatus() != sf::SoundStream::Playing)
