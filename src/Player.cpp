@@ -17,7 +17,7 @@ Player::Player() : Entity()
     sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::PLAYER);
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
-    weapon.setWeapon(WeaponType::STRAIGHT, 12);
+    weapon.setWeapon(WeaponType::STRAIGHT, 10);
     setHp(3);
     shotSound.openFromFile("./ressources/bullet/shot.ogg");
     shotSound2.openFromFile("./ressources/bullet/shot.ogg");

@@ -40,7 +40,7 @@ void Level::drawLvl(sf::RenderWindow &App)
     back.drawBackground(App);
 }
 
-void Level::changeMusicStatus(const std::string &status)
+void Level::setMusicStatus(const std::string &status)
 {
     if (status == "stop")
         music.stop();
@@ -50,7 +50,7 @@ void Level::changeMusicStatus(const std::string &status)
         music.pause();
 }
 
-const sf::SoundSource::Status Level::getMusicStatus() {
+const sf::SoundSource::Status Level::getMusicStatus() const {
     return (music.getStatus());
 /*
     if (music.getStatus() == sf::SoundSource::Stopped)

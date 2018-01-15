@@ -182,13 +182,12 @@ void GameHandler::start()
 
     if (level.getMusicStatus() == sf::SoundSource::Paused
         || level.getMusicStatus() == sf::SoundSource::Stopped)
-        level.changeMusicStatus("play");
+        level.setMusicStatus("play");
 
     sf::Event Event;
     sf::Time elapsed;
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAME)
     {
-
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
@@ -225,7 +224,7 @@ void GameHandler::start()
     }
     /*level1.start();
     level2.start();*/
-    level.changeMusicStatus("stop");
+    level.setMusicStatus("stop");
 }
 
 /************************************************* DRAW *************************************************/
