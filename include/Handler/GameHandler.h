@@ -35,6 +35,7 @@ private:
     {}
 
     sf::Clock clock;
+    sf::Clock inv;
 
     Hud hud;
     Level level;
@@ -43,6 +44,7 @@ private:
     std::vector<IEntity *> bulletsAllied;
     std::vector<IEntity *> entities;
 
+    sf::Time   cloque;
     sf::Mutex mutex;
 
 public:
@@ -68,6 +70,8 @@ public:
 
     void addBullet(IEntity *);
     void checkEntitiesBoxes();
+
+    Player &getPlayer();
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

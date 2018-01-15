@@ -8,6 +8,7 @@
 #include <WindowProperties.h>
 #include <SFML/Graphics.hpp>
 #include "Parsing.h"
+#include "Player.h"
 
 class Hud
 {
@@ -18,7 +19,7 @@ class Hud
     };
 
     unsigned int basisHP;
-    unsigned int currentPlayerHP;
+    int *currentPlayerHP;
     std::vector<t_layer *> layers;
 
 

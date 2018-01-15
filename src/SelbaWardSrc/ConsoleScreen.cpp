@@ -33,6 +33,9 @@
 #include "SelbaWard/ConsoleScreen.hpp"
 
 #include <random>
+#include <functional>
+#include <algorithm>
+#include <SFML/Config.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
 namespace

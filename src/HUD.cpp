@@ -3,11 +3,11 @@
 //
 
 #include <HUD.h>
+#include <Handler/GameHandler.h>
 
 Hud::Hud()
 {
     this->basisHP = 3;
-    this->currentPlayerHP = 1;
 }
 
 Hud::~Hud()
@@ -33,6 +33,7 @@ void Hud::initHud(const std::string &path)
         this->addLayer(path);
 
     });
+    currentPlayerHP = GameHandler::Instance().getPlayer().getHp();
 }
 
 void Hud::drawHud(sf::RenderWindow &App)
@@ -46,8 +47,10 @@ void Hud::drawHud(sf::RenderWindow &App)
         App.draw(layers[0]->img);
 
     }
-    firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
-    for (size_t i = 0; i < this->currentPlayerHP; i++)
+    firstXPos = (float)WindowProperties::WIN_WIDTH / 100;
+    if(*this->currentPlayerHP == 0)
+        return;
+   for (size_t i = 0; i < *this->currentPlayerHP; i++)
     {
         layers[1]->img.setPosition(firstXPos, firstYPos);
         firstXPos += (float) layers[1]->texture.getSize().x / 2;

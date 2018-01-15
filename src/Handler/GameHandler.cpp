@@ -191,6 +191,7 @@ void GameHandler::start()
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAME)
     {
         elapsed = clock.getElapsedTime();
+        cloque = inv.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
@@ -264,19 +265,30 @@ void GameHandler::addBullet(IEntity *newBullet)
 
 void GameHandler::checkEntitiesBoxes()
 {
-    for (auto &bulletAllied : bulletsAllied)
+    for (auto it = bulletsAllied.begin(); it < bulletsAllied.end(); ++it)
         for (auto &entity : entities)
-            if (bulletAllied->getHitBox().intersects(entity->getHitBox()))
-                std::cout << "enemy hit !!" << std::endl;
+            if ((*it)->getHitBox().intersects(entity->getHitBox()))
+            {
+                bulletsAllied.erase(it);
+            }
 
-    for (auto &bulletEnemy : bulletsEnemy)
-    {
-        if (bulletEnemy->getHitBox().intersects(player.getHitBox()))
+    for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it) {
+        if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
-            std::cout << "PLAYER hit !!" << std::endl;
+            if (this->player.getHp() > 0 && cloque.asMilliseconds() > 1500)
+            {
+                inv.restart();
+                this->player.setHp(*this->player.getHp() - 1);
+                bulletsEnemy.erase(it);
+            }
 
 
         }
 
     }
+}
+
+Player  &GameHandler::getPlayer()
+{
+    return this->player;
 }
