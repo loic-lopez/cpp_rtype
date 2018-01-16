@@ -39,7 +39,6 @@ void MenuHandler::initMenu(const std::string &path) {
         if (path.substr(path.find_last_of('.') + 1) == "ogg") {
             this->music.openFromFile(path);
             this->music.setLoop(true);
-            this->music.play();
         } else if (path.substr(path.find_last_of('.') + 1) == "png" ||
                    path.substr(path.find_last_of('.') + 1) == "jpg") {
             if (!parsedBackgroundTexture) {
@@ -113,3 +112,6 @@ void MenuHandler::stopMusic() {
     this->music.stop();
 }
 
+void MenuHandler::startMusic() {
+    this->music.play();
+}
