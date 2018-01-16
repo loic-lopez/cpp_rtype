@@ -50,4 +50,5 @@ void Level1::start()
             WindowProperties::App->display();
         }
     }
+    music.stop();
 }
