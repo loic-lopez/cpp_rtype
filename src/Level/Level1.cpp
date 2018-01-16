@@ -4,6 +4,7 @@
 
 #include <Parsing.h>
 #include <Enemy.h>
+#include <cmath>
 #include "Level/Level1.h"
 
 Level1::Level1() : ALevel() {
