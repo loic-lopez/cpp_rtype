@@ -179,7 +179,7 @@ void GameHandler::updateAlliedBullet()
 /************************************************* MAINLOOP *************************************************/
 void GameHandler::start()
 {
-    for (int i = 0; i < (rand()%10 + 10); ++i)
+    for (int i = 0; i < (std::rand()%10 + 10); ++i)
     {
         entities.push_back(new Enemy(EnemyType::BASIC_A));
         entities.push_back(new Enemy(EnemyType::BASIC_A));
@@ -272,12 +272,14 @@ void GameHandler::checkEntitiesBoxes()
     for (auto it = bulletsAllied.begin(); it < bulletsAllied.end(); ++it)
         if (!entities.empty())
             for (auto enemy = entities.begin(); enemy < entities.end(); ++enemy)
+            {
                 if ((*it)->getHitBox().intersects((*enemy)->getHitBox()))
                 {
                     if ((*enemy)->getType() == Textures::ENEMY1)
                         entities.erase(enemy);
                     bulletsAllied.erase(it);
                 }
+            }
 
     for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it)
     {
@@ -290,8 +292,6 @@ void GameHandler::checkEntitiesBoxes()
                 bulletsEnemy.erase(it);
                 break;
             }
-
-
         }
 
     }

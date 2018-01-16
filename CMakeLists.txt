@@ -15,6 +15,7 @@ else()
     link_directories("${CMAKE_SOURCE_DIR}/SFML-Linux/lib")
 endif (WIN32)
 
+SET(CMAKE_CXX_FLAGS_DEBUG "-D_DEBUG")
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 include_directories("${PROJECT_BINARY_DIR}" "include")
