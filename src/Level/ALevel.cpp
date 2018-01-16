@@ -17,15 +17,8 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     this->fadeOpacity = 0;
 }
 
-ALevel::~ALevel() {
-    while (!bulletsEnemy.empty()) {
-        delete (bulletsEnemy[0]);
-        bulletsEnemy.erase(bulletsEnemy.begin());
-    }
-    while (!entities.empty()) {
-        delete (entities[0]);
-        entities.erase(entities.begin());
-    }
+ALevel::~ALevel()
+{
 }
 
 void ALevel::controller() {
@@ -118,7 +111,6 @@ void ALevel::drawAll(sf::RenderWindow &App) {
 void ALevel::updateAlliedBullet() {
     for (size_t i = 0; i < this->bulletsAllied.size(); i++) {
         if (!bulletsAllied[i]->outOfBounds()) {
-            delete (this->bulletsAllied[i]);
             this->bulletsAllied.erase(this->bulletsAllied.begin() + i);
             i--;
         } else
@@ -126,7 +118,6 @@ void ALevel::updateAlliedBullet() {
     }
     for (size_t i = 0; i < this->bulletsEnemy.size(); i++) {
         if (!bulletsEnemy[i]->outOfBounds()) {
-            delete (this->bulletsEnemy[i]);
             this->bulletsEnemy.erase(this->bulletsEnemy.begin() + i);
             i--;
         } else
@@ -145,9 +136,9 @@ void ALevel::updateEntities() {
 
 void ALevel::addBullet(IEntity *newBullet) {
     if (((Bullet *) newBullet)->getSide() == Side::ENEMY)
-        bulletsEnemy.push_back(newBullet);
+        bulletsEnemy.push_back(std::shared_ptr<IEntity>(newBullet));
     else
-        bulletsAllied.push_back(newBullet);
+        bulletsAllied.push_back(std::shared_ptr<IEntity>(newBullet));
 }
 
 void ALevel::checkEntitiesBoxes() {

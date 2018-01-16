@@ -23,9 +23,9 @@ protected:
     sf::Clock inv;
     sf::Keyboard keyboard;
 
-    std::vector<IEntity *> bulletsEnemy;
-    std::vector<IEntity *> bulletsAllied;
-    std::vector<IEntity *> entities;
+    std::vector<std::shared_ptr<IEntity>> bulletsEnemy;
+    std::vector<std::shared_ptr<IEntity>> bulletsAllied;
+    std::vector<std::shared_ptr<IEntity>> entities;
 
     sf::Texture     transitionToGameOverScreenTexture;
     sf::Sprite      transitionToGameOverScreenSprite;
