@@ -34,7 +34,7 @@ public:
     void start();
     Player &getPlayer();
     Hud &getHud();
-    ALevel &getCurrentLevel();
+    ALevel *getCurrentLevel();
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

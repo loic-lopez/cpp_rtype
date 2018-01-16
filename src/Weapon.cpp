@@ -22,7 +22,7 @@ Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletTy
     bullet->setOrientation(orientation);
     bullet->setPos(pos);
     bullet->setSide(side);
-    GameHandler::Instance().getCurrentLevel().addBullet(bullet);
+    GameHandler::Instance().getCurrentLevel()->addBullet(bullet);
 }
 
 void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)

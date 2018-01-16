@@ -38,15 +38,16 @@ Hud & GameHandler::getHud()
     return hud;
 }
 
-ALevel &GameHandler::getCurrentLevel()
+ALevel *GameHandler::getCurrentLevel()
 {
     switch (WindowProperties::gameState)
     {
         case GameState::LEVEL1:
-            return *this->level1;
+            return this->level1;
         case GameState::LEVEL2:
             break;
         default:
             break;
     }
+    return nullptr;
 }
