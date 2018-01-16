@@ -27,6 +27,8 @@ private:
 
 public:
     GameHandler();
+    GameHandler(const GameHandler &);
+    GameHandler &operator=(const GameHandler &);
     ~GameHandler();
 
     static GameHandler &Instance();
