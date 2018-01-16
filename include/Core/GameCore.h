@@ -9,6 +9,7 @@
 #include "WindowProperties.h"
 #include "MenuCore.hpp"
 #include "SplashScreen.h"
+#include "GameOverScreenCore.h"
 
 class GameCore
 {
@@ -17,6 +18,7 @@ private:
     MenuCore    &menuCore;
     GameHandler &gameHandler;
     SplashScreen &splashScreen;
+    GameOverScreenCore &gameOverScreen;
 
 public:
     GameCore();

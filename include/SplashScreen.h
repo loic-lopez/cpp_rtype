@@ -14,7 +14,7 @@ class SplashScreen : selbaward::ProgressBar
 private:
     static SplashScreen m_instance;
     sf::Texture         backgroundTexture;
-    sf::Sprite         backgroundSprite;
+    sf::Sprite          backgroundSprite;
     sw::ProgressBar     progressBar;
     sf::Music           music;
 

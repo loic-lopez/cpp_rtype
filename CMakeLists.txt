@@ -75,7 +75,7 @@ set(HEADER_FILES
         include/SelbaWard.hpp
         include/SplashScreen.h
         include/Core/GameCore.h
-        include/Handler/GameHandler.h)
+        include/Handler/GameHandler.h include/Core/GameOverScreenCore.h src/Core/GameOverScreenCore.cpp src/Handler/GameOverScreenHandler.cpp include/Handler/GameOverScreenHandler.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})
