@@ -42,7 +42,7 @@ void Level1::start() {
                 this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
                 this->music.setVolume(this->soundAttenuationOnDeath);
                 this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
-                this->fadeOpacity = int(round(this->floatFadeOpacity));
+                this->fadeOpacity = int(std::round(this->floatFadeOpacity));
                 if (this->fadeOpacity >= 255)
                     WindowProperties::gameState = GameState::GAMEOVER;
                 else
