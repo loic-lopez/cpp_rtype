@@ -12,6 +12,16 @@ GameHandler::GameHandler() : level1(new Level1())
     hud.initHud("hud");
 }
 
+GameHandler::GameHandler(const GameHandler &obj)
+{
+
+}
+
+GameHandler& GameHandler::operator=(const GameHandler &obj)
+{
+    return *this;
+}
+
 GameHandler::~GameHandler()
 {
     //level.setMusicStatus("stop");
