@@ -25,7 +25,6 @@ GameHandler& GameHandler::operator=(const GameHandler &obj)
 GameHandler::~GameHandler()
 {
     //level.setMusicStatus("stop");
-    delete level1;
 }
 
 GameHandler &GameHandler::Instance()
@@ -35,13 +34,13 @@ GameHandler &GameHandler::Instance()
 
 void GameHandler::start()
 {
-    player = new Player();
-    level1 = new Level1();
+    std::unique_ptr<Player> player = std::unique_ptr<Player>(new Player());
+    this->player = player.get();
 
-    level1->start();
+    std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Level1());
+    this->level1 = level1.get();
 
-    delete player;
-    delete level1;
+    this->level1->start();
 }
 
 Player *GameHandler::getPlayer()
