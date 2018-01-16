@@ -278,6 +278,7 @@ void GameHandler::checkEntitiesBoxes()
                     if ((*enemy)->getType() == Textures::ENEMY1)
                         entities.erase(enemy);
                     bulletsAllied.erase(it);
+                    break;
                 }
             }
 
