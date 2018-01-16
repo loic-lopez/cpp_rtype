@@ -53,6 +53,4 @@ void Level1::start() {
         }
     }
     music.stop();
-    entities.empty();
-
 }
