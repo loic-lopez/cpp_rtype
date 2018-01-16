@@ -22,11 +22,10 @@ void Level1::start()
     sf::Event Event;
     sf::Time elapsed;
 
-    for (int i = 0; i < (std::rand() % 10 + 10); ++i)
-    {
+    for (int i = 0; i < (std::rand() % 5 + 5); ++i)
         entities.push_back(new Enemy(EnemyType::BASIC_A));
-        entities.push_back(new Enemy(EnemyType::BASIC_A));
-    }
+    for (int i = 0; i < (std::rand() % 4 + 1); ++i)
+        entities.push_back(new Enemy(EnemyType::BASIC_B));
     bulletsEnemy.reserve(100000);
 
     music.play();
