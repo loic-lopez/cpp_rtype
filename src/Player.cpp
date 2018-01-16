@@ -33,7 +33,10 @@ Player::Player() : Entity()
 
 Player::~Player()
 {
-
+    shotSound.stop();
+    shotSound2.stop();
+    shotSound3.stop();
+    shotSound4.stop();
 }
 
 void Player::shoot()

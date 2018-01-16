@@ -75,11 +75,10 @@ void GameHandler::controller()
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
         player.shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
-        WindowProperties::gameState = GameState::CLOSE;/*
-    if (keyboard.isKeyPressed(sf::Keyboard::A))
-        changeOrientation(Orientation::HORIZONTAL);
-    if (keyboard.isKeyPressed(sf::Keyboard::Z))
-        changeOrientation(Orientation::VERTICAL);*/
+    {
+        WindowProperties::gameState = GameState::CLOSE;
+        level.setMusicStatus("stop");
+    }
 }
 
 void GameHandler::XboxController()
@@ -195,7 +194,7 @@ void GameHandler::start()
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAME)
     {
         elapsed = clock.getElapsedTime();
-        cloque = inv.getElapsedTime();
+        invulnerabilityTime = inv.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
@@ -275,6 +274,7 @@ void GameHandler::checkEntitiesBoxes()
             {
                 if ((*it)->getHitBox().intersects((*enemy)->getHitBox()))
                 {
+
                     if ((*enemy)->getType() == Textures::ENEMY1)
                         entities.erase(enemy);
                     bulletsAllied.erase(it);
@@ -286,7 +286,7 @@ void GameHandler::checkEntitiesBoxes()
     {
         if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
-            if (*this->player.getHp() > 0 && cloque.asMilliseconds() > 1500)
+            if (*this->player.getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
             {
                 inv.restart();
                 this->player.setHp(*this->player.getHp() - 1);

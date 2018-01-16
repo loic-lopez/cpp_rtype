@@ -44,7 +44,7 @@ private:
     std::vector<IEntity *> bulletsAllied;
     std::vector<IEntity *> entities;
 
-    sf::Time   cloque;
+    sf::Time   invulnerabilityTime;
     sf::Mutex mutex;
 
 public:
