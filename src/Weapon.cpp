@@ -10,9 +10,7 @@ Weapon::Weapon()
 }
 
 Weapon::~Weapon()
-{
-
-}
+= default;
 
 void
 Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType, sf::Vector2f trajectory)
