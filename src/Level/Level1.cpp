@@ -38,7 +38,10 @@ void Level1::start() {
                     XboxController();
             } else {
                 this->isGameLost = true;
-                this->fadeOpacity = this->fadeOpacity + 1;
+                this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
+                this->music.setVolume(this->soundAttenuationOnDeath);
+                this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
+                this->fadeOpacity = int(round(this->floatFadeOpacity));
                 if (this->fadeOpacity >= 255)
                     WindowProperties::gameState = GameState::GAMEOVER;
                 else

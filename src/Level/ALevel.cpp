@@ -14,6 +14,10 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     scaleX = (float) WindowProperties::WIN_WIDTH / this->transitionToGameOverScreenSprite.getGlobalBounds().width;
     scaleY = (float) WindowProperties::WIN_HEIGHT / this->transitionToGameOverScreenSprite.getGlobalBounds().height;
     this->transitionToGameOverScreenSprite.scale(scaleX, scaleY);
+    this->baseSoundAttenuationOnDeathPercentageDecreasing = 0.5;
+    this->soundAttenuationOnDeath = 100;
+    this->baseFadeOpacityPercentageIncreasing = 1.25;
+    this->floatFadeOpacity = 0;
     this->fadeOpacity = 0;
 }
 

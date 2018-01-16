@@ -30,6 +30,10 @@ protected:
 
     sf::Texture     transitionToGameOverScreenTexture;
     sf::Sprite      transitionToGameOverScreenSprite;
+    float           baseSoundAttenuationOnDeathPercentageDecreasing;
+    float           soundAttenuationOnDeath;
+    float           baseFadeOpacityPercentageIncreasing;
+    float           floatFadeOpacity;
     int             fadeOpacity;
     bool            isGameLost;
 
