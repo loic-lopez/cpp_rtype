@@ -7,7 +7,7 @@
 GameOverScreenCore GameOverScreenCore::m_instance = GameOverScreenCore();
 
 GameOverScreenCore::GameOverScreenCore() {
-    this->gameOverScreen.initGameOverScreen("gameOverScreen");
+    //this->gameOverScreen.initGameOverScreen("gameOverScreen");
 }
 
 GameOverScreenCore::~GameOverScreenCore() {

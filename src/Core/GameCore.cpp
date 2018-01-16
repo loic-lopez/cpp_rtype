@@ -26,7 +26,7 @@ void GameCore::start()
     {
         this->menuCore.start();
         this->gameHandler.start();
-        this->gameOverScreen.start();
+       // this->gameOverScreen.start();
     }
     WindowProperties::App->close();
 }
