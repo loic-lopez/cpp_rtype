@@ -47,8 +47,8 @@ void Hud::drawHud(sf::RenderWindow &App)
         App.draw(layers[0]->img);
 
     }
-    firstXPos = (float)WindowProperties::WIN_WIDTH / 100;
-   for (size_t i = 0; i < currentPlayerHP ; i++)
+    firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
+    for (size_t i = 0; i < currentPlayerHP; i++)
     {
         layers[1]->img.setPosition(firstXPos, firstYPos);
         firstXPos += (float) layers[1]->texture.getSize().x / 2;
