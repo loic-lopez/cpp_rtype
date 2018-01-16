@@ -7,7 +7,7 @@
 GameOverScreenCore GameOverScreenCore::m_instance = GameOverScreenCore();
 
 GameOverScreenCore::GameOverScreenCore() {
-    //this->gameOverScreen.initGameOverScreen("gameOverScreen");
+    this->gameOverScreen.initGameOverScreen("gameOverScreen");
 }
 
 GameOverScreenCore::~GameOverScreenCore() {
@@ -21,9 +21,9 @@ GameOverScreenCore &GameOverScreenCore::Instance() {
 void GameOverScreenCore::start() {
 
     sf::Event Event{};
-
+    this->gameOverScreen.playMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER) {
-        std::cout << (int) WindowProperties::gameState << std::endl;
+        std::cout << "GAMESTATE VIA GAMEOVER : " <<(int) WindowProperties::gameState << std::endl;
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
@@ -33,6 +33,7 @@ void GameOverScreenCore::start() {
             WindowProperties::App->display();
         }
     }
+    this->gameOverScreen.stopMusic();
 }
 
 void GameOverScreenCore::EventHandler(sf::Event &event) {

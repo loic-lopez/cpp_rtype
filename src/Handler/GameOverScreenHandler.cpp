@@ -6,7 +6,7 @@
 
 GameOverScreenHandler::GameOverScreenHandler() {
     this->functionsHandler.emplace_back([this]() {
-        //BOUTON CONTINUE
+        //BOUTON RETRY
         WindowProperties::gameState = GameState::LEVEL1;
         this->music.stop();
     });
@@ -34,7 +34,6 @@ void GameOverScreenHandler::initGameOverScreen(const std::string &path) {
         if (path.substr(path.find_last_of('.') + 1) == "ogg") {
             this->music.openFromFile(path);
             this->music.setLoop(true);
-            this->music.play();
         } else if (path.substr(path.find_last_of('.') + 1) == "png" ||
                    path.substr(path.find_last_of('.') + 1) == "jpg") {
             if (!parsedBackgroundTexture) {
@@ -50,8 +49,9 @@ void GameOverScreenHandler::initGameOverScreen(const std::string &path) {
             } else if (parsedBackgroundTexture && !parsedTextTexture) {
                 this->textTexture.loadFromFile(path);
                 this->textSprite.setTexture(this->textTexture);
-                this->textSprite.setPosition(WindowProperties::WIN_WIDTH / 2 - this->textSprite.getGlobalBounds().width,
-                                             WindowProperties::WIN_HEIGHT / 4);
+                this->textSprite.setPosition(
+                        WindowProperties::WIN_WIDTH / 2 - (this->textSprite.getGlobalBounds().width / 2),
+                        WindowProperties::WIN_HEIGHT / 4);
                 parsedTextTexture = true;
             } else {
                 if (this->buttonEffectsPaths.size() < 3) {
@@ -86,9 +86,25 @@ void GameOverScreenHandler::updateGameOverScreen(sf::Event &e, sf::RenderWindow 
 }
 
 void GameOverScreenHandler::determineButtonsPosition() {
-
+    float posX;
+    float posY;
+    std::cout << "VECTOR SIZE : " << this->gameOverButtons.size() << std::endl;
+    for (int i = 0; i < this->gameOverButtons.size(); ++i) {
+        if (i == 0)
+            posX = 0;
+        else if (i != 1)
+            posX = (WindowProperties::WIN_WIDTH / 2) - (this->gameOverButtons[i]->getDimensions().x / 2);
+        else
+            posX = WindowProperties::WIN_WIDTH - this->gameOverButtons[i]->getDimensions().x;
+        posY = WindowProperties::WIN_HEIGHT - this->gameOverButtons[i]->getDimensions().y;
+        this->gameOverButtons[i]->buttonShape.setPosition(sf::Vector2f(posX, posY));
+    }
 }
 
 void GameOverScreenHandler::stopMusic() {
     this->music.stop();
+}
+
+void GameOverScreenHandler::playMusic() {
+    this->music.play();
 }

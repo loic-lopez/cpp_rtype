@@ -41,6 +41,7 @@ public:
     void drawGameOverScreen(sf::RenderWindow &App);
     void updateGameOverScreen(sf::Event &e, sf::RenderWindow &window); // TODO : A APPELLER DANS LA BOUCLE DE JEU AVANT LE DRAW
     void determineButtonsPosition();
+    void playMusic();
     void stopMusic();
 };
 

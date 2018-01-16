@@ -27,6 +27,11 @@ protected:
     std::vector<IEntity *> bulletsAllied;
     std::vector<IEntity *> entities;
 
+    sf::Texture     transitionToGameOverScreenTexture;
+    sf::Sprite      transitionToGameOverScreenSprite;
+    int             fadeOpacity;
+    bool            isGameLost;
+
     virtual void controller();
     virtual void XboxController();
 
