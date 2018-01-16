@@ -25,6 +25,7 @@ GameHandler::~GameHandler()
         delete (entities[0]);
         entities.erase(entities.begin());
     }
+    level.setMusicStatus("stop");
 }
 
 GameHandler &GameHandler::Instance()
@@ -77,7 +78,6 @@ void GameHandler::controller()
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
     {
         WindowProperties::gameState = GameState::CLOSE;
-        level.setMusicStatus("stop");
     }
 }
 
