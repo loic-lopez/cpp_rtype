@@ -13,18 +13,15 @@ elseif (APPLE)
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -gdwarf-3")
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -gdwarf-3")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 else()
     set(SFML_ROOT "${CMAKE_SOURCE_DIR}/SFML-Linux")
     link_directories("${CMAKE_SOURCE_DIR}/SFML-Linux/lib")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 endif (WIN32)
 
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 include_directories("${PROJECT_BINARY_DIR}" "include")
 
-set(CMAKE_BUILD_TYPE Release)
 find_package(SFML 2 COMPONENTS system window graphics audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}
         ${CMAKE_SOURCE_DIR}/thor-v2.0-sdk/thor-v2.0-sdk/include
