@@ -8,6 +8,7 @@ Orientation WindowProperties::orientation;
 
 int main()
 {
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
     GameCore &game = GameCore::Instance();
 
     game.start();

@@ -10,7 +10,6 @@ Enemy::Enemy(EnemyType type) : Entity()
     stance = Stance::IDLE;
     if (type == EnemyType::BASIC_A)
     {
-        srand(static_cast<unsigned int>(time(nullptr)));
         enemyType = type;
         orientation = WindowProperties::orientation;
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::ENEMY1);

@@ -179,7 +179,11 @@ void GameHandler::updateAlliedBullet()
 /************************************************* MAINLOOP *************************************************/
 void GameHandler::start()
 {
-    entities.push_back(new Enemy(EnemyType::BASIC_A));
+    for (int i = 0; i < (rand()%10 + 10); ++i)
+    {
+        entities.push_back(new Enemy(EnemyType::BASIC_A));
+        entities.push_back(new Enemy(EnemyType::BASIC_A));
+   }
     bulletsEnemy.reserve(100000);
 
     if (level.getMusicStatus() == sf::SoundSource::Paused
@@ -279,11 +283,12 @@ void GameHandler::checkEntitiesBoxes()
     {
         if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
-            if (*this->player.getHp() > 0 && cloque.asMilliseconds() > 1500)
+            if (*this->player.getHp() > 0 && cloque.asMilliseconds() > 3000)
             {
                 inv.restart();
-                this->player.setHp(*this->player.getHp() - 1);
                 bulletsEnemy.erase(it);
+                this->player.setHp(*this->player.getHp() - 1);
+                break;
             }
 
 
