@@ -171,27 +171,32 @@ void ALevel::addBullet(IEntity *newBullet)
 
 void ALevel::checkEntitiesBoxes()
 {
-    for (size_t i = 0; i < this->bulletsAllied.size(); i++)
+    for (auto it = bulletsAllied.begin(); it < bulletsAllied.end(); ++it)
+        if (!entities.empty())
+            for (auto enemy = entities.begin(); enemy < entities.end(); ++enemy)
+            {
+                if ((*it)->getHitBox().intersects((*enemy)->getHitBox()))
+                {
+
+                    if ((*enemy)->getType() == Textures::ENEMY1)
+                        entities.erase(enemy);
+                    bulletsAllied.erase(it);
+                    break;
+                }
+            }
+
+    for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it)
     {
-        if (!bulletsAllied[i]->outOfBounds())
+        if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
-            delete (this->bulletsAllied[i]);
-            this->bulletsAllied.erase(this->bulletsAllied.begin() + i);
-            i--;
+            if (*this->player.getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
+            {
+                inv.restart();
+                this->player.setHp(*this->player.getHp() - 1);
+                bulletsEnemy.erase(it);
+                break;
+            }
         }
-        else
-            this->bulletsAllied[i]->updatePos();
-    }
-    for (size_t i = 0; i < this->bulletsEnemy.size(); i++)
-    {
-        if (!bulletsEnemy[i]->outOfBounds())
-        {
-            delete (this->bulletsEnemy[i]);
-            this->bulletsEnemy.erase(this->bulletsEnemy.begin() + i);
-            i--;
-        }
-        else
-            this->bulletsEnemy[i]->updatePos();
     }
 }
 
