@@ -7,7 +7,7 @@
 GameHandler GameHandler::m_instance = GameHandler();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-GameHandler::GameHandler() : level1(new Level1())
+GameHandler::GameHandler()
 {
     hud.initHud("hud");
 }
@@ -35,10 +35,16 @@ GameHandler &GameHandler::Instance()
 
 void GameHandler::start()
 {
+    player = new Player();
+    level1 = new Level1();
+
     level1->start();
+
+    delete player;
+    delete level1;
 }
 
-Player &GameHandler::getPlayer()
+Player *GameHandler::getPlayer()
 {
     return this->player;
 }

@@ -21,7 +21,7 @@ class GameHandler
 {
 private:
     static GameHandler m_instance;
-    Player player;
+    Player *player;
     Hud hud;
     ALevel *level1;
 
@@ -34,7 +34,7 @@ public:
     static GameHandler &Instance();
 
     void start();
-    Player &getPlayer();
+    Player *getPlayer();
     Hud &getHud();
     ALevel *getCurrentLevel();
 };

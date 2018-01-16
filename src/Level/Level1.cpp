@@ -31,10 +31,10 @@ void Level1::start() {
         invulnerabilityTime = inv.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
-            if (player.getHp() != 0) {
-                if (player.getGameMovementMode() == ControlType::KEYBOARD)
+            if (player->getHp() != 0) {
+                if (player->getGameMovementMode() == ControlType::KEYBOARD)
                     controller();
-                else if (player.getGameMovementMode() == ControlType::XBOXCONTROLLER)
+                else if (player->getGameMovementMode() == ControlType::XBOXCONTROLLER)
                     XboxController();
             } else {
                 this->isGameLost = true;
@@ -53,4 +53,6 @@ void Level1::start() {
         }
     }
     music.stop();
+    entities.empty();
+
 }

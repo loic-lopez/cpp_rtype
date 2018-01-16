@@ -31,26 +31,26 @@ ALevel::~ALevel() {
 void ALevel::controller() {
     if (keyboard.isKeyPressed(sf::Keyboard::LShift)) {
         if (keyboard.isKeyPressed(sf::Keyboard::Z))
-            player.move(sf::Vector2f(0, -2));
+            player->move(sf::Vector2f(0, -2));
         if (keyboard.isKeyPressed(sf::Keyboard::S))
-            player.move(sf::Vector2f(0, 2));
+            player->move(sf::Vector2f(0, 2));
         if (keyboard.isKeyPressed(sf::Keyboard::Q))
-            player.move(sf::Vector2f(-2, 0));
+            player->move(sf::Vector2f(-2, 0));
         if (keyboard.isKeyPressed(sf::Keyboard::D))
-            player.move(sf::Vector2f(2, 0));
+            player->move(sf::Vector2f(2, 0));
     } else {
         if (keyboard.isKeyPressed(sf::Keyboard::Z))
-            player.move(sf::Vector2f(0, -1));
+            player->move(sf::Vector2f(0, -1));
         if (keyboard.isKeyPressed(sf::Keyboard::S))
-            player.move(sf::Vector2f(0, 1));
+            player->move(sf::Vector2f(0, 1));
         if (keyboard.isKeyPressed(sf::Keyboard::Q))
-            player.move(sf::Vector2f(-1, 0));
+            player->move(sf::Vector2f(-1, 0));
         if (keyboard.isKeyPressed(sf::Keyboard::D))
-            player.move(sf::Vector2f(1, 0));
+            player->move(sf::Vector2f(1, 0));
     }
 
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
-        player.shoot();
+        player->shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape)) {
         WindowProperties::gameState = GameState::CLOSE;
     }
@@ -65,9 +65,9 @@ void ALevel::XboxController() {
     posX = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
     posY = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
     speed = sf::Vector2f((posX / 100), (posY / 100));
-    player.move(speed);
+    player->move(speed);
     if (sf::Joystick::isButtonPressed(0, 0)) {
-        player.shoot();
+        player->shoot();
     }
     if (sf::Joystick::isButtonPressed(0, 1)) {
         std::cout << "B" << std::endl;
@@ -110,7 +110,7 @@ void ALevel::drawAll(sf::RenderWindow &App) {
         bullet->drawSprite(App);
     for (auto &entity : entities)
         entity->drawSprite(App);
-    player.drawSprite(App);
+    player->drawSprite(App);
     if (this->isGameLost)
         App.draw(this->transitionToGameOverScreenSprite);
 }
@@ -135,7 +135,7 @@ void ALevel::updateAlliedBullet() {
 }
 
 void ALevel::updateEntities() {
-    player.updatePos();
+    player->updatePos();
     for (size_t i = 0; i < entities.size(); i++) {
         this->entities[i]->updatePos();
         this->entities[i]->shoot();
@@ -171,10 +171,10 @@ void ALevel::checkEntitiesBoxes() {
             }
 
     for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it) {
-        if ((*it)->getHitBox().intersects(player.getHitBox())) {
-            if (this->player.getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500) {
+        if ((*it)->getHitBox().intersects(player->getHitBox())) {
+            if (this->player->getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500) {
                 inv.restart();
-                this->player.setHp(this->player.getHp() - 1);
+                this->player->setHp(this->player->getHp() - 1);
                 bulletsEnemy.erase(it);
                 break;
             }

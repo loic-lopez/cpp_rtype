@@ -37,7 +37,7 @@ void Hud::initHud(const std::string &path)
 
 void Hud::drawHud(sf::RenderWindow &App)
 {
-    int currentPlayerHP = GameHandler::Instance().getPlayer().getHp();
+    int currentPlayerHP = GameHandler::Instance().getPlayer()->getHp();
     float firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
     float firstYPos = 0;
     for (size_t i = 0; i < this->basisHP; i++)

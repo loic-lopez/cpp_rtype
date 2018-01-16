@@ -13,7 +13,7 @@
 class ALevel
 {
 protected:
-    Player &player;
+    Player *player;
     Hud    &hud;
     Bg back;
 

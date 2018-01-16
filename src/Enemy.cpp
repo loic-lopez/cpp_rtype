@@ -14,7 +14,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         orientation = WindowProperties::orientation;
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::ENEMY1);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
-        pos.y = rand() % WindowProperties::WIN_HEIGHT;
+        pos.y = std::rand() % WindowProperties::WIN_HEIGHT;
         trajectory.x = 1;
         trajectory.y = 0;
         speed = 3;
@@ -29,7 +29,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         orientation = WindowProperties::orientation;
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::ENEMY2);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
-        pos.y = rand() % WindowProperties::WIN_HEIGHT;
+        pos.y = std::rand() % WindowProperties::WIN_HEIGHT;
         trajectory.x = 1;
         trajectory.y = 0;
         speed = 4;
