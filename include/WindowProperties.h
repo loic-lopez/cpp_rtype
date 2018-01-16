@@ -8,16 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <Thor/Graphics.hpp>
 #include "Enum.h"
-
-template<void(*ctor)()>
-struct static_constructor
-{
-    struct constructor { constructor() { ctor(); } };
-    static constructor c;
-};
-
-template<void(*ctor)()>
-typename static_constructor<ctor>::constructor static_constructor<ctor>::c;
+#include "static_constructor.h"
 
 class WindowProperties
 {

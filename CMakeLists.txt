@@ -79,7 +79,7 @@ set(HEADER_FILES
         include/Core/GameOverScreenCore.h
         src/Core/GameOverScreenCore.cpp
         src/Handler/GameOverScreenHandler.cpp
-        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h)
+        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h include/static_constructor.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})
