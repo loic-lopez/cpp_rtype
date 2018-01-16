@@ -38,7 +38,7 @@ set(SOURCE_FILES
         src/Animation.cpp
         src/Bg.cpp
         src/Core/MenuCore.cpp
-        src/Level/Level.cpp
+        src/Level/Level1.cpp
         src/Bullet.cpp
         src/Enemy.cpp
         src/Handler/MenuHandler.cpp
@@ -62,7 +62,7 @@ set(HEADER_FILES
         include/Core/MenuCore.hpp
         include/Bg.h
         include/Enum.h
-        include/Level/Level.h
+        include/Level/Level1.h
         include/Bullet.h
         include/Enemy.h
         include/TextureManager.h

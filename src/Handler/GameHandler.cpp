@@ -7,7 +7,7 @@
 GameHandler GameHandler::m_instance = GameHandler();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-GameHandler::GameHandler() : level1(new Level())
+GameHandler::GameHandler() : level1(new Level1())
 {
     hud.initHud("hud");
 }

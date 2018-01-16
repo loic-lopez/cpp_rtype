@@ -11,17 +11,14 @@
 #include "HUD.h"
 #include "Level/ALevel.h"
 
-class Level : public ALevel
+class Level1 : public ALevel
 {
 
 public:
-    Level();
-    ~Level();
+    Level1();
+    ~Level1();
 
     virtual void start();
-
-//    void setMusicStatus(const std::string &status);
-//    const sf::SoundSource::Status getMusicStatus() const;
 };
 
 

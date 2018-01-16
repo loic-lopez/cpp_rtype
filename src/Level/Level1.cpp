@@ -4,20 +4,20 @@
 
 #include <Parsing.h>
 #include <Enemy.h>
-#include "Level/Level.h"
+#include "Level/Level1.h"
 
-Level::Level() : ALevel()
+Level1::Level1() : ALevel()
 {
     initLvl("lvl1");
 }
 
-Level::~Level()
+Level1::~Level1()
 {
     music.stop();
     back.flushLayers();
 }
 
-void Level::start()
+void Level1::start()
 {
     sf::Event Event;
     sf::Time elapsed;
@@ -57,7 +57,7 @@ level.setMusicStatus("stop");*/
 
 }
 
-/*void Level::initLvl(const std::string &path)
+/*void Level1::initLvl(const std::string &path)
 {
     back.flushLayers();
     orientation = Orientation::VERTICAL;
@@ -74,12 +74,12 @@ level.setMusicStatus("stop");*/
     });
 }
 
-void Level::drawLvl(sf::RenderWindow &App)
+void Level1::drawLvl(sf::RenderWindow &App)
 {
     back.drawBackground(App);
 }
 
-void Level::setMusicStatus(const std::string &status)
+void Level1::setMusicStatus(const std::string &status)
 {
     if (status == "stop")
         music.stop();
@@ -89,7 +89,7 @@ void Level::setMusicStatus(const std::string &status)
         music.pause();
 }
 
-const sf::SoundSource::Status Level::getMusicStatus() const
+const sf::SoundSource::Status Level1::getMusicStatus() const
 {
     return (music.getStatus());*/
 /*
