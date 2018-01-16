@@ -6,7 +6,6 @@
 #define RTYPE_PLAYER_H
 
 #include <SFML/Audio/Music.hpp>
-#include "Entity.h"
 #include "Bullet.h"
 
 class Player : public Entity

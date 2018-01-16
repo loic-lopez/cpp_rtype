@@ -7,7 +7,7 @@
 GameOverScreenHandler::GameOverScreenHandler() {
     this->functionsHandler.emplace_back([this]() {
         //BOUTON CONTINUE
-        WindowProperties::gameState = GameState::GAME;
+        WindowProperties::gameState = GameState::LEVEL1;
         this->music.stop();
     });
     this->functionsHandler.emplace_back([this]() {

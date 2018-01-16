@@ -5,15 +5,10 @@
 #ifndef RTYPE_GameCore_H
 #define RTYPE_GameCore_H
 
-#include <iostream>
-#include <thread>
 #include <SFML/Graphics.hpp>
 #include <Handler/MenuHandler.h>
 #include "Enum.h"
-#include "Player.h"
-#include "Enemy.h"
 #include "WindowProperties.h"
-#include "HUD.h"
 #include "Button.h"
 
 class MenuCore

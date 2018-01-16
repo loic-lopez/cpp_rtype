@@ -7,7 +7,7 @@
 GameHandler GameHandler::m_instance = GameHandler();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-GameHandler::GameHandler() : level1(Level())
+GameHandler::GameHandler() : level1(new Level())
 {
     hud.initHud("hud");
 }
@@ -15,6 +15,7 @@ GameHandler::GameHandler() : level1(Level())
 GameHandler::~GameHandler()
 {
     //level.setMusicStatus("stop");
+    delete level1;
 }
 
 GameHandler &GameHandler::Instance()
@@ -24,15 +25,15 @@ GameHandler &GameHandler::Instance()
 
 void GameHandler::start()
 {
-    level1.start();
+    level1->start();
 }
 
-Player &GameHandler::getPlayer() const
+Player &GameHandler::getPlayer()
 {
     return this->player;
 }
 
-Hud & GameHandler::getHud() const
+Hud & GameHandler::getHud()
 {
     return hud;
 }
@@ -42,7 +43,7 @@ ALevel &GameHandler::getCurrentLevel()
     switch (WindowProperties::gameState)
     {
         case GameState::LEVEL1:
-            return level1;
+            return *this->level1;
         case GameState::LEVEL2:
             break;
         default:

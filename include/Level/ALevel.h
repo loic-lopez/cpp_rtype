@@ -5,11 +5,8 @@
 #ifndef R_TYPE_ALEVEL_H
 #define R_TYPE_ALEVEL_H
 
-#include <Enum.h>
 #include <SFML/Graphics.hpp>
-#include <IEntity.h>
 #include <Player.h>
-#include <Enemy.h>
 #include <HUD.h>
 #include <Bg.h>
 

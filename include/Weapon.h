@@ -6,7 +6,6 @@
 #define RTYPE_WEAPON_H
 
 #include <SFML/Graphics.hpp>
-#include <Level/ALevel.h>
 #include "Enum.h"
 
 class Weapon

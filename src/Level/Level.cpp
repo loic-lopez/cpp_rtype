@@ -3,6 +3,7 @@
 //
 
 #include <Parsing.h>
+#include <Enemy.h>
 #include "Level/Level.h"
 
 Level::Level() : ALevel()
@@ -99,5 +100,3 @@ const sf::SoundSource::Status Level::getMusicStatus() const
     else if (music.getStatus() == sf::SoundSource::Playing)
         return (sf::SoundSource::Playing);
 */
-
-/*
