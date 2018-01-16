@@ -1,5 +1,5 @@
 //
-// Created by loic lopez on 02/12/2017.
+// Created by loic lopez on 22/12/2017.
 //
 
 #ifndef RTYPE_ENUM_H
@@ -33,7 +33,8 @@ enum class Side
 
 enum class GameState : int
 {
-    GAME = 0,
+    LEVEL1 = 0,
+    LEVEL2 = 1,
     SPLASHSCREEN = 1,
     MENU = 2,
     CLOSE = 3,

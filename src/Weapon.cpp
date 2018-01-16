@@ -17,13 +17,12 @@ Weapon::~Weapon()
 void
 Weapon::addBullet(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType, sf::Vector2f trajectory)
 {
-    GameHandler &game = GameHandler::Instance();
     Bullet *bullet = new Bullet(bulletType);
     bullet->setTrajectory(trajectory);
     bullet->setOrientation(orientation);
     bullet->setPos(pos);
     bullet->setSide(side);
-    game.addBullet(bullet);
+    GameHandler::Instance().getCurrentLevel().addBullet(bullet);
 }
 
 void Weapon::straight(Orientation orientation, sf::Vector2f pos, Side side, BulletType bulletType)

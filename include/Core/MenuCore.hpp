@@ -11,7 +11,6 @@
 #include <Handler/MenuHandler.h>
 #include "Enum.h"
 #include "Player.h"
-#include "Level.h"
 #include "Enemy.h"
 #include "WindowProperties.h"
 #include "HUD.h"

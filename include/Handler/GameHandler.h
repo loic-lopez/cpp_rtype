@@ -10,7 +10,7 @@
 #include <SFML/Graphics.hpp>
 #include "Enum.h"
 #include "Player.h"
-#include "Level.h"
+#include "Level/Level.h"
 #include "Enemy.h"
 #include "WindowProperties.h"
 #include "HUD.h"
@@ -21,57 +21,20 @@ class GameHandler
 {
 private:
     static GameHandler m_instance;
-
-    GameHandler();
-
-    ~GameHandler();
-
-    GameHandler &operator=(const GameHandler &)
-    {
-        return *this;
-    }
-
-    GameHandler(const GameHandler &)
-    {}
-
-    sf::Clock clock;
-    sf::Clock inv;
-
-    Hud hud;
-    Level level;
     Player player;
-    std::vector<IEntity *> bulletsEnemy;
-    std::vector<IEntity *> bulletsAllied;
-    std::vector<IEntity *> entities;
-
-    sf::Time   invulnerabilityTime;
-    sf::Mutex mutex;
+    Hud hud;
+    ALevel level1;
 
 public:
+    GameHandler();
+    ~GameHandler();
+
     static GameHandler &Instance();
 
     void start();
-
-    void controller();
-
-    void XboxController();
-
-    void changeOrientation(Orientation orientation);
-
-    void drawAll(sf::RenderWindow &App);
-
-    void updateAlliedBullet();
-
-    void updateEntities();
-
-    void lock();
-
-    void unlock();
-
-    void addBullet(IEntity *);
-    void checkEntitiesBoxes();
-
-    Player &getPlayer();
+    Player &getPlayer() const;
+    Hud &getHud() const;
+    ALevel &getCurrentLevel();
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

@@ -38,7 +38,7 @@ set(SOURCE_FILES
         src/Animation.cpp
         src/Bg.cpp
         src/Core/MenuCore.cpp
-        src/Level.cpp
+        src/Level/Level.cpp
         src/Bullet.cpp
         src/Enemy.cpp
         src/Handler/MenuHandler.cpp
@@ -49,7 +49,7 @@ set(SOURCE_FILES
         src/Button.cpp
         src/SplashScreen.cpp
         src/Core/GameCore.cpp
-        src/Handler/GameHandler.cpp)
+        src/Handler/GameHandler.cpp src/Level/ALevel.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -62,7 +62,7 @@ set(HEADER_FILES
         include/Core/MenuCore.hpp
         include/Bg.h
         include/Enum.h
-        include/Level.h
+        include/Level/Level.h
         include/Bullet.h
         include/Enemy.h
         include/TextureManager.h
@@ -75,7 +75,11 @@ set(HEADER_FILES
         include/SelbaWard.hpp
         include/SplashScreen.h
         include/Core/GameCore.h
-        include/Handler/GameHandler.h include/Core/GameOverScreenCore.h src/Core/GameOverScreenCore.cpp src/Handler/GameOverScreenHandler.cpp include/Handler/GameOverScreenHandler.h)
+        include/Handler/GameHandler.h
+        include/Core/GameOverScreenCore.h
+        src/Core/GameOverScreenCore.cpp
+        src/Handler/GameOverScreenHandler.cpp
+        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})
