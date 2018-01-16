@@ -16,9 +16,9 @@ Entity::~Entity()
 {
 }
 
-int *Entity::getHp()
+int Entity::getHp()
 {
-    return &hp;
+    return hp;
 }
 
 void Entity::setHp(int hp)

@@ -27,7 +27,7 @@ protected:
 public:
     Entity();
     ~Entity();
-    virtual int *getHp();
+    virtual int getHp();
     virtual void setHp(int hp);
     virtual const sf::Vector2f &getPos() const;
     virtual void setPos(const sf::Vector2f &pos);

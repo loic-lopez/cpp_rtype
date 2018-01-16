@@ -189,10 +189,10 @@ void ALevel::checkEntitiesBoxes()
     {
         if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
-            if (*this->player.getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
+            if (this->player.getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
             {
                 inv.restart();
-                this->player.setHp(*this->player.getHp() - 1);
+                this->player.setHp(this->player.getHp() - 1);
                 bulletsEnemy.erase(it);
                 break;
             }

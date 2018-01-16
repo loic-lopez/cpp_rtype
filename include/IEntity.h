@@ -15,7 +15,7 @@ class IEntity
 {
 public:
     virtual ~IEntity() {};
-    virtual int *getHp() = 0;
+    virtual int getHp() = 0;
     virtual void setHp(int hp) = 0;
     virtual const sf::Vector2f &getPos() const = 0;
     virtual void setPos(const sf::Vector2f &pos) = 0;

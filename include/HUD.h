@@ -19,7 +19,6 @@ class Hud
     };
 
     unsigned int basisHP;
-    int *currentPlayerHP;
     std::vector<t_layer *> layers;
 
 
