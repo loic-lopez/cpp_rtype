@@ -9,6 +9,7 @@
 #include <Player.h>
 #include <HUD.h>
 #include <Bg.h>
+#include <memory>
 
 class ALevel
 {

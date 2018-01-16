@@ -6,25 +6,30 @@
 #include <Handler/MenuHandler.h>
 
 MenuHandler::MenuHandler() {
-    this->functionsHandler.emplace_back([]() {
+    this->functionsHandler.emplace_back([this]() {
         // BOUTON TITRE, AUCUNE ACTION LORSQUE CLIC
+        this->menuButtons[0]->setState(0);
     });
 
-    this->functionsHandler.emplace_back([]() {
+    this->functionsHandler.emplace_back([this]() {
         // BOUTON OPTION
+        this->menuButtons[1]->setState(0);
     });
-    this->functionsHandler.emplace_back([]() {
+    this->functionsHandler.emplace_back([this]() {
         // BOUTON CREDITS
+        this->menuButtons[2]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {
         //BOUTON JOUER
         WindowProperties::gameState = GameState::LEVEL1;
         this->music.stop();
+        this->menuButtons[3]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {
         //BOUTON EXIT
         WindowProperties::gameState = GameState::CLOSE;
         this->music.stop();
+        this->menuButtons[4]->setState(0);
     });
 }
 

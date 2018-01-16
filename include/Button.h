@@ -37,7 +37,8 @@ public:
     sf::Vector2f getPosition();
     sf::Vector2f getDimensions();
     sf::Vector2f getTextureSize();
-    sf::Uint32 getState();
+    sf::Uint32  getState();
+    void        setState(sf::Uint32 state);
 
     sf::RectangleShape buttonShape;
 

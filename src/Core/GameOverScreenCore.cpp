@@ -23,7 +23,6 @@ void GameOverScreenCore::start() {
     sf::Event Event{};
     this->gameOverScreen.playMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER) {
-        std::cout << "GAMESTATE VIA GAMEOVER : " <<(int) WindowProperties::gameState << std::endl;
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();

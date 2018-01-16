@@ -147,5 +147,9 @@ void Button::update(sf::Event &e, sf::RenderWindow &window)
     }
 }
 
+void Button::setState(sf::Uint32 state) {
+    this->actualButtonState = state;
+}
+
 
 
