@@ -5,57 +5,44 @@
 
 #include <Handler/MenuHandler.h>
 
-MenuHandler::MenuHandler()
-{
-    this->functionsHandler.emplace_back([]()
-                                        {
-                                            // BOUTON TITRE, AUCUNE ACTION LORSQUE CLIC
-                                        });
+MenuHandler::MenuHandler() {
+    this->functionsHandler.emplace_back([]() {
+        // BOUTON TITRE, AUCUNE ACTION LORSQUE CLIC
+    });
 
-    this->functionsHandler.emplace_back([]()
-                                        {
-                                            // BOUTON OPTION
-                                        });
-    this->functionsHandler.emplace_back([]()
-                                        {
-                                            // BOUTON CREDITS
-                                        });
-    this->functionsHandler.emplace_back([this]()
-                                        {
-                                            //BOUTON JOUER
-                                            WindowProperties::gameState = GameState::GAME;
-                                            this->music.stop();
-                                        });
-    this->functionsHandler.emplace_back([this]()
-                                        {
-                                            //BOUTON EXIT
-                                            WindowProperties::gameState = GameState::CLOSE;
-                                            this->music.stop();
-                                        });
+    this->functionsHandler.emplace_back([]() {
+        // BOUTON OPTION
+    });
+    this->functionsHandler.emplace_back([]() {
+        // BOUTON CREDITS
+    });
+    this->functionsHandler.emplace_back([this]() {
+        //BOUTON JOUER
+        WindowProperties::gameState = GameState::GAME;
+        this->music.stop();
+    });
+    this->functionsHandler.emplace_back([this]() {
+        //BOUTON EXIT
+        WindowProperties::gameState = GameState::CLOSE;
+        this->music.stop();
+    });
 }
 
-MenuHandler::~MenuHandler()
-{
+MenuHandler::~MenuHandler() {
     this->music.stop();
 }
 
-void MenuHandler::initMenu(const std::string &path)
-{
+void MenuHandler::initMenu(const std::string &path) {
     this->music.stop();
     bool parsedBackgroundTexture = false;
-    Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
-    {
-        if (path.substr(path.find_last_of('.') + 1) == "ogg")
-        {
+    Parsing::loadCSV(path, [&, this](std::string const &path, int const &i) {
+        if (path.substr(path.find_last_of('.') + 1) == "ogg") {
             this->music.openFromFile(path);
             this->music.setLoop(true);
             this->music.play();
-        }
-        else if (path.substr(path.find_last_of('.') + 1) == "png" ||
-                 path.substr(path.find_last_of('.') + 1) == "jpg")
-        {
-            if (!parsedBackgroundTexture)
-            {
+        } else if (path.substr(path.find_last_of('.') + 1) == "png" ||
+                   path.substr(path.find_last_of('.') + 1) == "jpg") {
+            if (!parsedBackgroundTexture) {
                 float scaleX;
                 float scaleY;
                 this->backgroundTexture.loadFromFile(path);
@@ -65,14 +52,10 @@ void MenuHandler::initMenu(const std::string &path)
                 this->menuBackgroundSprite.scale(scaleX, scaleY);
                 this->menuBackgroundSprite.setPosition(0, 0);
                 parsedBackgroundTexture = true;
-            }
-            else
-            {
-                if (this->buttonEffectsPaths.size() < 3)
-                {
+            } else {
+                if (this->buttonEffectsPaths.size() < 3) {
                     this->buttonEffectsPaths.push_back(path);
-                    if (this->buttonEffectsPaths.size() == 3)
-                    {
+                    if (this->buttonEffectsPaths.size() == 3) {
                         Button *newButton = new Button(this->buttonEffectsPaths);
                         this->menuButtons.push_back(newButton);
                         this->buttonEffectsPaths.clear();
@@ -88,34 +71,27 @@ void MenuHandler::initMenu(const std::string &path)
 }
 
 
-void MenuHandler::drawMenu(sf::RenderWindow &App)
-{
+void MenuHandler::drawMenu(sf::RenderWindow &App) {
     App.draw(this->menuBackgroundSprite);
-    for (auto &menuButton : this->menuButtons)
-    {
+    for (auto &menuButton : this->menuButtons) {
         App.draw(menuButton->buttonShape);
     }
 }
 
-void MenuHandler::updateMenu(sf::Event &e, sf::RenderWindow &window)
-{
-    for (auto &menuButton : this->menuButtons)
-    {
+void MenuHandler::updateMenu(sf::Event &e, sf::RenderWindow &window) {
+    for (auto &menuButton : this->menuButtons) {
         menuButton->update(e, window);
     }
 }
 
-void MenuHandler::determineButtonsPosition()
-{
+void MenuHandler::determineButtonsPosition() {
     float firstXPos =
             (float) WindowProperties::WIN_WIDTH - (float) (this->menuButtons[0]->buttonShape.getSize().x * 1.25);
     float firstXPosPlayButton = firstXPos;
     float firstYPos = (float) WindowProperties::WIN_HEIGHT / 8;
     float firstYPosPlayButton = firstYPos;
-    for (unsigned int x = 0; x < this->menuButtons.size(); x++)
-    {
-        if (x != 0)
-        {
+    for (unsigned int x = 0; x < this->menuButtons.size(); x++) {
+        if (x != 0) {
             firstXPos += this->menuButtons[x - 1]->buttonShape.getSize().x / 10;
             firstXPosPlayButton -= this->menuButtons[x - 1]->buttonShape.getSize().x / 8;
             firstYPos += this->menuButtons[x - 1]->buttonShape.getSize().y * 1.25;
@@ -133,8 +109,7 @@ void MenuHandler::determineButtonsPosition()
     }
 }
 
-void MenuHandler::stopMusic()
-{
+void MenuHandler::stopMusic() {
     this->music.stop();
 }
 

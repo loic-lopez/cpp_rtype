@@ -8,7 +8,8 @@ GameCore GameCore::m_instance = GameCore();
 
 GameCore::GameCore() : menuCore(MenuCore::Instance()),
                        gameHandler(GameHandler::Instance()),
-                       splashScreen(SplashScreen::Instance())
+                       splashScreen(SplashScreen::Instance()),
+                       gameOverScreen(GameOverScreenCore::Instance())
 {
 
 }
@@ -25,6 +26,7 @@ void GameCore::start()
     {
         this->menuCore.start();
         this->gameHandler.start();
+        this->gameOverScreen.start();
     }
     WindowProperties::App->close();
 }

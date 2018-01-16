@@ -36,7 +36,8 @@ enum class GameState : int
     GAME = 0,
     SPLASHSCREEN = 1,
     MENU = 2,
-    CLOSE = 3
+    CLOSE = 3,
+    GAMEOVER = 4
 };
 
 enum class EnemyType
