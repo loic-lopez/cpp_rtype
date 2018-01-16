@@ -283,11 +283,11 @@ void GameHandler::checkEntitiesBoxes()
     {
         if ((*it)->getHitBox().intersects(player.getHitBox()))
         {
-            if (*this->player.getHp() > 0 && cloque.asMilliseconds() > 3000)
+            if (*this->player.getHp() > 0 && cloque.asMilliseconds() > 1500)
             {
                 inv.restart();
-                bulletsEnemy.erase(it);
                 this->player.setHp(*this->player.getHp() - 1);
+                bulletsEnemy.erase(it);
                 break;
             }
 
