@@ -9,6 +9,11 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     this->isGameLost = false;
     this->transitionToGameOverScreenTexture.loadFromFile("./ressources/gameOverScreen/game_over_background.jpg");
     this->transitionToGameOverScreenSprite.setTexture(this->transitionToGameOverScreenTexture);
+    float scaleX;
+    float scaleY;
+    scaleX = (float) WindowProperties::WIN_WIDTH / this->transitionToGameOverScreenSprite.getGlobalBounds().width;
+    scaleY = (float) WindowProperties::WIN_HEIGHT / this->transitionToGameOverScreenSprite.getGlobalBounds().height;
+    this->transitionToGameOverScreenSprite.scale(scaleX, scaleY);
     this->fadeOpacity = 0;
 }
 
