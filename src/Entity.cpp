@@ -2,7 +2,7 @@
 // Created by Pierre on 29/11/2017.
 //
 
-#include <WindowProperties.h>
+#include <Static/WindowProperties.h>
 #include "Entity.h"
 
 Entity::Entity()

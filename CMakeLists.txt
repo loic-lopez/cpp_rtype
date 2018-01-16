@@ -68,7 +68,7 @@ set(HEADER_FILES
         include/TextureManager.h
         include/Weapon.h
         include/Handler/MenuHandler.h
-        include/WindowProperties.h
+        include/Static/WindowProperties.h
         include/HUD.h
         include/Parsing.h
         include/Button.h
@@ -79,7 +79,7 @@ set(HEADER_FILES
         include/Core/GameOverScreenCore.h
         src/Core/GameOverScreenCore.cpp
         src/Handler/GameOverScreenHandler.cpp
-        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h include/static_constructor.h)
+        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h include/Static/static_constructor.h include/Static/PreGame.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

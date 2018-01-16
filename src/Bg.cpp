@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "WindowProperties.h"
+#include "Static/WindowProperties.h"
 #include "Bg.h"
 
 Bg::Bg()

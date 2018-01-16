@@ -2,7 +2,7 @@
 // Created by Zakelis on 29/11/2017.
 //
 
-#include <WindowProperties.h>
+#include <Static/WindowProperties.h>
 #include "Player.h"
 
 Player::Player() : Entity()

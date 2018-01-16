@@ -5,7 +5,7 @@
 #ifndef R_TYPE_HUD_H
 #define R_TYPE_HUD_H
 
-#include <WindowProperties.h>
+#include <Static/WindowProperties.h>
 #include <SFML/Graphics.hpp>
 #include "Parsing.h"
 #include "Player.h"

@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <Handler/MenuHandler.h>
 #include "Enum.h"
-#include "WindowProperties.h"
+#include "Static/WindowProperties.h"
 #include "Button.h"
 
 class MenuCore

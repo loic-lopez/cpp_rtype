@@ -7,7 +7,7 @@
 
 #include <SFML/Audio/Music.hpp>
 #include <iostream>
-#include "WindowProperties.h"
+#include "Static/WindowProperties.h"
 #include "Handler/GameOverScreenHandler.h"
 
 class GameOverScreenCore

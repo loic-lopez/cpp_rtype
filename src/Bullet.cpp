@@ -2,7 +2,7 @@
 // Created by Pierre on 04/12/2017.
 //
 
-#include <WindowProperties.h>
+#include <Static/WindowProperties.h>
 #include "Bullet.h"
 
 Bullet::Bullet(BulletType type)

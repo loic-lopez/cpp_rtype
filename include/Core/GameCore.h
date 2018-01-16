@@ -6,7 +6,7 @@
 #define R_TYPE_GAMECORE_H
 
 #include <Handler/GameHandler.h>
-#include "WindowProperties.h"
+#include "Static/WindowProperties.h"
 #include "MenuCore.hpp"
 #include "SplashScreen.h"
 #include "GameOverScreenCore.h"

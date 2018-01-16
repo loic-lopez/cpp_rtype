@@ -12,7 +12,7 @@
 #include "Player.h"
 #include "Level/Level1.h"
 #include "Enemy.h"
-#include "WindowProperties.h"
+#include "Static/WindowProperties.h"
 #include "HUD.h"
 
 #pragma once

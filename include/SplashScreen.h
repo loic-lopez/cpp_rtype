@@ -7,7 +7,7 @@
 
 #include <SelbaWard.hpp>
 #include <SFML/Audio/Music.hpp>
-#include "WindowProperties.h"
+#include "Static/WindowProperties.h"
 
 class SplashScreen : selbaward::ProgressBar
 {
