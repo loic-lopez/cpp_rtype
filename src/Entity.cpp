@@ -8,7 +8,7 @@
 Entity::Entity()
 {
     shootCooldown = 0;
-    hp = 100;
+    hp = 1;
     orientation = WindowProperties::orientation;
 }
 

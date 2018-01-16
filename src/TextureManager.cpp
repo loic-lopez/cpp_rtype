@@ -13,11 +13,12 @@ TextureManager::TextureManager()
     sprites[(int) Textures::PLAYER] = Animation("player", Stance::IDLE);
     sprites[(int) Textures::PLAYER_BULLETS_A] = Animation("playerBullets", Stance::IDLE);
     sprites[(int) Textures::ENEMY1] = Animation("enemy1", Stance::IDLE);
+    sprites[(int) Textures::ENEMY2] = Animation("enemy2", Stance::IDLE);
 }
 
 TextureManager::~TextureManager()
 {
-    for (size_t i = 0; i < 5; i++)
+    for (size_t i = 0; i < 6; i++)
     {
         sprites[i].freeDatas();
     }

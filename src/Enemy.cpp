@@ -19,9 +19,24 @@ Enemy::Enemy(EnemyType type) : Entity()
         trajectory.y = 0;
         speed = 3;
         weapon.setWeapon(WeaponType::SPREAD, 40, 1);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::ENEMY1);
     }
-    this->setSide(Side::ENEMY);
-    this->setType(Textures::ENEMY1);
+
+    if (type == EnemyType::BASIC_B)
+    {
+        enemyType = type;
+        orientation = WindowProperties::orientation;
+        sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::ENEMY2);
+        pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
+        pos.y = rand() % WindowProperties::WIN_HEIGHT;
+        trajectory.x = 1;
+        trajectory.y = 0;
+        speed = 4;
+        weapon.setWeapon(WeaponType::STRAIGHT, 30, 2);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::ENEMY2);
+    }
 }
 
 Enemy::~Enemy()
@@ -59,6 +74,17 @@ void Enemy::shoot()
                 postmp.y = pos.y;
                 shootCooldown = weapon.getCoolDown();;
                 weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
+                break;
+            }
+            case EnemyType::BASIC_B :
+            {
+                sf::Vector2f postmp;
+
+                postmp.x = pos.x - 90;
+                postmp.y = pos.y;
+                shootCooldown = weapon.getCoolDown();;
+                weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
+                break;
             }
         }
     }

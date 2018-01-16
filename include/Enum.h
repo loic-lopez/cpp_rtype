@@ -67,6 +67,7 @@ enum class Textures
     PLAYER,
     PLAYER_BULLETS_A,
     ENEMY1,
+    ENEMY2,
     BULLET_BASIC_A,
     BULLET_ENEMY_A
 };

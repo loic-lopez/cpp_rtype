@@ -153,6 +153,13 @@ void ALevel::checkEntitiesBoxes() {
 
                     if ((*enemy)->getType() == Textures::ENEMY1)
                         entities.erase(enemy);
+                    else if ((*enemy)->getType() == Textures::ENEMY2)
+                    {
+                        if ((*enemy)->getHp() <= 0)
+                            entities.erase(enemy);
+                        else
+                        (*enemy)->setHp((*enemy)->getHp() - 1);
+                    }
                     bulletsAllied.erase(it);
                     break;
                 }
