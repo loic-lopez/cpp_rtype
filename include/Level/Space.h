@@ -11,12 +11,14 @@
 #include "HUD.h"
 #include "Level/ALevel.h"
 
-class Level1 : public ALevel
+// LEVEL 1
+
+class Space : public ALevel
 {
 
 public:
-    Level1();
-    ~Level1();
+    Space();
+    ~Space();
 
     virtual void start();
 };

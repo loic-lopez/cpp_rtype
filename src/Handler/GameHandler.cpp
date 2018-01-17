@@ -37,14 +37,17 @@ void GameHandler::start()
     std::unique_ptr<Player> player = std::unique_ptr<Player>(new Player());
     this->player = player.get();
 
-    std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Level1());
-    this->level1 = level1.get();
-
+    std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Space());
     std::unique_ptr<ALevel> level3 = std::unique_ptr<ALevel>(new SpaceCemetery());
+    std::unique_ptr<ALevel> level4 = std::unique_ptr<ALevel>(new Horizon());
+
+    this->level1 = level1.get();
     this->level3 = level3.get();
+    this->level4 = level4.get();
 
     this->level1->start();
     this->level3->start();
+    this->level4->start();
 }
 
 Player *GameHandler::getPlayer()
@@ -67,6 +70,8 @@ ALevel *GameHandler::getCurrentLevel()
             break;
         case GameState::LEVEL3:
             return this->level3;
+        case GameState::LEVEL4:
+            return this->level4;
         default:
             break;
     }

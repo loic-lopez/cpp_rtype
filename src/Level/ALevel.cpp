@@ -100,14 +100,14 @@ void ALevel::XboxController() {
 
 void ALevel::drawAll(sf::RenderWindow &App) {
     this->drawLvl(App);
-    hud.drawHud(App);
     for (auto &bullet : bulletsEnemy)
         bullet->drawSprite(App);
     for (auto &bullet : bulletsAllied)
         bullet->drawSprite(App);
-    for (auto &entity : entities)
+    for (auto &entity : ennemies)
         entity->drawSprite(App);
     player->drawSprite(App);
+    hud.drawHud(App);
     if (this->isGameLost)
         App.draw(this->transitionToGameOverScreenSprite);
 }
@@ -131,9 +131,9 @@ void ALevel::updateAlliedBullet() {
 
 void ALevel::updateEntities() {
     player->updatePos();
-    for (size_t i = 0; i < entities.size(); i++) {
-        this->entities[i]->updatePos();
-        this->entities[i]->shoot();
+    for (size_t i = 0; i < ennemies.size(); i++) {
+        this->ennemies[i]->updatePos();
+        this->ennemies[i]->shoot();
     }
 }
 
@@ -147,16 +147,16 @@ void ALevel::addBullet(IEntity *newBullet) {
 
 void ALevel::checkEntitiesBoxes() {
     for (auto it = bulletsAllied.begin(); it < bulletsAllied.end(); ++it)
-        if (!entities.empty())
-            for (auto enemy = entities.begin(); enemy < entities.end(); ++enemy) {
+        if (!ennemies.empty())
+            for (auto enemy = ennemies.begin(); enemy < ennemies.end(); ++enemy) {
                 if ((*it)->getHitBox().intersects((*enemy)->getHitBox())) {
 
                     if ((*enemy)->getType() == Textures::ENEMY1)
-                        entities.erase(enemy);
+                        ennemies.erase(enemy);
                     else if ((*enemy)->getType() == Textures::ENEMY2)
                     {
                         if ((*enemy)->getHp() <= 0)
-                            entities.erase(enemy);
+                            ennemies.erase(enemy);
                         else
                         (*enemy)->setHp((*enemy)->getHp() - 1);
                     }
@@ -207,6 +207,42 @@ void ALevel::pollEvent(sf::Event &Event) {
             }
             default:
                 break;
+        }
+    }
+}
+
+void ALevel::mainLoop(GameState currentLevel)
+{
+    sf::Event Event;
+    sf::Time elapsed;
+
+    while (WindowProperties::App->isOpen() && WindowProperties::gameState == currentLevel) {
+        elapsed = clock.getElapsedTime();
+        invulnerabilityTime = inv.getElapsedTime();
+        if (elapsed.asMilliseconds() > 17) {
+            clock.restart();
+            if (player->getHp() != 0) {
+                if (player->getGameMovementMode() == ControlType::KEYBOARD)
+                    controller();
+                else if (player->getGameMovementMode() == ControlType::XBOXCONTROLLER)
+                    XboxController();
+            } else {
+                this->isGameLost = true;
+                this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
+                this->music.setVolume(this->soundAttenuationOnDeath);
+                this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
+                this->fadeOpacity = int(std::round(this->floatFadeOpacity));
+                if (this->fadeOpacity >= 255)
+                    WindowProperties::gameState = GameState::GAMEOVER;
+                else
+                    this->transitionToGameOverScreenSprite.setColor(sf::Color(255, 255, 255, this->fadeOpacity));
+            }
+            updateEntities();
+            updateAlliedBullet();
+            checkEntitiesBoxes();
+            drawAll(*WindowProperties::App);
+            pollEvent(Event);
+            WindowProperties::App->display();
         }
     }
 }

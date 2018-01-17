@@ -10,8 +10,9 @@
 #include <SFML/Graphics.hpp>
 #include "Enum.h"
 #include "Player.h"
-#include "Level/Level1.h"
+#include "Level/Space.h"
 #include "Level/SpaceCemetery.h"
+#include "Level/Horizon.h"
 #include "Enemy.h"
 #include "Static/WindowProperties.h"
 #include "HUD.h"
@@ -26,6 +27,7 @@ private:
     Hud hud;
     ALevel *level1;
     ALevel *level3;
+    ALevel *level4;
 
 public:
     GameHandler();

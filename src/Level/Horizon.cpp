@@ -3,19 +3,19 @@
 //
 
 #include <Enemy.h>
-#include <Level/SpaceCemetery.h>
+#include <Level/Horizon.h>
 
-SpaceCemetery::SpaceCemetery() : ALevel()
+Horizon::Horizon() : ALevel()
 {
-    initLvl("lvl3");
+    initLvl("lvl4");
 }
 
-SpaceCemetery::~SpaceCemetery()
+Horizon::~Horizon()
 {
 
 }
 
-void SpaceCemetery::start()
+void Horizon::start()
 {
     for (int i = 0; i < (std::rand() % 5 + 5); ++i)
         ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_A)));
@@ -24,7 +24,7 @@ void SpaceCemetery::start()
 
     bulletsEnemy.reserve(100000);
 
-   // music.play();
-    this->mainLoop(GameState::LEVEL3);
-   // music.stop();
+    // music.play();
+    this->mainLoop(GameState::LEVEL4);
+    // music.stop();
 }
