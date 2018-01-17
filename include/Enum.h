@@ -49,7 +49,8 @@ enum class GameState : int
 enum class EnemyType
 {
     BASIC_A,
-    BASIC_B
+    BASIC_B,
+    BOSS_A,
 };
 
 enum class BulletType
@@ -73,6 +74,7 @@ enum class Textures
     PLAYER_BULLETS_A,
     ENEMY1,
     ENEMY2,
+    BOSS1,
     BULLET_BASIC_A,
     BULLET_ENEMY_A
 };

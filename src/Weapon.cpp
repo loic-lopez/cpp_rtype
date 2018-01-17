@@ -75,12 +75,12 @@ void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, Bullet
                       sf::Vector2f(pos.x + (float) WindowProperties::WIN_WIDTH * 2.f / 100.f,
                                    pos.y),
                       side, bulletType,
-                      sf::Vector2f(1.f - (i * 0.05f), 0.f - (i) * 0.1f - 0.05f));
+                      sf::Vector2f(1.f - (i * 0.05f), 0.f - (i) * 0.1f - 0.08f));
             addBullet(orientation,
                       sf::Vector2f(pos.x + (float) WindowProperties::WIN_WIDTH * 2.f / 100.f,
                                    pos.y),
                       side, bulletType,
-                      sf::Vector2f(1.f - (i * 0.05f), 0.f + (i) * 0.1f + 0.05f));
+                      sf::Vector2f(1.f - (i * 0.05f), 0.f + (i) * 0.1f + 0.08f));
         }
         else
         {

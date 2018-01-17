@@ -16,13 +16,12 @@ Enemy::Enemy(EnemyType type) : Entity()
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = std::rand() % WindowProperties::WIN_HEIGHT;
         trajectory.x = 1;
-        trajectory.y = 0;
+        trajectory.y = 1;
         speed = 3;
         weapon.setWeapon(WeaponType::SPREAD, 40, 1);
         this->setSide(Side::ENEMY);
         this->setType(Textures::ENEMY1);
     }
-
     if (type == EnemyType::BASIC_B)
     {
         enemyType = type;
@@ -36,6 +35,21 @@ Enemy::Enemy(EnemyType type) : Entity()
         weapon.setWeapon(WeaponType::STRAIGHT, 30, 2);
         this->setSide(Side::ENEMY);
         this->setType(Textures::ENEMY2);
+    }
+    if (type == EnemyType::BOSS_A)
+    {
+        enemyType = type;
+        orientation = WindowProperties::orientation;
+        sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS1);
+        pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
+        pos.y = WindowProperties::WIN_HEIGHT / 2;
+        hp = 50;
+        trajectory.x = 0;
+        trajectory.y = 3;
+        speed = 3;
+        weapon.setWeapon(WeaponType::SPREAD, 40, 3);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::BOSS1);
     }
 }
 
@@ -86,6 +100,16 @@ void Enemy::shoot()
                 weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
                 break;
             }
+            case EnemyType::BOSS_A :
+            {
+                sf::Vector2f postmp;
+
+                postmp.x = pos.x - 90;
+                postmp.y = pos.y;
+                shootCooldown = weapon.getCoolDown();;
+                weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
+                break;
+            }
         }
     }
 }
@@ -114,11 +138,10 @@ void Enemy::updatePos()
     }
     else if (orientation == Orientation::HORIZONTAL)
     {
-        //move(sf::Vector2f(-trajectory.x, 0));
         if (back)
-            move(sf::Vector2f(0, 1));
+            move(sf::Vector2f(0, trajectory.y));
         else
-            move(sf::Vector2f(0, -1));
+            move(sf::Vector2f(0, -trajectory.y));
         if (pos.y == WindowProperties::WIN_HEIGHT && back)
         {
             back = false;

@@ -7,6 +7,7 @@
 
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <memory>
 #include <Button.h>
 
 class MenuInGameHandler

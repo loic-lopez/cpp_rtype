@@ -14,6 +14,7 @@ TextureManager::TextureManager()
     sprites[(int) Textures::PLAYER_BULLETS_A] = Animation("playerBullets", Stance::IDLE);
     sprites[(int) Textures::ENEMY1] = Animation("enemy1", Stance::IDLE);
     sprites[(int) Textures::ENEMY2] = Animation("enemy2", Stance::IDLE);
+    sprites[(int) Textures::BOSS1] = Animation("boss1", Stance::IDLE);
 }
 
 TextureManager::~TextureManager()
