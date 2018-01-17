@@ -35,10 +35,11 @@ enum class GameState : int
 {
     LEVEL1 = 0,
     LEVEL2 = 1,
-    SPLASHSCREEN = 2,
-    MENU = 3,
-    CLOSE = 4,
-    GAMEOVER = 5
+    LEVEL3 = 2,
+    SPLASHSCREEN = 3,
+    MENU = 4,
+    CLOSE = 5,
+    GAMEOVER = 6
 };
 
 enum class EnemyType

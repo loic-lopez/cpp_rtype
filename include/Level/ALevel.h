@@ -10,6 +10,7 @@
 #include <HUD.h>
 #include <Bg.h>
 #include <memory>
+#include <cmath>
 
 class ALevel
 {

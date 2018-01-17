@@ -40,7 +40,11 @@ void GameHandler::start()
     std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Level1());
     this->level1 = level1.get();
 
+    std::unique_ptr<ALevel> level3 = std::unique_ptr<ALevel>(new SpaceCemetery());
+    this->level3 = level3.get();
+
     this->level1->start();
+    this->level3->start();
 }
 
 Player *GameHandler::getPlayer()
@@ -61,6 +65,8 @@ ALevel *GameHandler::getCurrentLevel()
             return this->level1;
         case GameState::LEVEL2:
             break;
+        case GameState::LEVEL3:
+            return this->level3;
         default:
             break;
     }

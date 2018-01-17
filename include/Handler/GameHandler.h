@@ -11,6 +11,7 @@
 #include "Enum.h"
 #include "Player.h"
 #include "Level/Level1.h"
+#include "Level/SpaceCemetery.h"
 #include "Enemy.h"
 #include "Static/WindowProperties.h"
 #include "HUD.h"
@@ -24,6 +25,7 @@ private:
     Player *player;
     Hud hud;
     ALevel *level1;
+    ALevel *level3;
 
 public:
     GameHandler();
