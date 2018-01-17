@@ -39,6 +39,7 @@ set(SOURCE_FILES
         src/Bg.cpp
         src/Core/MenuCore.cpp
         src/Level/Space.cpp
+        src/Level/Underwater.cpp
         src/Bullet.cpp
         src/Enemy.cpp
         src/Handler/MenuHandler.cpp
@@ -53,7 +54,8 @@ set(SOURCE_FILES
         src/Level/ALevel.cpp
         src/Level/SpaceCemetery.cpp
         src/Level/Horizon.cpp
-        src/Handler/MenuInGameHandler.cpp )
+        src/Handler/MenuInGameHandler.cpp
+        src/Level/DeepSpace.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -67,6 +69,7 @@ set(HEADER_FILES
         include/Bg.h
         include/Enum.h
         include/Level/Space.h
+        include/Level/Underwater.h
         include/Bullet.h
         include/Enemy.h
         include/TextureManager.h
@@ -86,7 +89,7 @@ set(HEADER_FILES
         include/Handler/GameOverScreenHandler.h include/Level/ALevel.h
         include/Static/static_constructor.h include/Static/PreGame.h
         include/Level/SpaceCemetery.h include/Level/Horizon.h
-        include/Handler/MenuInGameHandler.h)
+        include/Handler/MenuInGameHandler.h include/Level/DeepSpace.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

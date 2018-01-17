@@ -37,6 +37,7 @@ enum class GameState : int
     LEVEL2,
     LEVEL3,
     LEVEL4,
+    LEVEL5,
     SPLASHSCREEN,
     MENU,
     INGAMEMENU,

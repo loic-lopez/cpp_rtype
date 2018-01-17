@@ -6,25 +6,31 @@
 
 GameOverScreenCore GameOverScreenCore::m_instance = GameOverScreenCore();
 
-GameOverScreenCore::GameOverScreenCore() {
+GameOverScreenCore::GameOverScreenCore()
+{
     this->gameOverScreen.initGameOverScreen("gameOverScreen");
 }
 
-GameOverScreenCore::~GameOverScreenCore() {
+GameOverScreenCore::~GameOverScreenCore()
+{
 
 }
 
-GameOverScreenCore &GameOverScreenCore::Instance() {
+GameOverScreenCore &GameOverScreenCore::Instance()
+{
     return m_instance;
 }
 
-void GameOverScreenCore::start() {
+void GameOverScreenCore::start()
+{
 
     sf::Event Event{};
     this->gameOverScreen.playMusic();
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER) {
+    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER)
+    {
         sf::Time elapsed = clock.getElapsedTime();
-        if (elapsed.asMilliseconds() > 17) {
+        if (elapsed.asMilliseconds() > 17)
+        {
             clock.restart();
             this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
             this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
@@ -35,17 +41,22 @@ void GameOverScreenCore::start() {
     this->gameOverScreen.stopMusic();
 }
 
-void GameOverScreenCore::EventHandler(sf::Event &event) {
-    while (WindowProperties::App->pollEvent(event)) {
-        switch (event.type) {
-            case sf::Event::Closed: {
+void GameOverScreenCore::EventHandler(sf::Event &event)
+{
+    while (WindowProperties::App->pollEvent(event))
+    {
+        switch (event.type)
+        {
+            case sf::Event::Closed:
+            {
                 WindowProperties::gameState = GameState::CLOSE;
                 this->gameOverScreen.stopMusic();
                 break;
             }
 
             case sf::Event::KeyPressed:
-                if (event.key.code == sf::Keyboard::Escape) {
+                if (event.key.code == sf::Keyboard::Escape)
+                {
                     WindowProperties::gameState = GameState::CLOSE;
                     this->gameOverScreen.stopMusic();
                 }

@@ -11,8 +11,10 @@
 #include "Enum.h"
 #include "Player.h"
 #include "Level/Space.h"
+#include "Level/DeepSpace.h"
 #include "Level/SpaceCemetery.h"
 #include "Level/Horizon.h"
+#include "Level/Underwater.h"
 #include "Enemy.h"
 #include "Static/WindowProperties.h"
 #include "HUD.h"
@@ -26,8 +28,10 @@ private:
     Player *player;
     Hud hud;
     ALevel *level1;
+    ALevel *level2;
     ALevel *level3;
     ALevel *level4;
+    ALevel *level5;
 
 public:
     GameHandler();
