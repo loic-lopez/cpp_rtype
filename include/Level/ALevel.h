@@ -10,6 +10,7 @@
 #include <HUD.h>
 #include <Bg.h>
 #include <memory>
+#include <cmath>
 
 class ALevel
 {
@@ -26,7 +27,7 @@ protected:
 
     std::vector<std::shared_ptr<IEntity>> bulletsEnemy;
     std::vector<std::shared_ptr<IEntity>> bulletsAllied;
-    std::vector<std::shared_ptr<IEntity>> entities;
+    std::vector<std::shared_ptr<IEntity>> ennemies;
 
     sf::Texture     transitionToGameOverScreenTexture;
     sf::Sprite      transitionToGameOverScreenSprite;
@@ -49,6 +50,7 @@ protected:
     virtual void initLvl(const std::string &path);
     virtual void drawLvl(sf::RenderWindow &App);
     virtual void pollEvent(sf::Event &event);
+    virtual void mainLoop(GameState currentLevel);
 
 public:
     ALevel();

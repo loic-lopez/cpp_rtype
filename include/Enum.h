@@ -33,12 +33,16 @@ enum class Side
 
 enum class GameState : int
 {
-    LEVEL1 = 0,
-    LEVEL2 = 1,
-    SPLASHSCREEN = 2,
-    MENU = 3,
-    CLOSE = 4,
-    GAMEOVER = 5
+    LEVEL1,
+    LEVEL2,
+    LEVEL3,
+    LEVEL4,
+    LEVEL5,
+    SPLASHSCREEN,
+    MENU,
+    CLOSE,
+    GAMEOVER,
+    PREGAME_LEVEL1
 };
 
 enum class EnemyType
