@@ -39,7 +39,7 @@ public:
     ~GameOverScreenHandler();
     void initGameOverScreen(const std::string &path);
     void drawGameOverScreen(sf::RenderWindow &App);
-    void updateGameOverScreen(sf::Event &e, sf::RenderWindow &window); // TODO : A APPELLER DANS LA BOUCLE DE JEU AVANT LE DRAW
+    void updateGameOverScreen(sf::Event &e, sf::RenderWindow &window);
     void determineButtonsPosition();
     void playMusic();
     void stopMusic();
