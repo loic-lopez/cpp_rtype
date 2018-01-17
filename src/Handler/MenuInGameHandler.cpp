@@ -20,19 +20,19 @@ MenuInGameHandler::MenuInGameHandler()
                                         {
                                             //BOUTON SOUND
 
-                                            this->menuInGameButtons[0]->setState(0);
+                                            this->menuInGameButtons[1]->setState(0);
                                         });
     this->functionsHandler.emplace_back([this]()
                                         {
                                             //BOUTON TO MENU
                                             WindowProperties::gameState = GameState::MENU;
-                                            this->menuInGameButtons[1]->setState(0);
+                                            this->menuInGameButtons[2]->setState(0);
                                         });
     this->functionsHandler.emplace_back([this]()
                                         {
                                             //BOUTON EXIT
                                             WindowProperties::gameState = GameState::CLOSE;
-                                            this->menuInGameButtons[2]->setState(0);
+                                            this->menuInGameButtons[3]->setState(0);
                                         });
 }
 
