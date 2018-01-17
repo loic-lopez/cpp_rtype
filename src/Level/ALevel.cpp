@@ -2,8 +2,8 @@
 // Created by loic lopez on 16/01/2018.
 //
 
+#include <Core/GameCore.h>
 #include <Level/ALevel.h>
-#include <Handler/GameHandler.h>
 
 ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler::Instance().getHud())
 {
@@ -55,7 +55,7 @@ void ALevel::controller()
         player->shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
     {
-        GameHandler::Instance().getMenuInGameCore().start();
+        GameCore::Instance().getMenuInGameCore().start();
     }
 }
 

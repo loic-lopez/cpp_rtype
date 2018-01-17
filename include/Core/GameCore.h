@@ -10,6 +10,7 @@
 #include "MenuCore.hpp"
 #include "SplashScreen.h"
 #include "GameOverScreenCore.h"
+#include "MenuInGameCore.h"
 
 class GameCore
 {
@@ -19,6 +20,9 @@ private:
     GameHandler &gameHandler;
     SplashScreen &splashScreen;
     GameOverScreenCore &gameOverScreen;
+    MenuInGameCore &menuInGameCore;
+public:
+    MenuInGameCore &getMenuInGameCore();
 
 public:
     GameCore();

@@ -9,7 +9,8 @@ GameCore GameCore::m_instance = GameCore();
 GameCore::GameCore() : menuCore(MenuCore::Instance()),
                        gameHandler(GameHandler::Instance()),
                        splashScreen(SplashScreen::Instance()),
-                       gameOverScreen(GameOverScreenCore::Instance())
+                       gameOverScreen(GameOverScreenCore::Instance()),
+                       menuInGameCore(MenuInGameCore::Instance())
 {
 
 }
@@ -34,4 +35,9 @@ void GameCore::start()
 GameCore &GameCore::Instance()
 {
     return m_instance;
+}
+
+MenuInGameCore &GameCore::getMenuInGameCore()
+{
+    return menuInGameCore;
 }
