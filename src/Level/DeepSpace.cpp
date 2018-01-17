@@ -10,6 +10,7 @@
 DeepSpace::DeepSpace() : ALevel()
 {
     initLvl("lvl2");
+    currentGameLevel = GameState::LEVEL2;
 }
 
 DeepSpace::~DeepSpace()
@@ -26,6 +27,5 @@ void    DeepSpace::start()
         ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_B)));
 
     music.play();
-    mainLoop(GameState::LEVEL2);
     music.stop();
 }

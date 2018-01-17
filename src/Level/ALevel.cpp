@@ -55,6 +55,8 @@ void ALevel::controller()
         player->shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
     {
+        GameCore::Instance().getMenuInGameCore().setPreviousGameState(currentGameLevel);
+        WindowProperties::gameState = GameState::INGAMEMENU;
         GameCore::Instance().getMenuInGameCore().start();
     }
 }
@@ -252,18 +254,21 @@ void ALevel::pollEvent(sf::Event &Event)
     }
 }
 
-void ALevel::mainLoop(GameState currentLevel)
+void ALevel::mainLoop()
 {
     sf::Event Event;
     sf::Time elapsed;
 
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == currentLevel)
+    while (WindowProperties::App->isOpen() && WindowProperties::gameState == currentGameLevel)
     {
         elapsed = clock.getElapsedTime();
         invulnerabilityTime = inv.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
+            updateEntities();
+            updateAlliedBullet();
+            checkEntitiesBoxes();
             if (player->getHp() != 0)
             {
                 if (player->getGameMovementMode() == ControlType::KEYBOARD)
@@ -283,9 +288,6 @@ void ALevel::mainLoop(GameState currentLevel)
                 else
                     this->transitionToGameOverScreenSprite.setColor(sf::Color(255, 255, 255, this->fadeOpacity));
             }
-            updateEntities();
-            updateAlliedBullet();
-            checkEntitiesBoxes();
             drawAll(*WindowProperties::App);
             pollEvent(Event);
             WindowProperties::App->display();

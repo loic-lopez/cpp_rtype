@@ -47,6 +47,7 @@ public:
     Player *getPlayer();
     Hud &getHud();
     ALevel *getCurrentLevel();
+    ALevel *getCurrentLevel(GameState currentLevel);
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

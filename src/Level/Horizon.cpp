@@ -8,6 +8,7 @@
 Horizon::Horizon() : ALevel()
 {
     initLvl("lvl4");
+    currentGameLevel = GameState::LEVEL4;
 }
 
 Horizon::~Horizon()
@@ -25,6 +26,6 @@ void Horizon::start()
     bulletsEnemy.reserve(100000);
 
     // music.play();
-    this->mainLoop(GameState::LEVEL4);
+    this->mainLoop();
     // music.stop();
 }

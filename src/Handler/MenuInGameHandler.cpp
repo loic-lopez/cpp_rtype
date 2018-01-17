@@ -18,6 +18,12 @@ MenuInGameHandler::MenuInGameHandler()
                                         });
     this->functionsHandler.emplace_back([this]()
                                         {
+                                            //BOUTON SOUND
+
+                                            this->menuInGameButtons[0]->setState(0);
+                                        });
+    this->functionsHandler.emplace_back([this]()
+                                        {
                                             //BOUTON TO MENU
                                             WindowProperties::gameState = GameState::MENU;
                                             this->menuInGameButtons[1]->setState(0);
@@ -78,7 +84,7 @@ void MenuInGameHandler::determineButtonsPosition()
 
     for (auto &menuInGameButton : this->menuInGameButtons)
     {
-        posY = (WindowProperties::WIN_HEIGHT - menuInGameButton->getDimensions().y) +
+        posY = (WindowProperties::WIN_HEIGHT - menuInGameButton->getDimensions().y) -
                (menuInGameButton->getDimensions().y * i);
         float posX = (WindowProperties::WIN_WIDTH / 2) - (menuInGameButton->getDimensions().x / 2);
         menuInGameButton->buttonShape.setPosition(sf::Vector2f(posX, posY));

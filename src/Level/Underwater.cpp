@@ -9,6 +9,7 @@
 
 Underwater::Underwater() : ALevel() {
     initLvl("lvl5");
+    currentGameLevel = GameState::LEVEL5;
 }
 
 Underwater::~Underwater() {
@@ -24,6 +25,6 @@ void Underwater::start() {
     bulletsEnemy.reserve(100000);
 
     music.play();
-    this->mainLoop(GameState::LEVEL5);
+    this->mainLoop();
     music.stop();
 }

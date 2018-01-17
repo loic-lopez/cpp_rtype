@@ -14,11 +14,12 @@ GameHandler::GameHandler()
 
 GameHandler::GameHandler(const GameHandler &obj)
 {
-
+    hud = obj.hud;
 }
 
 GameHandler& GameHandler::operator=(const GameHandler &obj)
 {
+    hud = obj.hud;
     return *this;
 }
 
@@ -71,6 +72,26 @@ Hud & GameHandler::getHud()
 ALevel *GameHandler::getCurrentLevel()
 {
     switch (WindowProperties::gameState)
+    {
+        case GameState::LEVEL1:
+            return this->level1;
+        case GameState::LEVEL2:
+            return this->level2;
+        case GameState::LEVEL3:
+            return this->level3;
+        case GameState::LEVEL4:
+            return this->level4;
+        case GameState::LEVEL5:
+            return this->level5;
+        default:
+            break;
+    }
+    return nullptr;
+}
+
+ALevel *GameHandler::getCurrentLevel(GameState currentLevel)
+{
+    switch (currentLevel)
     {
         case GameState::LEVEL1:
             return this->level1;

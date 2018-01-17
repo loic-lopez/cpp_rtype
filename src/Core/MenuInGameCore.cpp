@@ -46,15 +46,15 @@ void MenuInGameCore::start()
 {
     sf::Event Event{};
 
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER)
+    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::INGAMEMENU)
     {
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
             this->menuInGameHandler.updateMenuInGame(Event, *WindowProperties::App);
+            GameHandler::Instance().getCurrentLevel(previousGameState)->drawAll(*WindowProperties::App);
             this->menuInGameHandler.drawMenuInGame(*WindowProperties::App);
-            GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
             this->EventHandler(Event);
             WindowProperties::App->display();
         }

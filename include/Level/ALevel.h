@@ -37,6 +37,7 @@ protected:
     float           floatFadeOpacity;
     int             fadeOpacity;
     bool            isGameLost;
+    GameState       currentGameLevel;
 
     virtual void controller();
     virtual void XboxController();
@@ -49,7 +50,7 @@ protected:
 
     virtual void drawLvl(sf::RenderWindow &App);
     virtual void pollEvent(sf::Event &event);
-    virtual void mainLoop(GameState currentLevel);
+    virtual void mainLoop();
 public:
 
     ALevel();

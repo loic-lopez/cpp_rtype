@@ -8,6 +8,7 @@
 SpaceCemetery::SpaceCemetery() : ALevel()
 {
     initLvl("lvl3");
+    currentGameLevel = GameState::LEVEL3;
 }
 
 SpaceCemetery::~SpaceCemetery()
@@ -25,6 +26,6 @@ void SpaceCemetery::start()
     bulletsEnemy.reserve(100000);
 
    // music.play();
-    this->mainLoop(GameState::LEVEL3);
+    this->mainLoop();
    // music.stop();
 }

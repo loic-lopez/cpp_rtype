@@ -9,6 +9,7 @@
 
 Space::Space() : ALevel() {
     initLvl("lvl1");
+    currentGameLevel = GameState::LEVEL1;
 }
 
 Space::~Space() {
@@ -24,6 +25,6 @@ void Space::start() {
     bulletsEnemy.reserve(100000);
 
     music.play();
-    this->mainLoop(GameState::LEVEL1);
+    this->mainLoop();
     music.stop();
 }
