@@ -29,7 +29,6 @@ void MenuCore::start()
     this->menu.startMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::MENU)
     {
-        std::cout << "GAMESTATE VIA MENU : " <<(int) WindowProperties::gameState << std::endl;
         sf::Time elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {

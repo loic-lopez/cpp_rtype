@@ -46,6 +46,7 @@ void MenuInGameCore::start()
 {
     sf::Event Event{};
 
+    WindowProperties::App->setMouseCursorVisible(true);
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::INGAMEMENU)
     {
         this->menuInGameHandler.updateMenuInGame(Event, *WindowProperties::App);
@@ -54,6 +55,9 @@ void MenuInGameCore::start()
         this->EventHandler(Event);
         WindowProperties::App->display();
     }
+    WindowProperties::App->setMouseCursorVisible(false);
+    std::cout << (int)WindowProperties::gameState << std::endl;
+    std::cout << (int)previousGameState << std::endl;
 }
 
 GameState MenuInGameCore::getPreviousGameState() const

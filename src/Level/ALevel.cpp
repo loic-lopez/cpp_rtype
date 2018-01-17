@@ -242,12 +242,6 @@ void ALevel::pollEvent(sf::Event &Event)
                 WindowProperties::gameState = GameState::CLOSE;
                 break;
             }
-            case sf::Event::KeyPressed:
-            {
-                if (Event.key.code == sf::Keyboard::Escape)
-                    WindowProperties::gameState = GameState::CLOSE;
-                break;
-            }
             default:
                 break;
         }
