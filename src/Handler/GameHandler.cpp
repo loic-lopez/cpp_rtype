@@ -38,17 +38,20 @@ void GameHandler::start()
     this->player = player.get();
 
     std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Space());
+    std::unique_ptr<ALevel> level2 = std::unique_ptr<ALevel>(new DeepSpace());
     std::unique_ptr<ALevel> level3 = std::unique_ptr<ALevel>(new SpaceCemetery());
     std::unique_ptr<ALevel> level4 = std::unique_ptr<ALevel>(new Horizon());
     std::unique_ptr<ALevel> level5 = std::unique_ptr<ALevel>(new Underwater());
 
     this->level1 = level1.get();
+    this->level2 = level2.get();
     this->level3 = level3.get();
     this->level4 = level4.get();
     this->level5 = level5.get();
 
     WindowProperties::App->setMouseCursorVisible(false);
     this->level1->start();
+    this->level2->start();
     this->level3->start();
     this->level4->start();
     this->level5->start();
@@ -72,7 +75,7 @@ ALevel *GameHandler::getCurrentLevel()
         case GameState::LEVEL1:
             return this->level1;
         case GameState::LEVEL2:
-            break;
+            return this->level2;
         case GameState::LEVEL3:
             return this->level3;
         case GameState::LEVEL4:
