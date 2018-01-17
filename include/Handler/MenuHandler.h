@@ -27,7 +27,7 @@ private:
 
     //BUTTON SYSTEM
     std::vector<std::string> buttonEffectsPaths;
-    std::vector<Button *> menuButtons;
+    std::vector<std::shared_ptr<Button>> menuButtons;
     std::vector<std::function<void()>> functionsHandler;
 
 public:

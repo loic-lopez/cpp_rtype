@@ -31,7 +31,7 @@ private:
 
     //BUTTON SYSTEM
     std::vector<std::string> buttonEffectsPaths;
-    std::vector<Button *> gameOverButtons;
+    std::vector<std::shared_ptr<Button>>       gameOverButtons;
     std::vector<std::function<void()>> functionsHandler;
 
 public:

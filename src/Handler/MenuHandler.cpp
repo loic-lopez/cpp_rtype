@@ -60,8 +60,7 @@ void MenuHandler::initMenu(const std::string &path) {
                 if (this->buttonEffectsPaths.size() < 3) {
                     this->buttonEffectsPaths.push_back(path);
                     if (this->buttonEffectsPaths.size() == 3) {
-                        Button *newButton = new Button(this->buttonEffectsPaths);
-                        this->menuButtons.push_back(newButton);
+                        this->menuButtons.emplace_back(new Button(this->buttonEffectsPaths));
                         this->buttonEffectsPaths.clear();
                     }
                 }

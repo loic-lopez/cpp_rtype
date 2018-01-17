@@ -7,19 +7,24 @@
 
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <Button.h>
 
 class MenuInGameHandler
 {
 private:
     std::vector<std::function<void()>> functionsHandler;
+    GameState                          previousGameState;
+    std::vector<std::shared_ptr<Button>>             menuInGameButtons;
 
 public:
+
     MenuInGameHandler();
     ~MenuInGameHandler();
     void initMenuInGameHandler(const std::string &path);
     void drawMenuInGame(sf::RenderWindow &App);
     void updateMenuInGame(sf::Event &e, sf::RenderWindow &window);
     void determineButtonsPosition();
+    void setPreviousGameState(GameState previousGameState);
 };
 
 

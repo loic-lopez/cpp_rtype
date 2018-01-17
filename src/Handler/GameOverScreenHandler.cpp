@@ -62,8 +62,7 @@ void GameOverScreenHandler::initGameOverScreen(const std::string &path) {
                 if (this->buttonEffectsPaths.size() < 3) {
                     this->buttonEffectsPaths.push_back(path);
                     if (this->buttonEffectsPaths.size() == 3) {
-                        Button *newButton = new Button(this->buttonEffectsPaths);
-                        this->gameOverButtons.push_back(newButton);
+                        this->gameOverButtons.emplace_back(new Button(this->buttonEffectsPaths));
                         this->buttonEffectsPaths.clear();
                     }
                 }
