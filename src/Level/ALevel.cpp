@@ -55,7 +55,7 @@ void ALevel::controller()
         player->shoot();
     if (keyboard.isKeyPressed(sf::Keyboard::Escape))
     {
-        WindowProperties::gameState = GameState::CLOSE;
+        GameHandler::Instance().getMenuInGameCore().start();
     }
 }
 

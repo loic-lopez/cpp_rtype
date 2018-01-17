@@ -41,24 +41,24 @@ protected:
     virtual void controller();
     virtual void XboxController();
 
-    virtual void drawAll(sf::RenderWindow &App);
     virtual void updateAlliedBullet();
     virtual void updateEntities();
-
     virtual void checkEntitiesBoxes();
 
     virtual void initLvl(const std::string &path);
+
     virtual void drawLvl(sf::RenderWindow &App);
     virtual void pollEvent(sf::Event &event);
     virtual void mainLoop(GameState currentLevel);
-
 public:
-    ALevel();
 
+    ALevel();
     virtual ~ALevel();
 
     virtual void start() = 0;
+
     virtual void addBullet(IEntity *);
+    virtual void drawAll(sf::RenderWindow &App);
 };
 
 

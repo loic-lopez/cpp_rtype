@@ -7,12 +7,12 @@
 GameHandler GameHandler::m_instance = GameHandler();
 
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
-GameHandler::GameHandler()
+GameHandler::GameHandler() : menuInGameCore(MenuInGameCore::Instance())
 {
     hud.initHud("hud");
 }
 
-GameHandler::GameHandler(const GameHandler &obj)
+GameHandler::GameHandler(const GameHandler &obj) : menuInGameCore(MenuInGameCore::Instance())
 {
 
 }
@@ -86,4 +86,9 @@ ALevel *GameHandler::getCurrentLevel()
             break;
     }
     return nullptr;
+}
+
+MenuInGameCore &GameHandler::getMenuInGameCore()
+{
+    return menuInGameCore;
 }

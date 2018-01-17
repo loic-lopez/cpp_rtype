@@ -92,7 +92,7 @@ void GameOverScreenHandler::updateGameOverScreen(sf::Event &e, sf::RenderWindow 
 void GameOverScreenHandler::determineButtonsPosition() {
     float posX;
     float posY;
-    std::cout << "VECTOR SIZE : " << this->gameOverButtons.size() << std::endl;
+
     for (int i = 0; i < this->gameOverButtons.size(); ++i) {
         if (i == 0)
             posX = 0;

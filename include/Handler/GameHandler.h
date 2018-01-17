@@ -8,6 +8,7 @@
 #include <iostream>
 #include <thread>
 #include <SFML/Graphics.hpp>
+#include <Core/MenuInGameCore.h>
 #include "Enum.h"
 #include "Player.h"
 #include "Level/Space.h"
@@ -27,6 +28,9 @@ private:
     static GameHandler m_instance;
     Player *player;
     Hud hud;
+    MenuInGameCore &menuInGameCore;
+
+private:
     ALevel *level1;
     ALevel *level2;
     ALevel *level3;
@@ -45,6 +49,7 @@ public:
     Player *getPlayer();
     Hud &getHud();
     ALevel *getCurrentLevel();
+    MenuInGameCore &getMenuInGameCore();
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

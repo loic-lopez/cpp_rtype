@@ -5,6 +5,7 @@
 #include <iostream>
 #include <Static/WindowProperties.h>
 #include <Parsing.h>
+#include <Core/MenuInGameCore.h>
 #include "Handler/MenuInGameHandler.h"
 
 MenuInGameHandler::MenuInGameHandler()
@@ -12,7 +13,7 @@ MenuInGameHandler::MenuInGameHandler()
     this->functionsHandler.emplace_back([this]()
                                         {
                                             //BOUTON RESUME
-                                            WindowProperties::gameState = this->previousGameState;
+                                            WindowProperties::gameState = MenuInGameCore::Instance().getPreviousGameState();
                                             this->menuInGameButtons[0]->setState(0);
                                         });
     this->functionsHandler.emplace_back([this]()
@@ -36,27 +37,18 @@ MenuInGameHandler::~MenuInGameHandler()
 
 void MenuInGameHandler::initMenuInGameHandler(const std::string &path)
 {
-    Parsing::loadCSV(path, [&, this] (std::string const &path, int const &i)
-    {
-        if (path.substr(path.find_last_of('.') + 1) == "png" ||
-            path.substr(path.find_last_of('.') + 1) == "jpg")
-        {
-            this->textTexture.loadFromFile(path);
-            this->textSprite.setTexture(this->textTexture);
-            this->textSprite.setPosition(
-                    WindowProperties::WIN_WIDTH / 2 - (this->textSprite.getGlobalBounds().width / 2),
-                    WindowProperties::WIN_HEIGHT / 4);
-        }
-        if (this->buttonEffectsPaths.size() < 3)
-        {
-            this->buttonEffectsPaths.push_back(path);
-            if (this->buttonEffectsPaths.size() == 3)
-            {
-                this->menuInGameButtons.emplace_back(new Button(this->buttonEffectsPaths));
-                this->buttonEffectsPaths.clear();
-            }
-        }
-    }
+    Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
+                     {
+                         if (this->buttonEffectsPaths.size() < 3)
+                         {
+                             this->buttonEffectsPaths.push_back(path);
+                             if (this->buttonEffectsPaths.size() == 3)
+                             {
+                                 this->menuInGameButtons.emplace_back(new Button(this->buttonEffectsPaths));
+                                 this->buttonEffectsPaths.clear();
+                             }
+                         }
+                     }
     );
     this->determineButtonsPosition();
     for (int j = 0; j < menuInGameButtons.size(); j++)
@@ -65,20 +57,31 @@ void MenuInGameHandler::initMenuInGameHandler(const std::string &path)
 
 void MenuInGameHandler::drawMenuInGame(sf::RenderWindow &App)
 {
-
+    for (auto &menuInGameButton : this->menuInGameButtons)
+    {
+        App.draw(menuInGameButton->buttonShape);
+    }
 }
 
 void MenuInGameHandler::updateMenuInGame(sf::Event &e, sf::RenderWindow &window)
 {
-
+    for (auto &menuInGameButton : this->menuInGameButtons)
+    {
+        menuInGameButton->update(e, window);
+    }
 }
 
 void MenuInGameHandler::determineButtonsPosition()
 {
+    float posY;
+    int i = 0;
 
-}
-
-void MenuInGameHandler::setPreviousGameState(GameState previousGameState)
-{
-    MenuInGameHandler::previousGameState = previousGameState;
+    for (auto &menuInGameButton : this->menuInGameButtons)
+    {
+        posY = (WindowProperties::WIN_HEIGHT - menuInGameButton->getDimensions().y) +
+               (menuInGameButton->getDimensions().y * i);
+        float posX = (WindowProperties::WIN_WIDTH / 2) - (menuInGameButton->getDimensions().x / 2);
+        menuInGameButton->buttonShape.setPosition(sf::Vector2f(posX, posY));
+        i++;
+    }
 }

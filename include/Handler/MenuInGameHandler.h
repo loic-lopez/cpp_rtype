@@ -12,12 +12,6 @@
 class MenuInGameHandler
 {
 private:
-    GameState previousGameState;
-
-    // TEXT ON GAMEOVER SCREEN
-    sf::Sprite textSprite;
-
-    sf::Texture textTexture;
     //BUTTON SYSTEM
     std::vector<std::string> buttonEffectsPaths;
     std::vector<std::function<void()>> functionsHandler;
@@ -36,8 +30,6 @@ public:
     void updateMenuInGame(sf::Event &e, sf::RenderWindow &window);
 
     void determineButtonsPosition();
-
-    void setPreviousGameState(GameState previousGameState);
 };
 
 
