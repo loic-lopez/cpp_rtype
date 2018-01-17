@@ -47,10 +47,12 @@ void GameHandler::start()
     this->level4 = level4.get();
     this->level5 = level5.get();
 
+    WindowProperties::App->setMouseCursorVisible(false);
     this->level1->start();
     this->level3->start();
     this->level4->start();
     this->level5->start();
+    WindowProperties::App->setMouseCursorVisible(true);
 }
 
 Player *GameHandler::getPlayer()
@@ -75,8 +77,6 @@ ALevel *GameHandler::getCurrentLevel()
             return this->level3;
         case GameState::LEVEL4:
             return this->level4;
-        case GameState::LEVEL5:
-            return this->level5;
         default:
             break;
     }
