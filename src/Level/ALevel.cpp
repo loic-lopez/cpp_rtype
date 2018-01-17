@@ -51,14 +51,9 @@ void ALevel::controller()
             player->move(sf::Vector2f(1, 0));
     }
 
+
     if (keyboard.isKeyPressed(sf::Keyboard::Space))
         player->shoot();
-    if (keyboard.isKeyPressed(sf::Keyboard::Escape))
-    {
-        GameCore::Instance().getMenuInGameCore().setPreviousGameState(currentGameLevel);
-        WindowProperties::gameState = GameState::INGAMEMENU;
-        GameCore::Instance().getMenuInGameCore().start();
-    }
 }
 
 void ALevel::XboxController()
@@ -241,6 +236,15 @@ void ALevel::pollEvent(sf::Event &Event)
             {
                 WindowProperties::gameState = GameState::CLOSE;
                 break;
+            }
+            case sf::Event::KeyReleased:
+            {
+                if (Event.key.code == sf::Keyboard::Escape)
+                {
+                    GameCore::Instance().getMenuInGameCore().setPreviousGameState(currentGameLevel);
+                    WindowProperties::gameState = GameState::INGAMEMENU;
+                    GameCore::Instance().getMenuInGameCore().start();
+                }
             }
             default:
                 break;

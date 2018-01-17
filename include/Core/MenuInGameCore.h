@@ -25,10 +25,7 @@ private:
     void EventHandler(sf::Event &event);
     MenuInGameCore();
     ~MenuInGameCore();
-    MenuInGameCore &operator=(const MenuInGameCore&)
-    {
-        return *this;
-    }
+
     MenuInGameCore(const MenuInGameCore&)
     {
     }

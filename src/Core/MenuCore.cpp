@@ -29,15 +29,10 @@ void MenuCore::start()
     this->menu.startMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::MENU)
     {
-        sf::Time elapsed = clock.getElapsedTime();
-        if (elapsed.asMilliseconds() > 17)
-        {
-            clock.restart();
-            this->menu.updateMenu(Event, *WindowProperties::App);
-            this->menu.drawMenu(*WindowProperties::App);
-            this->eventHandler(Event);
-            WindowProperties::App->display();
-        }
+        this->menu.updateMenu(Event, *WindowProperties::App);
+        this->menu.drawMenu(*WindowProperties::App);
+        this->eventHandler(Event);
+        WindowProperties::App->display();
     }
     this->menu.stopMusic();
 }

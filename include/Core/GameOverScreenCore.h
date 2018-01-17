@@ -14,7 +14,6 @@ class GameOverScreenCore
 {
 private:
     static GameOverScreenCore   m_instance;
-    sf::Clock                   clock;
     GameOverScreenHandler       gameOverScreen;
 
     void EventHandler(sf::Event &event);

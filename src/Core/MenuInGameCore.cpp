@@ -14,16 +14,11 @@ void MenuInGameCore::EventHandler(sf::Event &event)
     {
         switch (event.type)
         {
-            case sf::Event::Closed:
-            {
-                WindowProperties::gameState = GameState::CLOSE;
-                break;
-            }
-
-            case sf::Event::KeyPressed:
+            case sf::Event::KeyReleased:
                 if (event.key.code == sf::Keyboard::Escape)
                 {
                     WindowProperties::gameState = previousGameState;
+                    std::cout << (int)previousGameState << std::endl;
                 }
                 break;
             default:

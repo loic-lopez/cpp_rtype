@@ -30,7 +30,6 @@ private:
     MenuCore(const MenuCore &)
     {}
 
-    sf::Clock clock;
     MenuHandler menu;
 
 public:

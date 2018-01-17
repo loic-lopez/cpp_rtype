@@ -23,20 +23,14 @@ GameOverScreenCore &GameOverScreenCore::Instance()
 
 void GameOverScreenCore::start()
 {
-
     sf::Event Event{};
     this->gameOverScreen.playMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER)
     {
-        sf::Time elapsed = clock.getElapsedTime();
-        if (elapsed.asMilliseconds() > 17)
-        {
-            clock.restart();
-            this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
-            this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
-            this->EventHandler(Event);
-            WindowProperties::App->display();
-        }
+        this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
+        this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
+        this->EventHandler(Event);
+        WindowProperties::App->display();
     }
     this->gameOverScreen.stopMusic();
 }
