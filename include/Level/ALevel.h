@@ -16,10 +16,10 @@ class ALevel
 {
 protected:
     Player *player;
-    Hud    &hud;
+    Hud &hud;
     Bg back;
 
-    sf::Time   invulnerabilityTime;
+    sf::Time invulnerabilityTime;
     sf::Music music;
     sf::Clock clock;
     sf::Clock inv;
@@ -29,36 +29,44 @@ protected:
     std::vector<std::shared_ptr<IEntity>> bulletsAllied;
     std::vector<std::shared_ptr<IEntity>> ennemies;
 
-    sf::Texture     transitionToGameOverScreenTexture;
-    sf::Sprite      transitionToGameOverScreenSprite;
-    float           baseSoundAttenuationOnDeathPercentageDecreasing;
-    float           soundAttenuationOnDeath;
-    float           baseFadeOpacityPercentageIncreasing;
-    float           floatFadeOpacity;
-    int             fadeOpacity;
-    bool            isGameLost;
-    GameState       currentGameLevel;
+    sf::Texture transitionToGameOverScreenTexture;
+    sf::Sprite transitionToGameOverScreenSprite;
+    float baseSoundAttenuationOnDeathPercentageDecreasing;
+    float soundAttenuationOnDeath;
+    float baseFadeOpacityPercentageIncreasing;
+    float floatFadeOpacity;
+    int fadeOpacity;
+    bool isGameLost;
+    GameState currentGameLevel;
 
     virtual void controller();
+
     virtual void XboxController();
 
     virtual void updateAlliedBullet();
+
     virtual void updateEntities();
+
     virtual void checkEntitiesBoxes();
 
     virtual void initLvl(const std::string &path);
 
     virtual void drawLvl(sf::RenderWindow &App);
+
     virtual void pollEvent(sf::Event &event);
+
     virtual void mainLoop();
+
 public:
 
     ALevel();
+
     virtual ~ALevel();
 
     virtual void start() = 0;
 
     virtual void addBullet(IEntity *);
+
     virtual void drawAll(sf::RenderWindow &App);
 };
 
