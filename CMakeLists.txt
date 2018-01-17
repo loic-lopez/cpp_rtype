@@ -39,6 +39,7 @@ set(SOURCE_FILES
         src/Bg.cpp
         src/Core/MenuCore.cpp
         src/Level/Space.cpp
+        src/Level/Underwater.cpp
         src/Bullet.cpp
         src/Enemy.cpp
         src/Handler/MenuHandler.cpp
@@ -63,6 +64,7 @@ set(HEADER_FILES
         include/Bg.h
         include/Enum.h
         include/Level/Space.h
+        include/Level/Underwater.h
         include/Bullet.h
         include/Enemy.h
         include/TextureManager.h
