@@ -5,6 +5,7 @@
 #include <Parsing.h>
 #include <Enemy.h>
 #include <cmath>
+#include <Static/PreGame.h>
 #include "Level/Space.h"
 
 Space::Space() : ALevel() {
@@ -23,6 +24,8 @@ void Space::start() {
     for (int i = 0; i < (std::rand() % 4 + 1); ++i)
         ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_B)));
     bulletsEnemy.reserve(100000);
+
+    // PreGame::startPreGameLevel1();
 
     music.play();
     this->mainLoop();

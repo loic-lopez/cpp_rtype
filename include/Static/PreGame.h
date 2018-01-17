@@ -42,7 +42,7 @@ public:
         preGameLevel2Music.setLoop(true);
     }
 
-    void startPreGameLevel1();
+    static void startPreGameLevel1();
 };
 
 #endif //R_TYPE_PREGAME_H
