@@ -5,13 +5,9 @@
 #ifndef RTYPE_UNDERWATER_H
 #define RTYPE_UNDERWATER_H
 
-#include <SFML/Audio.hpp>
-#include "Enum.h"
-#include "Bg.h"
-#include "HUD.h"
-#include "Level/ALevel.h"
+// LEVEL 5
 
-// LEVEL 1
+#include "ALevel.h"
 
 class Underwater : public ALevel
 {

@@ -24,6 +24,6 @@ void Underwater::start() {
     bulletsEnemy.reserve(100000);
 
     music.play();
-    this->mainLoop(GameState::LEVEL1);
+    this->mainLoop(GameState::LEVEL5);
     music.stop();
 }

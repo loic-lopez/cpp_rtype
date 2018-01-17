@@ -77,6 +77,8 @@ ALevel *GameHandler::getCurrentLevel()
             return this->level3;
         case GameState::LEVEL4:
             return this->level4;
+        case GameState::LEVEL5:
+            return this->level5;
         default:
             break;
     }
