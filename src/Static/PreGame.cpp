@@ -17,7 +17,7 @@ sf::Music       PreGame::preGameLevel2Music;
 void            PreGame::startPreGameLevel1()
 {
     sf::Clock clock;
-    this->preGameLevel1Music.play();
+    preGameLevel1Music.play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL1)
     {
         sf::Event event;
@@ -29,6 +29,6 @@ void            PreGame::startPreGameLevel1()
         WindowProperties::App->display();
 
     }
-    this->preGameLevel1Music.stop();
+    preGameLevel1Music.stop();
     WindowProperties::gameState = GameState::LEVEL1;
 }
