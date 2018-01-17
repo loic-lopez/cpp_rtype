@@ -51,8 +51,6 @@ void MenuInGameCore::start()
         WindowProperties::App->display();
     }
     WindowProperties::App->setMouseCursorVisible(false);
-    std::cout << (int)WindowProperties::gameState << std::endl;
-    std::cout << (int)previousGameState << std::endl;
 }
 
 GameState MenuInGameCore::getPreviousGameState() const
