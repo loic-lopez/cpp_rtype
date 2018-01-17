@@ -30,8 +30,8 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::ENEMY2);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = std::rand() % WindowProperties::WIN_HEIGHT;
-        trajectory.x = 1;
-        trajectory.y = 0;
+        trajectory.x = 2;
+        trajectory.y = 1;
         speed = 4;
         weapon.setWeapon(WeaponType::STRAIGHT, 30, 2);
         this->setSide(Side::ENEMY);
