@@ -5,9 +5,10 @@
 #ifndef R_TYPE_PREGAME_H
 #define R_TYPE_PREGAME_H
 
-#include <SFML/Graphics.hpp
+#include <SFML/Graphics.hpp>
 #include <SFML/Audio/Music.hpp>
 #include "static_constructor.h"
+#include "WindowProperties.h"
 
 class PreGame
 {
@@ -36,10 +37,12 @@ public:
     {
         (void)static_constructor<&PreGame::PreGameLoadForLevel2>::c;
         preGameLevel2BackgroundTexture.loadFromFile("");
-        preGameLevel2BackgroundSprite.setTexture(preGameLevel1BackgroundTexture);
+        preGameLevel2BackgroundSprite.setTexture(preGameLevel2BackgroundTexture);
         preGameLevel2Music.openFromFile("");
         preGameLevel2Music.setLoop(true);
     }
+
+    void startPreGameLevel1();
 };
 
 #endif //R_TYPE_PREGAME_H

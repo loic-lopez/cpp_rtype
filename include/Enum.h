@@ -40,7 +40,8 @@ enum class GameState : int
     SPLASHSCREEN,
     MENU,
     CLOSE,
-    GAMEOVER
+    GAMEOVER,
+    PREGAME_LEVEL1
 };
 
 enum class EnemyType
