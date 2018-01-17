@@ -45,9 +45,11 @@ void GameHandler::start()
     this->level3 = level3.get();
     this->level4 = level4.get();
 
+    WindowProperties::App->setMouseCursorVisible(false);
     this->level1->start();
     this->level3->start();
     this->level4->start();
+    WindowProperties::App->setMouseCursorVisible(true);
 }
 
 Player *GameHandler::getPlayer()
