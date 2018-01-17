@@ -16,12 +16,10 @@ private:
     GameState previousGameState;
 public:
     GameState getPreviousGameState() const;
-
     void setPreviousGameState(GameState previousGameState);
 
 private:
     static MenuInGameCore   m_instance;
-    sf::Clock                   clock;
     MenuInGameHandler       menuInGameHandler;
 
     void EventHandler(sf::Event &event);

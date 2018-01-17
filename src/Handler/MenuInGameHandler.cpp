@@ -84,7 +84,7 @@ void MenuInGameHandler::determineButtonsPosition()
 
     for (auto &menuInGameButton : this->menuInGameButtons)
     {
-        posY = (WindowProperties::WIN_HEIGHT - menuInGameButton->getDimensions().y) -
+        posY = (WindowProperties::WIN_HEIGHT / 2 - menuInGameButton->getDimensions().y) +
                (menuInGameButton->getDimensions().y * i);
         float posX = (WindowProperties::WIN_WIDTH / 2) - (menuInGameButton->getDimensions().x / 2);
         menuInGameButton->buttonShape.setPosition(sf::Vector2f(posX, posY));

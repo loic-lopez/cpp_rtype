@@ -252,6 +252,25 @@ void ALevel::pollEvent(sf::Event &Event)
                 break;
         }
     }
+    if (player->getHp() != 0)
+    {
+        if (player->getGameMovementMode() == ControlType::KEYBOARD)
+            controller();
+        else if (player->getGameMovementMode() == ControlType::XBOXCONTROLLER)
+            XboxController();
+    }
+    else
+    {
+        this->isGameLost = true;
+        this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
+        this->music.setVolume(this->soundAttenuationOnDeath);
+        this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
+        this->fadeOpacity = int(std::round(this->floatFadeOpacity));
+        if (this->fadeOpacity >= 255)
+            WindowProperties::gameState = GameState::GAMEOVER;
+        else
+            this->transitionToGameOverScreenSprite.setColor(sf::Color(255, 255, 255, this->fadeOpacity));
+    }
 }
 
 void ALevel::mainLoop()
@@ -269,25 +288,6 @@ void ALevel::mainLoop()
             updateEntities();
             updateAlliedBullet();
             checkEntitiesBoxes();
-            if (player->getHp() != 0)
-            {
-                if (player->getGameMovementMode() == ControlType::KEYBOARD)
-                    controller();
-                else if (player->getGameMovementMode() == ControlType::XBOXCONTROLLER)
-                    XboxController();
-            }
-            else
-            {
-                this->isGameLost = true;
-                this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
-                this->music.setVolume(this->soundAttenuationOnDeath);
-                this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
-                this->fadeOpacity = int(std::round(this->floatFadeOpacity));
-                if (this->fadeOpacity >= 255)
-                    WindowProperties::gameState = GameState::GAMEOVER;
-                else
-                    this->transitionToGameOverScreenSprite.setColor(sf::Color(255, 255, 255, this->fadeOpacity));
-            }
             drawAll(*WindowProperties::App);
             pollEvent(Event);
             WindowProperties::App->display();
