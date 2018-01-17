@@ -49,7 +49,7 @@ set(SOURCE_FILES
         src/Button.cpp
         src/SplashScreen.cpp
         src/Core/GameCore.cpp
-        src/Handler/GameHandler.cpp src/Level/ALevel.cpp)
+        src/Handler/GameHandler.cpp src/Level/ALevel.cpp src/Level/Level2.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -79,7 +79,7 @@ set(HEADER_FILES
         include/Core/GameOverScreenCore.h
         src/Core/GameOverScreenCore.cpp
         src/Handler/GameOverScreenHandler.cpp
-        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h include/Static/static_constructor.h include/Static/PreGame.h)
+        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h include/Static/static_constructor.h include/Static/PreGame.h include/Level/Level2.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

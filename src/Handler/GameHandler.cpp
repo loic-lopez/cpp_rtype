@@ -37,8 +37,8 @@ void GameHandler::start()
     std::unique_ptr<Player> player = std::unique_ptr<Player>(new Player());
     this->player = player.get();
 
-    std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Level1());
-    this->level1 = level1.get();
+    std::unique_ptr<ALevel> level2 = std::unique_ptr<ALevel>(new Level2());
+    this->level1 = level2.get();
 
     this->level1->start();
 }
