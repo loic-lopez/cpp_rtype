@@ -35,7 +35,9 @@ void PreGame::startPreGameLevel1() {
     sf::Time elapsed;
     preGameLevel1Music->play();
     while (WindowProperties::App->isOpen()) {
+        elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
+            clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
                 if (event.type == sf::Event::Closed)
