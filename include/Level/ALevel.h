@@ -32,8 +32,6 @@ protected:
     std::vector<std::shared_ptr<IEntity>> bulletsAllied;
     std::vector<std::shared_ptr<IEntity>> ennemies;
 
-    sf::Texture transitionToGameOverScreenTexture;
-    sf::Sprite transitionToGameOverScreenSprite;
     float baseSoundAttenuationOnDeathPercentageDecreasing;
     float soundAttenuationOnDeath;
     float baseFadeOpacityPercentageIncreasing;
