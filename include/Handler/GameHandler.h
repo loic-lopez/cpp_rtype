@@ -34,6 +34,11 @@ private:
     ALevel *level3;
     ALevel *level4;
     ALevel *level5;
+    void    startLevel1();
+    void    startLevel2();
+    void    startLevel3();
+    void    startLevel4();
+    void    startLevel5();
 
 public:
     GameHandler();

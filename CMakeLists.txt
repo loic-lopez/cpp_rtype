@@ -55,7 +55,7 @@ set(SOURCE_FILES
         src/Level/SpaceCemetery.cpp
         src/Level/Horizon.cpp
         src/Handler/MenuInGameHandler.cpp
-        src/Level/DeepSpace.cpp src/Core/MenuInGameCore.cpp src/Static/PreGame.cpp)
+        src/Level/DeepSpace.cpp src/Core/MenuInGameCore.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)

@@ -38,24 +38,17 @@ void GameHandler::start()
     std::unique_ptr<Player> player = std::unique_ptr<Player>(new Player());
     this->player = player.get();
 
-    std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Space());
-    std::unique_ptr<ALevel> level2 = std::unique_ptr<ALevel>(new DeepSpace());
-    std::unique_ptr<ALevel> level3 = std::unique_ptr<ALevel>(new SpaceCemetery());
-    std::unique_ptr<ALevel> level4 = std::unique_ptr<ALevel>(new Horizon());
-    std::unique_ptr<ALevel> level5 = std::unique_ptr<ALevel>(new Underwater());
-
-    this->level1 = level1.get();
-    this->level2 = level2.get();
-    this->level3 = level3.get();
-    this->level4 = level4.get();
-    this->level5 = level5.get();
-
     WindowProperties::App->setMouseCursorVisible(false);
-    this->level1->start();
-    this->level2->start();
-    this->level3->start();
-    this->level4->start();
-    this->level5->start();
+    while (WindowProperties::gameState == GameState::LEVEL1)
+        this->startLevel1();
+    while (WindowProperties::gameState == GameState::LEVEL2)
+        this->startLevel2();
+    while (WindowProperties::gameState == GameState::LEVEL3)
+        this->startLevel3();
+    while (WindowProperties::gameState == GameState::LEVEL4)
+        this->startLevel4();
+    while (WindowProperties::gameState == GameState::LEVEL5)
+        this->startLevel5();
     WindowProperties::App->setMouseCursorVisible(true);
 }
 
@@ -107,4 +100,39 @@ ALevel *GameHandler::getCurrentLevel(GameState currentLevel)
             break;
     }
     return nullptr;
+}
+
+void GameHandler::startLevel1()
+{
+    std::unique_ptr<ALevel> level1 = std::unique_ptr<ALevel>(new Space());
+    this->level1 = level1.get();
+    this->level1->start();
+}
+
+void GameHandler::startLevel2()
+{
+    std::unique_ptr<ALevel> level2 = std::unique_ptr<ALevel>(new DeepSpace());
+    this->level2 = level2.get();
+    this->level2->start();
+}
+
+void GameHandler::startLevel3()
+{
+    std::unique_ptr<ALevel> level3 = std::unique_ptr<ALevel>(new SpaceCemetery());
+    this->level3 = level3.get();
+    this->level3->start();
+}
+
+void GameHandler::startLevel4()
+{
+    std::unique_ptr<ALevel> level4 = std::unique_ptr<ALevel>(new Horizon());
+    this->level4 = level4.get();
+    this->level4->start();
+}
+
+void GameHandler::startLevel5()
+{
+    std::unique_ptr<ALevel> level5 = std::unique_ptr<ALevel>(new Underwater());
+    this->level5 = level5.get();
+    this->level5->start();
 }

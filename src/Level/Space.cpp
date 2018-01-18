@@ -5,7 +5,7 @@
 #include <Parsing.h>
 #include <Enemy.h>
 #include <cmath>
-#include <Static/PreGame.h>
+//#include <Static/PreGame.h>
 #include "Level/Space.h"
 
 Space::Space() : ALevel() {
