@@ -116,3 +116,7 @@ void Bg::flushLayers()
     }
 
 }
+
+const std::vector<t_layer *> &Bg::getLayers() const {
+    return layers;
+}

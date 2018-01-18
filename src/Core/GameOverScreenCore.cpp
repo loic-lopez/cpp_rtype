@@ -24,13 +24,25 @@ GameOverScreenCore &GameOverScreenCore::Instance()
 void GameOverScreenCore::start()
 {
     sf::Event Event{};
+    sf::Clock clock;
+    sf::Time  elapsed;
+    int fadeOpacity = 0;
     this->gameOverScreen.playMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER)
     {
-        this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
-        this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
-        this->EventHandler(Event);
-        WindowProperties::App->display();
+        elapsed = clock.getElapsedTime();
+        if (elapsed.asMilliseconds() > 17) {
+            clock.restart();
+            if (fadeOpacity < 255)
+                fadeOpacity += 2;
+            else
+                fadeOpacity = 255;
+            this->gameOverScreen.getBackground().getLayers()[0]->img.setColor(sf::Color(255, 255, 255, fadeOpacity));
+            this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
+            this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
+            this->EventHandler(Event);
+            WindowProperties::App->display();
+        }
     }
     this->gameOverScreen.stopMusic();
 }

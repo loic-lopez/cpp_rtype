@@ -22,6 +22,9 @@ private:
     Orientation orientation;
     std::vector<t_layer *> layers;
 public:
+    const std::vector<t_layer *> &getLayers() const;
+
+public:
     Bg();
     ~Bg();
     void addLayer(const std::string &path, int speed);

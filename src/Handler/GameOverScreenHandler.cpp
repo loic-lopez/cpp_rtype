@@ -106,3 +106,8 @@ void GameOverScreenHandler::stopMusic() {
 void GameOverScreenHandler::playMusic() {
     this->music.play();
 }
+
+const Bg &GameOverScreenHandler::getBackground() const {
+    return background;
+}
+

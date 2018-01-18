@@ -23,6 +23,7 @@ private:
 
     //BACKGROUND AND MUSIC
     Bg background;
+
     sf::Music music;
 
     // TEXT ON GAMEOVER SCREEN
@@ -50,6 +51,7 @@ public:
     void playMusic();
 
     void stopMusic();
+    const Bg &getBackground() const;
 };
 
 #endif //R_TYPE_GAMEOVERSCREENHANDLER_H
