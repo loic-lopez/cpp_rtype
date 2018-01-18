@@ -44,10 +44,6 @@ enum class GameState : int
     INGAMEMENU,
     CLOSE,
     GAMEOVER,
-    PREGAME_LEVEL1,
-    PREGAME_LEVEL2,
-    PREGAME_LEVEL3,
-    PREGAME_LEVEL4
 };
 
 enum class EnemyType
