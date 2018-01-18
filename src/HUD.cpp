@@ -16,16 +16,6 @@ Hud::~Hud()
 
 }
 
-/*void Hud::addLayer(const std::string &path)
-{
-    t_layer *nLayer = new t_layer;
-
-    nLayer->texture.loadFromFile(path);
-    nLayer->img.setTexture(nLayer->texture);
-    nLayer->img.setPosition(0, 0);
-    layers.emplace_back(nLayer);
-}*/
-
 void Hud::initHud(const std::string &path)
 {
     Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
@@ -38,7 +28,8 @@ void Hud::initHud(const std::string &path)
             this->fillHeartVector(path, this->filledHearts);
         else if (path.find("score.png") != std::string::npos)
             this->addScoreTexture(path);
-       // this->addLayer(path);
+        else
+            this->addScoreNumberTexture(path);
 
     });
 }
@@ -52,6 +43,7 @@ void Hud::drawHud(sf::RenderWindow &App)
         App.draw(filledHeart->img);
 
     App.draw(scoreText->img);
+    this->drawScore(10, firtScoreTextNumberPosition);
 }
 
 void Hud::fillHeartVector(const std::string &path, std::vector<std::shared_ptr<Hud::t_layer>> &vector)
@@ -78,7 +70,11 @@ void Hud::takeDamage()
 
 void Hud::addScoreNumberTexture(const std::string &path)
 {
+    firtScoreTextNumberPosition.x = scoreText->img.getPosition().x + scoreText->texture.getSize().x;
+    firtScoreTextNumberPosition.y = this->filledHearts.back()->img.getPosition().y;
 
+    scoreNumbers.emplace_back(new t_layer(path, firtScoreTextNumberPosition));
+    firtScoreTextNumberPosition.x += scoreNumbers.front()->texture.getSize().x / 2;
 }
 
 void Hud::addScoreTexture(const std::string &path)
@@ -89,6 +85,22 @@ void Hud::addScoreTexture(const std::string &path)
 
     std::cout << scorePosition.x << std::endl;
     this->scoreText = std::shared_ptr<t_layer>(new t_layer(path, scorePosition));
+}
+
+void Hud::drawScore(int playerScore, sf::Vector2f position)
+{
+    if (playerScore < 10)
+    {
+        scoreNumbers.at(playerScore)->img.setPosition(position);
+        WindowProperties::App->draw(scoreNumbers.at(playerScore)->img);
+    }
+    else
+    {
+        drawScore(playerScore / 10, position);
+        position.x += scoreNumbers.front()->texture.getSize().x / 2;
+        scoreNumbers.at(playerScore % 10)->img.setPosition(position);
+        WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
+    }
 }
 
 Hud::t_layer::t_layer(const std::string &path, sf::Vector2f position)

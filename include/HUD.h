@@ -24,10 +24,12 @@ class Hud
     std::vector<std::shared_ptr<t_layer>> filledHearts;
     std::vector<std::shared_ptr<t_layer>> scoreNumbers;
     std::shared_ptr<t_layer>              scoreText;
+    sf::Vector2f                          firtScoreTextNumberPosition;
 
     void fillHeartVector(const std::string &path, std::vector<std::shared_ptr<t_layer>> &vector);
     void addScoreNumberTexture(const std::string &path);
     void addScoreTexture(const std::string &path);
+    void drawScore(int playerScore, sf::Vector2f position);
 
 public:
     Hud();
