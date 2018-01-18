@@ -7,35 +7,35 @@
 //LEVEL 1
 sf::Texture     PreGame::preGameLevel1BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel1BackgroundSprite;
-sf::Texture     preGameLevel1TextTexture;
-sf::Sprite      preGameLevel1TextSprite;
+sf::Texture     PreGame::preGameLevel1TextTexture;
+sf::Sprite      PreGame::preGameLevel1TextSprite;
 sf::Music       PreGame::preGameLevel1Music;
 
 //LEVEL 2
 sf::Texture     PreGame::preGameLevel2BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel2BackgroundSprite;
-sf::Texture     preGameLevel2TextTexture;
-sf::Sprite      preGameLevel2TextSprite;
+sf::Texture     PreGame::preGameLevel2TextTexture;
+sf::Sprite      PreGame::preGameLevel2TextSprite;
 sf::Music       PreGame::preGameLevel2Music;
 
 //LEVEL 3
 sf::Texture     PreGame::preGameLevel3BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel3BackgroundSprite;
-sf::Texture     preGameLevel3TextTexture;
-sf::Sprite      preGameLevel3TextSprite;
+sf::Texture     PreGame::preGameLevel3TextTexture;
+sf::Sprite      PreGame::preGameLevel3TextSprite;
 sf::Music       PreGame::preGameLevel3Music;
 
 //LEVEL 4
 sf::Texture     PreGame::preGameLevel4BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel4BackgroundSprite;
-sf::Texture     preGameLevel4TextTexture;
-sf::Sprite      preGameLevel4TextSprite;
+sf::Texture     PreGame::preGameLevel4TextTexture;
+sf::Sprite      PreGame::preGameLevel4TextSprite;
 sf::Music       PreGame::preGameLevel4Music;
 
 //FADING VARIABLES
-float           baseFadeOpacityPercentageDecreasing;
-float           floatFadeOpacity;
-int             fadeOpacity;
+float           PreGame::baseFadeOpacityPercentageDecreasing;
+float           PreGame::floatFadeOpacity;
+int             PreGame::fadeOpacity;
 
 void            PreGame::startPreGameLevel1()
 {

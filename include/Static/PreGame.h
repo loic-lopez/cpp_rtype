@@ -6,14 +6,15 @@
 #define R_TYPE_PREGAME_H
 
 #include <SFML/Graphics.hpp>
+#include <cmath>
 #include <SFML/Audio/Music.hpp>
 #include "static_constructor.h"
 #include "WindowProperties.h"
 
 class PreGame
 {
-public:
 
+private:
     //LEVEL 1
     static          sf::Texture     preGameLevel1BackgroundTexture;
     static          sf::Sprite      preGameLevel1BackgroundSprite;
@@ -98,6 +99,9 @@ public:
         floatFadeOpacity = 455;
         fadeOpacity = 455;
     }
+
+
+public:
 
     static void startPreGameLevel1();
     static void startPreGameLevel2();
