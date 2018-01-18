@@ -22,8 +22,12 @@ class Hud
 
     std::vector<std::shared_ptr<t_layer>> emptyHearts;
     std::vector<std::shared_ptr<t_layer>> filledHearts;
-    std::vector<std::shared_ptr<t_layer>> score;
+    std::vector<std::shared_ptr<t_layer>> scoreNumbers;
+    std::shared_ptr<t_layer>              scoreText;
 
+    void fillHeartVector(const std::string &path, std::vector<std::shared_ptr<t_layer>> &vector);
+    void addScoreNumberTexture(const std::string &path);
+    void addScoreTexture(const std::string &path);
 
 public:
     Hud();
@@ -31,7 +35,6 @@ public:
     //void addLayer(const std::string &path);
     void initHud(const std::string &path);
     void drawHud(sf::RenderWindow &App);
-    void fillHeartVector(const std::string &path, std::vector<std::shared_ptr<t_layer>> &vector);
     void takeDamage();
 
 };

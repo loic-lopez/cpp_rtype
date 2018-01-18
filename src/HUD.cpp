@@ -30,15 +30,14 @@ void Hud::initHud(const std::string &path)
 {
     Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
     {
+        (void) i;
+
         if (path.find("EmptyHeart.png") != std::string::npos)
             this->fillHeartVector(path, this->emptyHearts);
         else if (path.find("FilledHeart.png") != std::string::npos)
             this->fillHeartVector(path, this->filledHearts);
-        else
-        {
-
-        }
-        (void) i;
+        else if (path.find("score.png") != std::string::npos)
+            this->addScoreTexture(path);
        // this->addLayer(path);
 
     });
@@ -46,13 +45,13 @@ void Hud::initHud(const std::string &path)
 
 void Hud::drawHud(sf::RenderWindow &App)
 {
-
     for (const auto &emptyHeart : emptyHearts)
         App.draw(emptyHeart->img);
 
     for (const auto &filledHeart : filledHearts)
         App.draw(filledHeart->img);
 
+    App.draw(scoreText->img);
 }
 
 void Hud::fillHeartVector(const std::string &path, std::vector<std::shared_ptr<Hud::t_layer>> &vector)
@@ -75,6 +74,21 @@ void Hud::fillHeartVector(const std::string &path, std::vector<std::shared_ptr<H
 void Hud::takeDamage()
 {
     filledHearts.pop_back();
+}
+
+void Hud::addScoreNumberTexture(const std::string &path)
+{
+
+}
+
+void Hud::addScoreTexture(const std::string &path)
+{
+    sf::Vector2f scorePosition;
+    scorePosition.x = this->filledHearts.back()->img.getPosition().x +  this->filledHearts.back()->texture.getSize().x;
+    scorePosition.y = this->filledHearts.back()->img.getPosition().y;
+
+    std::cout << scorePosition.x << std::endl;
+    this->scoreText = std::shared_ptr<t_layer>(new t_layer(path, scorePosition));
 }
 
 Hud::t_layer::t_layer(const std::string &path, sf::Vector2f position)

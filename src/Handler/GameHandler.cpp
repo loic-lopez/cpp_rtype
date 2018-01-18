@@ -9,7 +9,7 @@ GameHandler GameHandler::m_instance = GameHandler();
 /************************************************* CONSTRUCTOR DESTRUCTOR *************************************************/
 GameHandler::GameHandler()
 {
-    hud.initHud("hud");
+    hud.initHud("HUD");
 }
 
 GameHandler::GameHandler(const GameHandler &obj)
