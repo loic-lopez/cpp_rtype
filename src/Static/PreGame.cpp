@@ -34,7 +34,7 @@ void PreGame::startPreGameLevel1() {
     sf::Clock clock;
     sf::Time elapsed;
     preGameLevel1Music->play();
-    while (WindowProperties::App->isOpen()) {
+    while (WindowProperties::App->isOpen() && fadeOpacity >= 0) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
@@ -47,8 +47,6 @@ void PreGame::startPreGameLevel1() {
             fadeOpacity = int(std::round(floatFadeOpacity));
             if (fadeOpacity == 200)
                 preGameLevel1Music->play();
-            if (fadeOpacity <= 0)
-                WindowProperties::gameState = GameState::LEVEL1;
             else {
                 // preGameLevel1BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
                 preGameLevel1TextSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
@@ -64,7 +62,7 @@ void PreGame::startPreGameLevel1() {
 void PreGame::startPreGameLevel2() {
     sf::Clock clock;
     preGameLevel1Music->play();
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL2) {
+    while (WindowProperties::App->isOpen()) {
         sf::Event event;
         while (WindowProperties::App->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
@@ -87,7 +85,7 @@ void PreGame::startPreGameLevel2() {
 void PreGame::startPreGameLevel3() {
     sf::Clock clock;
     preGameLevel1Music->play();
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL3) {
+    while (WindowProperties::App->isOpen()) {
         sf::Event event;
         while (WindowProperties::App->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
@@ -110,7 +108,7 @@ void PreGame::startPreGameLevel3() {
 void PreGame::startPreGameLevel4() {
     sf::Clock clock;
     preGameLevel1Music->play();
-    while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL4) {
+    while (WindowProperties::App->isOpen()) {
         sf::Event event;
         while (WindowProperties::App->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
