@@ -90,7 +90,7 @@ set(HEADER_FILES
         include/Static/static_constructor.h include/Static/PreGame.h
         include/Level/SpaceCemetery.h include/Level/Horizon.h
         include/Handler/MenuInGameHandler.h include/Level/DeepSpace.h
-        include/Core/MenuInGameCore.h)
+        include/Core/MenuInGameCore.h include/Static/PreGameTest.h src/Static/PreGameTest.cpp)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

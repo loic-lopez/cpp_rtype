@@ -5,10 +5,10 @@
 #include "Static/PreGame.h"
 
 //LEVEL 1
-sf::Texture     PreGame::preGameLevel1BackgroundTexture;
-sf::Sprite      PreGame::preGameLevel1BackgroundSprite;
-sf::Texture     PreGame::preGameLevel1TextTexture;
-sf::Sprite      PreGame::preGameLevel1TextSprite;
+std::shared_ptr<sf::Texture>     PreGame::preGameLevel1BackgroundTexture;
+std::shared_ptr<sf::Sprite>      PreGame::preGameLevel1BackgroundSprite;
+std::shared_ptr<sf::Texture>     PreGame::preGameLevel1TextTexture;
+std::shared_ptr<sf::Sprite>      PreGame::preGameLevel1TextSprite;
 std::shared_ptr<sf::Music>       PreGame::preGameLevel1Music;
 
 //LEVEL 2
@@ -40,7 +40,6 @@ int             PreGame::fadeOpacity;
 void            PreGame::startPreGameLevel1()
 {
     sf::Clock clock;
-    preGameLevel1Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL1)
     {
         sf::Event event;
@@ -56,20 +55,19 @@ void            PreGame::startPreGameLevel1()
         if (fadeOpacity <= 0)
             WindowProperties::gameState = GameState::LEVEL1;
         else {
-            preGameLevel1BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
-            preGameLevel1TextSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
+            preGameLevel1BackgroundSprite->setColor(sf::Color(255, 255, 255, fadeOpacity));
+            preGameLevel1TextSprite->setColor(sf::Color(255, 255, 255, fadeOpacity));
         }
-        WindowProperties::App->draw(preGameLevel1BackgroundSprite);
-        WindowProperties::App->draw(preGameLevel1TextSprite);
+        WindowProperties::App->draw(*preGameLevel1BackgroundSprite);
+        WindowProperties::App->draw(*preGameLevel1TextSprite);
         WindowProperties::App->display();
-
     }
     preGameLevel1Music->stop();
 }
 
 void PreGame::startPreGameLevel2() {
     sf::Clock clock;
-    preGameLevel1Music->play();
+    preGameLevel2Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL2)
     {
         sf::Event event;
@@ -83,20 +81,20 @@ void PreGame::startPreGameLevel2() {
         if (fadeOpacity <= 0)
             WindowProperties::gameState = GameState::LEVEL2;
         else {
-            preGameLevel1BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
-            preGameLevel1TextSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
+            preGameLevel2BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
+            preGameLevel2TextSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
         }
-        WindowProperties::App->draw(preGameLevel1BackgroundSprite);
-        WindowProperties::App->draw(preGameLevel1TextSprite);
+        WindowProperties::App->draw(preGameLevel2BackgroundSprite);
+        WindowProperties::App->draw(preGameLevel2TextSprite);
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music->stop();
+    preGameLevel2Music->stop();
 }
 
 void PreGame::startPreGameLevel3() {
     sf::Clock clock;
-    preGameLevel1Music->play();
+    preGameLevel3Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL3)
     {
         sf::Event event;
@@ -110,20 +108,20 @@ void PreGame::startPreGameLevel3() {
         if (fadeOpacity <= 0)
             WindowProperties::gameState = GameState::LEVEL3;
         else {
-            preGameLevel1BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
-            preGameLevel1TextSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
+            preGameLevel3BackgroundSprite.setColor(sf::Color(355, 355, 355, fadeOpacity));
+            preGameLevel3TextSprite.setColor(sf::Color(355, 355, 355, fadeOpacity));
         }
-        WindowProperties::App->draw(preGameLevel1BackgroundSprite);
-        WindowProperties::App->draw(preGameLevel1TextSprite);
+        WindowProperties::App->draw(preGameLevel3BackgroundSprite);
+        WindowProperties::App->draw(preGameLevel3TextSprite);
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music->stop();
+    preGameLevel3Music->stop();
 }
 
 void PreGame::startPreGameLevel4() {
     sf::Clock clock;
-    preGameLevel1Music->play();
+    preGameLevel4Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL4)
     {
         sf::Event event;
@@ -137,14 +135,14 @@ void PreGame::startPreGameLevel4() {
         if (fadeOpacity <= 0)
             WindowProperties::gameState = GameState::LEVEL4;
         else {
-            preGameLevel1BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
-            preGameLevel1TextSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
+            preGameLevel4BackgroundSprite.setColor(sf::Color(455, 455, 455, fadeOpacity));
+            preGameLevel4TextSprite.setColor(sf::Color(455, 455, 455, fadeOpacity));
         }
-        WindowProperties::App->draw(preGameLevel1BackgroundSprite);
-        WindowProperties::App->draw(preGameLevel1TextSprite);
+        WindowProperties::App->draw(preGameLevel4BackgroundSprite);
+        WindowProperties::App->draw(preGameLevel4TextSprite);
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music->stop();
+    preGameLevel4Music->stop();
 }
 
