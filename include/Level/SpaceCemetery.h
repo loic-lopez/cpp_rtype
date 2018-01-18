@@ -16,7 +16,6 @@ public:
     ~SpaceCemetery();
 
     virtual void start();
-    virtual void enemiesGenerator(short);
 
 };
 

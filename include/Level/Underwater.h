@@ -16,7 +16,6 @@ public:
     Underwater();
     ~Underwater();
 
-    virtual void enemiesGenerator(short);
     virtual void start();
 };
 

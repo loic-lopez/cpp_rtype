@@ -26,6 +26,7 @@ void Underwater::start()
     music.stop();
 }
 
+/*
 void Underwater::enemiesGenerator(short phase)
 {
     if (phase == 0)
@@ -37,3 +38,4 @@ void Underwater::enemiesGenerator(short phase)
     else
         generateEnemies(EnemyType::BOSS_A, 1, EnemyType::NONE, 0);
 }
+*/

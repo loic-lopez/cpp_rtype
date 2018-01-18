@@ -20,6 +20,9 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     this->baseFadeOpacityPercentageIncreasing = 1.25;
     this->floatFadeOpacity = 0;
     this->fadeOpacity = 0;
+    phaseMax  = 3;
+    phase = 0;
+    changePhase = false;
 }
 
 ALevel::~ALevel()
@@ -291,13 +294,7 @@ void ALevel::mainLoop(/*td::function<void(short)> generator*/)
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
-//            [&, this]()
-//            {
-  //              enemiesGenerator(phase);
-//            };
-//            generator();
-            /*if (phase > phaseMax)
-                ;*/
+            //enemiesGenerator(phase);
             updateEntities();
             updateAlliedBullet();
             checkEntitiesBoxes();
@@ -335,5 +332,10 @@ void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int nu
            phase++;
        }
    }
+}
+
+void ALevel::enemiesGenerator(short phase)
+{
+    this->phases.at(phase)();
 }
 

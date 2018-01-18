@@ -29,7 +29,3 @@ void    DeepSpace::start()
     music.play();
     music.stop();
 }
-
-void DeepSpace::enemiesGenerator(short) {
-
-}

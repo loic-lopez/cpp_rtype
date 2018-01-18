@@ -14,6 +14,9 @@
 
 class ALevel
 {
+private:
+    virtual void enemiesGenerator(short);
+
 protected:
     Player *player;
     Hud &hud;
@@ -37,10 +40,12 @@ protected:
     float floatFadeOpacity;
     int fadeOpacity;
     bool isGameLost;
-    short phase = 0;
-    bool changePhase = false;
-    short phaseMax = 3;
+    short phase;
+    bool changePhase;
+    short phaseMax;
     GameState currentGameLevel;
+
+    std::vector<std::function<void()>> phases;
 
     virtual void controller();
 
@@ -60,6 +65,8 @@ protected:
 
     virtual void mainLoop();//std::function<void()>);
 
+    virtual void generateEnemies(EnemyType, int, EnemyType, int);
+
 public:
 
     ALevel();
@@ -71,10 +78,6 @@ public:
     virtual void addBullet(IEntity *);
 
     virtual void drawAll(sf::RenderWindow &App);
-
-    virtual void enemiesGenerator(short) = 0;
-
-    virtual void generateEnemies(EnemyType, int, EnemyType, int);
 };
 
 

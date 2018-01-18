@@ -19,8 +19,6 @@ public:
     ~DeepSpace();
 
     virtual void start();
-    virtual void enemiesGenerator(short);
-
 };
 
 #endif //R_TYPE_LEVEL2_H

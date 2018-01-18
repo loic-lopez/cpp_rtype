@@ -11,6 +11,12 @@
 Space::Space() : ALevel() {
     initLvl("lvl1");
     currentGameLevel = GameState::LEVEL1;
+
+    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::NONE, 0); });
+    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 6, EnemyType::NONE, 0); });
+    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::BASIC_B, 2); });
+    this->phases.emplace_back([this]() {  generateEnemies(EnemyType::BOSS_A, 1, EnemyType::NONE, 0); });
+
 }
 
 Space::~Space() {
@@ -27,16 +33,4 @@ void Space::start()
     music.play();
     this->mainLoop();//enemiesGenerator);
     music.stop();
-}
-
-void Space::enemiesGenerator(short phase)
-{
-    if (phase == 0)
-        generateEnemies(EnemyType::BASIC_A, 4, EnemyType::NONE, 0);
-    else if (phase == 1)
-        generateEnemies(EnemyType::BASIC_A, 6, EnemyType::NONE, 0);
-    else if (phase == 2)
-        generateEnemies(EnemyType::BASIC_A, 4, EnemyType::BASIC_B, 2);
-    else
-        generateEnemies(EnemyType::BOSS_A, 1, EnemyType::NONE, 0);
 }
