@@ -277,7 +277,11 @@ void ALevel::pollEvent(sf::Event &Event)
         if (this->fadeOpacity >= 255)
             WindowProperties::gameState = GameState::GAMEOVER;
         else
+        {
+            GameOverScreenCore::Instance().getGameOverScreen().drawGameOverScreen(*WindowProperties::App, fadeOpacity);
             this->transitionToGameOverScreenSprite.setColor(sf::Color(255, 255, 255, this->fadeOpacity));
+        }
+
     }
 }
 
@@ -297,11 +301,18 @@ void ALevel::mainLoop(/*td::function<void(short)> generator*/)
             updateAlliedBullet();
             checkEntitiesBoxes();
             drawAll(*WindowProperties::App);
-            pollEvent(Event);
             enemiesGenerator();
+            pollEvent(Event);
             WindowProperties::App->display();
         }
     }
+    if (isGameLost)
+    {
+        WindowProperties::App->setMouseCursorVisible(true);
+        GameCore::Instance().getGameOverScreen().start();
+        WindowProperties::App->setMouseCursorVisible(false);
+    }
+
 }
 
 void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int number2)

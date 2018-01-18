@@ -19,6 +19,10 @@ private:
     MenuCore    &menuCore;
     GameHandler &gameHandler;
     SplashScreen &splashScreen;
+public:
+    GameOverScreenCore &getGameOverScreen();
+
+private:
     GameOverScreenCore &gameOverScreen;
     MenuInGameCore &menuInGameCore;
 public:

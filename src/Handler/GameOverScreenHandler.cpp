@@ -111,3 +111,17 @@ const Bg &GameOverScreenHandler::getBackground() const {
     return background;
 }
 
+void GameOverScreenHandler::drawGameOverScreen(sf::RenderWindow &App, int opacity)
+{
+    background.getLayers().at(0)->img.setColor(sf::Color(255, 255, 255, opacity));
+    background.drawBackground(App);
+
+    textSprite.setColor(sf::Color(255, 255, 255, opacity));
+    App.draw(this->textSprite);
+
+    for (auto &gameOverButton : this->gameOverButtons) {
+        gameOverButton->setButtonColor(sf::Color(255, 255, 255, opacity));
+        App.draw(gameOverButton->buttonShape);
+    }
+}
+

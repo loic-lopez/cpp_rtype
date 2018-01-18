@@ -46,11 +46,9 @@ public:
 
     void update(sf::Event& e, sf::RenderWindow& window);
 
-    sf::Texture *getTextureNormal() const;
+    void setButtonColor(const sf::Color &);
 
 private:
-
-    // TODO : REMPLACEMENT PAR CES VARIABLES :
 
     sf::Texture *textureNormal;
     sf::Texture *textureHovered;

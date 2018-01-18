@@ -27,7 +27,6 @@ void GameCore::start()
     {
         this->menuCore.start();
         this->gameHandler.start();
-        this->gameOverScreen.start();
     }
     WindowProperties::App->close();
 }
@@ -40,4 +39,9 @@ GameCore &GameCore::Instance()
 MenuInGameCore &GameCore::getMenuInGameCore()
 {
     return menuInGameCore;
+}
+
+GameOverScreenCore &GameCore::getGameOverScreen()
+{
+    return gameOverScreen;
 }

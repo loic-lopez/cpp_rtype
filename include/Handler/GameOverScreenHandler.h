@@ -43,6 +43,7 @@ public:
     void initGameOverScreen(const std::string &path);
 
     void drawGameOverScreen(sf::RenderWindow &App);
+    void drawGameOverScreen(sf::RenderWindow &App, int opacity);
 
     void updateGameOverScreen(sf::Event &e, sf::RenderWindow &window);
 

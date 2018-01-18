@@ -15,6 +15,10 @@ class GameOverScreenCore
 private:
     static GameOverScreenCore   m_instance;
     GameOverScreenHandler       gameOverScreen;
+public:
+    GameOverScreenHandler &getGameOverScreen();
+
+private:
 
     void EventHandler(sf::Event &event);
     GameOverScreenCore();

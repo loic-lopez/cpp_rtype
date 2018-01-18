@@ -26,21 +26,13 @@ void GameOverScreenCore::start()
     sf::Event Event{};
     sf::Clock clock;
     sf::Time  elapsed;
-    int fadeOpacity = 0;
     this->gameOverScreen.playMusic();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::GAMEOVER)
     {
-        elapsed = clock.getElapsedTime();
-        if (elapsed.asMilliseconds() > 37) {
-            clock.restart();
-            if (fadeOpacity < 255)
-                fadeOpacity += 1;
-            this->gameOverScreen.getBackground().getLayers()[0]->img.setColor(sf::Color(255, 255, 255, fadeOpacity));
-            this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
-            this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
-            this->EventHandler(Event);
-            WindowProperties::App->display();
-        }
+        this->gameOverScreen.updateGameOverScreen(Event, *WindowProperties::App);
+        this->gameOverScreen.drawGameOverScreen(*WindowProperties::App);
+        this->EventHandler(Event);
+        WindowProperties::App->display();
     }
     this->gameOverScreen.stopMusic();
 }
@@ -70,4 +62,9 @@ void GameOverScreenCore::EventHandler(sf::Event &event)
                 break;
         }
     }
+}
+
+GameOverScreenHandler &GameOverScreenCore::getGameOverScreen()
+{
+    return gameOverScreen;
 }
