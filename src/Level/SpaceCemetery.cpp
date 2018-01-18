@@ -29,3 +29,7 @@ void SpaceCemetery::start()
     this->mainLoop();
    // music.stop();
 }
+
+void SpaceCemetery::enemiesGenerator(short) {
+
+}

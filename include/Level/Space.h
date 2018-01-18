@@ -20,6 +20,7 @@ public:
     Space();
     ~Space();
 
+    virtual void enemiesGenerator(short);
     virtual void start();
 };
 

@@ -18,16 +18,25 @@ Space::~Space() {
     back.flushLayers();
 }
 
-void Space::start() {
-    for (int i = 0; i < (std::rand() % 5 + 5); ++i)
-        ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_A)));
-    for (int i = 0; i < (std::rand() % 4 + 1); ++i)
-        ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_B)));
+void Space::start()
+{
     bulletsEnemy.reserve(100000);
 
     // PreGame::startPreGameLevel1();
 
     music.play();
-    this->mainLoop();
+    this->mainLoop();//enemiesGenerator);
     music.stop();
+}
+
+void Space::enemiesGenerator(short phase)
+{
+    if (phase == 0)
+        generateEnemies(EnemyType::BASIC_A, 4, EnemyType::NONE, 0);
+    else if (phase == 1)
+        generateEnemies(EnemyType::BASIC_A, 6, EnemyType::NONE, 0);
+    else if (phase == 2)
+        generateEnemies(EnemyType::BASIC_A, 4, EnemyType::BASIC_B, 2);
+    else
+        generateEnemies(EnemyType::BOSS_A, 1, EnemyType::NONE, 0);
 }

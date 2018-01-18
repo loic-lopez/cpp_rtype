@@ -16,6 +16,8 @@ public:
     ~Horizon();
 
     virtual void start();
+    virtual void enemiesGenerator(short);
+
 };
 
 

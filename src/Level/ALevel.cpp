@@ -279,7 +279,7 @@ void ALevel::pollEvent(sf::Event &Event)
     }
 }
 
-void ALevel::mainLoop()
+void ALevel::mainLoop(/*td::function<void(short)> generator*/)
 {
     sf::Event Event;
     sf::Time elapsed;
@@ -291,6 +291,13 @@ void ALevel::mainLoop()
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
+//            [&, this]()
+//            {
+  //              enemiesGenerator(phase);
+//            };
+//            generator();
+            /*if (phase > phaseMax)
+                ;*/
             updateEntities();
             updateAlliedBullet();
             checkEntitiesBoxes();
@@ -300,3 +307,33 @@ void ALevel::mainLoop()
         }
     }
 }
+
+void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int number2)
+{
+   if (changePhase)
+   {
+       if (ennemies.empty())
+       {
+           phase++;
+           changePhase = false;
+       }
+   }
+   else
+   {
+       if (phase < phaseMax)
+       {
+           for (int i = 0; i < number; i++)
+               ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
+           if (type2 != EnemyType::NONE)
+               for (int i = 0; i < number2; i++)
+                   ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type2)));
+                changePhase = true;
+       }
+       else if (phase == phaseMax)
+       {
+           ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BOSS_A)));
+           phase++;
+       }
+   }
+}
+

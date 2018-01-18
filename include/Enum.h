@@ -55,6 +55,7 @@ enum class EnemyType
     BASIC_A,
     BASIC_B,
     BOSS_A,
+    NONE,
 };
 
 enum class BulletType

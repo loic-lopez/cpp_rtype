@@ -37,6 +37,9 @@ protected:
     float floatFadeOpacity;
     int fadeOpacity;
     bool isGameLost;
+    short phase = 0;
+    bool changePhase = false;
+    short phaseMax = 3;
     GameState currentGameLevel;
 
     virtual void controller();
@@ -55,7 +58,7 @@ protected:
 
     virtual void pollEvent(sf::Event &event);
 
-    virtual void mainLoop();
+    virtual void mainLoop();//std::function<void()>);
 
 public:
 
@@ -68,6 +71,10 @@ public:
     virtual void addBullet(IEntity *);
 
     virtual void drawAll(sf::RenderWindow &App);
+
+    virtual void enemiesGenerator(short) = 0;
+
+    virtual void generateEnemies(EnemyType, int, EnemyType, int);
 };
 
 

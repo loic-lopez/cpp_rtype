@@ -29,3 +29,7 @@ void Horizon::start()
     this->mainLoop();
     // music.stop();
 }
+
+void Horizon::enemiesGenerator(short) {
+
+}
