@@ -29,7 +29,7 @@ public:
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
         orientation = Orientation::HORIZONTAL;
-        gameState = GameState::LEVEL5;
+        gameState = GameState::LEVEL1;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
         App->setVerticalSyncEnabled(true);
         MAX_PLAYER_HP = 3;
