@@ -205,6 +205,7 @@ void ALevel::checkEntitiesBoxes()
             {
                 inv.restart();
                 this->player->setHp(this->player->getHp() - 1);
+                GameHandler::Instance().getHud().takeDamage();
                 bulletsEnemy.erase(it);
                 break;
             }

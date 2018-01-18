@@ -5,9 +5,10 @@
 #include <HUD.h>
 #include <Handler/GameHandler.h>
 
+
 Hud::Hud()
 {
-    this->basisHP = 3;
+
 }
 
 Hud::~Hud()
@@ -15,7 +16,7 @@ Hud::~Hud()
 
 }
 
-void Hud::addLayer(const std::string &path)
+/*void Hud::addLayer(const std::string &path)
 {
     t_layer *nLayer = new t_layer;
 
@@ -23,35 +24,62 @@ void Hud::addLayer(const std::string &path)
     nLayer->img.setTexture(nLayer->texture);
     nLayer->img.setPosition(0, 0);
     layers.emplace_back(nLayer);
-}
+}*/
 
 void Hud::initHud(const std::string &path)
 {
     Parsing::loadCSV(path, [&, this](std::string const &path, int const &i)
     {
+        if (path.find("EmptyHeart.png") != std::string::npos)
+            this->fillHeartVector(path, this->emptyHearts);
+        else if (path.find("FilledHeart.png") != std::string::npos)
+            this->fillHeartVector(path, this->filledHearts);
+        else
+        {
+
+        }
         (void) i;
-        this->addLayer(path);
+       // this->addLayer(path);
 
     });
 }
 
 void Hud::drawHud(sf::RenderWindow &App)
 {
-    int currentPlayerHP = GameHandler::Instance().getPlayer()->getHp();
+
+    for (const auto &emptyHeart : emptyHearts)
+        App.draw(emptyHeart->img);
+
+    for (const auto &filledHeart : filledHearts)
+        App.draw(filledHeart->img);
+
+}
+
+void Hud::fillHeartVector(const std::string &path, std::vector<std::shared_ptr<Hud::t_layer>> &vector)
+{
     float firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
     float firstYPos = 0;
-    for (size_t i = 0; i < this->basisHP; i++)
-    {
-        layers[0]->img.setPosition(firstXPos, firstYPos);
-        firstXPos += (float) layers[0]->texture.getSize().x / 2;
-        App.draw(layers[0]->img);
+    int hp = 0;
 
-    }
-    firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
-    for (size_t i = 0; i < currentPlayerHP; i++)
+    vector.emplace_back(new t_layer(path, sf::Vector2f(firstXPos, firstYPos)));
+    hp++;
+    while (hp < WindowProperties::MAX_PLAYER_HP)
     {
-        layers[1]->img.setPosition(firstXPos, firstYPos);
-        firstXPos += (float) layers[1]->texture.getSize().x / 2;
-        App.draw(layers[1]->img);
+        firstXPos += (float) vector.front()->texture.getSize().x / 2;
+        vector.emplace_back(new t_layer(path, sf::Vector2f(firstXPos, firstYPos)));
+        hp++;
     }
+
+}
+
+void Hud::takeDamage()
+{
+    filledHearts.pop_back();
+}
+
+Hud::t_layer::t_layer(const std::string &path, sf::Vector2f position)
+{
+    texture.loadFromFile(path);
+    img.setTexture(texture);
+    img.setPosition(position);
 }

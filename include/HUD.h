@@ -7,6 +7,7 @@
 
 #include <Static/WindowProperties.h>
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "Parsing.h"
 #include "Player.h"
 
@@ -16,18 +17,22 @@ class Hud
         sf::Texture texture;
         sf::Sprite img;
         int     id;
+        t_layer(const std::string &path, sf::Vector2f position);
     };
 
-    unsigned int basisHP;
-    std::vector<t_layer *> layers;
+    std::vector<std::shared_ptr<t_layer>> emptyHearts;
+    std::vector<std::shared_ptr<t_layer>> filledHearts;
+    std::vector<std::shared_ptr<t_layer>> score;
 
 
 public:
     Hud();
     ~Hud();
-    void addLayer(const std::string &path);
+    //void addLayer(const std::string &path);
     void initHud(const std::string &path);
     void drawHud(sf::RenderWindow &App);
+    void fillHeartVector(const std::string &path, std::vector<std::shared_ptr<t_layer>> &vector);
+    void takeDamage();
 
 };
 

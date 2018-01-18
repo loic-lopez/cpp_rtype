@@ -18,6 +18,7 @@ public:
     static GameState    gameState;
     static sf::RenderWindow *App;
     static Orientation orientation;
+    static unsigned int MAX_PLAYER_HP;
 
     static void StaticWindow()
     {
@@ -31,6 +32,7 @@ public:
         gameState = GameState::LEVEL1;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
         App->setVerticalSyncEnabled(true);
+        MAX_PLAYER_HP = 3;
     }
 };
 
