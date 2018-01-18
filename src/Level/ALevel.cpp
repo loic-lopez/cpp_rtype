@@ -8,8 +8,18 @@
 ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler::Instance().getHud())
 {
     this->isGameLost = false;
+    this->transitionToGameOverScreenTexture.loadFromFile("./ressources/gameOverScreen/game_over_background.jpg");
+    this->transitionToGameOverScreenSprite.setTexture(this->transitionToGameOverScreenTexture);
+    float scaleX;
+    float scaleY;
+    scaleX = (float) WindowProperties::WIN_WIDTH / this->transitionToGameOverScreenSprite.getGlobalBounds().width;
+    scaleY = (float) WindowProperties::WIN_HEIGHT / this->transitionToGameOverScreenSprite.getGlobalBounds().height;
+    this->transitionToGameOverScreenSprite.scale(scaleX, scaleY);
     this->baseSoundAttenuationOnDeathPercentageDecreasing = 0.5;
     this->soundAttenuationOnDeath = 100;
+    this->baseFadeOpacityPercentageIncreasing = 1.25;
+    this->floatFadeOpacity = 0;
+    this->fadeOpacity = 0;
     phase = 0;
     changePhase = false;
 }
@@ -114,6 +124,8 @@ void ALevel::drawAll(sf::RenderWindow &App)
         entity->drawSprite(App);
     player->drawSprite(App);
     hud.drawHud(App);
+    if (this->isGameLost)
+        App.draw(this->transitionToGameOverScreenSprite);
 }
 
 void ALevel::updateAlliedBullet()
@@ -260,8 +272,12 @@ void ALevel::pollEvent(sf::Event &Event)
         this->isGameLost = true;
         this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
         this->music.setVolume(this->soundAttenuationOnDeath);
-        if (this->music.getVolume() <= 10)
+        this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
+        this->fadeOpacity = int(std::round(this->floatFadeOpacity));
+        if (this->fadeOpacity >= 255)
             WindowProperties::gameState = GameState::GAMEOVER;
+        else
+            this->transitionToGameOverScreenSprite.setColor(sf::Color(255, 255, 255, this->fadeOpacity));
     }
 }
 
