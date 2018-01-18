@@ -28,10 +28,12 @@ std::shared_ptr<sf::Music>       PreGame::preGameLevel4Music;
 //FADING VARIABLES
 
 void PreGame::startPreGameLevel1() {
-    int fadeOpacity = 0;
+    int     fadeOpacity = 0;
+    bool    reverseFade = false;
+    bool    fadeDone = false;
     sf::Clock clock;
     sf::Time elapsed;
-    while (WindowProperties::App->isOpen() && fadeOpacity < 255) {
+    while (WindowProperties::App->isOpen() && fadeOpacity != 1) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
             clock.restart();
@@ -40,7 +42,12 @@ void PreGame::startPreGameLevel1() {
                 if (event.type == sf::Event::Closed)
                     WindowProperties::gameState = GameState::CLOSE;
             }
-            fadeOpacity += 2;
+            if (fadeOpacity == 254)
+                reverseFade = true;
+            if (reverseFade)
+                fadeOpacity -= 11;
+            else
+                fadeOpacity += 2;
             if (fadeOpacity == 50) {
                preGameLevel1Music->play();
             }

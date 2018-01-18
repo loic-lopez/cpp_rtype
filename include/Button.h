@@ -46,6 +46,8 @@ public:
 
     void update(sf::Event& e, sf::RenderWindow& window);
 
+    sf::Texture *getTextureNormal() const;
+
 private:
 
     // TODO : REMPLACEMENT PAR CES VARIABLES :

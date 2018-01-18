@@ -151,5 +151,9 @@ void Button::setState(sf::Uint32 state) {
     this->actualButtonState = state;
 }
 
+sf::Texture *Button::getTextureNormal() const {
+    return textureNormal;
+}
+
 
 
