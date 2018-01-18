@@ -55,6 +55,7 @@ enum class EnemyType
     BASIC_A,
     BASIC_B,
     BOSS_A,
+    BOSS_B,
     NONE,
 };
 
@@ -81,6 +82,7 @@ enum class Textures
     ENEMY2,
     BOSS1,
     BULLET_BASIC_A,
-    BULLET_ENEMY_A
+    BULLET_ENEMY_A,
+    BOSS2,
 };
 #endif //RTYPE_ENUM_H

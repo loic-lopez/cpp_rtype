@@ -51,6 +51,21 @@ Enemy::Enemy(EnemyType type) : Entity()
         this->setSide(Side::ENEMY);
         this->setType(Textures::BOSS1);
     }
+    if (type == EnemyType::BOSS_B)
+    {
+        enemyType = type;
+        orientation = WindowProperties::orientation;
+        sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS2);
+        pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
+        pos.y = WindowProperties::WIN_HEIGHT / 2;
+        hp = 1;
+        trajectory.x = 0;
+        trajectory.y = 3;
+        speed = 3;
+        weapon.setWeapon(WeaponType::SPREAD, 40, 3);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::BOSS2);
+    }
 }
 
 Enemy::~Enemy()
@@ -100,6 +115,7 @@ void Enemy::shoot()
                 weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
                 break;
             }
+            case EnemyType::BOSS_B :
             case EnemyType::BOSS_A :
             {
                 sf::Vector2f postmp;
@@ -110,6 +126,8 @@ void Enemy::shoot()
                 weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
                 break;
             }
+
+            case EnemyType::NONE:break;
         }
     }
 }

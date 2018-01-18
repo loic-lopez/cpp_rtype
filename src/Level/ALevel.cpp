@@ -327,7 +327,7 @@ void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int nu
        }
        else if (phase == phaseMax)
        {
-           ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BOSS_A)));
+           ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
            phase++;
        }
    }
