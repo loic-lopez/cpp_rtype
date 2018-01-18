@@ -20,28 +20,28 @@ private:
     static          sf::Sprite      preGameLevel1BackgroundSprite;
     static          sf::Texture     preGameLevel1TextTexture;
     static          sf::Sprite      preGameLevel1TextSprite;
-    static          sf::Music       preGameLevel1Music;
+    static          std::shared_ptr<sf::Music>       preGameLevel1Music;
 
     //LEVEL 2
     static          sf::Texture     preGameLevel2BackgroundTexture;
     static          sf::Sprite      preGameLevel2BackgroundSprite;
     static          sf::Texture     preGameLevel2TextTexture;
     static          sf::Sprite      preGameLevel2TextSprite;
-    static          sf::Music       preGameLevel2Music;
+    static          std::shared_ptr<sf::Music>      preGameLevel2Music;
 
     //LEVEL 3
     static          sf::Texture     preGameLevel3BackgroundTexture;
     static          sf::Sprite      preGameLevel3BackgroundSprite;
     static          sf::Texture     preGameLevel3TextTexture;
     static          sf::Sprite      preGameLevel3TextSprite;
-    static          sf::Music       preGameLevel3Music;
+    static          std::shared_ptr<sf::Music>      preGameLevel3Music;
 
     //LEVEL 4
     static          sf::Texture     preGameLevel4BackgroundTexture;
     static          sf::Sprite      preGameLevel4BackgroundSprite;
     static          sf::Texture     preGameLevel4TextTexture;
     static          sf::Sprite      preGameLevel4TextSprite;
-    static          sf::Music       preGameLevel4Music;
+    static          std::shared_ptr<sf::Music>      preGameLevel4Music;
 
     //INV FADING VARIABLES
     static          float           baseFadeOpacityPercentageDecreasing;
@@ -62,7 +62,8 @@ private:
         preGameLevel1TextSprite.setTexture(preGameLevel1TextTexture);
         preGameLevel1BackgroundSprite.setPosition((WindowProperties::WIN_WIDTH / 2) - (preGameLevel1BackgroundSprite.getGlobalBounds().width / 2),
                                                   (WindowProperties::WIN_HEIGHT / 2) - (preGameLevel1BackgroundSprite.getGlobalBounds().height / 2));
-        preGameLevel1Music.openFromFile("./ressources/preGame/round_1_sound.ogg");
+        preGameLevel1Music = std::shared_ptr<sf::Music>(new sf::Music());
+        preGameLevel1Music->openFromFile("./ressources/preGame/round_1_sound.ogg");
         baseFadeOpacityPercentageDecreasing = 1.25;
         floatFadeOpacity = 255;
         fadeOpacity = 255;
@@ -75,7 +76,8 @@ private:
         preGameLevel2BackgroundSprite.setTexture(preGameLevel2BackgroundTexture);
         preGameLevel2TextTexture.loadFromFile("");
         preGameLevel2TextSprite.setTexture(preGameLevel2TextTexture);
-        preGameLevel2Music.openFromFile("./ressources/preGame/round_2_sound.ogg");
+        preGameLevel2Music = std::shared_ptr<sf::Music>(new sf::Music());
+        preGameLevel2Music->openFromFile("./ressources/preGame/round_2_sound.ogg");
         baseFadeOpacityPercentageDecreasing = 1.25;
         floatFadeOpacity = 255;
         fadeOpacity = 255;
@@ -88,7 +90,8 @@ private:
         preGameLevel3BackgroundSprite.setTexture(preGameLevel3BackgroundTexture);
         preGameLevel3TextTexture.loadFromFile("");
         preGameLevel3TextSprite.setTexture(preGameLevel3TextTexture);
-        preGameLevel3Music.openFromFile("./ressources/preGame/round_3_sound.ogg");
+        preGameLevel3Music = std::shared_ptr<sf::Music>(new sf::Music());
+        preGameLevel3Music->openFromFile("./ressources/preGame/round_3_sound.ogg");
         baseFadeOpacityPercentageDecreasing = 1.25;
         floatFadeOpacity = 355;
         fadeOpacity = 355;
@@ -101,7 +104,8 @@ private:
         preGameLevel4BackgroundSprite.setTexture(preGameLevel4BackgroundTexture);
         preGameLevel4TextTexture.loadFromFile("");
         preGameLevel4TextSprite.setTexture(preGameLevel4TextTexture);
-        preGameLevel4Music.openFromFile("./ressources/preGame/round_4_sound.ogg");
+        preGameLevel4Music = std::shared_ptr<sf::Music>(new sf::Music());
+        preGameLevel4Music->openFromFile("./ressources/preGame/round_4_sound.ogg");
         baseFadeOpacityPercentageDecreasing = 1.25;
         floatFadeOpacity = 455;
         fadeOpacity = 455;

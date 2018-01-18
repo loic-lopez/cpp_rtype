@@ -9,28 +9,28 @@ sf::Texture     PreGame::preGameLevel1BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel1BackgroundSprite;
 sf::Texture     PreGame::preGameLevel1TextTexture;
 sf::Sprite      PreGame::preGameLevel1TextSprite;
-sf::Music       PreGame::preGameLevel1Music;
+std::shared_ptr<sf::Music>       PreGame::preGameLevel1Music;
 
 //LEVEL 2
 sf::Texture     PreGame::preGameLevel2BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel2BackgroundSprite;
 sf::Texture     PreGame::preGameLevel2TextTexture;
 sf::Sprite      PreGame::preGameLevel2TextSprite;
-sf::Music       PreGame::preGameLevel2Music;
+std::shared_ptr<sf::Music>       PreGame::preGameLevel2Music;
 
 //LEVEL 3
 sf::Texture     PreGame::preGameLevel3BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel3BackgroundSprite;
 sf::Texture     PreGame::preGameLevel3TextTexture;
 sf::Sprite      PreGame::preGameLevel3TextSprite;
-sf::Music       PreGame::preGameLevel3Music;
+std::shared_ptr<sf::Music>       PreGame::preGameLevel3Music;
 
 //LEVEL 4
 sf::Texture     PreGame::preGameLevel4BackgroundTexture;
 sf::Sprite      PreGame::preGameLevel4BackgroundSprite;
 sf::Texture     PreGame::preGameLevel4TextTexture;
 sf::Sprite      PreGame::preGameLevel4TextSprite;
-sf::Music       PreGame::preGameLevel4Music;
+std::shared_ptr<sf::Music>       PreGame::preGameLevel4Music;
 
 //FADING VARIABLES
 float           PreGame::baseFadeOpacityPercentageDecreasing;
@@ -40,7 +40,7 @@ int             PreGame::fadeOpacity;
 void            PreGame::startPreGameLevel1()
 {
     sf::Clock clock;
-    preGameLevel1Music.play();
+    preGameLevel1Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL1)
     {
         sf::Event event;
@@ -52,7 +52,7 @@ void            PreGame::startPreGameLevel1()
         floatFadeOpacity -= baseFadeOpacityPercentageDecreasing;
         fadeOpacity = int(std::round(floatFadeOpacity));
         if (fadeOpacity == 200)
-            preGameLevel1Music.play();
+            preGameLevel1Music->play();
         if (fadeOpacity <= 0)
             WindowProperties::gameState = GameState::LEVEL1;
         else {
@@ -64,12 +64,12 @@ void            PreGame::startPreGameLevel1()
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music.stop();
+    preGameLevel1Music->stop();
 }
 
 void PreGame::startPreGameLevel2() {
     sf::Clock clock;
-    preGameLevel1Music.play();
+    preGameLevel1Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL2)
     {
         sf::Event event;
@@ -91,12 +91,12 @@ void PreGame::startPreGameLevel2() {
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music.stop();
+    preGameLevel1Music->stop();
 }
 
 void PreGame::startPreGameLevel3() {
     sf::Clock clock;
-    preGameLevel1Music.play();
+    preGameLevel1Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL3)
     {
         sf::Event event;
@@ -118,12 +118,12 @@ void PreGame::startPreGameLevel3() {
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music.stop();
+    preGameLevel1Music->stop();
 }
 
 void PreGame::startPreGameLevel4() {
     sf::Clock clock;
-    preGameLevel1Music.play();
+    preGameLevel1Music->play();
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == GameState::PREGAME_LEVEL4)
     {
         sf::Event event;
@@ -145,6 +145,6 @@ void PreGame::startPreGameLevel4() {
         WindowProperties::App->display();
 
     }
-    preGameLevel1Music.stop();
+    preGameLevel1Music->stop();
 }
 
