@@ -60,7 +60,6 @@ void Hud::fillHeartVector(const std::string &path, std::vector<std::shared_ptr<H
         vector.emplace_back(new t_layer(path, sf::Vector2f(firstXPos, firstYPos)));
         hp++;
     }
-
 }
 
 void Hud::takeDamage()
