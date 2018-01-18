@@ -53,11 +53,15 @@ private:
         (void)static_constructor<&PreGame::PreGameLoadForLevel1>::c;
         preGameLevel1BackgroundTexture.loadFromFile("./ressources/lvl1/lvl1-1.png");
         preGameLevel1BackgroundSprite.setTexture(preGameLevel1BackgroundTexture);
-        float scale = (float) WindowProperties::WIN_HEIGHT / preGameLevel1BackgroundSprite.getGlobalBounds().width;
-        preGameLevel1BackgroundSprite.scale(scale, scale);
+        float scaleX = (float) WindowProperties::WIN_WIDTH / preGameLevel1BackgroundSprite.getGlobalBounds().width;
+        float scaleY = (float) WindowProperties::WIN_HEIGHT / preGameLevel1BackgroundSprite.getGlobalBounds().height;
+        preGameLevel1BackgroundSprite.scale(scaleX, scaleY);
         preGameLevel1BackgroundSprite.setRotation(90);
-        preGameLevel1TextTexture.loadFromFile("");
+        preGameLevel1BackgroundSprite.setPosition(0, 0);
+        preGameLevel1TextTexture.loadFromFile("./ressources/preGame/round_1_text.png");
         preGameLevel1TextSprite.setTexture(preGameLevel1TextTexture);
+        preGameLevel1BackgroundSprite.setPosition((WindowProperties::WIN_WIDTH / 2) - (preGameLevel1BackgroundSprite.getGlobalBounds().width / 2),
+                                                  (WindowProperties::WIN_HEIGHT / 2) - (preGameLevel1BackgroundSprite.getGlobalBounds().height / 2));
         preGameLevel1Music.openFromFile("./ressources/preGame/round_1_sound.ogg");
         baseFadeOpacityPercentageDecreasing = 1.25;
         floatFadeOpacity = 255;

@@ -51,6 +51,8 @@ void            PreGame::startPreGameLevel1()
         }
         floatFadeOpacity -= baseFadeOpacityPercentageDecreasing;
         fadeOpacity = int(std::round(floatFadeOpacity));
+        if (fadeOpacity == 200)
+            preGameLevel1Music.play();
         if (fadeOpacity <= 0)
             WindowProperties::gameState = GameState::LEVEL1;
         else {
