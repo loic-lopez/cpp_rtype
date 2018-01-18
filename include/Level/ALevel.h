@@ -15,7 +15,7 @@
 class ALevel
 {
 private:
-    virtual void enemiesGenerator(short);
+    virtual void enemiesGenerator();
 
 protected:
     Player *player;

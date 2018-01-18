@@ -294,7 +294,7 @@ void ALevel::mainLoop(/*td::function<void(short)> generator*/)
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
-            //enemiesGenerator(phase);
+            enemiesGenerator();
             updateEntities();
             updateAlliedBullet();
             checkEntitiesBoxes();
@@ -334,7 +334,7 @@ void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int nu
    }
 }
 
-void ALevel::enemiesGenerator(short phase)
+void ALevel::enemiesGenerator()
 {
     this->phases.at(phase)();
 }

@@ -43,7 +43,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS1);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 50;
+        hp = 1;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
