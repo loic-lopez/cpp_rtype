@@ -11,6 +11,12 @@ DeepSpace::DeepSpace() : ALevel()
 {
     initLvl("lvl2");
     currentGameLevel = GameState::LEVEL2;
+    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::NONE, 0); });
+    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 6, EnemyType::NONE, 0); });
+    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::BASIC_B, 2); });
+    this->phases.emplace_back([this]() {  generateEnemies(EnemyType::BOSS_A, 1, EnemyType::NONE, 0); });
+    this->phases.emplace_back([this]() {  if (ennemies.empty()) WindowProperties::gameState = GameState::LEVEL3; });
+    phaseMax = static_cast<short>(this->phases.size() - 1);
 }
 
 DeepSpace::~DeepSpace()
@@ -21,11 +27,7 @@ DeepSpace::~DeepSpace()
 
 void    DeepSpace::start()
 {
-    for (int i = 0; i < (std::rand() % 5 + 5); ++i)
-        ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_A)));
-    for (int i = 0; i < (std::rand() % 4 + 1); ++i)
-        ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(EnemyType::BASIC_B)));
-
     music.play();
+    mainLoop();
     music.stop();
 }

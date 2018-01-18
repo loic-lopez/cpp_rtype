@@ -5,7 +5,7 @@
 #ifndef R_TYPE_SPACECEMETERY_H
 #define R_TYPE_SPACECEMETERY_H
 
-// LEVEL 3
+//LEVEL 3
 
 #include "ALevel.h"
 

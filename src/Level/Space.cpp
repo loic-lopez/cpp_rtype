@@ -17,6 +17,7 @@ Space::Space() : ALevel() {
     this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::BASIC_B, 2); });
     this->phases.emplace_back([this]() {  generateEnemies(EnemyType::BOSS_A, 1, EnemyType::NONE, 0); });
     this->phases.emplace_back([this]() {  if (ennemies.empty()) WindowProperties::gameState = GameState::LEVEL2; });
+    phaseMax = static_cast<short>(this->phases.size() - 1);
 }
 
 Space::~Space() {
@@ -26,8 +27,6 @@ Space::~Space() {
 
 void Space::start()
 {
-    bulletsEnemy.reserve(100000);
-
     // PreGame::startPreGameLevel1();
 
     music.play();

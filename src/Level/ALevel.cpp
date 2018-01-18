@@ -20,7 +20,6 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     this->baseFadeOpacityPercentageIncreasing = 1.25;
     this->floatFadeOpacity = 0;
     this->fadeOpacity = 0;
-    phaseMax  = 3;
     phase = 0;
     changePhase = false;
 }
@@ -294,12 +293,12 @@ void ALevel::mainLoop(/*td::function<void(short)> generator*/)
         if (elapsed.asMilliseconds() > 17)
         {
             clock.restart();
-            enemiesGenerator();
             updateEntities();
             updateAlliedBullet();
             checkEntitiesBoxes();
             drawAll(*WindowProperties::App);
             pollEvent(Event);
+            enemiesGenerator();
             WindowProperties::App->display();
         }
     }
