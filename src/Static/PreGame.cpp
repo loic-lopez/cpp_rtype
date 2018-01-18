@@ -28,25 +28,23 @@ std::shared_ptr<sf::Music>       PreGame::preGameLevel4Music;
 //FADING VARIABLES
 
 void PreGame::startPreGameLevel1() {
-    int fadeOpacity = 255;
+    int fadeOpacity = 0;
     sf::Clock clock;
     sf::Time elapsed;
-    preGameLevel1Music->play();
-    while (WindowProperties::App->isOpen() && fadeOpacity > 0) {
+    while (WindowProperties::App->isOpen() && fadeOpacity < 255) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
-            std::cout << "FADE OPACITY : " << fadeOpacity << std::endl;
             clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
                 if (event.type == sf::Event::Closed)
                     WindowProperties::gameState = GameState::CLOSE;
             }
-            fadeOpacity -= 2;
-            if (fadeOpacity == 200)
-                preGameLevel1Music->play();
+            fadeOpacity += 2;
+            if (fadeOpacity == 50) {
+               preGameLevel1Music->play();
+            }
             else {
-                // preGameLevel1BackgroundSprite.setColor(sf::Color(255, 255, 255, fadeOpacity));
                 preGameLevel1TextSprite->setColor(sf::Color(255, 255, 255, fadeOpacity));
             }
             GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
