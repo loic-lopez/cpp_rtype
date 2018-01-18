@@ -51,8 +51,11 @@ private:
     static void PreGameLoadForLevel1()
     {
         (void)static_constructor<&PreGame::PreGameLoadForLevel1>::c;
-        preGameLevel1BackgroundTexture.loadFromFile("");
+        preGameLevel1BackgroundTexture.loadFromFile("./ressources/lvl1/lvl1-1.png");
         preGameLevel1BackgroundSprite.setTexture(preGameLevel1BackgroundTexture);
+        float scale = (float) WindowProperties::WIN_HEIGHT / preGameLevel1BackgroundSprite.getGlobalBounds().width;
+        preGameLevel1BackgroundSprite.scale(scale, scale);
+        preGameLevel1BackgroundSprite.setRotation(90);
         preGameLevel1TextTexture.loadFromFile("");
         preGameLevel1TextSprite.setTexture(preGameLevel1TextTexture);
         preGameLevel1Music.openFromFile("./ressources/preGame/round_1_sound.ogg");
