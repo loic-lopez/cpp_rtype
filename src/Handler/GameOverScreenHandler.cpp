@@ -42,15 +42,9 @@ void GameOverScreenHandler::initGameOverScreen(const std::string &path) {
         } else if (path.substr(path.find_last_of('.') + 1) == "png" ||
                    path.substr(path.find_last_of('.') + 1) == "jpg") {
             if (!parsedBackgroundTexture) {
-                float scaleX;
-                float scaleY;
-                this->backgroundTexture.loadFromFile(path);
-                this->backgroundSprite.setTexture(this->backgroundTexture);
-                scaleX = (float) WindowProperties::WIN_WIDTH / this->backgroundSprite.getGlobalBounds().width;
-                scaleY = (float) WindowProperties::WIN_HEIGHT / this->backgroundSprite.getGlobalBounds().height;
-                this->backgroundSprite.scale(scaleX, scaleY);
-                this->backgroundSprite.setPosition(0, 0);
+                background.addLayer(path, i);
                 parsedBackgroundTexture = true;
+
             } else if (parsedBackgroundTexture && !parsedTextTexture) {
                 this->textTexture.loadFromFile(path);
                 this->textSprite.setTexture(this->textTexture);
@@ -76,7 +70,7 @@ void GameOverScreenHandler::initGameOverScreen(const std::string &path) {
 }
 
 void GameOverScreenHandler::drawGameOverScreen(sf::RenderWindow &App) {
-    App.draw(this->backgroundSprite);
+    background.drawBackground(App);
     App.draw(this->textSprite);
     for (auto &gameOverButton : this->gameOverButtons) {
         App.draw(gameOverButton->buttonShape);

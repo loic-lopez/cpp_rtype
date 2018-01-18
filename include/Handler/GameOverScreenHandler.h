@@ -17,12 +17,12 @@
 #include "HUD.h"
 #include "Button.h"
 
-class GameOverScreenHandler {
+class GameOverScreenHandler
+{
 private:
 
     //BACKGROUND AND MUSIC
-    sf::Sprite backgroundSprite;
-    sf::Texture backgroundTexture;
+    Bg background;
     sf::Music music;
 
     // TEXT ON GAMEOVER SCREEN
@@ -31,17 +31,24 @@ private:
 
     //BUTTON SYSTEM
     std::vector<std::string> buttonEffectsPaths;
-    std::vector<std::shared_ptr<Button>>       gameOverButtons;
+    std::vector<std::shared_ptr<Button>> gameOverButtons;
     std::vector<std::function<void()>> functionsHandler;
 
 public:
     GameOverScreenHandler();
+
     ~GameOverScreenHandler();
+
     void initGameOverScreen(const std::string &path);
+
     void drawGameOverScreen(sf::RenderWindow &App);
+
     void updateGameOverScreen(sf::Event &e, sf::RenderWindow &window);
+
     void determineButtonsPosition();
+
     void playMusic();
+
     void stopMusic();
 };
 
