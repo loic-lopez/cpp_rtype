@@ -128,7 +128,7 @@ void Hud::drawScore(int playerScore, sf::Vector2f position)
         scoreNumbers.at(playerScore)->img.setPosition(position);
         WindowProperties::App->draw(scoreNumbers.at(playerScore)->img);
     }
-    else if (playerScore >= 10)
+    else
     {
         drawScore(playerScore / 10, position);
         position.x += scoreNumbers.front()->texture.getSize().x * [](int digit) -> int
