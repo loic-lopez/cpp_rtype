@@ -101,18 +101,20 @@ void Hud::takeDamage()
 void Hud::addScoreNumberTexture(const std::string &path)
 {
     firstScoreTextNumberPosition.x = scoreText->img.getPosition().x + scoreText->texture.getSize().x * 0.85f;
-    firstScoreTextNumberPosition.y = this->filledHearts.back()->img.getPosition().y + (scoreText->texture.getSize().y * 0.15f);
+    firstScoreTextNumberPosition.y =
+            this->filledHearts.back()->img.getPosition().y + (scoreText->texture.getSize().y * 0.15f);
 
     scoreNumbers.emplace_back(new t_layer(path, firstScoreTextNumberPosition));
     sf::Vector2f currentFirstPosition = scoreNumbers.front()->img.getPosition();
-    scoreNumbers.front()->img.setPosition(sf::Vector2f(currentFirstPosition.x + scoreNumbers.front()->texture.getSize().x, currentFirstPosition.y));
+    scoreNumbers.front()->img.setPosition(
+            sf::Vector2f(currentFirstPosition.x + scoreNumbers.front()->texture.getSize().x, currentFirstPosition.y));
     firstScoreTextNumberPosition.x += scoreNumbers.front()->texture.getSize().x;
 }
 
 void Hud::addScoreTexture(const std::string &path)
 {
     sf::Vector2f scorePosition;
-    scorePosition.x = this->filledHearts.back()->img.getPosition().x +  this->filledHearts.back()->texture.getSize().x;
+    scorePosition.x = this->filledHearts.back()->img.getPosition().x + this->filledHearts.back()->texture.getSize().x;
     scorePosition.y = this->filledHearts.back()->img.getPosition().y;
 
     this->scoreText = std::make_shared<t_layer>(path, scorePosition);
@@ -120,29 +122,25 @@ void Hud::addScoreTexture(const std::string &path)
 
 void Hud::drawScore(int playerScore, sf::Vector2f position)
 {
+
     if (playerScore < 10)
     {
         scoreNumbers.at(playerScore)->img.setPosition(position);
         WindowProperties::App->draw(scoreNumbers.at(playerScore)->img);
     }
-    else if (playerScore >= 10 && playerScore < 100)
+    else if (playerScore >= 10)
     {
         drawScore(playerScore / 10, position);
-        position.x += scoreNumbers.front()->texture.getSize().x;
-        scoreNumbers.at(playerScore % 10)->img.setPosition(position);
-        WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
-    }
-    else if (playerScore >= 100 && playerScore < 1000)
-    {
-        drawScore(playerScore / 10, position);
-        position.x += scoreNumbers.front()->texture.getSize().x * 2;
-        scoreNumbers.at(playerScore % 10)->img.setPosition(position);
-        WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
-    }
-    else if (playerScore >= 1000)
-    {
-        drawScore(playerScore / 10, position);
-        position.x += scoreNumbers.front()->texture.getSize().x * 3;
+        position.x += scoreNumbers.front()->texture.getSize().x * [](int digit) -> int
+        {
+            int ret = -1;
+            while (digit > 0)
+            {
+                digit /= 10;
+                ret++;
+            }
+            return ret;
+        }(playerScore);
         scoreNumbers.at(playerScore % 10)->img.setPosition(position);
         WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
     }
