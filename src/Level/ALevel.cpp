@@ -120,25 +120,19 @@ void ALevel::drawAll(sf::RenderWindow &App)
 
 void ALevel::updateAlliedBullet()
 {
-    for (size_t i = 0; i < this->bulletsAllied.size(); i++)
+    for (auto it = bulletsAllied.begin(); it < bulletsAllied.end(); ++it)
     {
-        if (!bulletsAllied[i]->outOfBounds())
-        {
-            this->bulletsAllied.erase(this->bulletsAllied.begin() + i);
-            i--;
-        }
+        if (!(*it)->outOfBounds())
+            this->bulletsAllied.erase(it);
         else
-            this->bulletsAllied[i]->updatePos();
+            (*it)->updatePos();
     }
-    for (size_t i = 0; i < this->bulletsEnemy.size(); i++)
+    for (auto it = bulletsEnemy.begin(); it < bulletsEnemy.end(); ++it)
     {
-        if (!bulletsEnemy[i]->outOfBounds())
-        {
-            this->bulletsEnemy.erase(this->bulletsEnemy.begin() + i);
-            i--;
-        }
+        if (!(*it)->outOfBounds())
+            this->bulletsEnemy.erase(it);
         else
-            this->bulletsEnemy[i]->updatePos();
+            (*it)->updatePos();
     }
 }
 
