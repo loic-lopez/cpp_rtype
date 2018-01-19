@@ -3,7 +3,6 @@
 //
 
 #include <Core/GameCore.h>
-#include <Level/ALevel.h>
 
 ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler::Instance().getHud())
 {
@@ -169,21 +168,23 @@ void ALevel::checkEntitiesBoxes()
             {
                 if ((*it)->getHitBox().intersects((*enemy)->getHitBox()))
                 {
-                    if ((*enemy)->getType() == Textures::ENEMY1)
-                        ennemies.erase(enemy);
-                    else if ((*enemy)->getType() == Textures::ENEMY2)
+                    switch ((*enemy)->getType())
                     {
-                        if ((*enemy)->getHp() <= 0)
+                        case Textures::ENEMY1:
+                        {
                             ennemies.erase(enemy);
-                        else
-                            (*enemy)->setHp((*enemy)->getHp() - 1);
-                    }
-                    else if ((*enemy)->getType() == Textures::BOSS1)
-                    {
-                        if ((*enemy)->getHp() <= 0)
-                            ennemies.erase(enemy);
-                        else
-                            (*enemy)->setHp((*enemy)->getHp() - 1);
+                            break;
+                        }
+                        case  Textures::ENEMY2:
+                        case  Textures::BOSS1:
+                        case  Textures::BOSS2:
+                        {
+                            if ((*enemy)->getHp() <= 0)
+                                ennemies.erase(enemy);
+                            else
+                                (*enemy)->setHp((*enemy)->getHp() - 1);
+                            break;
+                        }
                     }
                     bulletsAllied.erase(it);
                     break;
@@ -303,40 +304,38 @@ void ALevel::mainLoop()
         GameCore::Instance().getGameOverScreen().start();
         WindowProperties::App->setMouseCursorVisible(false);
         if (WindowProperties::gameState == currentGameLevel)
-        {
-
-        }
+            GameHandler::Instance().resetGameToRetry();
     }
 
 }
 
 void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int number2)
 {
-   if (changePhase)
-   {
-       if (ennemies.empty())
-       {
-           phase++;
-           changePhase = false;
-       }
-   }
-   else
-   {
-       if (phase < phaseMax)
-       {
-           for (int i = 0; i < number; i++)
-               ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
-           if (type2 != EnemyType::NONE)
-               for (int i = 0; i < number2; i++)
-                   ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type2)));
-                changePhase = true;
-       }
-       else if (phase == phaseMax)
-       {
-           ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
-           phase++;
-       }
-   }
+    if (changePhase)
+    {
+        if (ennemies.empty())
+        {
+            phase++;
+            changePhase = false;
+        }
+    }
+    else
+    {
+        if (phase < phaseMax)
+        {
+            for (int i = 0; i < number; i++)
+                ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
+            if (type2 != EnemyType::NONE)
+                for (int i = 0; i < number2; i++)
+                    ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type2)));
+            changePhase = true;
+        }
+        else if (phase == phaseMax)
+        {
+            ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
+            phase++;
+        }
+    }
 }
 
 void ALevel::enemiesGenerator()
