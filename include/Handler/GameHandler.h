@@ -53,6 +53,7 @@ public:
     Hud &getHud();
     ALevel *getCurrentLevel();
     ALevel *getCurrentLevel(GameState currentLevel);
+    void    resetGameToRetry();
 };
 
 #endif //R_TYPE_GAMEHANDLER_H

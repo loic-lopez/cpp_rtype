@@ -3,12 +3,13 @@
 //
 
 #include <Handler/GameOverScreenHandler.h>
+#include <Core/GameOverScreenCore.h>
 
 GameOverScreenHandler::GameOverScreenHandler() {
     this->functionsHandler.emplace_back([this]() {
         //BOUTON RETRY
-        WindowProperties::gameState = GameState::LEVEL1;
-        std::cout << "TO LEVEL 1" << std::endl;
+        WindowProperties::gameState = GameOverScreenCore::Instance().getPreviousGameState();
+        std::cout << "TO LEVEL " + (int)WindowProperties::gameState << std::endl;
         this->music.stop();
         this->gameOverButtons[0]->setState(0);
     });

@@ -68,3 +68,13 @@ GameOverScreenHandler &GameOverScreenCore::getGameOverScreen()
 {
     return gameOverScreen;
 }
+
+GameState GameOverScreenCore::getPreviousGameState() const
+{
+    return previousGameState;
+}
+
+void GameOverScreenCore::setPreviousGameState(GameState previousGameState)
+{
+    GameOverScreenCore::previousGameState = previousGameState;
+}

@@ -136,3 +136,8 @@ void GameHandler::startLevel5()
     this->level5 = level5.get();
     this->level5->start();
 }
+
+void GameHandler::resetGameToRetry()
+{
+    hud.resetHud();
+}

@@ -266,16 +266,17 @@ void ALevel::pollEvent(sf::Event &Event)
         this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
         this->fadeOpacity = int(std::round(this->floatFadeOpacity));
         if (this->fadeOpacity >= 255)
-            WindowProperties::gameState = GameState::GAMEOVER;
-        else
         {
-            GameOverScreenCore::Instance().getGameOverScreen().drawGameOverScreen(*WindowProperties::App, fadeOpacity);
+            GameOverScreenCore::Instance().setPreviousGameState(WindowProperties::gameState);
+            WindowProperties::gameState = GameState::GAMEOVER;
         }
+        else
+            GameOverScreenCore::Instance().getGameOverScreen().drawGameOverScreen(*WindowProperties::App, fadeOpacity);
 
     }
 }
 
-void ALevel::mainLoop(/*td::function<void(short)> generator*/)
+void ALevel::mainLoop()
 {
     sf::Event Event;
     sf::Time elapsed;
@@ -302,6 +303,10 @@ void ALevel::mainLoop(/*td::function<void(short)> generator*/)
         WindowProperties::App->setMouseCursorVisible(true);
         GameCore::Instance().getGameOverScreen().start();
         WindowProperties::App->setMouseCursorVisible(false);
+        if (WindowProperties::gameState == currentGameLevel)
+        {
+            
+        }
     }
 
 }

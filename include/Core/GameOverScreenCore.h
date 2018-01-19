@@ -13,6 +13,13 @@
 class GameOverScreenCore
 {
 private:
+    GameState                   previousGameState;
+public:
+    GameState getPreviousGameState() const;
+
+    void setPreviousGameState(GameState previousGameState);
+
+private:
     static GameOverScreenCore   m_instance;
     GameOverScreenHandler       gameOverScreen;
 public:

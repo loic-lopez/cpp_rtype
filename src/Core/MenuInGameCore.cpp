@@ -18,7 +18,6 @@ void MenuInGameCore::EventHandler(sf::Event &event)
                 if (event.key.code == sf::Keyboard::Escape)
                 {
                     WindowProperties::gameState = previousGameState;
-                    std::cout << (int)previousGameState << std::endl;
                 }
                 break;
             default:
