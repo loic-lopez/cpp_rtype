@@ -183,6 +183,8 @@ void ALevel::checkEntitiesBoxes()
                                 (*enemy)->setHp((*enemy)->getHp() - 1);
                             break;
                         }
+                        default:
+                            break;
                     }
                     bulletsAllied.erase(it);
                     break;

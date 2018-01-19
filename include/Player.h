@@ -15,9 +15,9 @@ public:
     ControlType getGameMovementMode() const;
     Player();
     ~Player();
-    virtual void shoot();
-    virtual void updatePos();
-    sf::FloatRect   getHitBox();
+    void shoot() override;
+    void updatePos() override;
+    sf::FloatRect   getHitBox() override;
 
 private:
     ControlType GameMovementMode;
