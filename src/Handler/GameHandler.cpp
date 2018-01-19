@@ -38,6 +38,7 @@ void GameHandler::start()
     std::unique_ptr<Player> player = std::unique_ptr<Player>(new Player());
     this->player = player.get();
     scoreSave = 0;
+    hpSave = WindowProperties::MAX_PLAYER_HP;
 
     WindowProperties::App->setMouseCursorVisible(false);
     while (WindowProperties::gameState == GameState::LEVEL1)
@@ -112,13 +113,18 @@ void GameHandler::startLevel1()
 
 void GameHandler::startLevel2()
 {
+    scoreSave = player->getScore();
+    hpSave = player->getHp();
     std::unique_ptr<ALevel> level2 = std::unique_ptr<ALevel>(new DeepSpace());
     this->level2 = level2.get();
     this->level2->start();
+
 }
 
 void GameHandler::startLevel3()
 {
+    scoreSave = player->getScore();
+    hpSave = player->getHp();
     std::unique_ptr<ALevel> level3 = std::unique_ptr<ALevel>(new SpaceCemetery());
     this->level3 = level3.get();
     this->level3->start();
@@ -126,6 +132,8 @@ void GameHandler::startLevel3()
 
 void GameHandler::startLevel4()
 {
+    scoreSave = player->getScore();
+    hpSave = player->getHp();
     std::unique_ptr<ALevel> level4 = std::unique_ptr<ALevel>(new Horizon());
     this->level4 = level4.get();
     this->level4->start();
@@ -133,6 +141,8 @@ void GameHandler::startLevel4()
 
 void GameHandler::startLevel5()
 {
+    scoreSave = player->getScore();
+    hpSave = player->getHp();
     std::unique_ptr<ALevel> level5 = std::unique_ptr<ALevel>(new Underwater());
     this->level5 = level5.get();
     this->level5->start();
@@ -140,5 +150,15 @@ void GameHandler::startLevel5()
 
 void GameHandler::resetGameToRetry()
 {
+    player->setScore(scoreSave);
+    player->setHp(hpSave);
     hud.resetHud();
+}
+
+int GameHandler::getScoreSave() const {
+    return scoreSave;
+}
+
+void GameHandler::setScoreSave(int scoreSave) {
+    GameHandler::scoreSave = scoreSave;
 }

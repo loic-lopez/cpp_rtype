@@ -53,7 +53,7 @@ void Hud::drawHud(sf::RenderWindow &App)
         App.draw(filledHeart->img);
 
     App.draw(scoreText->img);
-    this->drawScore(10, firstScoreTextNumberPosition);
+    this->drawScore(GameHandler::Instance().getPlayer()->getScore(), firstScoreTextNumberPosition);
 }
 
 void Hud::fillHeartVector(std::vector<std::shared_ptr<Hud::t_layer>> &vector, t_layer *ref)
@@ -80,10 +80,11 @@ void Hud::fillHeartVector(std::vector<std::shared_ptr<Hud::t_layer>> &vector, t_
     float firstYPos = ref->img.getPosition().y;
     int hp = 1;
 
-    vector.emplace_back(ref);
+    t_layer *newRef = new t_layer(ref);
+    vector.emplace_back(newRef);
     while (hp < currentPlayerHp)
     {
-        t_layer *newRef = new t_layer(ref);
+        newRef = new t_layer(ref);
         firstXPos += (float) vector.front()->texture.getSize().x / 2;
         newRef->img.setPosition(firstXPos, firstYPos);
         vector.emplace_back(newRef);

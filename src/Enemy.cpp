@@ -18,6 +18,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         trajectory.x = 1;
         trajectory.y = 1;
         speed = 3;
+        rewardScore = 5;
         weapon.setWeapon(WeaponType::SPREAD, 40, 1);
         this->setSide(Side::ENEMY);
         this->setType(Textures::ENEMY1);
@@ -32,6 +33,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         trajectory.x = 2;
         trajectory.y = 1;
         speed = 4;
+        rewardScore = 10;
         weapon.setWeapon(WeaponType::STRAIGHT, 30, 2);
         this->setSide(Side::ENEMY);
         this->setType(Textures::ENEMY2);
@@ -47,6 +49,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
+        rewardScore = 100;
         weapon.setWeapon(WeaponType::SPREAD, 40, 3);
         this->setSide(Side::ENEMY);
         this->setType(Textures::BOSS1);
@@ -62,6 +65,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
+        rewardScore = 150;
         weapon.setWeapon(WeaponType::SPREAD, 40, 3);
         this->setSide(Side::ENEMY);
         this->setType(Textures::BOSS2);
@@ -178,4 +182,8 @@ void Enemy::updatePos()
             back2 = true;
     }
 
+}
+
+unsigned Enemy::getReward() {
+    return rewardScore;
 }

@@ -172,6 +172,7 @@ void ALevel::checkEntitiesBoxes()
                     {
                         case Textures::ENEMY1:
                         {
+                            player->setScore(player->getScore() + (*enemy)->getReward());
                             ennemies.erase(enemy);
                             break;
                         }
@@ -180,7 +181,10 @@ void ALevel::checkEntitiesBoxes()
                         case  Textures::BOSS2:
                         {
                             if ((*enemy)->getHp() <= 0)
+                            {
+                                player->setScore(player->getScore() + (*enemy)->getReward());
                                 ennemies.erase(enemy);
+                            }
                             else
                                 (*enemy)->setHp((*enemy)->getHp() - 1);
                             break;
@@ -193,7 +197,7 @@ void ALevel::checkEntitiesBoxes()
 
     for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it)
     {
-        if ((*it)->getHitBox().intersects(player->getHitBox()))
+        if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost)
         {
             if (this->player->getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
             {

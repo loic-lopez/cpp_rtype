@@ -24,6 +24,7 @@ public:
     virtual Side getSide() = 0;
     virtual void setType(Textures) = 0;
     virtual Textures getType() = 0;
+    virtual unsigned getReward() = 0;
 
     virtual Stance getStance() const = 0;
     virtual void setStance(Stance stance) = 0;

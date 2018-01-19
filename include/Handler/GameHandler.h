@@ -28,6 +28,12 @@ private:
     Player *player;
     Hud hud;
     int scoreSave;
+    int hpSave;
+
+public:
+    int getScoreSave() const;
+
+    void setScoreSave(int scoreSave);
 
 private:
     ALevel *level1;

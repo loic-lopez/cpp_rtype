@@ -20,7 +20,14 @@ public:
 
 private:
     ControlType GameMovementMode;
-    int         score;
+    unsigned int score;
+public:
+    unsigned int getScore() const;
+    void setScore(unsigned int score);
+
+    unsigned getReward() override {};
+
+private:
     sf::Music   shotSound;
     sf::Music   shotSound2;
     sf::Music   shotSound3;

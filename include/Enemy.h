@@ -22,6 +22,7 @@ public:
     virtual void shoot();
     virtual void updatePos();
     Bullet *straightBullet(BulletType bulletType);
+    virtual unsigned getReward();
 };
 
 

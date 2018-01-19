@@ -19,6 +19,7 @@ Player::Player() : Entity()
     GameMovementMode = ControlType::KEYBOARD;
     weapon.setWeapon(WeaponType::STRAIGHT, 10);
     setHp(3);
+    score = 0;
     shotSound.openFromFile("./ressources/bullet/shot.ogg");
     shotSound2.openFromFile("./ressources/bullet/shot.ogg");
     shotSound3.openFromFile("./ressources/bullet/shot.ogg");
@@ -70,4 +71,12 @@ ControlType Player::getGameMovementMode() const
 void Player::setGameMovementMode(ControlType GameMovementMode)
 {
     Player::GameMovementMode = GameMovementMode;
+}
+
+unsigned int Player::getScore() const {
+    return score;
+}
+
+void Player::setScore(unsigned int score) {
+    Player::score = score;
 }

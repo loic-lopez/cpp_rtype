@@ -147,3 +147,4 @@ sf::FloatRect Entity::getHitBox()
     sf::FloatRect hitbox = sprites[(int) stance].getSize();
     return (sf::FloatRect(pos.x - hitbox.width / 2.f, pos.y - hitbox.height / 2.f, hitbox.width, hitbox.height));
 }
+

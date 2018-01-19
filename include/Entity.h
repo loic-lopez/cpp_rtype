@@ -23,6 +23,7 @@ protected:
     Orientation orientation;
     Side side;
     Textures type;
+    unsigned int rewardScore;
 
 public:
     Entity();
@@ -46,6 +47,7 @@ public:
     virtual void setType(Textures textures);
     virtual Textures getType();
     virtual sf::FloatRect getHitBox();
+    virtual unsigned getReward() = 0;
 
     virtual void shoot() = 0;
     virtual void updatePos() = 0;
