@@ -27,6 +27,7 @@ private:
     static GameHandler m_instance;
     Player *player;
     Hud hud;
+    int scoreSave;
 
 private:
     ALevel *level1;

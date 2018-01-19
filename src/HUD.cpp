@@ -26,14 +26,14 @@ void Hud::initHud(const std::string &path)
         {
             float firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
             float firstYPos = 0;
-            this->emptyHeartRef = std::shared_ptr<t_layer>(new t_layer(path, sf::Vector2f(firstXPos, firstYPos)));
+            this->emptyHeartRef = std::make_shared<t_layer>(path, sf::Vector2f(firstXPos, firstYPos));
             this->fillHeartVector(this->emptyHearts, emptyHeartRef.get());
         }
         else if (path.find("FilledHeart.png") != std::string::npos)
         {
             float firstXPos = (float) WindowProperties::WIN_WIDTH / 100;
             float firstYPos = 0;
-            this->filledHeartRef = std::shared_ptr<t_layer>(new t_layer(path, sf::Vector2f(firstXPos, firstYPos)));
+            this->filledHeartRef = std::make_shared<t_layer>(path, sf::Vector2f(firstXPos, firstYPos));
             this->fillHeartVector(this->filledHearts, filledHeartRef.get());
         }
         else if (path.find("score.png") != std::string::npos)
@@ -62,10 +62,11 @@ void Hud::fillHeartVector(std::vector<std::shared_ptr<Hud::t_layer>> &vector, t_
     float firstYPos = ref->img.getPosition().y;
     int hp = 1;
 
-    vector.emplace_back(ref);
+    t_layer *newRef = new t_layer(ref);
+    vector.emplace_back(newRef);
     while (hp < WindowProperties::MAX_PLAYER_HP)
     {
-        t_layer *newRef = new t_layer(ref);
+        newRef = new t_layer(ref);
         firstXPos += (float) vector.front()->texture.getSize().x / 2;
         newRef->img.setPosition(firstXPos, firstYPos);
         vector.emplace_back(newRef);
@@ -92,7 +93,8 @@ void Hud::fillHeartVector(std::vector<std::shared_ptr<Hud::t_layer>> &vector, t_
 
 void Hud::takeDamage()
 {
-    filledHearts.pop_back();
+    if (!filledHearts.empty())
+        filledHearts.pop_back();
 }
 
 void Hud::addScoreNumberTexture(const std::string &path)
@@ -112,7 +114,7 @@ void Hud::addScoreTexture(const std::string &path)
     scorePosition.x = this->filledHearts.back()->img.getPosition().x +  this->filledHearts.back()->texture.getSize().x;
     scorePosition.y = this->filledHearts.back()->img.getPosition().y;
 
-    this->scoreText = std::shared_ptr<t_layer>(new t_layer(path, scorePosition));
+    this->scoreText = std::make_shared<t_layer>(path, scorePosition);
 }
 
 void Hud::drawScore(int playerScore, sf::Vector2f position)

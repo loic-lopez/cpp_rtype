@@ -20,6 +20,7 @@ public:
 
 private:
     ControlType GameMovementMode;
+    int         score;
     sf::Music   shotSound;
     sf::Music   shotSound2;
     sf::Music   shotSound3;

@@ -37,6 +37,7 @@ void GameHandler::start()
 {
     std::unique_ptr<Player> player = std::unique_ptr<Player>(new Player());
     this->player = player.get();
+    scoreSave = 0;
 
     WindowProperties::App->setMouseCursorVisible(false);
     while (WindowProperties::gameState == GameState::LEVEL1)
