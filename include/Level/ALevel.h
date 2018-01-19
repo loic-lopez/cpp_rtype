@@ -61,9 +61,9 @@ protected:
 
     virtual void pollEvent(sf::Event &event);
 
-    virtual void mainLoop();//std::function<void()>);
+    virtual void mainLoop();
 
-    virtual void generateEnemies(EnemyType, int, EnemyType, int);
+    virtual void generateEnemies(std::map<EnemyType, int>);
 
 public:
 

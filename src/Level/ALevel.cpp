@@ -166,7 +166,7 @@ void ALevel::checkEntitiesBoxes()
         if (!ennemies.empty())
             for (auto enemy = ennemies.begin(); enemy < ennemies.end(); ++enemy)
             {
-                if ((*it)->getHitBox().intersects((*enemy)->getHitBox()))
+                if ((*it)->getHitBox().intersects((*enemy)->getHitBox()) && !isGameLost)
                 {
                     switch ((*enemy)->getType())
                     {
@@ -316,7 +316,7 @@ void ALevel::mainLoop()
 
 }
 
-void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int number2)
+void ALevel::generateEnemies(std::map<EnemyType, int>enemiesMap)
 {
     if (changePhase)
     {
@@ -330,16 +330,20 @@ void ALevel::generateEnemies(EnemyType type, int number, EnemyType type2, int nu
     {
         if (phase < phaseMax)
         {
-            for (int i = 0; i < number; i++)
-                ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
-            if (type2 != EnemyType::NONE)
-                for (int i = 0; i < number2; i++)
-                    ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type2)));
+            for( auto &enemy : enemiesMap)
+            {
+                for (int i = 0; i < enemy.second; i++)
+                ennemies.emplace_back(new Enemy(enemy.first));
+            }
             changePhase = true;
         }
         else if (phase == phaseMax)
         {
-            ennemies.push_back(std::shared_ptr<IEntity>(new Enemy(type)));
+            for( auto &enemy : enemiesMap)
+            {
+                for (int i = 0; i < enemy.second; i++)
+                    ennemies.emplace_back(new Enemy(enemy.first));
+            }
             phase++;
         }
     }

@@ -11,10 +11,31 @@
 Underwater::Underwater() : ALevel() {
     initLvl("lvl5");
     currentGameLevel = GameState::LEVEL5;
-    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::NONE, 0); });
-    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 6, EnemyType::NONE, 0); });
-    this->phases.emplace_back([this]() { generateEnemies(EnemyType::BASIC_A, 4, EnemyType::BASIC_B, 2); });
-    this->phases.emplace_back([this]() {  generateEnemies(EnemyType::BOSS_B, 1, EnemyType::NONE, 0); });
+    this->phases.emplace_back([this]()
+                              {
+                                  std::map<EnemyType , int >enemies;
+                                  enemies.insert({EnemyType::BASIC_A, 4});
+                                  generateEnemies(enemies);
+                              });
+    this->phases.emplace_back([this]()
+                              {
+                                  std::map<EnemyType , int >enemies;
+                                  enemies.insert({EnemyType::BASIC_A, 6});
+                                  generateEnemies(enemies);
+                              });
+    this->phases.emplace_back([this]()
+                              {
+                                  std::map<EnemyType , int >enemies;
+                                  enemies.insert({EnemyType::BASIC_A, 4});
+                                  enemies.insert({EnemyType::BASIC_B, 2});
+                                  generateEnemies(enemies);
+                              });
+    this->phases.emplace_back([this]()
+                              {
+                                  std::map<EnemyType , int >enemies;
+                                  enemies.insert({EnemyType::BOSS_A, 1});
+                                  generateEnemies(enemies);
+                              });
     this->phases.emplace_back([this]() {  if (ennemies.empty()) WindowProperties::gameState = GameState::MENU; });
     phaseMax = static_cast<short>(this->phases.size() - 1);
 }

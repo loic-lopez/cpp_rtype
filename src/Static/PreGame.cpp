@@ -33,27 +33,31 @@ void PreGame::startPreGameLevel1() {
     while (WindowProperties::App->isOpen() && fadeOpacity != 1) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
+            WindowProperties::App->display();
             clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
+                if (event.type == sf::Event::Closed) {
                     WindowProperties::gameState = GameState::CLOSE;
+                }
             }
-            if (fadeOpacity == 254)
+            if (fadeOpacity == 254) {
                 reverseFade = true;
-            if (reverseFade)
+            }
+            if (reverseFade) {
                 fadeOpacity -= 11;
-            else
+            }
+            else {
                 fadeOpacity += 2;
+            }
             if (fadeOpacity == 50) {
-               preGameLevel1Music->play();
+                preGameLevel1Music->play();
             }
             else {
                 preGameLevel1TextSprite->setColor(sf::Color(255, 255, 255, fadeOpacity));
             }
             GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
             WindowProperties::App->draw(*preGameLevel1TextSprite);
-            WindowProperties::App->display();
         }
     }
     preGameLevel1Music->stop();
@@ -67,18 +71,23 @@ void PreGame::startPreGameLevel2() {
     while (WindowProperties::App->isOpen() && fadeOpacity != 1) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
+            WindowProperties::App->display();
             clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
+                if (event.type == sf::Event::Closed) {
                     WindowProperties::gameState = GameState::CLOSE;
+                }
             }
-            if (fadeOpacity == 254)
+            if (fadeOpacity == 254) {
                 reverseFade = true;
-            if (reverseFade)
+            }
+            if (reverseFade) {
                 fadeOpacity -= 11;
-            else
+            }
+            else {
                 fadeOpacity += 2;
+            }
             if (fadeOpacity == 50) {
                 preGameLevel2Music->play();
             }
@@ -87,7 +96,6 @@ void PreGame::startPreGameLevel2() {
             }
             GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
             WindowProperties::App->draw(*preGameLevel2TextSprite);
-            WindowProperties::App->display();
         }
     }
     preGameLevel2Music->stop();
@@ -102,18 +110,23 @@ void PreGame::startPreGameLevel3() {
     while (WindowProperties::App->isOpen() && fadeOpacity != 1) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
+            WindowProperties::App->display();
             clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
+                if (event.type == sf::Event::Closed) {
                     WindowProperties::gameState = GameState::CLOSE;
+                }
             }
-            if (fadeOpacity == 254)
+            if (fadeOpacity == 254) {
                 reverseFade = true;
-            if (reverseFade)
+            }
+            if (reverseFade) {
                 fadeOpacity -= 11;
-            else
+            }
+            else {
                 fadeOpacity += 2;
+            }
             if (fadeOpacity == 50) {
                 preGameLevel3Music->play();
             }
@@ -122,7 +135,6 @@ void PreGame::startPreGameLevel3() {
             }
             GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
             WindowProperties::App->draw(*preGameLevel3TextSprite);
-            WindowProperties::App->display();
         }
     }
     preGameLevel3Music->stop();
@@ -137,18 +149,23 @@ void PreGame::startPreGameLevel4() {
     while (WindowProperties::App->isOpen() && fadeOpacity != 1) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
+            WindowProperties::App->display();
             clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
+                if (event.type == sf::Event::Closed) {
                     WindowProperties::gameState = GameState::CLOSE;
+                }
             }
-            if (fadeOpacity == 254)
+            if (fadeOpacity == 254) {
                 reverseFade = true;
-            if (reverseFade)
+            }
+            if (reverseFade) {
                 fadeOpacity -= 11;
-            else
+            }
+            else {
                 fadeOpacity += 2;
+            }
             if (fadeOpacity == 50) {
                 preGameLevel4Music->play();
             }
@@ -157,7 +174,6 @@ void PreGame::startPreGameLevel4() {
             }
             GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
             WindowProperties::App->draw(*preGameLevel4TextSprite);
-            WindowProperties::App->display();
         }
     }
     preGameLevel4Music->stop();
@@ -171,18 +187,23 @@ void PreGame::startPreGameLevel5() {
     while (WindowProperties::App->isOpen() && fadeOpacity != 1) {
         elapsed = clock.getElapsedTime();
         if (elapsed.asMilliseconds() > 17) {
+            WindowProperties::App->display();
             clock.restart();
             sf::Event event;
             while (WindowProperties::App->pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
+                if (event.type == sf::Event::Closed) {
                     WindowProperties::gameState = GameState::CLOSE;
+                }
             }
-            if (fadeOpacity == 254)
+            if (fadeOpacity == 254) {
                 reverseFade = true;
-            if (reverseFade)
+            }
+            if (reverseFade) {
                 fadeOpacity -= 11;
-            else
+            }
+            else {
                 fadeOpacity += 2;
+            }
             if (fadeOpacity == 50) {
                 preGameLevel5Music->play();
             }
@@ -191,7 +212,6 @@ void PreGame::startPreGameLevel5() {
             }
             GameHandler::Instance().getCurrentLevel()->drawAll(*WindowProperties::App);
             WindowProperties::App->draw(*preGameLevel5TextSprite);
-            WindowProperties::App->display();
         }
     }
     preGameLevel5Music->stop();
