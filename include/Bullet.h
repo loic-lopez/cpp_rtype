@@ -18,7 +18,7 @@ public:
     void setSide(Side side);
     virtual void shoot();
     virtual void updatePos();
-    virtual unsigned getReward(){};
+    virtual unsigned getReward(){ return 0;};
 };
 
 

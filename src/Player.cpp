@@ -80,3 +80,14 @@ unsigned int Player::getScore() const {
 void Player::setScore(unsigned int score) {
     Player::score = score;
 }
+
+sf::FloatRect   Player::getHitBox()
+{
+    sf::FloatRect newHitbox = this->getBounds();
+
+    newHitbox.height -= 5;
+    newHitbox.top += 5;
+    newHitbox.width -= 5;
+    newHitbox.left += 5;
+    return newHitbox;
+}

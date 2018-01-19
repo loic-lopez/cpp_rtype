@@ -16,6 +16,9 @@ TextureManager::TextureManager()
     sprites[(int) Textures::ENEMY2] = Animation("enemy2", Stance::IDLE);
     sprites[(int) Textures::BOSS1] = Animation("boss1", Stance::IDLE);
     sprites[(int) Textures::BOSS2] = Animation("boss2", Stance::IDLE);
+    sprites[(int) Textures::LIFEUP] = Animation("life", Stance::IDLE);
+    sprites[(int) Textures::STRAIGHT] = Animation("straight", Stance::IDLE);
+    sprites[(int) Textures::SPREAD] = Animation("spread", Stance::IDLE);
 }
 
 TextureManager::~TextureManager()

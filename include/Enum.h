@@ -80,5 +80,9 @@ enum class Textures
     BULLET_BASIC_A,
     BULLET_ENEMY_A,
     BOSS2,
+    LIFEUP,
+    SPREAD,
+    STRAIGHT
 };
+
 #endif //RTYPE_ENUM_H

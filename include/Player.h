@@ -17,6 +17,7 @@ public:
     ~Player();
     virtual void shoot();
     virtual void updatePos();
+    sf::FloatRect   getHitBox();
 
 private:
     ControlType GameMovementMode;
@@ -25,13 +26,14 @@ public:
     unsigned int getScore() const;
     void setScore(unsigned int score);
 
-    unsigned getReward() override {};
+    unsigned getReward() override { return 0;};
 
 private:
     sf::Music   shotSound;
     sf::Music   shotSound2;
     sf::Music   shotSound3;
     sf::Music   shotSound4;
+
 };
 
 

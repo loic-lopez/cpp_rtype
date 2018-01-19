@@ -1,4 +1,5 @@
 #include <Core/GameCore.h>
+#include "PowerUp.h"
 
 unsigned int WindowProperties::WIN_HEIGHT;
 unsigned int WindowProperties::WIN_WIDTH;
