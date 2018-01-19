@@ -139,6 +139,11 @@ void Hud::resetHud()
     this->fillHeartVector(this->filledHearts, filledHeartRef.get(), GameHandler::Instance().getPlayer()->getHp());
 }
 
+bool Hud::emptyFilledHearthsVector()
+{
+    return this->filledHearts.empty();
+}
+
 Hud::t_layer::t_layer(const std::string &path, sf::Vector2f position)
 {
     texture.loadFromFile(path);
@@ -152,3 +157,4 @@ Hud::t_layer::t_layer(const Hud::t_layer *layer)
     this->img = layer->img;
     this->id = layer->id;
 }
+

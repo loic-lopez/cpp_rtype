@@ -43,7 +43,7 @@ public:
     void drawHud(sf::RenderWindow &App);
     void takeDamage();
     void resetHud();
-
+    bool emptyFilledHearthsVector();
 };
 
 #endif //R_TYPE_HUD_H

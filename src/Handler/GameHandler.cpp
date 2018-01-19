@@ -40,6 +40,9 @@ void GameHandler::start()
     scoreSave = 0;
     hpSave = WindowProperties::MAX_PLAYER_HP;
 
+    if (hud.emptyFilledHearthsVector())
+        hud.resetHud();
+
     WindowProperties::App->setMouseCursorVisible(false);
     while (WindowProperties::gameState == GameState::LEVEL1)
         this->startLevel1();
@@ -152,6 +155,7 @@ void GameHandler::resetGameToRetry()
 {
     player->setScore(scoreSave);
     player->setHp(hpSave);
+    player->setPos(sf::Vector2f(WindowProperties::WIN_WIDTH * 10 / 100, WindowProperties::WIN_HEIGHT / 2));
     hud.resetHud();
 }
 
