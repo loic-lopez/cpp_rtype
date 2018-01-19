@@ -125,10 +125,24 @@ void Hud::drawScore(int playerScore, sf::Vector2f position)
         scoreNumbers.at(playerScore)->img.setPosition(position);
         WindowProperties::App->draw(scoreNumbers.at(playerScore)->img);
     }
-    else
+    else if (playerScore >= 10 && playerScore < 100)
     {
         drawScore(playerScore / 10, position);
         position.x += scoreNumbers.front()->texture.getSize().x;
+        scoreNumbers.at(playerScore % 10)->img.setPosition(position);
+        WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
+    }
+    else if (playerScore >= 100 && playerScore < 1000)
+    {
+        drawScore(playerScore / 10, position);
+        position.x += scoreNumbers.front()->texture.getSize().x * 2;
+        scoreNumbers.at(playerScore % 10)->img.setPosition(position);
+        WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
+    }
+    else if (playerScore >= 1000)
+    {
+        drawScore(playerScore / 10, position);
+        position.x += scoreNumbers.front()->texture.getSize().x * 3;
         scoreNumbers.at(playerScore % 10)->img.setPosition(position);
         WindowProperties::App->draw(scoreNumbers.at(playerScore % 10)->img);
     }
