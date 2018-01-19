@@ -141,7 +141,15 @@ void Hud::resetHud()
 
 bool Hud::emptyFilledHearthsVector()
 {
-    return this->filledHearts.empty();
+    if (this->filledHearts.empty())
+        return this->filledHearts.empty();
+    else
+    {
+        bool toRet = this->filledHearts.size() != WindowProperties::MAX_PLAYER_HP;
+        if (toRet)
+            this->filledHearts.clear();
+        return toRet;
+    }
 }
 
 Hud::t_layer::t_layer(const std::string &path, sf::Vector2f position)
