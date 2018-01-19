@@ -308,7 +308,10 @@ void ALevel::mainLoop()
         GameCore::Instance().getGameOverScreen().start();
         WindowProperties::App->setMouseCursorVisible(false);
         if (WindowProperties::gameState == currentGameLevel)
+        {
             GameHandler::Instance().resetGameToRetry();
+            isGameLost = false;
+        }
     }
 
 }
