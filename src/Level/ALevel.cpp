@@ -287,6 +287,7 @@ void ALevel::mainLoop()
         invulnerabilityTime = inv.getElapsedTime();
         if (elapsed.asMilliseconds() > 17)
         {
+            WindowProperties::App->display();
             clock.restart();
             updateEntities();
             updateAlliedBullet();
@@ -294,8 +295,6 @@ void ALevel::mainLoop()
             drawAll(*WindowProperties::App);
             enemiesGenerator();
             pollEvent(Event);
-            if (WindowProperties::gameState == GameState::GAMEOVER && isGameLost) break;
-            WindowProperties::App->display();
         }
     }
     if (isGameLost)
@@ -305,7 +304,7 @@ void ALevel::mainLoop()
         WindowProperties::App->setMouseCursorVisible(false);
         if (WindowProperties::gameState == currentGameLevel)
         {
-            
+
         }
     }
 
