@@ -4,6 +4,7 @@
 
 #include <Enemy.h>
 #include <Level/Horizon.h>
+#include <Static/PreGame.h>
 
 Horizon::Horizon() : ALevel()
 {
@@ -24,7 +25,7 @@ Horizon::~Horizon()
 
 void Horizon::start()
 {
-
+    PreGame::startPreGameLevel4();
     // music.play();
     this->mainLoop();
     // music.stop();

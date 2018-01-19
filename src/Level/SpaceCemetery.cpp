@@ -4,6 +4,7 @@
 
 #include <Enemy.h>
 #include <Level/SpaceCemetery.h>
+#include <Static/PreGame.h>
 
 SpaceCemetery::SpaceCemetery() : ALevel()
 {
@@ -24,6 +25,7 @@ SpaceCemetery::~SpaceCemetery()
 
 void SpaceCemetery::start()
 {
+    PreGame::startPreGameLevel3();
    // music.play();
     this->mainLoop();
    // music.stop();

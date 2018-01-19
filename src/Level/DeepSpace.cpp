@@ -5,6 +5,7 @@
 #include <Parsing.h>
 #include <Enemy.h>
 #include <cmath>
+#include <Static/PreGame.h>
 #include "Level/DeepSpace.h"
 
 DeepSpace::DeepSpace() : ALevel()
@@ -27,6 +28,8 @@ DeepSpace::~DeepSpace()
 
 void    DeepSpace::start()
 {
+    PreGame::startPreGameLevel2();
+
     music.play();
     mainLoop();
     music.stop();

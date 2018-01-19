@@ -5,6 +5,7 @@
 #include <Parsing.h>
 #include <Enemy.h>
 #include <cmath>
+#include <Static/PreGame.h>
 #include "Level/Underwater.h"
 
 Underwater::Underwater() : ALevel() {
@@ -25,6 +26,8 @@ Underwater::~Underwater() {
 
 void Underwater::start()
 {
+    PreGame::startPreGameLevel5();
+
     music.play();
     this->mainLoop();//enemiesGenerator);
     music.stop();
