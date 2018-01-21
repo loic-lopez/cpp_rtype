@@ -8,6 +8,7 @@ Enemy::Enemy(EnemyType type) : Entity()
 {
     TextureManager &ptr1 = TextureManager::Instance();
     stance = Stance::IDLE;
+    back = static_cast<bool>(rand() % 2);
     if (type == EnemyType::BASIC_A)
     {
         enemyType = type;
@@ -45,7 +46,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS1);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 1;
+        hp = 20;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -61,7 +62,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS2);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 1;
+        hp = 30;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -138,50 +139,28 @@ void Enemy::shoot()
 
 void Enemy::updatePos()
 {
-    if (shootCooldown > 0) {
+    if (shootCooldown > 0)
+    {
         shootCooldown--;
     }
-    if (orientation == Orientation::VERTICAL)
-    {
-        if (back) {
-            move(sf::Vector2f(1, 0));
-        }
-        else {
-            move(sf::Vector2f(-1, 0));
-        }
-        if (pos.x == WindowProperties::WIN_WIDTH && back)
-        {
-            back = false;
-        }
-        if (pos.x == 0 && !back)
-        {
-            back = true;
-        }
+    if (back)
+        move(sf::Vector2f(0, trajectory.y));
+    else
+        move(sf::Vector2f(0, -trajectory.y));
+    if (pos.y == WindowProperties::WIN_HEIGHT && back) {
+        back = false;
     }
-    else if (orientation == Orientation::HORIZONTAL)
-    {
-        if (back)
-            move(sf::Vector2f(0, trajectory.y));
-        else
-            move(sf::Vector2f(0, -trajectory.y));
-        if (pos.y == WindowProperties::WIN_HEIGHT && back)
-        {
-            back = false;
-        }
-        if (pos.y == 0 && !back)
-        {
-            back = true;
-        }
-        if (back2)
-            move(sf::Vector2f(trajectory.x, 0));
-        else
-            move(sf::Vector2f(-trajectory.x, 0));
-        if (pos.x == WindowProperties::WIN_WIDTH && back2)
-            back2 = false;
-        if (pos.x == 0 && !back2)
-            back2 = true;
+    if (pos.y == 0 && !back) {
+        back = true;
     }
-
+    if (back2)
+        move(sf::Vector2f(trajectory.x, 0));
+    else
+        move(sf::Vector2f(-trajectory.x, 0));
+    if (pos.x == WindowProperties::WIN_WIDTH && back2)
+        back2 = false;
+    if (pos.x == 0 && !back2)
+        back2 = true;
 }
 
 unsigned Enemy::getReward() {
