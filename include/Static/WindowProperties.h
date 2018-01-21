@@ -32,7 +32,7 @@ public:
         gameState = GameState::LEVEL3;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
         App->setVerticalSyncEnabled(true);
-        MAX_PLAYER_HP = 3;
+        MAX_PLAYER_HP = 5;
     }
 };
 

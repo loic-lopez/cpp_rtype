@@ -162,32 +162,13 @@ void ALevel::checkEntitiesBoxes()
             {
                 if ((*it)->getHitBox().intersects((*enemy)->getHitBox()) && !isGameLost)
                 {
-                    switch ((*enemy)->getType())
+                    if ((*enemy)->getHp() > 0)
+                        (*enemy)->setHp((*enemy)->getHp() - 1);
+
+                    if ((*enemy)->getHp() <= 0)
                     {
-                        case Textures::ENEMY1:
-                        {
-                            player->setScore(player->getScore() + (*enemy)->getReward());
-                            ennemies.erase(enemy);
-                            break;
-                        }
-                        case  Textures::ENEMY2:
-                        case  Textures::BOSS1:
-                        case  Textures::BOSS2:
-                        case  Textures::BOSS3:
-                        case  Textures::BOSS4:
-                        case  Textures::BOSS5:
-                        {
-                            if ((*enemy)->getHp() <= 0)
-                            {
-                                player->setScore(player->getScore() + (*enemy)->getReward());
-                                ennemies.erase(enemy);
-                            }
-                            else
-                                (*enemy)->setHp((*enemy)->getHp() - 1);
-                            break;
-                        }
-                        default:
-                            break;
+                        player->setScore(player->getScore() + (*enemy)->getReward());
+                        ennemies.erase(enemy);
                     }
                     bulletsAllied.erase(it);
                     break;
@@ -247,7 +228,6 @@ void ALevel::pollEvent(sf::Event &Event)
                 if (Event.key.code == sf::Keyboard::Escape)
                 {
                     GameCore::Instance().getMenuInGameCore().setPreviousGameState(currentGameLevel);
-                    WindowProperties::gameState = GameState::INGAMEMENU;
                     GameCore::Instance().getMenuInGameCore().start();
                 }
             }
@@ -315,7 +295,7 @@ void ALevel::mainLoop()
 
 }
 
-void ALevel::generateEnemies(std::map<EnemyType, int>enemiesMap)
+void ALevel::generateEnemies(std::map<EnemyType, int> enemiesMap)
 {
     if (changePhase)
     {
@@ -329,16 +309,16 @@ void ALevel::generateEnemies(std::map<EnemyType, int>enemiesMap)
     {
         if (phase < phaseMax)
         {
-            for( auto &enemy : enemiesMap)
+            for (auto &enemy : enemiesMap)
             {
                 for (int i = 0; i < enemy.second; i++)
-                ennemies.emplace_back(new Enemy(enemy.first));
+                    ennemies.emplace_back(new Enemy(enemy.first));
             }
             changePhase = true;
         }
         else if (phase == phaseMax)
         {
-            for( auto &enemy : enemiesMap)
+            for (auto &enemy : enemiesMap)
             {
                 for (int i = 0; i < enemy.second; i++)
                     ennemies.emplace_back(new Enemy(enemy.first));

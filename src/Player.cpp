@@ -18,7 +18,7 @@ Player::Player() : Entity()
     shootCooldown = 0;
     GameMovementMode = ControlType::KEYBOARD;
     weapon.setWeapon(WeaponType::STRAIGHT, 10);
-    setHp(3);
+    setHp(WindowProperties::MAX_PLAYER_HP);
     score = 0;
     shotSound.openFromFile("./ressources/bullet/shot.ogg");
     shotSound2.openFromFile("./ressources/bullet/shot.ogg");
