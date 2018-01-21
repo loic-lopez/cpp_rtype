@@ -244,7 +244,6 @@ void ALevel::pollEvent(sf::Event &Event)
                 if (Event.key.code == sf::Keyboard::Escape)
                 {
                     GameCore::Instance().getMenuInGameCore().setPreviousGameState(currentGameLevel);
-                    WindowProperties::gameState = GameState::INGAMEMENU;
                     GameCore::Instance().getMenuInGameCore().start();
                 }
             }

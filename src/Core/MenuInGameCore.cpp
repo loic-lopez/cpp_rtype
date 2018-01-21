@@ -60,6 +60,7 @@ GameState MenuInGameCore::getPreviousGameState() const
 void MenuInGameCore::setPreviousGameState(GameState previousGameState)
 {
     MenuInGameCore::previousGameState = previousGameState;
+    WindowProperties::gameState = GameState::INGAMEMENU;
 }
 
 MenuInGameCore::~MenuInGameCore()
