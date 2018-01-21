@@ -173,6 +173,9 @@ void ALevel::checkEntitiesBoxes()
                         case  Textures::ENEMY2:
                         case  Textures::BOSS1:
                         case  Textures::BOSS2:
+                        case  Textures::BOSS3:
+                        case  Textures::BOSS4:
+                        case  Textures::BOSS5:
                         {
                             if ((*enemy)->getHp() <= 0)
                             {

@@ -52,6 +52,9 @@ enum class EnemyType
     BASIC_B,
     BOSS_A,
     BOSS_B,
+    BOSS_C,
+    BOSS_D,
+    BOSS_E,
     NONE,
 };
 
@@ -77,9 +80,12 @@ enum class Textures
     ENEMY1,
     ENEMY2,
     BOSS1,
+    BOSS2,
+    BOSS3,
+    BOSS4,
+    BOSS5,
     BULLET_BASIC_A,
     BULLET_ENEMY_A,
-    BOSS2,
     LIFEUP,
     SPREAD,
     STRAIGHT

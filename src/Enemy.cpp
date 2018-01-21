@@ -60,16 +60,64 @@ Enemy::Enemy(EnemyType type) : Entity()
         enemyType = type;
         orientation = WindowProperties::orientation;
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS2);
+        pos.x = WindowProperties::WIN_WIDTH;
+        pos.y = WindowProperties::WIN_HEIGHT / 2;
+        hp = 22;
+        trajectory.x = 0;
+        trajectory.y = 3;
+        speed = 3;
+        rewardScore = 110;
+        weapon.setWeapon(WeaponType::SPREAD, 40, 3);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::BOSS2);
+    }
+    if (type == EnemyType::BOSS_C)
+    {
+        enemyType = type;
+        orientation = WindowProperties::orientation;
+        sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS3);
+        pos.x = WindowProperties::WIN_WIDTH * 80 / 100;
+        pos.y = WindowProperties::WIN_HEIGHT / 2;
+        hp = 24;
+        trajectory.x = 0;
+        trajectory.y = 3;
+        speed = 3;
+        rewardScore = 120;
+        weapon.setWeapon(WeaponType::SPREAD, 40, 3);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::BOSS3);
+    }
+    if (type == EnemyType::BOSS_D)
+    {
+        enemyType = type;
+        orientation = WindowProperties::orientation;
+        sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS4);
+        pos.x = WindowProperties::WIN_WIDTH * 90 / 100;
+        pos.y = WindowProperties::WIN_HEIGHT / 2;
+        hp = 26;
+        trajectory.x = 0;
+        trajectory.y = 3;
+        speed = 3;
+        rewardScore = 130;
+        weapon.setWeapon(WeaponType::SPREAD, 40, 3);
+        this->setSide(Side::ENEMY);
+        this->setType(Textures::BOSS4);
+    }
+    if (type == EnemyType::BOSS_E)
+    {
+        enemyType = type;
+        orientation = WindowProperties::orientation;
+        sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS5);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
         hp = 30;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
-        rewardScore = 150;
+        rewardScore = 100;
         weapon.setWeapon(WeaponType::SPREAD, 40, 3);
         this->setSide(Side::ENEMY);
-        this->setType(Textures::BOSS2);
+        this->setType(Textures::BOSS5);
     }
 }
 
@@ -120,8 +168,11 @@ void Enemy::shoot()
                 weapon.shoot(orientation, postmp, Side::ENEMY, BulletType::ENEMY_A);
                 break;
             }
-            case EnemyType::BOSS_B :
             case EnemyType::BOSS_A :
+            case EnemyType::BOSS_B :
+            case EnemyType::BOSS_C :
+            case EnemyType::BOSS_D :
+            case EnemyType::BOSS_E :
             {
                 sf::Vector2f postmp;
 

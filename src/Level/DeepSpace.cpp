@@ -34,7 +34,7 @@ DeepSpace::DeepSpace() : ALevel()
     this->phases.emplace_back([this]()
                               {
                                   std::map<EnemyType , int >enemies;
-                                  enemies.insert({EnemyType::BOSS_A, 1});
+                                  enemies.insert({EnemyType::BOSS_B, 1});
                                   generateEnemies(enemies);
                               });
     this->phases.emplace_back([this]() {  if (ennemies.empty()) WindowProperties::gameState = GameState::LEVEL3; });

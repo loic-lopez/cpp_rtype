@@ -13,7 +13,7 @@ public:
     static TextureManager& Instance();
     Animation &getSprite(Textures);
 private:
-    Animation sprites[8];
+    Animation sprites[11];
     TextureManager& operator= (const TextureManager&){
         return *this;
     }
