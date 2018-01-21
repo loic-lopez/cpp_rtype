@@ -62,7 +62,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS2);
         pos.x = WindowProperties::WIN_WIDTH;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 22;
+        hp = 42;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -78,7 +78,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS3);
         pos.x = WindowProperties::WIN_WIDTH * 80 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 24;
+        hp = 64;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -94,7 +94,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS4);
         pos.x = WindowProperties::WIN_WIDTH * 90 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 26;
+        hp = 86;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -110,11 +110,11 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS5);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 30;
+        hp = 112;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
-        rewardScore = 100;
+        rewardScore = 300;
         weapon.setWeapon(WeaponType::SPREAD, 40, 3);
         this->setSide(Side::ENEMY);
         this->setType(Textures::BOSS5);
