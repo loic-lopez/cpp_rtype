@@ -42,6 +42,11 @@ protected:
     bool changePhase;
     short phaseMax;
     GameState currentGameLevel;
+    bool playerBlinking;
+public:
+    void setPlayerBlinking(bool playerBlinking);
+
+protected:
 
     std::vector<std::function<void()>> phases;
 

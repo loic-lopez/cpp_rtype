@@ -30,6 +30,7 @@ Player::Player() : Entity()
     shotSound4.setLoop(false);
     setSide(Side::ALLIED);
     this->setType(Textures::PLAYER);
+    blinkingValue = 255;
 }
 
 Player::~Player()
@@ -90,4 +91,13 @@ sf::FloatRect   Player::getHitBox()
     newHitbox.width -= 5;
     newHitbox.left += 5;
     return newHitbox;
+}
+
+void    Player::drawSpriteBlinking()
+{
+    if (blinkingValue >= 0)
+        blinkingValue -= 5;
+    else
+        blinkingValue += 5;
+    sprites[(int) stance].drawFrame(*WindowProperties::App, pos, orientation, blinkingValue);
 }

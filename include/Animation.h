@@ -30,6 +30,7 @@ public:
     ~Animation();
     void updateFrame();
     void drawFrame(sf::RenderWindow &App, sf::Vector2f pos, Orientation orientation);
+    void drawFrame(sf::RenderWindow &App, sf::Vector2f pos, Orientation orientation, int alpha);
     void rotateSprite(Orientation orientation);
     std::string findCsv(const std::string &path, Stance stance);
     void setColor(sf::Color);

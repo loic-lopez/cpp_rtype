@@ -14,6 +14,7 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     this->fadeOpacity = 0;
     phase = 0;
     changePhase = false;
+    playerBlinking = false;
 }
 
 ALevel::~ALevel()
@@ -114,7 +115,10 @@ void ALevel::drawAll(sf::RenderWindow &App)
         bullet->drawSprite(App);
     for (auto &entity : ennemies)
         entity->drawSprite(App);
-    player->drawSprite(App);
+    if (!playerBlinking)
+        player->drawSprite(App);
+    else
+        player->drawSpriteBlinking();
     hud.drawHud(App);
 }
 
@@ -175,6 +179,12 @@ void ALevel::checkEntitiesBoxes()
                 }
             }
 
+    if (playerBlinking && invulnerabilityTime.asMilliseconds() > 1500)
+    {
+        inv.restart();
+        playerBlinking = false;
+    }
+
     for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it)
     {
         if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost)
@@ -182,6 +192,7 @@ void ALevel::checkEntitiesBoxes()
             if (this->player->getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
             {
                 inv.restart();
+                playerBlinking = true;
                 this->player->setHp(this->player->getHp() - 1);
                 GameHandler::Instance().getHud().takeDamage();
                 bulletsEnemy.erase(it);
@@ -331,5 +342,10 @@ void ALevel::generateEnemies(std::map<EnemyType, int> enemiesMap)
 void ALevel::enemiesGenerator()
 {
     this->phases.at(phase)();
+}
+
+void ALevel::setPlayerBlinking(bool playerBlinking)
+{
+    ALevel::playerBlinking = playerBlinking;
 }
 

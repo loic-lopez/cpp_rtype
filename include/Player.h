@@ -18,10 +18,13 @@ public:
     void shoot() override;
     void updatePos() override;
     sf::FloatRect   getHitBox() override;
+    void drawSpriteBlinking();
 
 private:
     ControlType GameMovementMode;
     unsigned int score;
+    unsigned int blinkingValue;
+
 public:
     unsigned int getScore() const;
     void setScore(unsigned int score);

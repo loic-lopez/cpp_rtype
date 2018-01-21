@@ -87,6 +87,7 @@ void Animation::drawFrame(sf::RenderWindow &App, sf::Vector2f pos, Orientation o
     sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
     sprite.setPosition(pos);
     sprite.setScale((float) scale / 100.0f, (float) scale / 100.0f);
+    sprite.setColor(sf::Color(255, 255, 255, 255));
     rotateSprite(orientation);
     App.draw(sprite);
     currentSpeed++;
@@ -96,7 +97,23 @@ void Animation::drawFrame(sf::RenderWindow &App, sf::Vector2f pos, Orientation o
         frame = (frame + 1) % ((*data).size() / 4);
         updateFrame();
     }
+}
 
+void Animation::drawFrame(sf::RenderWindow &App, sf::Vector2f pos, Orientation orientation, int alpha)
+{
+    sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
+    sprite.setPosition(pos);
+    sprite.setScale((float) scale / 100.0f, (float) scale / 100.0f);
+    sprite.setColor(sf::Color(255, 255, 255, alpha));
+    rotateSprite(orientation);
+    App.draw(sprite);
+    currentSpeed++;
+    if (currentSpeed == speed)
+    {
+        currentSpeed = 0;
+        frame = (frame + 1) % ((*data).size() / 4);
+        updateFrame();
+    }
 }
 
 std::string Animation::findCsv(const std::string &path, Stance stance)
