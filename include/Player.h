@@ -24,6 +24,8 @@ private:
     ControlType GameMovementMode;
     unsigned int score;
     unsigned int blinkingValue;
+public:
+    void setBlinkingValue(unsigned int blinkingValue);
 
 public:
     unsigned int getScore() const;

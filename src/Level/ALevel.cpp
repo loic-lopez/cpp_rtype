@@ -181,7 +181,7 @@ void ALevel::checkEntitiesBoxes()
 
     if (playerBlinking && invulnerabilityTime.asMilliseconds() > 1500)
     {
-        inv.restart();
+        player->setBlinkingValue(255);
         playerBlinking = false;
     }
 

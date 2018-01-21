@@ -84,20 +84,20 @@ void Player::setScore(unsigned int score) {
 
 sf::FloatRect   Player::getHitBox()
 {
-    sf::FloatRect newHitbox = this->getBounds();
-
-    newHitbox.height -= 5;
-    newHitbox.top += 5;
-    newHitbox.width -= 5;
-    newHitbox.left += 5;
-    return newHitbox;
+    sf::FloatRect hitbox = sprites[(int) stance].getSize();
+    return (sf::FloatRect(pos.x - hitbox.width / 2.f, pos.y - hitbox.height / 2.f, hitbox.width, hitbox.height));
 }
 
 void    Player::drawSpriteBlinking()
 {
     if (blinkingValue >= 0)
-        blinkingValue -= 5;
+        blinkingValue -= 10;
     else
-        blinkingValue += 5;
+        blinkingValue += 10;
     sprites[(int) stance].drawFrame(*WindowProperties::App, pos, orientation, blinkingValue);
+}
+
+void Player::setBlinkingValue(unsigned int blinkingValue)
+{
+    Player::blinkingValue = blinkingValue;
 }
