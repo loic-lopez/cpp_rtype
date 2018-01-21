@@ -162,13 +162,14 @@ void ALevel::checkEntitiesBoxes()
             {
                 if ((*it)->getHitBox().intersects((*enemy)->getHitBox()) && !isGameLost)
                 {
+                    if ((*enemy)->getHp() > 0)
+                        (*enemy)->setHp((*enemy)->getHp() - 1);
+
                     if ((*enemy)->getHp() <= 0)
                     {
                         player->setScore(player->getScore() + (*enemy)->getReward());
                         ennemies.erase(enemy);
                     }
-                    else
-                        (*enemy)->setHp((*enemy)->getHp() - 1);
                     bulletsAllied.erase(it);
                     break;
                 }
