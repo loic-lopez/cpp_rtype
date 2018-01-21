@@ -191,8 +191,8 @@ void ALevel::checkEntitiesBoxes()
         {
             if (this->player->getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
             {
+                playerBlinking = !playerBlinking;
                 inv.restart();
-                playerBlinking = true;
                 this->player->setHp(this->player->getHp() - 1);
                 GameHandler::Instance().getHud().takeDamage();
                 bulletsEnemy.erase(it);
