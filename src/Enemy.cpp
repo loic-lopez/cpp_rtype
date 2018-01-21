@@ -62,7 +62,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS2);
         pos.x = WindowProperties::WIN_WIDTH;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 42;
+        hp = 32;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -78,7 +78,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS3);
         pos.x = WindowProperties::WIN_WIDTH * 80 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 64;
+        hp = 42;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -94,7 +94,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS4);
         pos.x = WindowProperties::WIN_WIDTH * 90 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 86;
+        hp = 52;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
@@ -110,7 +110,7 @@ Enemy::Enemy(EnemyType type) : Entity()
         sprites[(int) Stance::IDLE] = ptr1.getSprite(Textures::BOSS5);
         pos.x = WindowProperties::WIN_WIDTH * 120 / 100;
         pos.y = WindowProperties::WIN_HEIGHT / 2;
-        hp = 112;
+        hp = 62;
         trajectory.x = 0;
         trajectory.y = 3;
         speed = 3;
