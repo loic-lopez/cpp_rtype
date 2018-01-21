@@ -47,7 +47,8 @@ SpaceCemetery::~SpaceCemetery()
 void SpaceCemetery::start()
 {
     PreGame::startPreGameLevel3();
-   // music.play();
+
+    music.play();
     this->mainLoop();
-   // music.stop();
+    music.stop();
 }
