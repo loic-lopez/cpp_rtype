@@ -8,7 +8,7 @@ Enemy::Enemy(EnemyType type) : Entity()
 {
     TextureManager &ptr1 = TextureManager::Instance();
     stance = Stance::IDLE;
-    back = static_cast<bool>(rand() % 2);
+    back = static_cast<bool>(std::rand() % 2);
     if (type == EnemyType::BASIC_A)
     {
         enemyType = type;
@@ -159,7 +159,7 @@ void Enemy::updatePos()
         move(sf::Vector2f(-trajectory.x, 0));
     if (pos.x == WindowProperties::WIN_WIDTH && back2)
         back2 = false;
-    if (pos.x == 0 && !back2)
+    if (pos.x <= WindowProperties::WIN_WIDTH / 3 && !back2)
         back2 = true;
 }
 
