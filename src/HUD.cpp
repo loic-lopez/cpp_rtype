@@ -164,6 +164,18 @@ bool Hud::emptyFilledHearthsVector()
     }
 }
 
+void Hud::addHearth()
+{
+    if (this->filledHearts.size() < WindowProperties::MAX_PLAYER_HP)
+    {
+        t_layer *newRef = new t_layer(this->filledHearts.back().get());
+        sf::Vector2f newPos =  filledHearts.back()->img.getPosition();
+        newPos.x += (float) filledHearts.front()->texture.getSize().x / 2;
+        newRef->img.setPosition(newPos);
+        filledHearts.emplace_back(newRef);
+    }
+}
+
 Hud::t_layer::t_layer(const std::string &path, sf::Vector2f position)
 {
     texture.loadFromFile(path);
