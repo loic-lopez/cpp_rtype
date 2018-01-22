@@ -22,6 +22,11 @@ protected:
     Player *player;
     Hud &hud;
     Bg back;
+    bool win;
+public:
+    void setWin(bool win);
+
+protected:
 
     sf::Time invulnerabilityTime;
     sf::Music music;

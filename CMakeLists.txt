@@ -56,7 +56,9 @@ set(SOURCE_FILES
         src/Level/Horizon.cpp
         src/Handler/MenuInGameHandler.cpp
         src/Level/DeepSpace.cpp src/Core/MenuInGameCore.cpp src/PowerUp.cpp
-        src/Static/PreGame.cpp)
+        src/Static/PreGame.cpp
+        src/Handler/WinScreenHandler.cpp
+        src/Core/WinScreenCore.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -91,7 +93,8 @@ set(HEADER_FILES
         include/Static/static_constructor.h include/Static/PreGame.h
         include/Level/SpaceCemetery.h include/Level/Horizon.h
         include/Handler/MenuInGameHandler.h include/Level/DeepSpace.h
-        include/Core/MenuInGameCore.h include/PowerUp.h)
+        include/Core/MenuInGameCore.h include/PowerUp.h
+        include/Handler/WinScreenHandler.h include/Core/WinScreenCore.h include/PowerUp.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

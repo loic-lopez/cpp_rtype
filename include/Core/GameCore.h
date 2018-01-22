@@ -11,6 +11,7 @@
 #include "SplashScreen.h"
 #include "GameOverScreenCore.h"
 #include "MenuInGameCore.h"
+#include "WinScreenCore.h"
 
 class GameCore
 {
@@ -19,6 +20,11 @@ private:
     MenuCore    &menuCore;
     GameHandler &gameHandler;
     SplashScreen &splashScreen;
+    WinScreenCore   &winScreenCore;
+
+public:
+    WinScreenCore &getWinScreenCore() const;
+
 public:
     GameOverScreenCore &getGameOverScreen();
 

@@ -10,7 +10,8 @@ GameCore::GameCore() : menuCore(MenuCore::Instance()),
                        gameHandler(GameHandler::Instance()),
                        splashScreen(SplashScreen::Instance()),
                        gameOverScreen(GameOverScreenCore::Instance()),
-                       menuInGameCore(MenuInGameCore::Instance())
+                       menuInGameCore(MenuInGameCore::Instance()),
+                       winScreenCore(WinScreenCore::Instance())
 {
 
 }
@@ -44,4 +45,9 @@ MenuInGameCore &GameCore::getMenuInGameCore()
 GameOverScreenCore &GameCore::getGameOverScreen()
 {
     return gameOverScreen;
+}
+
+WinScreenCore &GameCore::getWinScreenCore() const
+{
+    return winScreenCore;
 }

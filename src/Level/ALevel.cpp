@@ -15,6 +15,7 @@ ALevel::ALevel() : player(GameHandler::Instance().getPlayer()), hud(GameHandler:
     phase = 0;
     changePhase = false;
     playerBlinking = false;
+    win = false;
 }
 
 ALevel::~ALevel()
@@ -201,7 +202,7 @@ void ALevel::checkEntitiesBoxes()
 
     for (auto it = bulletsEnemy.begin(); it != bulletsEnemy.end(); ++it)
     {
-        if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost)
+        if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost && !win)
         {
             if (this->player->getHp() > 0 && invulnerabilityTime.asMilliseconds() > 1500)
             {
@@ -216,7 +217,7 @@ void ALevel::checkEntitiesBoxes()
     }
     for (auto it = powerUps.begin(); it < powerUps.end(); ++it)
     {
-        if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost)
+        if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost && !win)
         {
             if ((*it)->getType() == Textures::LIFEUP)
             {
@@ -290,7 +291,21 @@ void ALevel::pollEvent(sf::Event &Event)
                 break;
         }
     }
-    if (player->getHp() != 0)
+
+    if (win)
+    {
+        this->soundAttenuationOnDeath -= this->baseSoundAttenuationOnDeathPercentageDecreasing;
+        this->music.setVolume(this->soundAttenuationOnDeath);
+        this->floatFadeOpacity += this->baseFadeOpacityPercentageIncreasing;
+        this->fadeOpacity = int(std::round(this->floatFadeOpacity));
+        if (this->fadeOpacity >= 255)
+        {
+            WindowProperties::gameState = GameState::WIN;
+        }
+        else
+            GameCore::Instance().getWinScreenCore().getWinScreen().drawWinScreen(*WindowProperties::App, fadeOpacity);
+    }
+    else if (player->getHp() != 0)
     {
         if (player->getGameMovementMode() == ControlType::KEYBOARD)
             controller();
@@ -343,6 +358,14 @@ void ALevel::mainLoop()
             pollEvent(Event);
         }
     }
+
+    if (win)
+    {
+        WindowProperties::App->setMouseCursorVisible(true);
+        GameCore::Instance().getWinScreenCore().start();
+        WindowProperties::App->setMouseCursorVisible(false);
+    }
+
     if (isGameLost)
     {
         WindowProperties::App->setMouseCursorVisible(true);
@@ -398,5 +421,10 @@ void ALevel::enemiesGenerator()
 void ALevel::setPlayerBlinking(bool playerBlinking)
 {
     ALevel::playerBlinking = playerBlinking;
+}
+
+void ALevel::setWin(bool win)
+{
+    ALevel::win = win;
 }
 

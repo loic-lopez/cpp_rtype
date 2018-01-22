@@ -51,6 +51,7 @@ enum class GameState : int
     CLOSE,
     GAMEOVER,
     OPTIONS,
+    WIN
 };
 
 enum class EnemyType
