@@ -16,18 +16,18 @@ Space::Space() : ALevel()
     {
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
-            enemies.insert({EnemyType::BASIC_A, 4});
-            generateEnemies(enemies);
-        });
-        this->phases.emplace_back([this]() {
-            std::map<EnemyType, int> enemies;
-            enemies.insert({EnemyType::BASIC_A, 6});
+            enemies.insert({EnemyType::BASIC_A, 2});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
             enemies.insert({EnemyType::BASIC_A, 4});
-            enemies.insert({EnemyType::BASIC_B, 2});
+            generateEnemies(enemies);
+        });
+        this->phases.emplace_back([this]() {
+            std::map<EnemyType, int> enemies;
+            enemies.insert({EnemyType::BASIC_A, 2});
+            enemies.insert({EnemyType::BASIC_B, 1});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
@@ -40,18 +40,18 @@ Space::Space() : ALevel()
     {
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
-            enemies.insert({EnemyType::BASIC_A, 5});
+            enemies.insert({EnemyType::BASIC_A, 4});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
-            enemies.insert({EnemyType::BASIC_A, 7});
+            enemies.insert({EnemyType::BASIC_A, 6});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
             enemies.insert({EnemyType::BASIC_A, 4});
-            enemies.insert({EnemyType::BASIC_B, 3});
+            enemies.insert({EnemyType::BASIC_B, 2});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
@@ -75,7 +75,7 @@ Space::Space() : ALevel()
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
             enemies.insert({EnemyType::BASIC_A, 4});
-            enemies.insert({EnemyType::BASIC_B, 4});
+            enemies.insert({EnemyType::BASIC_B, 3});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
