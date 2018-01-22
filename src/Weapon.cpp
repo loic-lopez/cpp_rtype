@@ -97,58 +97,6 @@ void Weapon::spread(Orientation orientation, sf::Vector2f pos, Side side, Bullet
         }
         i++;
     }
-
-/*    if (lvlWeapon >= 1) {
-        Bullet *bullet = new Bullet(bulletType);
-        Bullet *bullet2 = new Bullet(bulletType);
-        if (orientation == Orientation::HORIZONTAL) {
-            bullet->setTrajectory(sf::Vector2f(1.f, 0.f));
-            bullet->setOrientation(Orientation::HORIZONTAL);
-            bullet2->setTrajectory(sf::Vector2f(1.f, 0.f));
-            bullet2->setOrientation(Orientation::HORIZONTAL);
-            bullet->setPos(sf::Vector2f(pos.x + ((float) WIN_WIDTH * 2.f / 100.f), pos.y -
-                                                                                   ((float) WIN_HEIGHT * 1.5f / 100.f) *
-                                                                                   ((float) WIN_HEIGHT * 3.f / 100.f)));
-            bullet2->setPos(sf::Vector2f(pos.x + ((float) WIN_WIDTH * 2.f / 100.f), pos.y + ((float) WIN_HEIGHT * 1.5f /
-                                                                                             100.f) *
-                                                                                            ((float) WIN_HEIGHT * 3.f /
-                                                                                             100.f)));
-        } else {
-            bullet->setTrajectory(sf::Vector2f(-0.1f, -1.f));
-            bullet->setOrientation(Orientation::VERTICAL);
-            bullet2->setTrajectory(sf::Vector2f(0.1f, -1.f));
-            bullet2->setOrientation(Orientation::VERTICAL);
-            bullet->setPos(sf::Vector2f(pos.x, pos.y - ((float) WIN_HEIGHT * 2.f / 100.f)));
-            bullet2->setPos(sf::Vector2f(pos.x, pos.y - ((float) WIN_HEIGHT * 2.f / 100.f)));
-        }
-        bullet->setSide(side);
-        bullet2->setSide(side);
-        game.addBullet(bullet);
-        game.addBullet(bullet2);
-    }
-    if (lvlWeapon >= 2) {
-        Bullet *bullet = new Bullet(bulletType);
-        Bullet *bullet2 = new Bullet(bulletType);
-        if (orientation == Orientation::HORIZONTAL) {
-            bullet->setTrajectory(sf::Vector2f(1.f, 0.f));
-            bullet->setOrientation(Orientation::HORIZONTAL);
-            bullet2->setTrajectory(sf::Vector2f(1.f, 0.f));
-            bullet2->setOrientation(Orientation::HORIZONTAL);
-            bullet->setPos(sf::Vector2f(pos.x, pos.y - ((float) WIN_HEIGHT * 2.f / 100.f)));
-            bullet2->setPos(sf::Vector2f(pos.x, pos.y - ((float) WIN_HEIGHT * 2.f / 100.f)));
-        } else {
-            bullet->setTrajectory(sf::Vector2f(0.3f, -0.75f));
-            bullet->setOrientation(Orientation::VERTICAL);
-            bullet2->setTrajectory(sf::Vector2f(-0.3f, -0.75f));
-            bullet2->setOrientation(Orientation::VERTICAL);
-            bullet->setPos(sf::Vector2f(pos.x, pos.y - ((float) WIN_HEIGHT * 2.f / 100.f)));
-            bullet2->setPos(sf::Vector2f(pos.x, pos.y - ((float) WIN_HEIGHT * 2.f / 100.f)));
-        }
-        bullet->setSide(side);
-        bullet2->setSide(side);
-        game.addBullet(bullet);
-        game.addBullet(bullet2);
-    }*/
 }
 
 void Weapon::shoot(Orientation orientation, sf::Vector2f pos, Side side, BulletType bullettype)

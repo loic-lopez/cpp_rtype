@@ -7,6 +7,7 @@ unsigned int WindowProperties::MAX_PLAYER_HP;
 GameState WindowProperties::gameState;
 sf::RenderWindow *WindowProperties::App;
 Orientation WindowProperties::orientation;
+Difficulty WindowProperties::difficulty;
 
 int main()
 {
