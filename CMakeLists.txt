@@ -55,10 +55,18 @@ set(SOURCE_FILES
         src/Level/SpaceCemetery.cpp
         src/Level/Horizon.cpp
         src/Handler/MenuInGameHandler.cpp
-        src/Level/DeepSpace.cpp src/Core/MenuInGameCore.cpp src/PowerUp.cpp
+        src/Level/DeepSpace.cpp
+        src/Core/MenuInGameCore.cpp
+        src/PowerUp.cpp
         src/Static/PreGame.cpp
         src/Handler/WinScreenHandler.cpp
-        src/Core/WinScreenCore.cpp)
+        src/Core/WinScreenCore.cpp
+        src/Core/GameOverScreenCore.cpp
+        src/Handler/GameOverScreenHandler.cpp
+        src/Core/OptionsCore.cpp
+        src/Handler/OptionsHandler.cpp
+        src/Core/CreditsCore.cpp
+        src/Handler/CreditsHandler.cpp)
 
 file(GLOB SOURCE_SELBA ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.cpp ${PROJECT_SOURCE_DIR}/src/SelbaWardSrc/*.inl)
 file(GLOB SOURCE_SELBA_HPP ${PROJECT_SOURCE_DIR}/include/SelbaWard/*.hpp)
@@ -87,15 +95,24 @@ set(HEADER_FILES
         include/Core/GameCore.h
         include/Handler/GameHandler.h
         include/Core/GameOverScreenCore.h
-        src/Core/GameOverScreenCore.cpp
-        src/Handler/GameOverScreenHandler.cpp
-        include/Handler/GameOverScreenHandler.h include/Level/ALevel.h
-        include/Static/static_constructor.h include/Static/PreGame.h
-        include/Level/SpaceCemetery.h include/Level/Horizon.h
-        include/Handler/MenuInGameHandler.h include/Level/DeepSpace.h
-        include/Core/MenuInGameCore.h include/PowerUp.h include/Core/OptionsCore.h include/Handler/OptionsHandler.h src/Core/OptionsCore.cpp src/Handler/OptionsHandler.cpp
-        include/Core/MenuInGameCore.h include/PowerUp.h
-        include/Handler/WinScreenHandler.h include/Core/WinScreenCore.h include/PowerUp.h)
+        include/Handler/GameOverScreenHandler.h
+        include/Level/ALevel.h
+        include/Static/static_constructor.h
+        include/Static/PreGame.h
+        include/Level/SpaceCemetery.h
+        include/Level/Horizon.h
+        include/Handler/MenuInGameHandler.h
+        include/Level/DeepSpace.h
+        include/Core/MenuInGameCore.h
+        include/PowerUp.h
+        include/Core/OptionsCore.h
+        include/Handler/OptionsHandler.h
+        include/Core/CreditsCore.h
+        include/Handler/CreditsHandler.h
+        include/Core/MenuInGameCore.h
+        include/PowerUp.h
+        include/Handler/WinScreenHandler.h
+        include/Core/WinScreenCore.h)
 
 
 add_executable(r-type ${SOURCE_FILES} ${HEADER_FILES} ${SOURCE_SELBA} ${SOURCE_SELBA_HPP})

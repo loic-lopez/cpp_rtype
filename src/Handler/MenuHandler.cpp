@@ -4,6 +4,7 @@
 
 
 #include <Handler/MenuHandler.h>
+#include <Core/CreditsCore.h>
 
 MenuHandler::MenuHandler() {
     this->functionsHandler.emplace_back([this]() {
@@ -19,6 +20,8 @@ MenuHandler::MenuHandler() {
     });
     this->functionsHandler.emplace_back([this]() {
         // BOUTON CREDITS
+        WindowProperties::gameState = GameState::CREDITS;
+        CreditsCore::Instance().start();
         this->menuButtons[2]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {
