@@ -31,6 +31,13 @@ enum class Side
     ENEMY
 };
 
+enum class Difficulty : int
+{
+    HARMLESS,
+    SADISTIC,
+    MERCILESS,
+};
+
 enum class GameState : int
 {
     LEVEL1,
