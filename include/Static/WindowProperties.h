@@ -19,6 +19,7 @@ public:
     static sf::RenderWindow *App;
     static Orientation orientation;
     static unsigned int MAX_PLAYER_HP;
+    static Difficulty difficulty;
 
     static void StaticWindow()
     {
@@ -29,7 +30,8 @@ public:
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
         orientation = Orientation::HORIZONTAL;
-        gameState = GameState::LEVEL1;
+        gameState = GameState::LEVEL5;
+        difficulty = Difficulty::EASY;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
         App->setVerticalSyncEnabled(true);
         MAX_PLAYER_HP = 5;

@@ -33,7 +33,6 @@ enum class Side
 
 enum class GameState : int
 {
-    // TODO : AJOUTER DES GAMEOVER POUR CHAQUE LEVEL
     LEVEL1,
     LEVEL2,
     LEVEL3,
@@ -44,6 +43,7 @@ enum class GameState : int
     INGAMEMENU,
     CLOSE,
     GAMEOVER,
+    OPTIONS,
 };
 
 enum class EnemyType
