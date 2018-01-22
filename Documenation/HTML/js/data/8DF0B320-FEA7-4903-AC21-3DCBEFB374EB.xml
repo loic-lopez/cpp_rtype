@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0.4:1", "", "Utils", "EARoot/EA4/EA59.html", "3.png", "6", "0", "", "Logical diagram0","{44346A48-52C2-44af-A46A-3E19FC66BA55}");
+tocTab[tocTab.length] = new Array("0.4:2", "", "MicrosoftConfig", "EARoot/EA4/EA62.html", "5.png", "E39", "0", "", "Class0","{99E78981-4F3B-4363-B0B5-19B8E7359AC3}");
+tocTab[tocTab.length] = new Array("0.4:3", "", "RESTManager", "EARoot/EA4/EA63.html", "5.png", "E35", "0", "", "Class0","{C2C0A449-2304-40e5-A78A-4729B352B059}");
+tocTab[tocTab.length] = new Array("0.4:4", "", "TwitterConfig", "EARoot/EA4/EA64.html", "5.png", "E36", "0", "", "Class0","{A95EB14E-B46B-4ee4-B60C-8347941A018A}");
+tocTab[tocTab.length] = new Array("0.4:5", "", "AccountConfig", "EARoot/EA4/EA65.html", "5.png", "E38", "E39", "", "Class0","{8DF04F9B-CF5E-4f02-8FCE-A8D1D2ED6826}");
+tocTab[tocTab.length] = new Array("0.4:6", "", "OnlineConfig", "EARoot/EA4/EA66.html", "5.png", "E37", "E39", "", "Class0","{5153BCFA-98E8-47f7-AF52-BA7388738F5C}");
