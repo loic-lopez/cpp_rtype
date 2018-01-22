@@ -11,6 +11,7 @@
 #include <Bg.h>
 #include <memory>
 #include <cmath>
+#include <PowerUp.h>
 
 class ALevel
 {
@@ -26,11 +27,13 @@ protected:
     sf::Music music;
     sf::Clock clock;
     sf::Clock inv;
+    sf::Clock cloque;
     sf::Keyboard keyboard;
 
     std::vector<std::shared_ptr<IEntity>> bulletsEnemy;
     std::vector<std::shared_ptr<IEntity>> bulletsAllied;
     std::vector<std::shared_ptr<IEntity>> ennemies;
+    std::vector<std::shared_ptr<IEntity>> powerUps;
 
     float baseSoundAttenuationOnDeathPercentageDecreasing;
     float soundAttenuationOnDeath;

@@ -19,6 +19,9 @@ public:
     void updatePos() override;
     sf::FloatRect   getHitBox() override;
     void drawSpriteBlinking();
+    WeaponType  getWeapon();
+    void        setWeapon(WeaponType, int, int);
+    void        weaponUp();
 
 private:
     ControlType GameMovementMode;

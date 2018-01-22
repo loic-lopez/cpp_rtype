@@ -34,7 +34,6 @@ class Hud
     void addScoreNumberTexture(const std::string &path);
     void addScoreTexture(const std::string &path);
     void drawScore(int playerScore, sf::Vector2f position);
-    void addHearth();
 
 public:
     Hud();
@@ -45,6 +44,7 @@ public:
     void takeDamage();
     void resetHud();
     bool emptyFilledHearthsVector();
+    void addHearth();
 };
 
 #endif //R_TYPE_HUD_H
