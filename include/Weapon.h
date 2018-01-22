@@ -27,6 +27,8 @@ public:
 
     void setWeapon(WeaponType, int, int);
 
+    WeaponType getType();
+
     void straight(Orientation, sf::Vector2f, Side, BulletType);
 
     void spread(Orientation, sf::Vector2f, Side, BulletType);

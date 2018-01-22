@@ -115,6 +115,8 @@ void ALevel::drawAll(sf::RenderWindow &App)
         bullet->drawSprite(App);
     for (auto &entity : ennemies)
         entity->drawSprite(App);
+    for (auto &power : powerUps)
+        power->drawSprite(App);
     if (!playerBlinking)
         player->drawSprite(App);
     else
@@ -142,11 +144,23 @@ void ALevel::updateAlliedBullet()
 
 void ALevel::updateEntities()
 {
+    sf::Vector2f    pos;
+
     player->updatePos();
     for (size_t i = 0; i < ennemies.size(); i++)
     {
         this->ennemies[i]->updatePos();
         this->ennemies[i]->shoot();
+    }
+    for (auto it = this->powerUps.begin(); it < this->powerUps.end(); ++it)
+    {
+        pos = (*it)->getPos();
+        if (pos.x <= 0)
+        {
+            this->powerUps.erase(it);
+            break;
+        }
+        (*it)->updatePos();
     }
 }
 
@@ -198,6 +212,36 @@ void ALevel::checkEntitiesBoxes()
                 bulletsEnemy.erase(it);
                 break;
             }
+        }
+    }
+    for (auto it = powerUps.begin(); it < powerUps.end(); ++it)
+    {
+        if ((*it)->getHitBox().intersects(player->getHitBox()) && !isGameLost)
+        {
+            if ((*it)->getType() == Textures::LIFEUP)
+            {
+                if (this->player->getHp() < WindowProperties::MAX_PLAYER_HP)
+                {
+                    this->player->setHp(player->getHp() + 1);
+                    GameHandler::Instance().getHud().addHearth();
+                }
+            }
+            else if ((*it)->getType() == Textures::STRAIGHT)
+            {
+                if (this->player->getWeapon() == WeaponType::STRAIGHT)
+                    player->weaponUp();
+                else
+                    player->setWeapon(WeaponType::STRAIGHT, 10, 1);
+            }
+            else
+            {
+                if (this->player->getWeapon() == WeaponType::SPREAD)
+                    player->weaponUp();
+                else
+                    player->setWeapon(WeaponType::SPREAD, 10, 1);
+            }
+            powerUps.erase(it);
+            break;
         }
     }
 }
@@ -275,11 +319,18 @@ void ALevel::mainLoop()
 {
     sf::Event Event;
     sf::Time elapsed;
+    sf::Time powerUp;
 
     while (WindowProperties::App->isOpen() && WindowProperties::gameState == currentGameLevel)
     {
         elapsed = clock.getElapsedTime();
+        powerUp = cloque.getElapsedTime();
         invulnerabilityTime = inv.getElapsedTime();
+        if (powerUp.asSeconds() > 10)
+        {
+            cloque.restart();
+            this->powerUps.emplace_back(new PowerUp());
+        }
         if (elapsed.asMilliseconds() > 17)
         {
             WindowProperties::App->display();

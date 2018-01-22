@@ -204,3 +204,8 @@ void Weapon::setCoolDown(int coolDown)
 {
     Weapon::coolDown = coolDown;
 }
+
+WeaponType Weapon::getType()
+{
+    return this->weaponType;
+}

@@ -156,6 +156,7 @@ void GameHandler::resetGameToRetry()
     player->setScore(scoreSave);
     player->setHp(hpSave);
     player->setPos(sf::Vector2f(WindowProperties::WIN_WIDTH * 10 / 100, WindowProperties::WIN_HEIGHT / 2));
+    player->setWeapon(WeaponType::STRAIGHT, 10, 1);
     hud.resetHud();
 }
 

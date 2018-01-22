@@ -21,6 +21,9 @@ public:
     ~PowerUp();
 
     virtual void updatePos();
+    virtual unsigned getReward();
+
+    virtual void shoot();
 
 };
 

@@ -101,3 +101,18 @@ void Player::setBlinkingValue(unsigned int blinkingValue)
 {
     Player::blinkingValue = blinkingValue;
 }
+
+WeaponType Player::getWeapon()
+{
+    return this->weapon.getType();
+}
+
+void Player::setWeapon(WeaponType type, int cd, int lvl)
+{
+    this->weapon.setWeapon(type, cd, lvl);
+}
+
+void Player::weaponUp()
+{
+    this->weapon.lvlUp();
+}
