@@ -14,18 +14,18 @@ SpaceCemetery::SpaceCemetery() : ALevel()
     {
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
-            enemies.insert({EnemyType::BASIC_A, 4});
+            enemies.insert({EnemyType::BASIC_A, 3});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
-            enemies.insert({EnemyType::BASIC_A, 6});
+            enemies.insert({EnemyType::BASIC_A, 5});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
             std::map<EnemyType, int> enemies;
             enemies.insert({EnemyType::BASIC_A, 4});
-            enemies.insert({EnemyType::BASIC_B, 2});
+            enemies.insert({EnemyType::BASIC_B, 1});
             generateEnemies(enemies);
         });
         this->phases.emplace_back([this]() {
