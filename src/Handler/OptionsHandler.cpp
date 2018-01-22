@@ -11,39 +11,37 @@ OptionsHandler::OptionsHandler() {
     });
 
     this->functionsHandler.emplace_back([this]() {
-        // BOUTON OPTION
+        // BOUTON HARMLESS
+        WindowProperties::difficulty = Difficulty::HARMLESS;
+        WindowProperties::MAX_PLAYER_HP = 5;
         this->optionsButtons[1]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {
-        // BOUTON CREDITS
+        // BOUTON SADISTIC
+        WindowProperties::difficulty = Difficulty::SADISTIC;
+        WindowProperties::MAX_PLAYER_HP = 4;
         this->optionsButtons[2]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {
-        //BOUTON JOUER
-        WindowProperties::gameState = GameState::LEVEL1;
-        this->music.stop();
+        //BOUTON MERCILESS
+        WindowProperties::difficulty = Difficulty::MERCILESS;
+        WindowProperties::MAX_PLAYER_HP = 3;
         this->optionsButtons[3]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {
         //BOUTON EXIT
-        WindowProperties::gameState = GameState::CLOSE;
-        this->music.stop();
+        WindowProperties::gameState = GameState::MENU;
         this->optionsButtons[4]->setState(0);
     });
 }
 
 OptionsHandler::~OptionsHandler() {
-    this->music.stop();
 }
 
 void OptionsHandler::initOptions(const std::string &path) {
-    this->music.stop();
     bool parsedBackgroundTexture = false;
     Parsing::loadCSV(path, [&, this](std::string const &path, int const &i) {
-        if (path.substr(path.find_last_of('.') + 1) == "ogg") {
-            this->music.openFromFile(path);
-            this->music.setLoop(true);
-        } else if (path.substr(path.find_last_of('.') + 1) == "png" ||
+        if (path.substr(path.find_last_of('.') + 1) == "png" ||
                    path.substr(path.find_last_of('.') + 1) == "jpg") {
             if (!parsedBackgroundTexture) {
                 float scaleX;
@@ -87,22 +85,21 @@ void OptionsHandler::updateOptions(sf::Event &e, sf::RenderWindow &window) {
 }
 
 void OptionsHandler::determineButtonsPosition() {
-    float firstXPos =
-            (float) WindowProperties::WIN_WIDTH - (float) (this->optionsButtons[0]->buttonShape.getSize().x * 1.25);
     float firstYPos = (float) WindowProperties::WIN_HEIGHT / 8;
     for (unsigned int x = 0; x < this->optionsButtons.size(); x++) {
         if (x == 4)
             this->optionsButtons[x]->buttonShape.setPosition((sf::Vector2f
                     (0, (float) WindowProperties::WIN_HEIGHT - this->optionsButtons[x]->buttonShape.getSize().y)));
         else
-            this->optionsButtons[x]->buttonShape.setPosition((sf::Vector2f(firstXPos, firstYPos)));
+        {
+            this->optionsButtons[x]->buttonShape.setPosition(WindowProperties::WIN_WIDTH / 2 - (this->optionsButtons[x]->buttonShape.getSize().x / 2), firstYPos);
+            firstYPos += this->optionsButtons[x]->buttonShape.getSize().y * 1.25f;
+        }
     }
 }
 
 void OptionsHandler::stopMusic() {
-    this->music.stop();
 }
 
 void OptionsHandler::startMusic() {
-    this->music.play();
 }

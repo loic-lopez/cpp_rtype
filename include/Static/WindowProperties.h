@@ -30,7 +30,7 @@ public:
         WIN_HEIGHT = videoMode.height;
         WIN_WIDTH = videoMode.width;
         orientation = Orientation::HORIZONTAL;
-        gameState = GameState::LEVEL5;
+        gameState = GameState::MENU;
         difficulty = Difficulty::HARMLESS;
         App = new sf::RenderWindow(sf::VideoMode(WIN_WIDTH, WIN_HEIGHT), "R-TYPE", sf::Style::Fullscreen);
         App->setVerticalSyncEnabled(true);

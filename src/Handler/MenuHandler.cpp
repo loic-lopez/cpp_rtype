@@ -13,6 +13,8 @@ MenuHandler::MenuHandler() {
 
     this->functionsHandler.emplace_back([this]() {
         // BOUTON OPTION
+        WindowProperties::gameState = GameState::OPTIONS;
+        OptionsCore::Instance().start();
         this->menuButtons[1]->setState(0);
     });
     this->functionsHandler.emplace_back([this]() {

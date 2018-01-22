@@ -23,7 +23,6 @@ private:
     //BACKGROUND AND MUSIC
     sf::Sprite optionsBackgroundSprite;
     sf::Texture backgroundTexture;
-    sf::Music music;
 
     //BUTTON SYSTEM
     std::vector<std::string> buttonEffectsPaths;

@@ -93,6 +93,7 @@ set(HEADER_FILES
         include/Static/static_constructor.h include/Static/PreGame.h
         include/Level/SpaceCemetery.h include/Level/Horizon.h
         include/Handler/MenuInGameHandler.h include/Level/DeepSpace.h
+        include/Core/MenuInGameCore.h include/PowerUp.h include/Core/OptionsCore.h include/Handler/OptionsHandler.h src/Core/OptionsCore.cpp src/Handler/OptionsHandler.cpp
         include/Core/MenuInGameCore.h include/PowerUp.h
         include/Handler/WinScreenHandler.h include/Core/WinScreenCore.h include/PowerUp.h)
 

@@ -11,6 +11,7 @@
 #include <Thor/Graphics.hpp>
 #include <Thor/Vectors.hpp>
 #include <Thor/Math.hpp>
+#include <Core/OptionsCore.h>
 #include "Parsing.h"
 #include "Enum.h"
 #include "Bg.h"
@@ -29,6 +30,8 @@ private:
     std::vector<std::string> buttonEffectsPaths;
     std::vector<std::shared_ptr<Button>> menuButtons;
     std::vector<std::function<void()>> functionsHandler;
+
+    //OPTIONS SCREEN
 
 public:
     MenuHandler();
